@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     rgb.cpp \
-    colore.cpp
+    colore.cpp \
+    punto.cpp
 
 HEADERS  += \
     rgb.h \
-    colore.h
+    colore.h \
+    punto.h
 
 #FORMS    += matricebase.ui

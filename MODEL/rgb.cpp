@@ -10,7 +10,7 @@ std::string rgb::decToHex(unsigned int value)
     return stream.str();
 }
 
-std::string rgb::getHex()
+std::string rgb::getHex()const
 {
     return "#" + (decToHex(r)) + (decToHex(g)) + (decToHex(b));
 }

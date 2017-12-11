@@ -12,7 +12,7 @@ public:
     /*unsigned int getR();
     unsigned int getG();            //per ora non servono
     unsigned int getB();*/
-    std::string getHex();
+    std::string getHex()const;
 
 private:
     //std::string nome;

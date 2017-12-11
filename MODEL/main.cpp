@@ -4,6 +4,5 @@
 
 int main()
 {
-    rgb colore(255,50,99);
-    std::cout<<colore.getHex();
+
 }

@@ -20,4 +20,4 @@ HEADERS  += \
     rgb.h \
     colore.h
 
-FORMS    += matricebase.ui
+#FORMS    += matricebase.ui

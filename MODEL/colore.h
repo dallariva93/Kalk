@@ -6,6 +6,7 @@
 class colore
 {
 private:
+
 public:
     virtual std::string getHex()=0;
     virtual ~colore()=0;

@@ -15,11 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp \
     rgb.cpp \
     colore.cpp \
-    punto.cpp
+    punto.cpp \
+    angolo.cpp \
+    poligono.cpp
 
 HEADERS  += \
     rgb.h \
     colore.h \
-    punto.h
+    punto.h \
+    angolo.h \
+    poligono.h
 
 #FORMS    += matricebase.ui

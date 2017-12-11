@@ -21,3 +21,18 @@ Idee:
 * Per la divisione potremmo fare che si riduce il poligono, ad esempio diviso due si dimezza la dimensione quindi cambia la lunghezza dei lati e il valore del perimetro e area ma la misura degli angoli è invariata, lo stesso per la moltiplicazine solo che aumenta la grandezza del poligono.
 * Per i poligoni ci saranno operatori unari per la maggior parte
 * Per i colori ci saranno le operazioni principali che agiranno sui valori rgb (somma sottrazione moltiplicazione e divisione su r, g, b.
+
+**Poligono:**
+Campi dati:
+* Colore col;
+* String nomeOggetto;
+* vector<punto> coordinate;
+* int numeroLati;
+Metodi:
+* virtual double getArea()=0;
+* virtual double getPerimetro()=0;
+* virtual colore getColore();
+  
+**Triangolo**
+Metodi:
+* 

@@ -2,16 +2,14 @@
 #define PUNTO_H
 
 
-class punto
-{
+class punto{
 private:
-    int x;
-    int y;
+    double x, y;
 public:
     punto();
-    punto(int x, int y);
-    int getX()const;
-    int getY()const;
+    punto(double x, double y);
+    double getX()const;
+    double getY()const;
     static double distanceTo(const punto& primo, const punto& secondo);
 };
 

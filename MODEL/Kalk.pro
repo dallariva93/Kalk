@@ -17,13 +17,19 @@ SOURCES += main.cpp \
     colore.cpp \
     punto.cpp \
     angolo.cpp \
-    poligono.cpp
+    poligono.cpp \
+    triangolo.cpp \
+    quadrilatero.cpp \
+    pentagono.cpp
 
 HEADERS  += \
     rgb.h \
     colore.h \
     punto.h \
     angolo.h \
-    poligono.h
+    poligono.h \
+    triangolo.h \
+    quadrilatero.h \
+    pentagono.h
 
 #FORMS    += matricebase.ui

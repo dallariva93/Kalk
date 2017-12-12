@@ -1,4 +1,4 @@
 #include "angolo.h"
 
 
-angolo::angolo(unsigned int val):gradi(val){}
+angolo::angolo(double val):gradi(val){}

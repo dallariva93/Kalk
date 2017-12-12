@@ -2,13 +2,12 @@
 #define ANGOLO_H
 
 
-class angolo
-{
+class angolo{
 private:
-    unsigned int gradi;
+    double gradi;
 
 public:
-    angolo(unsigned int val=0);
+    angolo(double val=0);
 };
 
 #endif // ANGOLO_H

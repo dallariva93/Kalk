@@ -1,6 +1,6 @@
 #include "poligono.h"
 
-poligono::poligono(unsigned int nLati, std::string nome, QVector<punto> punti, colore* col) : numeroLati(nLati), nomeOggetto(nome){
+poligono::poligono(unsigned int nLati, std::string nome, colore* col, QVector<punto> punti) : numeroLati(nLati), nomeOggetto(nome){
     color=col->clone();
     coordinate=punti;
 }
@@ -8,3 +8,9 @@ poligono::poligono(unsigned int nLati, std::string nome, QVector<punto> punti, c
 colore* poligono::getColore()const{
     return color;
 }
+
+void poligono::setPunti(const QVector<punto> coord){
+    coordinate=coord;
+}
+
+QVector<punto> poligono::getCoordinate(){return coordinate;}

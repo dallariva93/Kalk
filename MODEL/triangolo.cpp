@@ -36,11 +36,6 @@ triangolo::triangolo(double latoA, double latoB, double latoC, colore* col){
 double triangolo::getArea()const{
 
 }*/
-double triangolo::getPerimetro(){
-    QVector<punto> coord=this->getCoordinate();
-    return  punto::distanceTo(coord[0],coord[1])+
-            punto::distanceTo(coord[1],coord[2])+
-            punto::distanceTo(coord[0],coord[2]);
-}
+
 
 

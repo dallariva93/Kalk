@@ -6,3 +6,6 @@ quadrilatero::quadrilatero()
 
 }
 */
+double quadrilatero::getPerimetro()const{
+
+}

@@ -2,15 +2,16 @@
 #define TRIANGOLO_H
 #include "poligono.h"
 #include "angolo.h"
+#include "rgb.h"
 
 class triangolo : public poligono{
 
 public:
-    triangolo(double, double, angolo);  //valutare se sensato inizializzarli con valore di default
-//    triangolo(double, angolo, angolo);
-//    triangolo(double, double, double);
-    double Area()const;
-    double Perimetro()const;
+    triangolo(double, double, angolo, colore* col=new rgb());
+    triangolo(double, angolo, angolo, colore* col=new rgb());
+    triangolo(double, double, double, colore* col=new rgb());
+    double getArea()const;
+    double getPerimetro()const;
 
 };
 

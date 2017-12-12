@@ -12,7 +12,7 @@ private:
     QVector<punto> coordinate;
 
 public:
-    poligono(unsigned int, colore*, std::string, QVector<punto>);
+    poligono(unsigned int, std::string, QVector<punto>, colore*);
     virtual double getArea()const=0;
     virtual double getPerimetro()const=0;
     virtual colore* getColore()const;

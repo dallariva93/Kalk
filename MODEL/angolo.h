@@ -8,6 +8,7 @@ private:
 
 public:
     angolo(double val=0);
+    double getAngolo();
 };
 
 #endif // ANGOLO_H

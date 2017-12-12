@@ -3,11 +3,26 @@
 #include <math.h>
 
 
-triangolo::triangolo(double latoA, double latoB, angolo c) : poligono(3, 255, "triangle", p) {}
+triangolo::triangolo(double latoA, double latoB, angolo c, colore* col) : poligono(3, "triangolo", std::vector<punto> v(), col) {
+    std::vector<punto> punti;
+    punti.push_back(punto(0,0));
+    punti.push_back(punto(latoA,0));
+    double x=cos(c.getAngolo());
+    double y=sin(c.getAngolo());
+    punti.push_back(punto(x,y));
+}
 
-/*
 triangolo::triangolo(double latoA, angolo b, angolo c) : poligono(3, ) {
-//calcolo latoB, latoC e angolo a
+    std::vector<punto> punti;
+    punti.push_back(punto(0,0));
+    punti.push_back(punto(latoA,0));
+    double x=cos(b.getAngolo());
+    double y=sin(b.getAngolo());
+    punti.push_back(punto(x,y));
+
+
+
+    //calcolo latoB, latoC e angolo a
     double val=b;
 //   angolo a=180-b-c;
 //    double latoB=( latoA * sin(b) ) / sin(a);
@@ -18,10 +33,10 @@ triangolo::triangolo(double latoA, double latoB, double latoC){
 
 }
 */
-double triangolo::Area()const{
+double triangolo::getArea()const{
 
 }
-double triangolo::Perimetro()const{
+double triangolo::getPerimetro()const{
 
 }
 

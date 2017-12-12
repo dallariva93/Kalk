@@ -5,6 +5,8 @@
 class quadrilatero : public poligono{
 public:
     quadrilatero();
+    double getArea()const;
+    double getPerimetro()const;
 };
 
 #endif // QUADRILATERO_H

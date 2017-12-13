@@ -5,7 +5,7 @@
 /*  fare i controlli
 - somma angoli 180
 - lato maggiore < somma degli altri due
-
+- coorditate una (0,0) poi (_,0) e ultima (_,_) sempre!
 */
 triangolo::triangolo(double latoA, double latoB, angolo c, colore* col) : poligono(3, "triangolo", col) {
 //angolo compreso tra  i due lati
@@ -42,12 +42,33 @@ triangolo::triangolo(double latoA, double latoB, double latoC, colore* col) : po
     setPunti(punti);
 }
 
+double triangolo::getAltezza(){
+    QVector<punto> vertice = this->getCoordinate();
+    punto alto;
+    int i=0;
+    bool top=false;
+    while(!top && i<3){
+        punto p = vertice[i];
+        if(p.getY()!=0){         //in questo modo controllo che prendo sempre il punto più alto che non sta nell' ascissa
+            alto=p;
+            top=true;
+        }
+        i++;
+    }
+    return punto::distanceTo( alto , punto( alto.getX() , 0 ) );
+}
+
 double triangolo::getArea(){
     QVector<punto> vertice = this->getCoordinate();
-    double base = punto::distanceTo(vertice[0],vertice[1]);
-    punto p = vertice[2];
-    vertice.push_back(punto( p.getX() , 0 ));
-    double altezza = punto::distanceTo(vertice[2],vertice[3]);
-    double area = (base * altezza ) / 2;
-    return area;
+    double base;
+    //if-else per fare il controllo... naturalemnte la  base sappiamo avere come coordinate di y == 0
+    if(vertice[0].getY()==0){
+        if(vertice[1].getY()==0)
+            base = punto::distanceTo(vertice[0],vertice[1]);
+        else
+            base = punto::distanceTo(vertice[0],vertice[2]);
+    }
+    else
+        base = punto::distanceTo(vertice[1],vertice[2]);
+    return (base * getAltezza() ) / 2;
 }

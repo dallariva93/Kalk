@@ -10,6 +10,7 @@ public:
     triangolo(double, double, angolo, colore* col=new rgb());
     triangolo(double, angolo, angolo, colore* col=new rgb());
     triangolo(double, double, double, colore* col=new rgb());
+    double getAltezza();
     double getArea();       //const perché da errore
 };
 

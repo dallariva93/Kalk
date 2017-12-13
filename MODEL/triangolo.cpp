@@ -2,7 +2,11 @@
 #include "angolo.h"
 #include <math.h>
 
+/*  fare i controlli
+- somma angoli 180
+- lato maggiore < somma degli altri due
 
+*/
 triangolo::triangolo(double latoA, double latoB, angolo c, colore* col) : poligono(3, "triangolo", col) {
 //angolo compreso tra  i due lati
     QVector<punto> punti;
@@ -24,9 +28,6 @@ triangolo::triangolo(double latoA, angolo b, angolo c, colore* col) : poligono(3
     double y= latoC * sin(b.getAngolo());
     punti.push_back(punto(x,y));
     setPunti(punti);
-//   angolo a=180-b-c;
-//    double latoB=( latoA * sin(b) ) / sin(a);
-//    double latoC=( latoA * sin(c) ) / sin(a);
 }
 
 triangolo::triangolo(double latoA, double latoB, double latoC, colore* col) : poligono(3, "triangolo", col) {
@@ -40,9 +41,13 @@ triangolo::triangolo(double latoA, double latoB, double latoC, colore* col) : po
     punti.push_back(punto(x,y));
     setPunti(punti);
 }
-/*
-double triangolo::getArea()const{
 
-}*/
-
-
+double triangolo::getArea(){
+    QVector<punto> vertice = this->getCoordinate();
+    double base = punto::distanceTo(vertice[0],vertice[1]);
+    punto p = vertice[2];
+    vertice.push_back(punto( p.getX() , 0 ));
+    double altezza = punto::distanceTo(vertice[2],vertice[3]);
+    double area = (base * altezza ) / 2;
+    return area;
+}

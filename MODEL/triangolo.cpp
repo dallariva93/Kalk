@@ -1,6 +1,8 @@
 #include "triangolo.h"
 #include "angolo.h"
-#include <math.h>
+#include <cmath>
+
+#define PI 3.14159265
 
 /*  fare i controlli
 - somma angoli 180
@@ -11,8 +13,9 @@ triangolo::triangolo(double latoAB, double latoAC, angolo a, colore* col) : poli
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
-    double x = latoAC * cos(a.getAngolo());
-    double y = latoAC * sin(a.getAngolo());
+    double x=0;
+    if(a.getAngolo()!=0)    x = latoAC * cos((a.getAngolo() * 180.0) / PI);
+    double y = latoAC * sin((a.getAngolo() * 180.0) / PI);
     punti.push_back(punto(x,y));
     setPunti(punti);
 }
@@ -22,9 +25,10 @@ triangolo::triangolo(double latoAB, angolo a, angolo b, colore* col) : poligono(
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
-    double latoAC = ( latoAB * sin(b.getAngolo()) ) / sin(c.getAngolo());
-    double x = latoAC * cos(a.getAngolo());
-    double y = latoAC * sin(a.getAngolo());
+    double latoAC = ( latoAB * sin(b.getAngolo()*PI/180) ) / sin(c.getAngolo()*PI/180);
+    double x=0;
+    if(a.getAngolo()!=90)   x = latoAC * cos(a.getAngolo()*PI/180);
+    double y = latoAC * sin(a.getAngolo() * PI / 180);
     if(a > 90)    //triangolo ottuso
         x = -x;
     punti.push_back(punto(x,y));
@@ -32,13 +36,16 @@ triangolo::triangolo(double latoAB, angolo a, angolo b, colore* col) : poligono(
 }
 
 triangolo::triangolo(double latoAB, double latoBC, double latoAC, colore* col) : poligono(3, "triangolo", col) {
-    double cos_a = ( pow(latoAB,2) + pow(latoAC,2) - pow(latoBC,2) ) / 2*latoAB*latoAC ;
-    angolo a = acos(cos_a);
+    double cos_a =-(( pow(latoBC,2) - pow(latoAC,2) - pow(latoAB,2) ) / 2*latoAB*latoAC) *PI/180;
+    std::cout<<cos_a<<"fff"<<std::endl;
+    angolo a = acos(cos_a)*180/PI;
+    std::cout<<a.getAngolo()<<"dsfhidsuf";
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
-    double x= latoAC * cos(a.getAngolo());
-    double y= latoAC * sin(a.getAngolo());
+    double x=0;
+    if(a.getAngolo()!=90)  x= latoAC * cos(a.getAngolo()*PI/180);
+    double y= latoAC * sin(a.getAngolo()*PI/180);
     if(a>90)    //triangolo ottuso
         x = -x;
     punti.push_back(punto(x,y));

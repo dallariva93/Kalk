@@ -1,5 +1,5 @@
 #include "punto.h"
-#include "math.h"
+#include <cmath>
 
 punto::punto():x(0),y(0){}
 
@@ -14,4 +14,12 @@ double punto::distanceTo(const punto& primo, const punto& secondo){
                 pow((secondo.getX()-primo.getX()),2)+
                 pow((secondo.getY()-primo.getY()),2)
             );
+}
+
+angolo punto::angoloTraTrePunti(const punto& A, const punto& B, const punto& C){
+    double latoAB = distanceTo(A,B);
+    double latoBC = distanceTo(B,C);
+    double latoAC = distanceTo(A,C);
+    double cos_a = -( ( pow(latoBC,2) - pow(latoAC,2) - pow(latoAB,2) ) / ( 2 * latoAC * latoAB ) );
+    return acos(cos_a);
 }

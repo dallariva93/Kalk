@@ -1,6 +1,7 @@
 #ifndef PUNTO_H
 #define PUNTO_H
 #include "angolo.h"
+#include <cmath>
 #define PI 3.14159265
 
 

@@ -1,5 +1,4 @@
 #include "triangolo.h"
-#include "angolo.h"
 #include <cmath>
 
 /*  fare i controlli

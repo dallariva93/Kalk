@@ -11,6 +11,8 @@ public:
     double getAngolo();
     bool operator >(const angolo)const;
     bool operator <(const angolo)const;
+    angolo operator+(const angolo&)const;
+    angolo& operator=(const angolo&);
 };
 
 #endif // ANGOLO_H

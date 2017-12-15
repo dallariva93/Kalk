@@ -22,6 +22,12 @@ quadrilatero::quadrilatero(double latoA, double latoB, colore* col) : poligono(4
     punti.push_back(punto(0,latoB));
     setPunti(punti);
 }
+
+quadrilatero::quadrilatero(double latoAB, double latoBC, double latoCD, double latoDA, angolo a, angolo b, angolo c, angolo d){
+    if(a+b+c+d>angolo(360))break;       //mettere eccezione
+
+}
+
 /*
 quadrilatero::quadrilatero(double latoA, double latoB, double latoC, double latoD, angolo a, angolo b, angolo c, colore* col){
 

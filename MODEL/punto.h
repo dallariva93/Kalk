@@ -1,6 +1,8 @@
 #ifndef PUNTO_H
 #define PUNTO_H
 #include "angolo.h"
+#define PI 3.14159265
+
 
 class punto{
 private:

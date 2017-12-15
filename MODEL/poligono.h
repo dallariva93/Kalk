@@ -19,6 +19,7 @@ public:
     virtual colore* getColore();    //const
     void setPunti(const QVector<punto>);
     QVector<punto> getCoordinate();
+    QVector<double> getLati() const;
 };
 
 #endif // POLIGONO_H

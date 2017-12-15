@@ -25,6 +25,15 @@ punto a(0,0), b(6.96362,0.712767);
     std::cout<<punto::distanceTo(a,b)<<"  lato ac"<<std::endl;
     std::cout<<t.getCoordinate()[2].getX()<<" "<<t.getCoordinate()[2].getY()<<std::endl;
 */
-    triangolo(10,7,7);
+
+/*1 costruttore
+    triangolo t(10, 15, angolo(5));
+    QVector<double> lati= t.getLati();
+    for(int i=0; i<lati.size(); i++){
+        std::cout<<lati[i]<<std::endl;
+    }
+  */
+
+
 }
 

@@ -2,8 +2,6 @@
 #include "angolo.h"
 #include <cmath>
 
-#define PI 3.14159265
-
 /*  fare i controlli
 - somma angoli 180
 - lato maggiore < somma degli altri due
@@ -14,40 +12,41 @@ triangolo::triangolo(double latoAB, double latoAC, angolo a, colore* col) : poli
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
     double x=0;
-    if(a.getAngolo()!=0)    x = latoAC * cos((a.getAngolo() * 180.0) / PI);
-    double y = latoAC * sin((a.getAngolo() * 180.0) / PI);
+    if(a.getAngolo()!=0)    x = latoAC * cos((a.getAngolo() *PI/180));
+    double y = latoAC * sin(a.getAngolo() *PI/180);
     punti.push_back(punto(x,y));
     setPunti(punti);
 }
 
 triangolo::triangolo(double latoAB, angolo a, angolo b, colore* col) : poligono(3, "triangolo", col) {
-    angolo c = 180 - a.getAngolo()-b.getAngolo();
+    angolo c = 180 -a.getAngolo() -b.getAngolo();
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
     double latoAC = ( latoAB * sin(b.getAngolo()*PI/180) ) / sin(c.getAngolo()*PI/180);
-    double x=0;
-    if(a.getAngolo()!=90)   x = latoAC * cos(a.getAngolo()*PI/180);
-    double y = latoAC * sin(a.getAngolo() * PI / 180);
-    if(a > 90)    //triangolo ottuso
-        x = -x;
+    double x, y;
+    if(a.getAngolo()!=90){
+        x = latoAC * cos(a.getAngolo()*PI/180);
+        y = latoAC * sin(a.getAngolo() * PI / 180);
+    }
+    else{
+        x = 0;
+        y = (latoAB * sin(b.getAngolo()*PI/180)) / sin(c.getAngolo()*PI/180);
+    }
     punti.push_back(punto(x,y));
     setPunti(punti);
 }
 
 triangolo::triangolo(double latoAB, double latoBC, double latoAC, colore* col) : poligono(3, "triangolo", col) {
-    double cos_a =-(( pow(latoBC,2) - pow(latoAC,2) - pow(latoAB,2) ) / 2*latoAB*latoAC) *PI/180;
-    std::cout<<cos_a<<"fff"<<std::endl;
+    double cos_a =(( pow(latoAC,2) + pow(latoAB,2) - pow(latoBC,2)) / (2*latoAB*latoAC)) ;
     angolo a = acos(cos_a)*180/PI;
-    std::cout<<a.getAngolo()<<"dsfhidsuf";
+    std::cout<<a.getAngolo()<<" <-angolo a"<<std::endl;
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
     double x=0;
     if(a.getAngolo()!=90)  x= latoAC * cos(a.getAngolo()*PI/180);
     double y= latoAC * sin(a.getAngolo()*PI/180);
-    if(a>90)    //triangolo ottuso
-        x = -x;
     punti.push_back(punto(x,y));
     setPunti(punti);
 }

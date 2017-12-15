@@ -22,6 +22,13 @@ double poligono::getPerimetro(){
         perimetro += punto::distanceTo(coordinate[i],coordinate[i+1]);
     }
    return perimetro += punto::distanceTo(coordinate.first(),coordinate.last());
+}
 
-
+QVector<double> poligono::getLati() const{
+    QVector<double> lati;
+    for(unsigned int i=0; i<numeroLati-1; ++i){
+        lati.push_back(punto::distanceTo(coordinate[i], coordinate[i+1]));
+    }
+    lati.push_back(punto::distanceTo(coordinate.first(), coordinate.last()));
+    return lati;
 }

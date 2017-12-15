@@ -27,7 +27,7 @@ quadrilatero::quadrilatero(double latoA, double latoB, double latoC, double lato
 
 }
 */
-double quadrilatero::getArea(){
+double quadrilatero::getArea() const{
     triangolo t1(getLati()[0], getLati()[1],punto::distanceTo(getCoordinate()[0],getCoordinate()[2]));
     triangolo t2(punto::distanceTo(getCoordinate()[0],getCoordinate()[2]), getLati()[2], getLati()[3]);
     return t1.getArea()+t2.getArea();

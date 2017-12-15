@@ -6,8 +6,9 @@
 - somma angoli 180
 - lato maggiore < somma degli altri due
 - coorditate una (0,0) poi (_,0) e ultima (_,_) sempre!
+- lato non negativi
 */
-triangolo::triangolo(double latoAB, double latoAC, angolo a, colore* col) : poligono(3, "triangolo", col) {
+triangolo::triangolo(double latoAB, double latoAC, const angolo& a, colore* col) : poligono(3, "triangolo", col) {
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
@@ -18,7 +19,7 @@ triangolo::triangolo(double latoAB, double latoAC, angolo a, colore* col) : poli
     setPunti(punti);
 }
 
-triangolo::triangolo(double latoAB, angolo a, angolo b, colore* col) : poligono(3, "triangolo", col) {
+triangolo::triangolo(double latoAB, const angolo& a, const angolo& b, colore* col) : poligono(3, "triangolo", col) {
     angolo c = 180 -a.getAngolo() -b.getAngolo();
     QVector<punto> punti;
     punti.push_back(punto(0,0));
@@ -51,8 +52,8 @@ triangolo::triangolo(double latoAB, double latoBC, double latoAC, colore* col) :
     setPunti(punti);
 }
 
-double triangolo::getAltezza(){
-    QVector<punto> vertice = this->getCoordinate();
+double triangolo::getAltezza() const{
+    QVector<punto> vertice = getCoordinate();
     punto alto;
     int i=0;
     bool top=false;
@@ -68,7 +69,7 @@ double triangolo::getAltezza(){
 }
 
 
-double triangolo::getArea(){
+double triangolo::getArea() const{
     double p=getPerimetro()/2;
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }

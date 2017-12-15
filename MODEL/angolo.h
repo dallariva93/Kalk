@@ -8,7 +8,7 @@ private:
 
 public:
     angolo(double val=0);
-    double getAngolo();
+    double getAngolo() const;
     bool operator >(const angolo)const;
     bool operator <(const angolo)const;
     angolo operator+(const angolo&)const;

@@ -5,7 +5,7 @@ poligono::poligono(unsigned int nLati, std::string nome, colore* col, QVector<pu
     coordinate=punti;
 }
 
-colore* poligono::getColore(){
+colore* poligono::getColore() const{
     return color;
 }
 
@@ -13,9 +13,9 @@ void poligono::setPunti(const QVector<punto> coord){
     coordinate=coord;
 }
 
-QVector<punto> poligono::getCoordinate(){return coordinate;}
+QVector<punto> poligono::getCoordinate() const{return coordinate;}
 
-double poligono::getPerimetro(){
+double poligono::getPerimetro() const{
     double perimetro=0;
     for(unsigned int i=0; i<numeroLati-1; ++i)
     {

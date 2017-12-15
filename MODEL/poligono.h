@@ -14,11 +14,11 @@ private:
 
 public:
     poligono(unsigned int, std::string, colore*, QVector<punto> punti=QVector<punto>());
-    virtual double getArea() =0;    //const
-    virtual double getPerimetro();  //const
-    virtual colore* getColore();    //const
+    virtual double getArea() const =0;
+    virtual double getPerimetro() const;
+    virtual colore* getColore() const;
     void setPunti(const QVector<punto>);
-    QVector<punto> getCoordinate();
+    QVector<punto> getCoordinate() const;
     QVector<double> getLati() const;
 };
 

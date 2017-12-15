@@ -3,7 +3,7 @@
 
 angolo::angolo(double val):gradi(val){}
 
-double angolo::getAngolo(){
+double angolo::getAngolo() const{
     return gradi;
 }
 

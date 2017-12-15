@@ -67,8 +67,9 @@ double triangolo::getAltezza(){
     return punto::distanceTo( alto , punto( alto.getX() , 0 ) );
 }
 
+
 double triangolo::getArea(){
-    QVector<punto> vertici = this->getCoordinate();
-    double base = punto::distanceTo(vertici[0],vertici[1]);    //la base è sempre la distanza dei primi due punti del vector
-    return (base * getAltezza() ) / 2;
+    double p=getPerimetro()/2;
+    return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
+

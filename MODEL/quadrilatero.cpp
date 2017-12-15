@@ -1,4 +1,5 @@
 #include "quadrilatero.h"
+#include "triangolo.h"
 
 /*  CONTROLLI DA FARE:
  * -    somma degli angoli = 360
@@ -25,8 +26,10 @@ quadrilatero::quadrilatero(double latoA, double latoB, colore* col) : poligono(4
 quadrilatero::quadrilatero(double latoA, double latoB, double latoC, double latoD, angolo a, angolo b, angolo c, colore* col){
 
 }
-
-double quadrilatero::getArea()const{
-
-}
 */
+double quadrilatero::getArea(){
+    triangolo t1(getLati()[0], getLati()[1],punto::distanceTo(getCoordinate()[0],getCoordinate()[2]));
+    triangolo t2(punto::distanceTo(getCoordinate()[0],getCoordinate()[2]), getLati()[2], getLati()[3]);
+    return t1.getArea()+t2.getArea();
+}
+

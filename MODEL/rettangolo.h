@@ -6,6 +6,8 @@ class rettangolo : public quadrilatero
 {
 public:
     rettangolo(double latoMinore, double latoMaggiore, colore *col=new rgb());
+    double getArea()const;
+    double getPerimetro()const;
 };
 
 #endif // RETTANGOLO_H

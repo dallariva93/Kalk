@@ -32,14 +32,25 @@ quadrilatero::quadrilatero(double latoAB, double latoBC, double latoCD, double l
     QVector<punto> punti;
     punti.push_back(punto(0,0));
     punti.push_back(punto(latoAB,0));
-    if(b.getAngolo() != 90) cx = latoAB + ( latoBC * cos( b_ad.getAngolo() *PI/180));
-    else  cx = latoAB;
-    cy = latoBC * sin( b_ad.getAngolo() *PI/180);
+
+    if(b.getAngolo() != 90){
+        cx = latoAB + ( latoBC * cos( b_ad.getAngolo() *PI/180));
+        cy = latoBC * sin( b_ad.getAngolo() *PI/180);
+    } else{
+        cx = latoAB;
+        cy = latoBC;
+    }
     punti.push_back(punto(cx,cy));
-    if(a.getAngolo() != 90) dx = latoAD * cos( a.getAngolo() *PI/180);
-    else dx = 0;
-    dy = latoAD * sin( a.getAngolo() *PI/180);
+
+    if(a.getAngolo() != 90){
+        dx = latoAD * cos( a.getAngolo() *PI/180);
+        dy = latoAD * sin( a.getAngolo() *PI/180);
+    } else {
+        dx = 0;
+        dy = latoAD;
+    }
     punti.push_back(punto(dx,dy));
+
     setPunti(punti);
 }
 

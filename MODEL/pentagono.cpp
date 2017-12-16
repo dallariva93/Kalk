@@ -26,7 +26,6 @@ pentagono::pentagono(double, double, double, double, angolo, angolo, angolo, col
 
 }
 */
-double pentagono::getArea() const{
-}
+double pentagono::getArea() const{}
 
 

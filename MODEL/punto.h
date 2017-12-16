@@ -11,9 +11,9 @@ private:
 public:
     punto();
     punto(double x, double y);
-    double getX()const;
-    double getY()const;
-    static double distanceTo(const punto& primo, const punto& secondo);
+    double getX() const;
+    double getY() const;
+    static double distanceTo(const punto&, const punto&);
     static angolo angoloTraTrePunti(const punto&, const punto&, const punto&);
 };
 

@@ -56,7 +56,9 @@ SOURCES       = ../MODEL/main.cpp \
 		../MODEL/poligono.cpp \
 		../MODEL/triangolo.cpp \
 		../MODEL/quadrilatero.cpp \
-		../MODEL/pentagono.cpp 
+		../MODEL/pentagono.cpp \
+		../MODEL/quadrato.cpp \
+		../MODEL/rettangolo.cpp 
 OBJECTS       = main.o \
 		rgb.o \
 		colore.o \
@@ -65,7 +67,9 @@ OBJECTS       = main.o \
 		poligono.o \
 		triangolo.o \
 		quadrilatero.o \
-		pentagono.o
+		pentagono.o \
+		quadrato.o \
+		rettangolo.o
 DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt5.5.1/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../Qt5.5.1/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -207,7 +211,9 @@ DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../MODEL/poligono.h \
 		../MODEL/triangolo.h \
 		../MODEL/quadrilatero.h \
-		../MODEL/pentagono.h ../MODEL/main.cpp \
+		../MODEL/pentagono.h \
+		../MODEL/quadrato.h \
+		../MODEL/rettangolo.h ../MODEL/main.cpp \
 		../MODEL/rgb.cpp \
 		../MODEL/colore.cpp \
 		../MODEL/punto.cpp \
@@ -215,7 +221,9 @@ DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../MODEL/poligono.cpp \
 		../MODEL/triangolo.cpp \
 		../MODEL/quadrilatero.cpp \
-		../MODEL/pentagono.cpp
+		../MODEL/pentagono.cpp \
+		../MODEL/quadrato.cpp \
+		../MODEL/rettangolo.cpp
 QMAKE_TARGET  = Kalk
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = Kalk
@@ -537,8 +545,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../MODEL/rgb.h ../MODEL/colore.h ../MODEL/punto.h ../MODEL/angolo.h ../MODEL/poligono.h ../MODEL/triangolo.h ../MODEL/quadrilatero.h ../MODEL/pentagono.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MODEL/main.cpp ../MODEL/rgb.cpp ../MODEL/colore.cpp ../MODEL/punto.cpp ../MODEL/angolo.cpp ../MODEL/poligono.cpp ../MODEL/triangolo.cpp ../MODEL/quadrilatero.cpp ../MODEL/pentagono.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MODEL/rgb.h ../MODEL/colore.h ../MODEL/punto.h ../MODEL/angolo.h ../MODEL/poligono.h ../MODEL/triangolo.h ../MODEL/quadrilatero.h ../MODEL/pentagono.h ../MODEL/quadrato.h ../MODEL/rettangolo.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MODEL/main.cpp ../MODEL/rgb.cpp ../MODEL/colore.cpp ../MODEL/punto.cpp ../MODEL/angolo.cpp ../MODEL/poligono.cpp ../MODEL/triangolo.cpp ../MODEL/quadrilatero.cpp ../MODEL/pentagono.cpp ../MODEL/quadrato.cpp ../MODEL/rettangolo.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -628,8 +636,8 @@ main.o: ../MODEL/main.cpp ../MODEL/rgb.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
 		../MODEL/punto.h \
 		../MODEL/angolo.h \
-		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QtMath \
-		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmath.h
+		../MODEL/quadrato.h \
+		../MODEL/quadrilatero.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MODEL/main.cpp
 
 rgb.o: ../MODEL/rgb.cpp ../MODEL/rgb.h \
@@ -801,7 +809,8 @@ quadrilatero.o: ../MODEL/quadrilatero.cpp ../MODEL/quadrilatero.h \
 		../MODEL/punto.h \
 		../MODEL/angolo.h \
 		../MODEL/colore.h \
-		../MODEL/rgb.h
+		../MODEL/rgb.h \
+		../MODEL/triangolo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quadrilatero.o ../MODEL/quadrilatero.cpp
 
 pentagono.o: ../MODEL/pentagono.cpp ../MODEL/pentagono.h \
@@ -856,6 +865,114 @@ pentagono.o: ../MODEL/pentagono.cpp ../MODEL/pentagono.h \
 		../MODEL/colore.h \
 		../MODEL/rgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pentagono.o ../MODEL/pentagono.cpp
+
+quadrato.o: ../MODEL/quadrato.cpp ../MODEL/quadrato.h \
+		../MODEL/quadrilatero.h \
+		../MODEL/poligono.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QVector \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
+		../MODEL/punto.h \
+		../MODEL/angolo.h \
+		../MODEL/colore.h \
+		../MODEL/rgb.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quadrato.o ../MODEL/quadrato.cpp
+
+rettangolo.o: ../MODEL/rettangolo.cpp ../MODEL/rettangolo.h \
+		../MODEL/quadrilatero.h \
+		../MODEL/poligono.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/QVector \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
+		../MODEL/punto.h \
+		../MODEL/angolo.h \
+		../MODEL/colore.h \
+		../MODEL/rgb.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rettangolo.o ../MODEL/rettangolo.cpp
 
 ####### Install
 

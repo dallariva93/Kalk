@@ -3,6 +3,8 @@
 
 angolo::angolo(double val):gradi(val){}
 
+const angolo angolo::angoloRetto=angolo(90);
+
 double angolo::getAngolo() const{
     return gradi;
 }
@@ -24,3 +26,4 @@ angolo& angolo::operator=(const angolo& ang){
     this->gradi=ang.gradi;
     return *this;
 }
+

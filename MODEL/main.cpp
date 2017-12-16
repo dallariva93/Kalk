@@ -1,7 +1,7 @@
 #include "rgb.h"
 #include<iostream>
 #include "triangolo.h"
-#include "quadrilatero.h"
+#include "quadrato.h"
 #define PI 3.14159265
 
 int main(){
@@ -32,5 +32,16 @@ punto a(0,0), b(6.96362,0.712767);
         std::cout<<lati[i].getX()<<"  -  "<<lati[i].getY()<<std::endl;
     }
 */
+
+   /* angolo novanta(90);
+
+    quadrato quad(10);
+    QVector<punto> lati= quad.getCoordinate();
+    for(int i=0; i<4; i++){
+        std::cout<<lati[i].getX()<<"  -  "<<lati[i].getY()<<std::endl;
+    }
+*/
+    std::cout<<punto::origine.getX();
+
 }
 

@@ -12,7 +12,7 @@ public:
     triangolo(double, double, double, colore* col=new rgb());
     double getAltezza() const;
     double getArea() const;
-    triangolo ruota();
+    void ruota();
 };
 
 #endif // TRIANGOLO_H

@@ -33,16 +33,16 @@ punto a(0,0), b(6.96362,0.712767);
     }
 */
 
-    triangolo p(10, 15, angolo(5));
-    triangolo t = p.ruota();
-/*
-    std::cout<<t.getCoordinate()[0].getX()<<" "<<t.getCoordinate()[0].getY()<<std::endl;
+    triangolo t(10, 5.113, 15);
+    t.ruota();
+
+    std::cout<<"- coordinate - "<<std::endl<<t.getCoordinate()[0].getX()<<" "<<t.getCoordinate()[0].getY()<<std::endl;
     std::cout<<t.getCoordinate()[1].getX()<<" "<<t.getCoordinate()[1].getY()<<std::endl;
-    std::cout<<t.getCoordinate()[2].getX()<<" "<<t.getCoordinate()[2].getY()<<std::endl;
-*//*
+    std::cout<<t.getCoordinate()[2].getX()<<" "<<t.getCoordinate()[2].getY()<<std::endl<<std::endl<<" - lati - "<<std::endl;
+
     QVector<double> lati= t.getLati();
     for(int i=0; i<lati.size(); i++){
         std::cout<<lati[i]<<std::endl;
-    }*/
+    }
 }
 

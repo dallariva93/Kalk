@@ -11,7 +11,8 @@ public:
     triangolo(double, const angolo&, const angolo&, colore* col=new rgb());
     triangolo(double, double, double, colore* col=new rgb());
     double getAltezza() const;
-    double getArea() const;       //const perché da errore
+    double getArea() const;
+    triangolo ruota();
 };
 
 #endif // TRIANGOLO_H

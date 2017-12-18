@@ -15,10 +15,13 @@ public:
     virtual void inverti();
     RGB& operator+(const Colore&)const;
     RGB& operator-(const Colore&)const;
+    RGB& operator*(const Colore&)const;
+    RGB& operator/(const Colore&)const;
 
 
 private:
     //std::string nome;
+    static unsigned int* HexToRGB(const Colore &col);
     static std::string decToHex(unsigned int value);        //metodo statico di funzionalità (conversione decimale a esadecimale)
     unsigned int r;
     unsigned int g;

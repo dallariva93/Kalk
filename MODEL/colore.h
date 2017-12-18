@@ -13,6 +13,9 @@ public:
     virtual void inverti()=0;       //fa side effect
     virtual Colore& operator+(const Colore&)const=0;
     virtual Colore& operator-(const Colore&)const=0;
+    virtual Colore& operator*(const Colore&)const=0;
+    virtual Colore& operator/(const Colore&)const=0;
+
 };
 
 #endif // COLORE_H

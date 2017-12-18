@@ -9,3 +9,9 @@ double quadrato::getArea()const{
 double quadrato::getPerimetro()const{
     return 4*punto::distanceTo(punto::origine,getCoordinate()[1]);
 }
+
+void quadrato::estendi(double fattore)
+{
+    quadrato temp(getLati().first()*fattore);
+    setPunti(temp.getCoordinate());
+}

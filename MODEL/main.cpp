@@ -34,7 +34,7 @@ punto a(0,0), b(6.96362,0.712767);
 */
 
     triangolo p(10, 15, angolo(5));
-    triangolo t = p.ruota();
+    //triangolo t = p.ruota();
 /*
     std::cout<<t.getCoordinate()[0].getX()<<" "<<t.getCoordinate()[0].getY()<<std::endl;
     std::cout<<t.getCoordinate()[1].getX()<<" "<<t.getCoordinate()[1].getY()<<std::endl;

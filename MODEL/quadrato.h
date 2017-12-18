@@ -11,6 +11,7 @@ public:
     quadrato(double lato, colore *col=new rgb());
     double getArea()const;
     double getPerimetro()const;
+    void estendi(double);
 
 };
 

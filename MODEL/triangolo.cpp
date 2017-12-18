@@ -72,7 +72,7 @@ double triangolo::getArea() const{
     double p=getPerimetro()/2;
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
-
+/*
 triangolo triangolo::ruota() {
 
     QVector<punto> p(3);
@@ -90,4 +90,10 @@ triangolo triangolo::ruota() {
     }
     p[2] = punto(cx, cy);
     return *this;
+}*/
+
+void triangolo::estendi(double fattore)
+{
+    triangolo temp(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore);
+    setPunti(temp.getCoordinate());
 }

@@ -1,15 +1,15 @@
 #include "pentagono.h"
 #include <math.h>
 
-pentagono::pentagono(double lato, colore* col) : poligono(5, "pentagono", col){ //per pentagono regolare
+Pentagono::Pentagono(double lato, Colore* col) : Poligono(5, "pentagono", col){ //per pentagono regolare
     double x= lato * sin(45);
     double y= lato * cos(45);
-    QVector<punto> punti;
-    punti.push_back(punto( 0 , x ));
-    punti.push_back(punto( y , 0 ));
-    punti.push_back(punto( y+lato , 0 ));
-    punti.push_back(punto( y+y+lato , x ));
-    punti.push_back(punto( (y+y+lato)/2 , x+y ));
+    QVector<Punto> punti;
+    punti.push_back(Punto( 0 , x ));
+    punti.push_back(Punto( y , 0 ));
+    punti.push_back(Punto( y+lato , 0 ));
+    punti.push_back(Punto( y+y+lato , x ));
+    punti.push_back(Punto( (y+y+lato)/2 , x+y ));
     setPunti(punti);
 }
 
@@ -26,6 +26,6 @@ pentagono::pentagono(double, double, double, double, angolo, angolo, angolo, col
 
 }
 */
-double pentagono::getArea() const{}
+double Pentagono::getArea() const{}
 
 

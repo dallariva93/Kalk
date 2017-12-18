@@ -1,5 +1,5 @@
 #include "colore.h"
 
-colore::~colore(){};
+Colore::~Colore(){};
 
 

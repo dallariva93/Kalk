@@ -16,10 +16,12 @@ public:
     poligono(unsigned int, std::string, colore*, QVector<punto> punti=QVector<punto>());
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
+    virtual void estendi(double)=0;       //meglio farla pura? da pensarci
     virtual colore* getColore() const;
     void setPunti(const QVector<punto>);
     QVector<punto> getCoordinate() const;
     QVector<double> getLati() const;
+
 };
 
 #endif // POLIGONO_H

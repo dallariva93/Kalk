@@ -32,17 +32,46 @@ punto a(0,0), b(6.96362,0.712767);
         std::cout<<lati[i].getX()<<"  -  "<<lati[i].getY()<<std::endl;
     }
 */
-
+/*triangolo ruota!!
     triangolo t(10, 5.113, 15);
-    t.ruota();
 
-    std::cout<<"- coordinate - "<<std::endl<<t.getCoordinate()[0].getX()<<" "<<t.getCoordinate()[0].getY()<<std::endl;
-    std::cout<<t.getCoordinate()[1].getX()<<" "<<t.getCoordinate()[1].getY()<<std::endl;
-    std::cout<<t.getCoordinate()[2].getX()<<" "<<t.getCoordinate()[2].getY()<<std::endl<<std::endl<<" - lati - "<<std::endl;
+    QVector<double> latii= t.getLati();
+    for(int i=0; i<latii.size(); i++){
+        std::cout<<latii[i]<<std::endl;
+    }
+
+    t.ruota();
 
     QVector<double> lati= t.getLati();
     for(int i=0; i<lati.size(); i++){
         std::cout<<lati[i]<<std::endl;
+    }
+
+    t.ruota();
+
+    QVector<double> lato= t.getLati();
+    for(int i=0; i<lato.size(); i++){
+        std::cout<<lato[i]<<std::endl;
+    }
+*/
+
+    quadrilatero q(10,5,10,5,angolo(90),angolo(90),angolo(90),angolo(90));
+    QVector<double> lati= q.getLati();
+    for(int i=0; i<4; i++){
+        std::cout<<"-- "<<lati[i]<<std::endl;
+    }
+    QVector<punto> latio= q.getCoordinate();
+    for(int i=0; i<4; i++){
+        std::cout<<latio[i].getX()<<"  -  "<<latio[i].getY()<<std::endl;
+    }
+    q.ruota();
+    QVector<double> latii= q.getLati();
+    for(int i=0; i<4; i++){
+        std::cout<<"----- "<<latii[i]<<std::endl;
+    }
+    QVector<punto> lti= q.getCoordinate();
+    for(int i=0; i<4; i++){
+        std::cout<<lti[i].getX()<<"  -  "<<lti[i].getY()<<std::endl;
     }
 }
 

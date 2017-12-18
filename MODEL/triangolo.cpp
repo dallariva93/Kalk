@@ -7,6 +7,13 @@
 - coorditate una (0,0) poi (_,0) e ultima (_,_) sempre!
 - lato non negativi
 */
+
+triangolo::triangolo(colore* col): poligono(3, "triangolo", col) {
+    QVector<punto> punti;
+    punti.push_back(punto(0,0));punti.push_back(punto(0,0));punti.push_back(punto(0,0));
+    setPunti(punti);
+}
+
 triangolo::triangolo(double latoAB, double latoAC, const angolo& a, colore* col) : poligono(3, "triangolo", col) {
     QVector<punto> punti;
     punti.push_back(punto(0,0));
@@ -73,23 +80,3 @@ double triangolo::getArea() const{
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
 
-void triangolo::ruota() {
-    getCoordinate()[0] = punto(0,0);
-    getCoordinate()[1] = punto(getLati()[1], 0);
-    /*  PROBLEMA:
-     *  non viene cambiato il valore di getCoordinate
-     */
-    std::cout<<"---lati--- "<<getLati()[1]<<std::endl;
-    std::cout<<"---coordX(dovrebbe essere uguale a lati)--- "<<getCoordinate()[1].getX()<<std::endl;
-
-    angolo b = punto::angoloTraTrePunti( getCoordinate()[0], getCoordinate()[1], getCoordinate()[2]);
-    double cx, cy;
-    if(b.getAngolo() != 90 ){
-        cx = getLati()[1] * cos( b.getAngolo() *PI/180);
-        cy = getLati()[1] * sin( b.getAngolo() *PI/180);
-    } else {
-        cx = 0;
-        cy = getLati()[1];
-    }
-    getCoordinate()[2] = punto(cx, cy);
-}

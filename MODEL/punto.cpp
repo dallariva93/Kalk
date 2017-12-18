@@ -17,7 +17,7 @@ double punto::distanceTo(const punto& primo, const punto& secondo){
             );
 }
 
-angolo punto::angoloTraTrePunti(const punto& A, const punto& B, const punto& C){
+angolo punto::angoloTraTrePunti(const punto& C, const punto& A, const punto& B){
     double latoAB = distanceTo(A,B);
     double latoBC = distanceTo(B,C);
     double latoAC = distanceTo(A,C);

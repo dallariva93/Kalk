@@ -20,6 +20,9 @@ public:
     void setPunti(const QVector<punto>);
     QVector<punto> getCoordinate() const;
     QVector<double> getLati() const;
+
+    void ruota();
+
 };
 
 #endif // POLIGONO_H

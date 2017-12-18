@@ -7,12 +7,14 @@
 class Triangolo : public Poligono{
 
 public:
-    Triangolo(double, double, const Angolo&, Colore* col=new RGB());
-    Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB());
-    Triangolo(double, double, double, Colore* col=new RGB());
+   // triangolo(colore* col=new rgb());
+    triangolo(double, double, const angolo&, colore* col=new rgb());
+    triangolo(double, const angolo&, const angolo&, colore* col=new rgb());
+    triangolo(double, double, double, colore* col=new rgb());
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
+
 };
 
 #endif // TRIANGOLO_H

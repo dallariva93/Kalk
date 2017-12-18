@@ -72,25 +72,6 @@ double Triangolo::getArea() const{
     double p=getPerimetro()/2;
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
-/*
-triangolo triangolo::ruota() {
-
-    QVector<punto> p(3);
-//    QVector<double> lato = getLati();
-    p[0] = punto(0,0);
-    p[1] = punto(getLati()[1], 0);
-    angolo b = punto::angoloTraTrePunti( QVector<punto>()[0], QVector<punto>()[1], QVector<punto>()[2]);
-    double cx, cy;
-    if(b.getAngolo() != 90 ){
-        cx = getLati()[1] * cos( b.getAngolo() *PI/180);
-        cy = getLati()[1] * sin( b.getAngolo() *PI/180);
-    } else {
-        cx = 0;
-        cy = getLati()[1];
-    }
-    p[2] = punto(cx, cy);
-    return *this;
-}*/
 
 void Triangolo::estendi(double fattore)
 {

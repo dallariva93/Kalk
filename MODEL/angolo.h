@@ -12,6 +12,8 @@ public:
     double getAngolo() const;
     bool operator >(const Angolo)const;
     bool operator <(const Angolo)const;
+    bool operator ==(const Angolo)const;
+    bool operator !=(const Angolo)const;
     Angolo operator+(const Angolo&)const;
     Angolo& operator=(const Angolo&);
 };

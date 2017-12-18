@@ -62,3 +62,49 @@ double Quadrilatero::getArea() const{
     return t1.getArea()+t2.getArea();
 }
 
+void Quadrilatero::ruota() {
+//prova per poligono generico
+    //SISTEMARE ANGOLI RETTI DI MERDA!!!!!
+    QVector<Punto> q(4);
+    q[0] = Punto(0,0);
+    q[1] = Punto(getLati()[1], 0);
+
+    QVector<Angolo> angoli(4-2);
+    if(4 != 3)
+    for(unsigned int i=3, j=0; i<4; ++i, j++){
+        Angolo b = Punto::angoloTraTrePunti( getCoordinate()[i], getCoordinate()[1], getCoordinate()[2]);
+        angoli[j] = b;
+std::cout<<"**A**"<<angoli[j].getAngolo()<<std::endl;
+    }
+    angoli[4-3] = Punto::angoloTraTrePunti(getCoordinate()[0], getCoordinate()[1], getCoordinate()[2]).getAngolo();
+
+    double x=0, y=0, lato=0;
+    for(unsigned int i=3, j=0; i<4; ++i, ++j){
+        x=0; y=0;
+        lato = Punto::distanceTo(getCoordinate()[1]/*B*/, getCoordinate()[i]);//lato Bx
+ //   std::cout<<"**"<<lato<<std::endl;
+        if(angoli[j] != Angolo(90)){
+            x = lato * cos(angoli[j].getAngolo() * PI/180);
+            y = lato * sin(angoli[j].getAngolo() * PI/180);
+        } else{ //se angolo==90
+            x = 0;
+            y = lato;
+        }
+        q[i-1]= Punto(x,y);//punti da q[2]..a q[numeroLati]
+    }
+    lato = Punto::distanceTo(getCoordinate()[0], getCoordinate()[1]);
+    std::cout<<"*<<*"<<lato<<std::endl<<std::endl<<std::endl<<std::endl;
+
+    std::cout<<"******"<<angoli[1].getAngolo()<<"x"<<std::endl;
+    if(Angolo(90)==angoli[4-3]){
+        std::cout<<"AAAAAAAAAAAAAA";
+        x = 0;
+        y = lato;
+    }else{
+        std::cout<<"kjgbgk";
+        x = lato * cos(angoli[4-3].getAngolo() * PI/180);
+        y = lato * sin(angoli[4-3].getAngolo() * PI/180);
+    }
+    q[4-1] = Punto(x,y);//punti da q[2]..a q[numeroLati]
+    setPunti(q);
+}

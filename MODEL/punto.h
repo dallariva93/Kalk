@@ -11,10 +11,10 @@ private:
 public:
     punto();
     punto(double x, double y);
-    double getX() const;
-    double getY() const;
+    double getX()const;
+    double getY()const;
+    const static punto origine;
     static double distanceTo(const punto&, const punto&);
     static angolo angoloTraTrePunti(const punto&, const punto&, const punto&);
 };
-
 #endif // PUNTO_H

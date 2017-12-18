@@ -21,12 +21,8 @@ public:
     void setPunti(const QVector<punto>);
     QVector<punto> getCoordinate() const;
     QVector<double> getLati() const;
-
-<<<<<<< HEAD
     void ruota();
 
-=======
->>>>>>> 729ff05750d12a0e41dd3db226a0d3101a4c7802
 };
 
 #endif // POLIGONO_H

@@ -20,7 +20,9 @@ SOURCES += main.cpp \
     poligono.cpp \
     triangolo.cpp \
     quadrilatero.cpp \
-    pentagono.cpp
+    pentagono.cpp \
+    quadrato.cpp \
+    rettangolo.cpp
 
 HEADERS  += \
     rgb.h \
@@ -30,6 +32,8 @@ HEADERS  += \
     poligono.h \
     triangolo.h \
     quadrilatero.h \
-    pentagono.h
+    pentagono.h \
+    quadrato.h \
+    rettangolo.h
 
 #FORMS    += matricebase.ui

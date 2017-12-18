@@ -4,7 +4,7 @@
 #include<sstream>
 #include<iomanip>
 
-class rgb : public colore{
+class rgb : public Colore{
 public:
     rgb(unsigned int r=255, unsigned int green=255, unsigned int blu=255);
     rgb* clone() const;

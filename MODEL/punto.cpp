@@ -6,6 +6,8 @@ punto::punto():x(0),y(0){}
 
 punto::punto(double xx, double yy):x(xx),y(yy){}
 
+const punto punto::origine=punto();
+
 double punto::getX()const{return x;}
 
 double punto::getY()const{return y;}

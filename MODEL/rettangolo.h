@@ -2,10 +2,10 @@
 #define RETTANGOLO_H
 #include<quadrilatero.h>
 
-class rettangolo : public quadrilatero
+class Rettangolo : public Quadrilatero
 {
 public:
-    rettangolo(double latoMinore, double latoMaggiore, colore *col=new rgb());
+    Rettangolo(double latoMinore, double latoMaggiore, Colore *col=new RGB());
     double getArea()const;
     double getPerimetro()const;
 };

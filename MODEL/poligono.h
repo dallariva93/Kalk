@@ -5,21 +5,21 @@
 #include "colore.h"
 #include "rgb.h"
 
-class poligono{
+class Poligono{
 private:
     unsigned int numeroLati;
-    colore* color;
+    Colore* color;
     std::string nomeOggetto;
-    QVector<punto> coordinate;
+    QVector<Punto> coordinate;
 
 public:
-    poligono(unsigned int, std::string, colore*, QVector<punto> punti=QVector<punto>());
+    Poligono(unsigned int, std::string, Colore*, QVector<Punto> punti=QVector<Punto>());
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
     virtual void estendi(double)=0;       //meglio farla pura? da pensarci
-    virtual colore* getColore() const;
-    void setPunti(const QVector<punto>);
-    QVector<punto> getCoordinate() const;
+    virtual Colore* getColore() const;
+    void setPunti(const QVector<Punto>);
+    QVector<Punto> getCoordinate() const;
     QVector<double> getLati() const;
 
 };

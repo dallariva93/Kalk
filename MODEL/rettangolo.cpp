@@ -1,14 +1,14 @@
 #include "rettangolo.h"
 
-rettangolo::rettangolo(double latoMinore, double latoMaggiore, colore* col):
-    quadrilatero(latoMaggiore, latoMinore, latoMaggiore,latoMinore, angolo::angoloRetto, angolo::angoloRetto, angolo::angoloRetto, angolo::angoloRetto, col){}
+Rettangolo::Rettangolo(double latoMinore, double latoMaggiore, Colore* col):
+    Quadrilatero(latoMaggiore, latoMinore, latoMaggiore,latoMinore, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, col){}
 
-double rettangolo::getArea()const{
-    return punto::distanceTo(punto::origine,getCoordinate()[1]) *
-           punto::distanceTo(getCoordinate()[1],getCoordinate()[2]);
+double Rettangolo::getArea()const{
+    return Punto::distanceTo(Punto::origine,getCoordinate()[1]) *
+           Punto::distanceTo(getCoordinate()[1],getCoordinate()[2]);
 }
 
-double rettangolo::getPerimetro()const{
-    return 2 * (punto::distanceTo(punto::origine,getCoordinate()[1]) +
-                punto::distanceTo(getCoordinate()[1],getCoordinate()[2]));
+double Rettangolo::getPerimetro()const{
+    return 2 * (Punto::distanceTo(Punto::origine,getCoordinate()[1]) +
+                Punto::distanceTo(getCoordinate()[1],getCoordinate()[2]));
 }

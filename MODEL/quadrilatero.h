@@ -4,11 +4,11 @@
 #include "angolo.h"
 #include "rgb.h"
 
-class quadrilatero : public poligono{
+class Quadrilatero : public Poligono{
 public:
-    quadrilatero(double, colore* col=new rgb()); //quadrato
-    quadrilatero(double, double, colore* col=new rgb()); //rettangolo
-    quadrilatero(double, double, double, double, const angolo&, const angolo&, const angolo&, const angolo&, colore* col=new rgb()); //quadrato
+    Quadrilatero(double, Colore* col=new RGB()); //quadrato
+    Quadrilatero(double, double, Colore* col=new RGB()); //rettangolo
+    Quadrilatero(double, double, double, double, const Angolo&, const Angolo&, const Angolo&, const Angolo&, Colore* col=new RGB()); //quadrato
     double getArea() const;
 };
 

@@ -2,18 +2,18 @@
 #define ANGOLO_H
 
 
-class angolo{
+class Angolo{
 private:
     double gradi;
 
 public:
-    static const angolo angoloRetto;
-    angolo(double val=0);
+    static const Angolo angoloRetto;
+    Angolo(double val=0);
     double getAngolo() const;
-    bool operator >(const angolo)const;
-    bool operator <(const angolo)const;
-    angolo operator+(const angolo&)const;
-    angolo& operator=(const angolo&);
+    bool operator >(const Angolo)const;
+    bool operator <(const Angolo)const;
+    Angolo operator+(const Angolo&)const;
+    Angolo& operator=(const Angolo&);
 };
 
 #endif // ANGOLO_H

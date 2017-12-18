@@ -3,9 +3,9 @@
 #include "poligono.h"
 #include "angolo.h"
 
-class pentagono : public poligono{
+class Pentagono : public Poligono{
 public:
-    pentagono(double, colore* col=new rgb());
+    Pentagono(double, Colore* col=new RGB());
 /*
     pentagono(double, double, double, double, double, const angolo&, const angolo&, const angolo&, const angolo&, colore* col=new rgb());
     pentagono(double, double, double, double, double, colore* col=new rgb());

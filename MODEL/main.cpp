@@ -33,7 +33,7 @@ punto a(0,0), b(6.96362,0.712767);
     }
 */
 
-    triangolo p(10, 15, angolo(5));
+    //Triangolo p(10, 15, Angolo(5));
     //triangolo t = p.ruota();
 /*
     std::cout<<t.getCoordinate()[0].getX()<<" "<<t.getCoordinate()[0].getY()<<std::endl;
@@ -44,5 +44,13 @@ punto a(0,0), b(6.96362,0.712767);
     for(int i=0; i<lati.size(); i++){
         std::cout<<lati[i]<<std::endl;
     }*/
+
+    Colore* a=new RGB(255,0,0);
+    Colore* b=new RGB(0,0,255);
+    Colore &c=(*a-*b);
+    Colore* d=&c;
+    std::cout<<d->getHex();
+
+
 }
 

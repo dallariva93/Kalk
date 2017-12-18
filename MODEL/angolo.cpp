@@ -1,28 +1,28 @@
 #include "angolo.h"
 
 
-angolo::angolo(double val):gradi(val){}
+Angolo::Angolo(double val):gradi(val){}
 
-const angolo angolo::angoloRetto=angolo(90);
+const Angolo Angolo::angoloRetto=Angolo(90);
 
-double angolo::getAngolo() const{
+double Angolo::getAngolo() const{
     return gradi;
 }
 
-bool angolo::operator >(const angolo a)const{
+bool Angolo::operator >(const Angolo a)const{
     return gradi > a.gradi ;
 }
 
-bool angolo::operator <(const angolo a)const{
+bool Angolo::operator <(const Angolo a)const{
     return gradi < a.gradi ;
 }
 
-angolo angolo::operator+(const angolo& ang)const
+Angolo Angolo::operator+(const Angolo& ang)const
 {
-    return angolo(this->gradi+ang.gradi);
+    return Angolo(this->gradi+ang.gradi);
 }
 
-angolo& angolo::operator=(const angolo& ang){
+Angolo& Angolo::operator=(const Angolo& ang){
     this->gradi=ang.gradi;
     return *this;
 }

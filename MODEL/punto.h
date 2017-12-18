@@ -5,16 +5,16 @@
 #define PI 3.14159265
 
 
-class punto{
+class Punto{
 private:
     double x, y;
 public:
-    punto();
-    punto(double x, double y);
+    Punto();
+    Punto(double x, double y);
     double getX()const;
     double getY()const;
-    const static punto origine;
-    static double distanceTo(const punto&, const punto&);
-    static angolo angoloTraTrePunti(const punto&, const punto&, const punto&);
+    const static Punto origine;
+    static double distanceTo(const Punto&, const Punto&);
+    static Angolo angoloTraTrePunti(const Punto&, const Punto&, const Punto&);
 };
 #endif // PUNTO_H

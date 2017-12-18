@@ -3,12 +3,12 @@
 #include"quadrilatero.h"
 
 
-class quadrato : public quadrilatero
+class Quadrato : public Quadrilatero
 {
 private:
 
 public:
-    quadrato(double lato, colore *col=new rgb());
+    Quadrato(double lato, Colore *col=new RGB());
     double getArea()const;
     double getPerimetro()const;
     void estendi(double);

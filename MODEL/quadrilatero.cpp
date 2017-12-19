@@ -6,23 +6,6 @@
  * -    somma degli angoli = 360
 */
 
-Quadrilatero::Quadrilatero(double lato, Colore* col) : Poligono(4, "quadrato", col) {
-    QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
-    punti.push_back(Punto(lato,0));
-    punti.push_back(Punto(lato,lato));
-    punti.push_back(Punto(0,lato));
-    setPunti(punti);
-}
-
-Quadrilatero::Quadrilatero(double latoAB, double latoBC, Colore* col) : Poligono(4, "quadrato", col){
-    QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
-    punti.push_back(Punto(latoAB,0));
-    punti.push_back(Punto(latoAB,latoBC));
-    punti.push_back(Punto(0,latoBC));
-    setPunti(punti);
-}
 
 Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col) : Poligono(4, "quadrato", col){
 //   ANCORADA VERIFICARE!!
@@ -107,4 +90,10 @@ std::cout<<"**A**"<<angoli[j].getAngolo()<<std::endl;
     }
     q[4-1] = Punto(x,y);//punti da q[2]..a q[numeroLati]
     setPunti(q);
+}
+
+
+void Quadrilatero::ruotaInModoFurbo(double lato)
+{
+
 }

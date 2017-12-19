@@ -8,6 +8,8 @@ public:
     Rettangolo(double latoMinore, double latoMaggiore, Colore *col=new RGB());
     double getArea()const;
     double getPerimetro()const;
+
+    void ruotaInModoFurbo(double);
 };
 
 #endif // RETTANGOLO_H

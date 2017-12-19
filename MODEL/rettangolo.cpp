@@ -12,3 +12,7 @@ double Rettangolo::getPerimetro()const{
     return 2 * (Punto::distanceTo(Punto::origine,getCoordinate()[1]) +
                 Punto::distanceTo(getCoordinate()[1],getCoordinate()[2]));
 }
+
+
+void Rettangolo::ruotaInModoFurbo(double lato)
+{}

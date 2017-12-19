@@ -71,4 +71,5 @@ void Poligono::ruota() {
     }
     q[numeroLati-1] = Punto(x,y);//punti da q[2]..a q[numeroLati]
     setPunti(q);
+
 }

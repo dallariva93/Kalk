@@ -15,3 +15,6 @@ void Quadrato::estendi(double fattore)
     Quadrato temp(getLati().first()*fattore);
     setPunti(temp.getCoordinate());
 }
+
+void Quadrato::ruotaInModoFurbo(double lato)
+{}

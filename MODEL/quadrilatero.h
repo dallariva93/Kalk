@@ -10,7 +10,7 @@ public:
     double getArea() const;
     void ruota();
     virtual void estendi(double);
-    void ruotaInModoFurbo(double lato);
+    void ruotaSuUnLato(double lato);
 };
 
 #endif // QUADRILATERO_H

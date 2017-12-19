@@ -17,7 +17,7 @@ public:
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
     virtual void estendi(double)=0;       //meglio farla pura? da pensarci
-    virtual void ruotaInModoFurbo(double)=0;         //cambia la base nuova base=lato (parametro)
+    virtual void ruotaSuUnLato(double)=0;         //cambia la base nuova base=lato (parametro)
     virtual Colore* getColore() const;
     QVector<Angolo> getAngoli()const;
     void setPunti(const QVector<Punto>);

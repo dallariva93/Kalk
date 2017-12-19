@@ -5,11 +5,11 @@
 class Rettangolo : public Quadrilatero
 {
 public:
-    Rettangolo(double latoMinore, double latoMaggiore, Colore *col=new RGB());
+    Rettangolo(double latoMaggiore,double latoMinore, Colore *col=new RGB());
     double getArea()const;
     double getPerimetro()const;
 
-    void ruotaInModoFurbo(double);
+    void ruotaSuUnLato(double);
 };
 
 #endif // RETTANGOLO_H

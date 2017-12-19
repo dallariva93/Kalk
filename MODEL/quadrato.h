@@ -12,7 +12,7 @@ public:
     double getArea()const;
     double getPerimetro()const;
     void estendi(double);
-    void ruotaInModoFurbo(double);
+    void ruotaSuUnLato(double);
 
 };
 

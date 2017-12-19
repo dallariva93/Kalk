@@ -1,6 +1,6 @@
 #include "rettangolo.h"
 
-Rettangolo::Rettangolo(double latoMinore, double latoMaggiore, Colore* col):
+Rettangolo::Rettangolo(double latoMaggiore, double latoMinore, Colore* col):
     Quadrilatero(latoMaggiore, latoMinore, latoMaggiore,latoMinore, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, col){}
 
 double Rettangolo::getArea()const{
@@ -14,5 +14,7 @@ double Rettangolo::getPerimetro()const{
 }
 
 
-void Rettangolo::ruotaInModoFurbo(double lato)
-{}
+void Rettangolo::ruotaSuUnLato(double lato)
+{
+    Quadrilatero::ruotaSuUnLato(lato);
+}

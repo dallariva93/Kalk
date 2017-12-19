@@ -1,31 +1,33 @@
 #include "pentagono.h"
+#include "triangolo.h"
 #include <math.h>
 
-Pentagono::Pentagono(double lato, Colore* col) : Poligono(5, "pentagono", col){ //per pentagono regolare
-    double x= lato * sin(45);
-    double y= lato * cos(45);
+Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE, double latoAE, const Angolo& a, const Angolo& b,
+                     const Angolo& c, const Angolo& d, const Angolo& e, Colore* col) : Poligono(5,"pentagono",col){
+    double x, y;
     QVector<Punto> punti;
-    punti.push_back(Punto( 0 , x ));
-    punti.push_back(Punto( y , 0 ));
-    punti.push_back(Punto( y+lato , 0 ));
-    punti.push_back(Punto( y+y+lato , x ));
-    punti.push_back(Punto( (y+y+lato)/2 , x+y ));
+    punti.push_back(Punto::origine);    //coordinata A
+    punti.push_back(Punto(0,latoAB));   //coordinata B
+
+    Triangolo t1(latoAB, latoBC, b);
+    punti.push_back(t1.getCoordinate()[2]);    //coordinata C
+
+    Triangolo t2(latoAE, latoAB, a);
+    double latoAD = Punto::distanceTo(t2.getCoordinate()[1], t2.getCoordinate()[2]);
+    Angolo alfa = Punto::angoloTraTrePunti(t2.getCoordinate()[0], t2.getCoordinate()[1], t2.getCoordinate()[2]);
+    Angolo beta = 180 - alfa.getAngolo();
+    if(beta!=90){
+        x = latoAD * cos(beta.getAngolo() * PI/180);
+        y = latoAD * sin(beta.getAngolo() * PI/180);
+    } else {
+        x = 0; y = latoAD;
+    }
+    punti.push_back(Punto(x,y));    //coordinata D
+
+    punti.push_back(t2.getCoordinate()[2]);    //coordinata E
+
     setPunti(punti);
 }
-
-/*
-pentagono::pentagono(double latoA, double latoB, double latoC, double latoD, double latoE, angolo a, angolo b, angolo c, angolo d, colore* col=new rgb()){
-
-}
-
-pentagono::pentagono(double, double, double, double, double, colore* col=new rgb()){
-
-}
-
-pentagono::pentagono(double, double, double, double, angolo, angolo, angolo, colore* col=new rgb()){
-
-}
-*/
 double Pentagono::getArea() const{}
 
 

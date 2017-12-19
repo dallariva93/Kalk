@@ -1,7 +1,7 @@
 #include "rettangolo.h"
 
-Rettangolo::Rettangolo(double latoMaggiore, double latoMinore, Colore* col):
-    Quadrilatero(latoMaggiore, latoMinore, latoMaggiore,latoMinore, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, col){}
+Rettangolo::Rettangolo(double latoAB, double latoBC, Colore* col):
+    Quadrilatero(latoAB, latoBC, latoAB, latoBC, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, col){}
 
 double Rettangolo::getArea()const{
     return Punto::distanceTo(Punto::origine,getCoordinate()[1]) *
@@ -14,7 +14,6 @@ double Rettangolo::getPerimetro()const{
 }
 
 
-void Rettangolo::ruotaSuUnLato(double lato)
-{
+void Rettangolo::ruotaSuUnLato(double lato){
     Quadrilatero::ruotaSuUnLato(lato);
 }

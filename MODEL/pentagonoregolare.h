@@ -8,6 +8,8 @@ private:
 
 public:
     PentagonoRegolare(double, Colore* col=new RGB());
+
 };
 
 #endif // PENTAGONOREGOLARE_H
+

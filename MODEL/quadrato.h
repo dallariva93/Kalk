@@ -3,9 +3,7 @@
 #include"quadrilatero.h"
 
 
-class Quadrato : public Quadrilatero
-{
-private:
+class Quadrato : public Quadrilatero{
 
 public:
     Quadrato(double lato, Colore *col=new RGB());

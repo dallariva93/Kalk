@@ -16,5 +16,6 @@ public:
     const static Punto origine;
     static double distanceTo(const Punto&, const Punto&);
     static Angolo angoloTraTrePunti(const Punto&, const Punto&, const Punto&);
+
 };
 #endif // PUNTO_H

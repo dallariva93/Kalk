@@ -2,8 +2,8 @@
 #define RETTANGOLO_H
 #include<quadrilatero.h>
 
-class Rettangolo : public Quadrilatero
-{
+class Rettangolo : public Quadrilatero{
+
 public:
     Rettangolo(double latoMaggiore,double latoMinore, Colore *col=new RGB());
     double getArea()const;

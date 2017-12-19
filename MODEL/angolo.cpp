@@ -17,7 +17,6 @@ bool Angolo::operator <(const Angolo a)const{
     return gradi < a.gradi ;
 }
 
-
 bool Angolo::operator ==(const Angolo a)const{
     return gradi == a.gradi ;
 }
@@ -26,8 +25,7 @@ bool Angolo::operator !=(const Angolo a)const{
     return gradi != a.gradi ;
 }
 
-Angolo Angolo::operator+(const Angolo& ang)const
-{
+Angolo Angolo::operator+(const Angolo& ang)const{
     return Angolo(this->gradi+ang.gradi);
 }
 

@@ -12,10 +12,7 @@ Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col)
     QVector<Punto> punti;
     punti.push_back(Punto(0,0));
     punti.push_back(Punto(latoAB,0));
-    double x=0;
-    if(a.getAngolo()!=0)    x = latoAC * cos((a.getAngolo() *PI/180));
-    double y = latoAC * sin(a.getAngolo() *PI/180);
-    punti.push_back(Punto(x,y));
+    punti.push_back(sen_cos(latoAC,a));
     setPunti(punti);
 }
 
@@ -25,16 +22,7 @@ Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* co
     punti.push_back(Punto(0,0));
     punti.push_back(Punto(latoAB,0));
     double latoAC = ( latoAB * sin(b.getAngolo()*PI/180) ) / sin(c.getAngolo()*PI/180);
-    double x, y;
-    if(a.getAngolo()!=90){
-        x = latoAC * cos(a.getAngolo()*PI/180);
-        y = latoAC * sin(a.getAngolo() * PI / 180);
-    }
-    else{
-        x = 0;
-        y = (latoAB * sin(b.getAngolo()*PI/180)) / sin(c.getAngolo()*PI/180);
-    }
-    punti.push_back(Punto(x,y));
+    punti.push_back(sen_cos(latoAC, a));
     setPunti(punti);
 }
 
@@ -44,10 +32,7 @@ Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col) :
     QVector<Punto> punti;
     punti.push_back(Punto(0,0));
     punti.push_back(Punto(latoAB,0));
-    double x=0;
-    if(a.getAngolo()!=90)  x= latoAC * cos(a.getAngolo()*PI/180);
-    double y= latoAC * sin(a.getAngolo()*PI/180);
-    punti.push_back(Punto(x,y));
+    punti.push_back(sen_cos(latoAC,a));
     setPunti(punti);
 }
 
@@ -73,14 +58,12 @@ double Triangolo::getArea() const{
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
 
-void Triangolo::estendi(double fattore)
-{
+void Triangolo::estendi(double fattore){
     Triangolo temp(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore);
     setPunti(temp.getCoordinate());
 }
 
-void Triangolo::ruotaSuUnLato(double lato)       //ruota solo se il primo lato è diverso da lato
-{
+void Triangolo::ruotaSuUnLato(double lato){       //ruota solo se il primo lato è diverso da lato
     QVector<double> lati=ordinaLati(this->getLati(),lato);
     Triangolo temp(lati[0],lati[1],lati[2]);          //supporto è definito in 0 e 1
     setPunti(temp.getCoordinate());

@@ -1,8 +1,19 @@
 #include"punto.h"
 #include "poligono.h"
 
-QVector<double> Poligono::ordinaLati(QVector<double> lati, double lato)
-{
+Punto Poligono::sen_cos(double lato, Angolo a) {
+    double x=0, y=0;
+    if(a.getAngolo() != 90){
+        x = lato * cos( a.getAngolo() * PI/180);
+        y = lato * sin( a.getAngolo() * PI/180);
+    } else {
+        x = 0;
+        y = lato;
+    }
+    return Punto( x,y );
+}
+
+QVector<double> Poligono::ordinaLati(QVector<double> lati, double lato){
     QVector<double> supporto;
     int index=lati.indexOf(lato);       //restituisce -1 se lato non è presente all'interno del vector
     if(index==-1){std::cout<<"non è presente un lato in comune"; /*eccezione*/}
@@ -19,8 +30,7 @@ Poligono::Poligono(unsigned int nLati, std::string nome, Colore* col, QVector<Pu
 QVector<Angolo> Poligono::getAngoli()const{
     QVector<Punto> punti=getCoordinate();
     QVector<Angolo> angoli;
-    for(int i=0; i<punti.size()-2; ++i)
-    {
+    for(int i=0; i<punti.size()-2; ++i){
         angoli.push_back(Punto::angoloTraTrePunti(punti[i], punti[i+1], punti[i+2]));
     }
     angoli.push_back(Punto::angoloTraTrePunti(punti[punti.size()-2], punti.last(), punti.first()));
@@ -36,15 +46,16 @@ void Poligono::setPunti(const QVector<Punto> coord){
     coordinate=coord;
 }
 
-QVector<Punto> Poligono::getCoordinate() const{return coordinate;}
+QVector<Punto> Poligono::getCoordinate() const{
+    return coordinate;
+}
 
 double Poligono::getPerimetro() const{
     double perimetro=0;
-    for(unsigned int i=0; i<numeroLati-1; ++i)
-    {
+    for(unsigned int i=0; i<numeroLati-1; ++i){
         perimetro += Punto::distanceTo(coordinate[i],coordinate[i+1]);
     }
-   return perimetro += Punto::distanceTo(coordinate.first(),coordinate.last());
+    return perimetro += Punto::distanceTo(coordinate.first(),coordinate.last());
 }
 
 QVector<double> Poligono::getLati() const{
@@ -56,12 +67,10 @@ QVector<double> Poligono::getLati() const{
     return lati;
 }
 
-void Poligono::ruota() {
-//prova per poligono generico
+void Poligono::ruota() {    //prova per poligono generico
     QVector<Punto> q(numeroLati);
     q[0] = Punto(0,0);
     q[1] = Punto(getLati()[1], 0);
-
     QVector<double> angoli(numeroLati-2);
     if(numeroLati != 3)
     for(unsigned int i=3, j=0; i<numeroLati; ++i, j++){
@@ -69,7 +78,6 @@ void Poligono::ruota() {
         angoli[j] = b.getAngolo();
     }
     angoli[numeroLati-3] = Punto::angoloTraTrePunti(getCoordinate()[0], getCoordinate()[1], getCoordinate()[2]).getAngolo();
-
     double x=0, y=0, lato=0;
     for(unsigned int i=3, j=0; i<numeroLati; ++i, ++j){
         x=0; y=0;
@@ -93,5 +101,5 @@ void Poligono::ruota() {
     }
     q[numeroLati-1] = Punto(x,y);//punti da q[2]..a q[numeroLati]
     setPunti(q);
-
 }
+

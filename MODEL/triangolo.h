@@ -2,7 +2,6 @@
 #define TRIANGOLO_H
 #include "poligono.h"
 #include "angolo.h"
-#include "rgb.h"
 
 class Triangolo : public Poligono{
 

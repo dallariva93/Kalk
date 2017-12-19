@@ -13,6 +13,7 @@ public:
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
+    void ruotaInModoFurbo(double);
 };
 
 #endif // TRIANGOLO_H

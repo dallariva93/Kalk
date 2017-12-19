@@ -6,11 +6,10 @@
 
 class Quadrilatero : public Poligono{
 public:
-    Quadrilatero(double, Colore* col=new RGB()); //quadrato
-    Quadrilatero(double, double, Colore* col=new RGB()); //rettangolo
     Quadrilatero(double, double, double, double, const Angolo&, const Angolo&, const Angolo&, const Angolo&, Colore* col=new RGB()); //quadrato
     double getArea() const;
     void ruota();
+    void ruotaInModoFurbo(double lato);
 };
 
 #endif // QUADRILATERO_H

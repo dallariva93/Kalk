@@ -1,5 +1,6 @@
 #include "triangolo.h"
 #include <cmath>
+#include<QVector>
 
 /*  fare i controlli
 - somma angoli 180
@@ -40,7 +41,6 @@ Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* co
 Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col) : Poligono(3, "triangolo", col) {
     double cos_a =(( pow(latoAC,2) + pow(latoAB,2) - pow(latoBC,2)) / (2*latoAB*latoAC)) ;
     Angolo a = acos(cos_a)*180/PI;
-    std::cout<<a.getAngolo()<<" <-angolo a"<<std::endl;
     QVector<Punto> punti;
     punti.push_back(Punto(0,0));
     punti.push_back(Punto(latoAB,0));
@@ -76,5 +76,19 @@ double Triangolo::getArea() const{
 void Triangolo::estendi(double fattore)
 {
     Triangolo temp(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore);
+    setPunti(temp.getCoordinate());
+}
+
+void Triangolo::ruotaInModoFurbo(double lato)       //ruota solo se il primo lato è diverso da lato
+{
+    QVector<double> lati=getLati();
+    QVector<double> supporto;
+    int index=lati.indexOf(lato);       //restituisce -1 se lato non è presente all'interno del vector
+    if(index==-1){std::cout<<"non è presente un lato in comune"; /*eccezione*/}
+    supporto=lati.mid(index);
+    supporto+=lati.mid(0,index);
+
+    Triangolo temp(supporto[0],supporto[1],supporto[2]);          //supporto è definito in 0 e 1
+
     setPunti(temp.getCoordinate());
 }

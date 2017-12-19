@@ -79,7 +79,7 @@ void Triangolo::estendi(double fattore)
     setPunti(temp.getCoordinate());
 }
 
-void Triangolo::ruotaInModoFurbo(double lato)       //ruota solo se il primo lato è diverso da lato
+void Triangolo::ruotaSuUnLato(double lato)       //ruota solo se il primo lato è diverso da lato
 {
     QVector<double> lati=ordinaLati(this->getLati(),lato);
     Triangolo temp(lati[0],lati[1],lati[2]);          //supporto è definito in 0 e 1

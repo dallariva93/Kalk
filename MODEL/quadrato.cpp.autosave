@@ -16,7 +16,7 @@ void Quadrato::estendi(double fattore)
     setPunti(temp.getCoordinate());
 }
 
-void Quadrato::ruotaInModoFurbo(double lato)
+void Quadrato::ruotaSuUnLato(double lato)
 {
-    Quadrilatero::ruotaInModoFurbo(lato);
+    Quadrilatero::ruotaSuUnLato(lato);
 }

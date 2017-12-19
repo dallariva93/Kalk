@@ -1,9 +1,31 @@
 #include"punto.h"
 #include "poligono.h"
 
+QVector<double> Poligono::ordinaLati(QVector<double> lati, double lato)
+{
+    QVector<double> supporto;
+    int index=lati.indexOf(lato);       //restituisce -1 se lato non è presente all'interno del vector
+    if(index==-1){std::cout<<"non è presente un lato in comune"; /*eccezione*/}
+    supporto=lati.mid(index);
+    supporto+=lati.mid(0,index);
+    return supporto;
+}
+
 Poligono::Poligono(unsigned int nLati, std::string nome, Colore* col, QVector<Punto> punti) : numeroLati(nLati), nomeOggetto(nome){
     color=col->clone();
     coordinate=punti;
+}
+
+QVector<Angolo> Poligono::getAngoli()const{
+    QVector<Punto> punti=getCoordinate();
+    QVector<Angolo> angoli;
+    for(int i=0; i<punti.size()-2; ++i)
+    {
+        angoli.push_back(Punto::angoloTraTrePunti(punti[i], punti[i+1], punti[i+2]));
+    }
+    angoli.push_back(Punto::angoloTraTrePunti(punti[punti.size()-2], punti.last(), punti.first()));
+    angoli.push_back(Punto::angoloTraTrePunti(punti.last(), punti.first(), punti[1]));
+    return angoli;
 }
 
 Colore* Poligono::getColore() const{

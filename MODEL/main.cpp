@@ -10,11 +10,6 @@
 #define PI 3.14159265
 
 int main(){
-
-    Pentagono p(10,6,6.346,15,3,Angolo(150),Angolo(110),Angolo(130.131),Angolo(79.886),Angolo(70));
-    for(unsigned int i=0; i<p.getCoordinate().size(); ++i){
-        std::cout<<"( "<<p.getCoordinate()[i].getX()<<" , "<<p.getCoordinate()[i].getY()<<" )"<<std::endl;
-    }
 /*
     Quadrilatero p(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90));
     for(unsigned int i=0; i<p.getCoordinate().size(); ++i){
@@ -25,5 +20,12 @@ int main(){
         std::cout<<"( "<<p.getCoordinate()[i].getX()<<" , "<<p.getCoordinate()[i].getY()<<" )"<<std::endl;
     }
 */
+
+    Pentagono p(10,6,6.346,15,3,Angolo(150),Angolo(110),Angolo(130.131),Angolo(79.886),Angolo(70));
+    for(unsigned int i=0; i<p.getCoordinate().size(); ++i){
+        std::cout<<"( "<<p.getCoordinate()[i].getX()<<" , "<<p.getCoordinate()[i].getY()<<" )"<<std::endl;
+    }
+
+
 }
 

@@ -30,11 +30,11 @@ Poligono::Poligono(unsigned int nLati, std::string nome, Colore* col, QVector<Pu
 QVector<Angolo> Poligono::getAngoli()const{
     QVector<Punto> punti=getCoordinate();
     QVector<Angolo> angoli;
+    angoli.push_back(Punto::angoloTraTrePunti(punti.last(), punti.first(), punti[1]));
     for(int i=0; i<punti.size()-2; ++i){
         angoli.push_back(Punto::angoloTraTrePunti(punti[i], punti[i+1], punti[i+2]));
     }
     angoli.push_back(Punto::angoloTraTrePunti(punti[punti.size()-2], punti.last(), punti.first()));
-    angoli.push_back(Punto::angoloTraTrePunti(punti.last(), punti.first(), punti[1]));
     return angoli;
 }
 

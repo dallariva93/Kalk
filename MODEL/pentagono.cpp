@@ -4,21 +4,19 @@
 
 Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE, double latoAE, const Angolo& a, const Angolo& b,
                      const Angolo& c, const Angolo& d, const Angolo& e, Colore* col) : Poligono(5,"pentagono",col){
-    double x=0, y=0, latoAD=0, latoAC=0;
     QVector<Punto> punti;
     punti.push_back(Punto::origine);    //coordinata A
-    punti.push_back(Punto(0,latoAB));   //coordinata B
+    punti.push_back(Punto(latoAB,0));   //coordinata B
     Triangolo t1(latoAB, latoBC, b);
-    latoAC = Punto::distanceTo(t1.getCoordinate()[1], t1.getCoordinate()[2]);
-//problema angolo tre punti 120 o 021 angolo dovrebbe risultare uguale!!
-    Angolo alfa = Punto::angoloTraTrePunti(t1.getCoordinate()[1], t1.getCoordinate()[2], t1.getCoordinate()[0]);
+    double latoAC = t1.getLati()[1];
+    Angolo alfa = t1.getAngoli()[2];
     punti.push_back( sen_cos(latoAC,alfa) );    //coordinata C
-    Triangolo t2(latoAE, latoAB, a);
-    latoAD = Punto::distanceTo(t2.getCoordinate()[1], t2.getCoordinate()[2]);
-    Angolo gamma = Punto::angoloTraTrePunti(t2.getCoordinate()[0], t2.getCoordinate()[1], t2.getCoordinate()[2]);
-    Angolo beta = 180 - gamma.getAngolo();
-    punti.push_back( sen_cos(latoAD,beta) );    //coordinata D
-    punti.push_back(t2.getCoordinate()[2]);    //coordinata E
+    Triangolo t2(latoAE, latoDE, e);
+    double latoAD = t2.getLati()[1];
+    Angolo beta = t2.getAngoli()[1];
+    Angolo gamma = a.getAngolo() - beta.getAngolo();
+    punti.push_back( sen_cos(latoAD,gamma) );    //coordinata D
+    punti.push_back( sen_cos(latoAE,a) );    //coordinata E
     setPunti(punti);
 }
 

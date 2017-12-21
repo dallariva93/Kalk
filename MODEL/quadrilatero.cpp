@@ -31,10 +31,10 @@ void Quadrilatero::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-Quadrilatero &Quadrilatero::cambiaBase(int n)const{
+Quadrilatero& Quadrilatero::cambiaBase(int n)const{
     QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
-    Quadrilatero temp(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]);
-    return temp;
+    return *(new Quadrilatero(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]));
+//eliminare garbage
 }
 
 Poligono& Quadrilatero::operator+(const Poligono& p) const{}

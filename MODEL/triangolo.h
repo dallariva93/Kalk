@@ -6,6 +6,7 @@
 class Triangolo : public Poligono{
 
 public:
+    Triangolo();
     Triangolo(double, double, const Angolo&, Colore* col=new RGB());
     Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB());
     Triangolo(double, double, double, Colore* col=new RGB());

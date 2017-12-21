@@ -86,6 +86,7 @@ void Poligono::ruota(Angolo angolo){
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it){
         double x = (it->getX()*cos(angolo.getAngolo())) + (it->getY()*sin(angolo.getAngolo()));
         double y = ((it->getX())*sin(angolo.getAngolo())) - (it->getY()*cos(angolo.getAngolo()));
+    }
     double cosAngoloCorretto;
     angolo.getAngolo()==90 ? cosAngoloCorretto=0 : cosAngoloCorretto=cos(angolo.getAngolo()*PI/180);
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it){
@@ -94,6 +95,5 @@ void Poligono::ruota(Angolo angolo){
         *(it)=Punto(x,y);
     }
     setPunti(vertici);
-
 }
 

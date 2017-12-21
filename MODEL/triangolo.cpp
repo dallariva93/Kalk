@@ -8,6 +8,8 @@
 - coorditate una (0,0) poi (_,0) e ultima (_,_) sempre!
 - lato non negativi
 */
+Triangolo::Triangolo() : Triangolo(10,10,10) {}
+
 Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col) : Poligono(3, "triangolo", col) {
     QVector<Punto> punti;
     punti.push_back(Punto::origine);
@@ -52,7 +54,6 @@ double Triangolo::getAltezza() const{
     return Punto::distanceTo( alto , Punto( alto.getX() , 0 ) );
 }
 
-
 double Triangolo::getArea() const{
     double p=getPerimetro()/2;
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
@@ -65,27 +66,31 @@ void Triangolo::estendi(double fattore){
 
 Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
     QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
-    Triangolo temp(lati[0],lati[1],lati[2]);
-    return temp;
+    return *(new Triangolo(lati[0],lati[1],lati[2]));               //eliminare garbage
 }
 
 Triangolo& Triangolo::specchia()const{
+// quando provo nel main da error: The program has unexpectedly finished
     Triangolo t(getLati()[0], getLati()[1], getLati()[2]);
     QVector<Punto> punti;
-    punti.push_back(Punto::origine);
-    punti.push_back(Punto(getLati()[1],0));
+    punti.push_back( Punto::origine );
+    punti.push_back( Punto(getLati()[1],0) );
     Angolo a = 360 - getAngoli()[0].getAngolo();
-    punti.push_back(sen_cos(getLati()[2], a));
+    punti.push_back( sen_cos(getLati()[2], a) );
     t.setPunti(punti);
+//anche le coordinat esonon sbagliate
+    for(unsigned int i=0; i<3; ++i) //manco qua va bene
+    std::cout<<t.getCoordinate()[i].getX()<<" , "<<t.getCoordinate()[i].getY()<<std::endl;
+
     return t;
 }
 
 Poligono& Triangolo::operator+(const Poligono& p) const{
     double lato = latoComune(p);
+    Triangolo t1 = cambiaBase(lato);
+    Poligono& p1 = p.cambiaBase(lato);
+    t1 = t1.specchia(); //non va
 
-    cambiaBase(lato);
-
-    p.cambiaBase(lato);
 
     //    return ;
 }

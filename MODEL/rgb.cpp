@@ -39,8 +39,7 @@ void RGB::inverti(){            //inverti funziona come r=255-r, g=255-g, b=255-
     *this=RGB()-*this;
 }
 
-RGB& RGB::operator+(const Colore & col)const            //gaaaarbaaageeee
-{
+RGB& RGB::operator+(const Colore & col)const{            //gaaaarbaaageeee
     unsigned int* rgb=HexToRGB(col);
     return *(new RGB(((getR()+rgb[0])/2),
                     ((getG()+rgb[1])/2),
@@ -48,8 +47,7 @@ RGB& RGB::operator+(const Colore & col)const            //gaaaarbaaageeee
 
 }
 
-RGB& RGB::operator-(const Colore & col)const            //gaaaarbaaageeee
-{
+RGB& RGB::operator-(const Colore & col)const{            //gaaaarbaaageeee
     unsigned int* rgb=HexToRGB(col);
     unsigned int red=rgb[0];
     unsigned int green=rgb[1];
@@ -62,16 +60,14 @@ RGB& RGB::operator-(const Colore & col)const            //gaaaarbaaageeee
     return *(new RGB(red, green, blue));
 }
 
-RGB &RGB::operator*(const Colore & col) const           //gaaaarbaaageeee
-{
+RGB &RGB::operator*(const Colore & col) const{           //gaaaarbaaageeee
     unsigned int* rgb=HexToRGB(col);
     return *(new RGB(((getR()*rgb[0])/255),
                      ((getG()*rgb[1])/255),
                      ((getB()*rgb[2])/255)));
 }
 
-RGB &RGB::operator/(const Colore & col) const               //gaaaarbaaageeee
-{
+RGB &RGB::operator/(const Colore & col) const{               //gaaaarbaaageeee
     unsigned int* rgb=HexToRGB(col);
     unsigned int red=rgb[0];
     unsigned int green=rgb[1];
@@ -84,8 +80,7 @@ RGB &RGB::operator/(const Colore & col) const               //gaaaarbaaageeee
     return *(new RGB(((getR()+red)), ((getG()+green)), ((getB()+blue))));
 }
 
-unsigned int *RGB::HexToRGB(const Colore& col)
-{
+unsigned int *RGB::HexToRGB(const Colore& col){
     unsigned int* rgb=new unsigned int[3];
     rgb[0]=Colore::HexToDec(col.getHex().substr(1,2));
     rgb[1]=Colore::HexToDec(col.getHex().substr(3,2));

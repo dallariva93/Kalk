@@ -11,7 +11,7 @@ public:
     double getArea() const;
     void ruota();
     virtual void estendi(double);
-    Quadrilatero& cambiaBase(int)const;
+    Quadrilatero &cambiaBase(int)const;
     Poligono& operator+(const Poligono&) const;
 
 };

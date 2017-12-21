@@ -35,8 +35,8 @@ void Pentagono::estendi(double fattore){
 
 Pentagono &Pentagono::cambiaBase(int n) const{
     QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
-    Pentagono temp(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
-    return temp;
+    return *(new Pentagono(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]));
+//eliminare garbage
 }
 
 Poligono& Pentagono::operator+(const Poligono&) const{

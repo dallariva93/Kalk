@@ -31,8 +31,24 @@ void Quadrilatero::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-void Quadrilatero::ruotaSuUnLato(double lato){
-    QVector<double> lati=ordinaLati(this->getLati(),lato);
+Quadrilatero &Quadrilatero::cambiaBase(int n)const{
+    QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
     Quadrilatero temp(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]);
-    setPunti(temp.getCoordinate());
+    return temp;
 }
+
+double Quadrilatero::latoComune(const Poligono& p) const{
+    bool latoUguale = false;
+    double lato = 0;
+    for(unsigned int i=0; i<4 && !latoUguale; ++i){
+        for(unsigned int j=0; j<p.getLati().size() && !latoUguale; ++j){
+            if( getLati()[i] == p.getLati()[j] ){
+                lato = p.getLati()[j];
+                latoUguale = true;
+            }
+        }
+    }
+    return lato;
+}
+
+Poligono& Quadrilatero::operator+(const Poligono& p) const{}

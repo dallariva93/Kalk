@@ -11,7 +11,9 @@ public:
     double getArea() const;
     void ruota();
     virtual void estendi(double);
-    void ruotaSuUnLato(double);
+    Quadrilatero& cambiaBase(int)const;
+    double latoComune(const Poligono& p) const;
+    Poligono& operator+(const Poligono&) const;
 };
 
 #endif // QUADRILATERO_H

@@ -12,7 +12,10 @@ public:
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
-    void ruotaSuUnLato(double);
+    Triangolo& cambiaBase(int) const;
+    Triangolo& specchia()const;
+    double latoComune(const Poligono& p) const;
+    Poligono& operator+(const Poligono&) const;
 };
 
 #endif // TRIANGOLO_H

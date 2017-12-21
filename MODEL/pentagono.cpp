@@ -33,9 +33,26 @@ void Pentagono::estendi(double fattore){
     setPunti(p.getCoordinate());
 }
 
-void Pentagono::ruotaSuUnLato(double lato){
-    QVector<double> lati=ordinaLati(this->getLati(),lato);
-    Pentagono p(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
-    setPunti(p.getCoordinate());
+Pentagono &Pentagono::cambiaBase(int n) const{
+    QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
+    Pentagono temp(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
+    return temp;
 }
 
+double Pentagono::latoComune(const Poligono& p) const{
+    bool latoUguale = false;
+    double lato = 0;
+    for(unsigned int i=0; i<5 && !latoUguale; ++i){
+        for(unsigned int j=0; j<p.getLati().size() && !latoUguale; ++j){
+            if( getLati()[i] == p.getLati()[j] ){
+                lato = p.getLati()[j];
+                latoUguale = true;
+            }
+        }
+    }
+    return lato;
+}
+
+Poligono& Pentagono::operator+(const Poligono&) const{
+
+}

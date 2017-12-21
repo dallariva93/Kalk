@@ -642,7 +642,9 @@ main.o: ../MODEL/main.cpp ../MODEL/rgb.h \
 		../MODEL/angolo.h \
 		../MODEL/quadrato.h \
 		../MODEL/quadrilatero.h \
-		../MODEL/rettangolo.h
+		../MODEL/rettangolo.h \
+		../MODEL/pentagono.h \
+		../MODEL/pentagonoregolare.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MODEL/main.cpp
 
 rgb.o: ../MODEL/rgb.cpp ../MODEL/rgb.h \

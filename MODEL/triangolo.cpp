@@ -10,7 +10,7 @@
 */
 Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col) : Poligono(3, "triangolo", col) {
     QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
+    punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));
     punti.push_back(sen_cos(latoAC,a));
     setPunti(punti);
@@ -19,7 +19,7 @@ Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col)
 Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* col) : Poligono(3, "triangolo", col) {
     Angolo c = 180 -a.getAngolo() -b.getAngolo();
     QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
+    punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));
     double latoAC = ( latoAB * sin(b.getAngolo()*PI/180) ) / sin(c.getAngolo()*PI/180);
     punti.push_back(sen_cos(latoAC, a));
@@ -30,7 +30,7 @@ Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col) :
     double cos_a =(( pow(latoAC,2) + pow(latoAB,2) - pow(latoBC,2)) / (2*latoAB*latoAC)) ;
     Angolo a = acos(cos_a)*180/PI;
     QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
+    punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));
     punti.push_back(sen_cos(latoAC,a));
     setPunti(punti);
@@ -63,9 +63,55 @@ void Triangolo::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-void Triangolo::ruotaSuUnLato(double lato){       //ruota solo se il primo lato è diverso da lato
-    QVector<double> lati=ordinaLati(this->getLati(),lato);
-    Triangolo temp(lati[0],lati[1],lati[2]);          //supporto è definito in 0 e 1
-    setPunti(temp.getCoordinate());
+Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
+    QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
+    Triangolo temp(lati[0],lati[1],lati[2]);
+    return temp;
 }
+
+Triangolo& Triangolo::specchia()const{
+    Triangolo t(getLati()[0], getLati()[1], getLati()[2]);
+    QVector<Punto> punti;
+    punti.push_back(Punto::origine);
+    punti.push_back(Punto(getLati()[1],0));
+    Angolo a = 360 - getAngoli()[0].getAngolo();
+    punti.push_back(sen_cos(getLati()[2], a));
+    t.setPunti(punti);
+    return t;
+}
+
+
+double Triangolo::latoComune(const Poligono& p) const{
+    bool latoUguale = false;
+    double lato = 0;
+    for(unsigned int i=0; i<3 && !latoUguale; ++i){
+        for(unsigned int j=0; j<p.getLati().size() && !latoUguale; ++j){
+            if( getLati()[i] == p.getLati()[j] ){
+                lato = p.getLati()[j];
+                latoUguale = true;
+            }
+        }
+    }
+    return lato;
+}
+
+Poligono& Triangolo::operator+(const Poligono& p) const{
+    double lato = this->latoComune(p);
+
+    cambiaBase(lato);
+
+    p.cambiaBase(lato);
+
+    //    return ;
+}
+
+
+
+
+
+
+
+
+
+
 

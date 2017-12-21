@@ -9,7 +9,7 @@ public:
     double getArea()const;
     double getPerimetro()const;
 
-    void ruotaSuUnLato(double);
+    void cambiaBase(double);
 };
 
 #endif // RETTANGOLO_H

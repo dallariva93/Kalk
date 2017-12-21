@@ -11,8 +11,9 @@ public:
               const Angolo&, const Angolo&, Colore* col=new RGB() );
     double getArea() const;
     virtual void estendi(double);
-    void ruotaSuUnLato(double);
-
+    Pentagono& cambiaBase(int)const;
+    double latoComune(const Poligono& p) const;
+    Poligono& operator+(const Poligono&) const;
 
 };
 

@@ -14,6 +14,6 @@ double Rettangolo::getPerimetro()const{
 }
 
 
-void Rettangolo::ruotaSuUnLato(double lato){
-    Quadrilatero::ruotaSuUnLato(lato);
+void Rettangolo::cambiaBase(double lato){
+    Quadrilatero::cambiaBase(lato);
 }

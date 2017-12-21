@@ -5,6 +5,15 @@
 #include<iomanip>
 
 class RGB : public Colore{
+
+private:
+    //std::string nome;
+    static unsigned int* HexToRGB(const Colore &col);
+    static std::string decToHex(unsigned int value);        //metodo statico di funzionalità (conversione decimale a esadecimale)
+    unsigned int r;
+    unsigned int g;
+    unsigned int b;
+
 public:
     RGB(unsigned int r=255, unsigned int green=255, unsigned int blu=255);
     RGB* clone() const;
@@ -18,14 +27,6 @@ public:
     RGB& operator*(const Colore&)const;
     RGB& operator/(const Colore&)const;
 
-
-private:
-    //std::string nome;
-    static unsigned int* HexToRGB(const Colore &col);
-    static std::string decToHex(unsigned int value);        //metodo statico di funzionalità (conversione decimale a esadecimale)
-    unsigned int r;
-    unsigned int g;
-    unsigned int b;
 };
 
 

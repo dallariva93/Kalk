@@ -67,3 +67,17 @@ QVector<double> Poligono::getLati() const{
     return lati;
 }
 
+double Poligono::latoComune(const Poligono& p) const{
+    bool latoUguale = false;
+    double lato = 0;
+    for(unsigned int i=0; i<numeroLati && !latoUguale; ++i){
+        for(unsigned int j=0; j<p.numeroLati && !latoUguale; ++j){
+            if( getLati()[i] == p.getLati()[j] ){
+                lato = p.getLati()[j];
+                latoUguale = true;
+            }
+        }
+    }
+    return lato;
+}
+

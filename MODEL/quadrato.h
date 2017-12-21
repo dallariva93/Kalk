@@ -10,7 +10,7 @@ public:
     double getArea()const;
     double getPerimetro()const;
     void estendi(double);
-    void ruotaSuUnLato(double);
+    void cambiaBase(double);
 
 };
 

@@ -67,3 +67,15 @@ QVector<double> Poligono::getLati() const{
     return lati;
 }
 
+void Poligono::ruota(Angolo angolo)
+{
+    QVector<Punto> vertici=getCoordinate();
+    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+    {
+        double x = (it->getX()*cos(angolo.getAngolo())) + (it->getY()*sin(angolo.getAngolo()));
+        double y = ((it->getX())*sin(angolo.getAngolo())) - (it->getY()*cos(angolo.getAngolo()));
+        *(it)=Punto(x,y);
+    }
+    setPunti(vertici);
+}
+

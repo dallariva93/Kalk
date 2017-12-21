@@ -33,7 +33,7 @@ void Pentagono::estendi(double fattore){
     setPunti(p.getCoordinate());
 }
 
-void Pentagono::ruotaSuUnLato(double lato){
+void Pentagono::cambiaBase(double lato){
     QVector<double> lati=ordinaLati(this->getLati(),lato);
     Pentagono p(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
     setPunti(p.getCoordinate());

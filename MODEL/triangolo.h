@@ -12,7 +12,7 @@ public:
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
-    void ruotaSuUnLato(double);
+    void cambiaBase(double);
 };
 
 #endif // TRIANGOLO_H

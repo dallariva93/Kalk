@@ -11,7 +11,7 @@ public:
               const Angolo&, const Angolo&, Colore* col=new RGB() );
     double getArea() const;
     virtual void estendi(double);
-    void ruotaSuUnLato(double);
+    void cambiaBase(double);
 
 
 };

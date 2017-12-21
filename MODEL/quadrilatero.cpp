@@ -31,7 +31,7 @@ void Quadrilatero::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-void Quadrilatero::ruotaSuUnLato(double lato){
+void Quadrilatero::cambiaBase(double lato){
     QVector<double> lati=ordinaLati(this->getLati(),lato);
     Quadrilatero temp(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]);
     setPunti(temp.getCoordinate());

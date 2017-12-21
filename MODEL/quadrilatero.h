@@ -11,7 +11,7 @@ public:
     double getArea() const;
     void ruota();
     virtual void estendi(double);
-    void ruotaSuUnLato(double);
+    void cambiaBase(double);
 };
 
 #endif // QUADRILATERO_H

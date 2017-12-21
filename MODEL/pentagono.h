@@ -12,7 +12,6 @@ public:
     double getArea() const;
     virtual void estendi(double);
     Pentagono& cambiaBase(int)const;
-    double latoComune(const Poligono& p) const;
     Poligono& operator+(const Poligono&) const;
 
 };

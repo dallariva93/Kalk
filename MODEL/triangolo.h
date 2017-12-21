@@ -14,7 +14,6 @@ public:
     void estendi(double);
     Triangolo& cambiaBase(int) const;
     Triangolo& specchia()const;
-    double latoComune(const Poligono& p) const;
     Poligono& operator+(const Poligono&) const;
 };
 

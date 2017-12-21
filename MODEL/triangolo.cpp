@@ -80,23 +80,8 @@ Triangolo& Triangolo::specchia()const{
     return t;
 }
 
-
-double Triangolo::latoComune(const Poligono& p) const{
-    bool latoUguale = false;
-    double lato = 0;
-    for(unsigned int i=0; i<3 && !latoUguale; ++i){
-        for(unsigned int j=0; j<p.getLati().size() && !latoUguale; ++j){
-            if( getLati()[i] == p.getLati()[j] ){
-                lato = p.getLati()[j];
-                latoUguale = true;
-            }
-        }
-    }
-    return lato;
-}
-
 Poligono& Triangolo::operator+(const Poligono& p) const{
-    double lato = this->latoComune(p);
+    double lato = latoComune(p);
 
     cambiaBase(lato);
 

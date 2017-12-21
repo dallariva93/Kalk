@@ -12,8 +12,8 @@ public:
     void ruota();
     virtual void estendi(double);
     Quadrilatero& cambiaBase(int)const;
-    double latoComune(const Poligono& p) const;
     Poligono& operator+(const Poligono&) const;
+
 };
 
 #endif // QUADRILATERO_H

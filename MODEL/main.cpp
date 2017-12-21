@@ -15,11 +15,14 @@ int main(){
     {
         std::cout<<t.getCoordinate()[i].getX()<<" "<<t.getCoordinate()[i].getY()<<std::endl;
     }
-    t.ruota(Angolo(1));
+    t.ruota(Angolo(45));
     for(int i=0; i<3; i++)
     {
         std::cout<<t.getCoordinate()[i].getX()<<" "<<t.getCoordinate()[i].getY()<<std::endl;
     }
-    std::cout<<Punto::angoloTraTrePunti(t.getCoordinate()[1],Punto::origine,Punto(10,0)).getAngolo();
+    std::cout<<Punto::angoloTraTrePunti(Punto(10,0),Punto::origine,t.getCoordinate()[1]).getAngolo();
+
+
+
 }
 

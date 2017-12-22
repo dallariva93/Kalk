@@ -11,6 +11,11 @@ double Punto::getX()const{return x;}
 
 double Punto::getY()const{return y;}
 
+void Punto::invertiY()
+{
+    y=-y;
+}
+
 double Punto::distanceTo(const Punto& primo, const Punto& secondo){
     return sqrt(
                 pow((secondo.getX()-primo.getX()),2)+

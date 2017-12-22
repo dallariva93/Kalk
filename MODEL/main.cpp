@@ -12,11 +12,9 @@
 int main(){
 
     Triangolo t(10, 15, Angolo(5));
-    Triangolo p = t.cambiaBase(2);
-    p = p.specchia();   //non va!
-/*    for(unsigned int i=0; i<p.getLati().size(); ++i){
-        std::cout<<"("<<p.getCoordinate()[i].getX()<<" , "<<p.getCoordinate()[i].getY()<<")"<<std::endl;
-    }
-*/
+    Triangolo t2(5,10,7);
+    std::cout<<t.latoComune(t2);
+
+
 }
 

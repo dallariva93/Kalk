@@ -69,19 +69,13 @@ Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
     return *(new Triangolo(lati[0],lati[1],lati[2]));               //eliminare garbage
 }
 
-Triangolo& Triangolo::specchia()const{
-// quando provo nel main da error: The program has unexpectedly finished
-    Triangolo t(getLati()[0], getLati()[1], getLati()[2]);
-    QVector<Punto> punti;
-    punti.push_back( Punto::origine );
-    punti.push_back( Punto(getLati()[1],0) );
-    Angolo a = 360 - getAngoli()[0].getAngolo();
-    punti.push_back( sen_cos(getLati()[2], a) );
-    t.setPunti(punti);
-//anche le coordinat esonon sbagliate
-    for(unsigned int i=0; i<3; ++i) //manco qua va bene
-    std::cout<<t.getCoordinate()[i].getX()<<" , "<<t.getCoordinate()[i].getY()<<std::endl;
-
+Triangolo &Triangolo::specchia() const
+{
+    QVector<Punto> vertici=getCoordinate();
+    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+        it->invertiY();
+    Triangolo& t =*(new Triangolo(*this));
+    t.setPunti(vertici);
     return t;
 }
 

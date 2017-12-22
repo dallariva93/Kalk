@@ -79,7 +79,19 @@ double Poligono::latoComune(const Poligono& p) const{
         }
     }
     return lato;
+    /*
+    QVector<double> latiPrimo=getLati();
+    QVector<double> latiSecondo=p.getLati();
+    int index=0;
+    for(int i=0; i<numeroLati && index==-1; ++i){
+      index=latiPrimo.indexOf(latiSecondo[i]);
+      std::cout<<index;
+    }
+    return latiPrimo[index];
+    */
+
 }
+
 
 void Poligono::ruota(Angolo angolo){
     QVector<Punto> vertici=getCoordinate();

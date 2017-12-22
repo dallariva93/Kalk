@@ -42,3 +42,13 @@ Pentagono &Pentagono::cambiaBase(int n) const{
 Poligono& Pentagono::operator+(const Poligono&) const{
 
 }
+
+Pentagono &Pentagono::specchia() const
+{
+    QVector<Punto> vertici=getCoordinate();
+    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+        it->invertiY();
+    Pentagono& specchiato =*(new Pentagono(*this));
+    specchiato.setPunti(vertici);
+    return specchiato;
+}

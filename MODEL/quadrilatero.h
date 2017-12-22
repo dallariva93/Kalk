@@ -13,6 +13,7 @@ public:
     virtual void estendi(double);
     Quadrilatero &cambiaBase(int)const;
     Poligono& operator+(const Poligono&) const;
+    Quadrilatero& specchia()const;
 
 };
 

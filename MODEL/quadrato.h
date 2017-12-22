@@ -11,6 +11,7 @@ public:
     double getPerimetro()const;
     void estendi(double);
     void cambiaBase(double);
+    Quadrato& specchia()const;
 
 };
 

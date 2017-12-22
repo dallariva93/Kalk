@@ -38,3 +38,13 @@ Quadrilatero& Quadrilatero::cambiaBase(int n)const{
 }
 
 Poligono& Quadrilatero::operator+(const Poligono& p) const{}
+
+Quadrilatero &Quadrilatero::specchia() const
+{
+    QVector<Punto> vertici=getCoordinate();
+    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+        it->invertiY();
+    Quadrilatero& specchiato =*(new Quadrilatero(*this));
+    specchiato.setPunti(vertici);
+    return specchiato;
+}

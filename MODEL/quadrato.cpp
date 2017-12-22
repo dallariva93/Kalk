@@ -20,3 +20,13 @@ void Quadrato::cambiaBase(double lato){
     Quadrilatero::cambiaBase(lato);
 }
 
+Quadrato &Quadrato::specchia() const
+{
+    QVector<Punto> vertici=getCoordinate();
+    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+        it->invertiY();
+    Quadrato& specchiato =*(new Quadrato(*this));
+    specchiato.setPunti(vertici);
+    return specchiato;
+}
+

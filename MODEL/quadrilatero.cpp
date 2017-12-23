@@ -5,7 +5,7 @@
 /*  CONTROLLI DA FARE:
  * -    somma degli angoli = 360
 */
-
+Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90)){}
 
 Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col) : Poligono(4, "quadrato", col){
     //if(a+b+c+d>angolo(360))break;       //mettere eccezione
@@ -39,8 +39,7 @@ Quadrilatero& Quadrilatero::cambiaBase(int n)const{
 
 Poligono& Quadrilatero::operator+(const Poligono& p) const{}
 
-Quadrilatero &Quadrilatero::specchia() const
-{
+Quadrilatero &Quadrilatero::specchia() const{
     QVector<Punto> vertici=getCoordinate();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
         it->invertiY();

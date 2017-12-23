@@ -1,5 +1,7 @@
 #include"punto.h"
 #include "poligono.h"
+#include "pentagono.h"
+
 
 Punto Poligono::sen_cos(double lato, Angolo a) {
     double x=0, y=0;
@@ -79,7 +81,7 @@ double Poligono::latoComune(const Poligono& p) const{
         }
     }
     return lato;
-    /*
+/*
     QVector<double> latiPrimo=getLati();
     QVector<double> latiSecondo=p.getLati();
     int index=0;
@@ -88,8 +90,7 @@ double Poligono::latoComune(const Poligono& p) const{
       std::cout<<index;
     }
     return latiPrimo[index];
-    */
-
+*/
 }
 
 
@@ -109,3 +110,9 @@ void Poligono::ruota(Angolo angolo){
     setPunti(vertici);
 }
 
+int Poligono::indexLato(double lato) const{
+
+    QVector<double> lati = getLati();
+    int index = lati.indexOf(lato);
+    return index;
+}

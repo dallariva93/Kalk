@@ -10,11 +10,13 @@ public:
     Triangolo(double, double, const Angolo&, Colore* col=new RGB());
     Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB());
     Triangolo(double, double, double, Colore* col=new RGB());
+
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
-    Triangolo& cambiaBase(int) const;
+    Triangolo& cambiaBase(double lato) const;
     Triangolo& specchia()const;
+    static Poligono& unisci(const Triangolo&, const Poligono&);
     Poligono& operator+(const Poligono&) const;
 };
 

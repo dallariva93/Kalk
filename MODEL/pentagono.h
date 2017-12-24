@@ -13,9 +13,9 @@ public:
     double getArea() const;
     virtual void estendi(double);
     Pentagono &cambiaBase(int)const;
-    Poligono& operator+(const Poligono&) const;
     Pentagono& specchia()const;
-
+    static Poligono& unisci(const Pentagono&, const Poligono&);
+    Poligono& operator+(const Poligono&) const;
 };
 
 #endif // PENTAGONO_H

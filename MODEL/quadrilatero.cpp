@@ -1,6 +1,7 @@
 #include "quadrilatero.h"
 #include "triangolo.h"
 #include "angolo.h"
+#include "pentagono.h"
 
 /*  CONTROLLI DA FARE:
  * -    somma degli angoli = 360
@@ -37,8 +38,6 @@ Quadrilatero& Quadrilatero::cambiaBase(int n)const{
 //eliminare garbage
 }
 
-Poligono& Quadrilatero::operator+(const Poligono& p) const{}
-
 Quadrilatero &Quadrilatero::specchia() const{
     QVector<Punto> vertici=getCoordinate();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
@@ -46,4 +45,45 @@ Quadrilatero &Quadrilatero::specchia() const{
     Quadrilatero& specchiato =*(new Quadrilatero(*this));
     specchiato.setPunti(vertici);
     return specchiato;
+}
+
+Poligono& Quadrilatero::unisci(const Quadrilatero& q, const Poligono& pol){
+    QVector<Punto> coord;
+    if((q.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
+        coord.push_back(Punto::origine);
+    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
+        coord.push_back( pol.getCoordinate()[i]);
+    if((q.getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+        coord.push_back( q.getCoordinate()[1]);
+    coord.push_back( q.getCoordinate()[2]);
+    coord.push_back( q.getCoordinate()[3]);
+    if(coord.size() == 3){
+        Triangolo& t = *(new Triangolo());
+        t.setPunti(coord);
+        return t;
+    }
+    else if(coord.size() == 4){
+        Quadrilatero& q = *(new Quadrilatero());
+        q.setPunti(coord);
+        return q;
+    }
+    else if(coord.size() == 5){
+        Pentagono& p = *(new Pentagono());
+        p.setPunti(coord);
+        return p;
+    }
+    else{   //coord.size()>5
+        //poligono con più di 5 lati;
+        return *(new Triangolo()); //tanto per compilare qua capire che fare in questo caso
+    }
+}
+
+Poligono& Quadrilatero::operator+(const Poligono& pol) const{
+    double lato = latoComune(pol);
+    int indice = indexLato(lato);
+    Quadrilatero q = cambiaBase(indice);
+    int index = pol.indexLato(lato);
+    Poligono& p1 = pol.cambiaBase(index);
+    p1 = p1.specchia();
+    return unisci(q, p1);
 }

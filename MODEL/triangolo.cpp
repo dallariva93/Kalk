@@ -66,7 +66,7 @@ void Triangolo::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-Triangolo &Triangolo::cambiaBase(double lato)const {       //n != 0
+Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
     QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
     return *(new Triangolo(lati[0],lati[1],lati[2]));               //eliminare garbage
 }
@@ -80,13 +80,13 @@ Triangolo &Triangolo::specchia() const{
     return t;
 }
 
-Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& p){
+Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& pol){
     QVector<Punto> coord;
-    if((t.getAngoli()[0] + p.getAngoli()[0] ) != Angolo(180) )
+    if((t.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )//PROBLEMA: Anche se la somma è 180 esegue l'if !!
         coord.push_back(Punto::origine);
-    for(unsigned int i=p.getCoordinate().size()-1; i>1; --i)
-        coord.push_back( p.getCoordinate()[i]);
-    if((t.getAngoli()[1] + p.getAngoli()[1]) != Angolo(180))
+    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
+        coord.push_back( pol.getCoordinate()[i]);
+    if((t.getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
         coord.push_back( t.getCoordinate()[1]);
     coord.push_back( t.getCoordinate()[2]);
     if(coord.size() == 3){
@@ -110,13 +110,13 @@ Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& p){
     }
 }
 
-Poligono& Triangolo::operator+(const Poligono& p) const{
-    double lato = latoComune(p);
+Poligono& Triangolo::operator+(const Poligono& pol) const{
+    double lato = latoComune(pol);
     int indice = indexLato(lato);
     Triangolo t1 = cambiaBase(indice);
-    int index = p.indexLato(lato);
-    Poligono& p1 = p.cambiaBase(index);
-    t1 = t1.specchia();
+    int index = pol.indexLato(lato);
+    Poligono& p1 = pol.cambiaBase(index);
+    p1 = p1.specchia();
     return unisci(t1, p1);
 }
 

@@ -22,9 +22,11 @@ SOURCES += main.cpp \
     quadrilatero.cpp \
     pentagono.cpp \
     quadrato.cpp \
+    ../VIEW/colorcreator.cpp\
     rettangolo.cpp \
     pentagonoregolare.cpp \
-    colorslider.cpp
+    ../VIEW/stylesheet.cpp
+
 
 HEADERS  += \
     rgb.h \
@@ -36,8 +38,10 @@ HEADERS  += \
     quadrilatero.h \
     pentagono.h \
     quadrato.h \
+    ../VIEW/colorcreator.h\
     rettangolo.h \
     pentagonoregolare.h \
-    colorslider.h
+    ../VIEW/stylesheet.h
+
 
 #FORMS    += matricebase.ui

@@ -13,9 +13,9 @@ public:
     void ruota();
     virtual void estendi(double);
     Quadrilatero &cambiaBase(int)const;
-    Poligono& operator+(const Poligono&) const;
     Quadrilatero& specchia()const;
-
+    static Poligono& unisci(const Quadrilatero&, const Poligono&);
+    Poligono& operator+(const Poligono&) const;
 };
 
 #endif // QUADRILATERO_H

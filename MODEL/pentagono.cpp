@@ -1,5 +1,6 @@
 #include "pentagono.h"
 #include "triangolo.h"
+#include "quadrilatero.h"
 #include <math.h>
 
 Pentagono::Pentagono() : Pentagono(10,10,10,10,10,Angolo(108),Angolo(108),Angolo(108),Angolo(108),Angolo(108)){}
@@ -41,10 +42,6 @@ Pentagono &Pentagono::cambiaBase(int n) const{
 //eliminare garbage
 }
 
-Poligono& Pentagono::operator+(const Poligono&) const{
-
-}
-
 Pentagono &Pentagono::specchia() const
 {
     QVector<Punto> vertici=getCoordinate();
@@ -54,3 +51,46 @@ Pentagono &Pentagono::specchia() const
     specchiato.setPunti(vertici);
     return specchiato;
 }
+
+Poligono& Pentagono::unisci(const Pentagono& pe, const Poligono& pol){
+    QVector<Punto> coord;
+    if((pe.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
+        coord.push_back(Punto::origine);
+    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
+        coord.push_back( pol.getCoordinate()[i]);
+    if((pe.getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+        coord.push_back( pe.getCoordinate()[1]);
+    for(unsigned int i=2; i<pe.getCoordinate().size(); ++i)
+        coord.push_back( pe.getCoordinate()[i]);
+    if(coord.size() == 3){
+        Triangolo& t = *(new Triangolo());
+        t.setPunti(coord);
+        return t;
+    }
+    else if(coord.size() == 4){
+        Quadrilatero& q = *(new Quadrilatero());
+        q.setPunti(coord);
+        return q;
+    }
+    else if(coord.size() == 5){
+        Pentagono& p = *(new Pentagono());
+        p.setPunti(coord);
+        return p;
+    }
+    else{   //coord.size()>5
+        //poligono con più di 5 lati;
+        return *(new Triangolo()); //tanto per compilare qua capire cge fare in questo caso
+    }
+}
+
+Poligono& Pentagono::operator+(const Poligono& pol) const{
+    double lato = latoComune(pol);
+    int indice = indexLato(lato);
+    Pentagono q = cambiaBase(indice);
+    int index = pol.indexLato(lato);
+    Poligono& p = pol.cambiaBase(index);
+    p = p.specchia();
+    return unisci(q, p);
+}
+
+

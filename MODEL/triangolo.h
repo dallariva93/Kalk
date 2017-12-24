@@ -14,7 +14,7 @@ public:
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
-    Triangolo& cambiaBase(double lato) const;
+    Triangolo& cambiaBase(int) const;
     Triangolo& specchia()const;
     static Poligono& unisci(const Triangolo&, const Poligono&);
     Poligono& operator+(const Poligono&) const;

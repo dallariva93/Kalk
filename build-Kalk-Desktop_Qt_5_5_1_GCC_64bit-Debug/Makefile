@@ -710,7 +710,8 @@ poligono.o: ../MODEL/poligono.cpp ../MODEL/punto.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringmatcher.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
 		../MODEL/colore.h \
-		../MODEL/rgb.h
+		../MODEL/rgb.h \
+		../MODEL/pentagono.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o poligono.o ../MODEL/poligono.cpp
 
 triangolo.o: ../MODEL/triangolo.cpp ../MODEL/triangolo.h \
@@ -763,7 +764,9 @@ triangolo.o: ../MODEL/triangolo.cpp ../MODEL/triangolo.h \
 		../MODEL/punto.h \
 		../MODEL/angolo.h \
 		../MODEL/colore.h \
-		../MODEL/rgb.h
+		../MODEL/rgb.h \
+		../MODEL/quadrilatero.h \
+		../MODEL/pentagono.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o triangolo.o ../MODEL/triangolo.cpp
 
 quadrilatero.o: ../MODEL/quadrilatero.cpp ../MODEL/quadrilatero.h \

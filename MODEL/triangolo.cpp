@@ -1,6 +1,8 @@
 #include "triangolo.h"
 #include <cmath>
 #include<QVector>
+#include "quadrilatero.h"
+#include "pentagono.h"
 
 /*  fare i controlli
 - somma angoli 180
@@ -64,13 +66,12 @@ void Triangolo::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
-Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
+Triangolo &Triangolo::cambiaBase(double lato)const {       //n != 0
     QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
     return *(new Triangolo(lati[0],lati[1],lati[2]));               //eliminare garbage
 }
 
-Triangolo &Triangolo::specchia() const
-{
+Triangolo &Triangolo::specchia() const{
     QVector<Punto> vertici=getCoordinate();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
         it->invertiY();
@@ -79,14 +80,44 @@ Triangolo &Triangolo::specchia() const
     return t;
 }
 
+Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& p){
+    QVector<Punto> coord;
+    if((t.getAngoli()[0] + p.getAngoli()[0] ) != Angolo(180) )
+        coord.push_back(Punto::origine);
+    for(unsigned int i=p.getCoordinate().size()-1; i>1; --i)
+        coord.push_back( p.getCoordinate()[i]);
+    if((t.getAngoli()[1] + p.getAngoli()[1]) != Angolo(180))
+        coord.push_back( t.getCoordinate()[1]);
+    coord.push_back( t.getCoordinate()[2]);
+    if(coord.size() == 3){
+        Triangolo& t = *(new Triangolo());
+        t.setPunti(coord);
+        return t;
+    }
+    else if(coord.size() == 4){
+        Quadrilatero& q = *(new Quadrilatero());
+        q.setPunti(coord);
+        return q;
+    }
+    else if(coord.size() == 5){
+        Pentagono& p = *(new Pentagono());
+        p.setPunti(coord);
+        return p;
+    }
+    else{   //coord.size()>5
+        //poligono con più di 5 lati;
+        return *(new Triangolo()); //tanto per compilare qua capire cge fare in questo caso
+    }
+}
+
 Poligono& Triangolo::operator+(const Poligono& p) const{
     double lato = latoComune(p);
-    Triangolo t1 = cambiaBase(lato);
-    Poligono& p1 = p.cambiaBase(lato);
-    t1 = t1.specchia(); //non va
-
-
-    //    return ;
+    int indice = indexLato(lato);
+    Triangolo t1 = cambiaBase(indice);
+    int index = p.indexLato(lato);
+    Poligono& p1 = p.cambiaBase(index);
+    t1 = t1.specchia();
+    return unisci(t1, p1);
 }
 
 

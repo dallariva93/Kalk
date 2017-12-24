@@ -7,6 +7,7 @@
 class Pentagono : public Poligono{
 
 public:
+    Pentagono();
     Pentagono(double, double, double, double, double, const Angolo&, const Angolo&, const Angolo&,
               const Angolo&, const Angolo&, Colore* col=new RGB() );
     double getArea() const;

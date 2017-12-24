@@ -12,12 +12,13 @@ public:
     Triangolo(double, double, double, Colore* col=new RGB());
 
     double getAltezza() const;
-    double getArea() const;
-    void estendi(double);
-    Triangolo& cambiaBase(double lato) const;
-    Triangolo& specchia()const;
+    virtual double getArea() const;
+    virtual void estendi(double);
+    virtual Triangolo& cambiaBase(double lato) const;
+    virtual Triangolo& specchia()const;
     static Poligono& unisci(const Triangolo&, const Poligono&);
-    Poligono& operator+(const Poligono&) const;
+    virtual Poligono& operator+(const Poligono&) const;
+    
 };
 
 #endif // TRIANGOLO_H

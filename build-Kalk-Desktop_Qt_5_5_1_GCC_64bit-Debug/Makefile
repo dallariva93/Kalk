@@ -59,7 +59,8 @@ SOURCES       = ../MODEL/main.cpp \
 		../MODEL/pentagono.cpp \
 		../MODEL/quadrato.cpp \
 		../MODEL/rettangolo.cpp \
-		../MODEL/pentagonoregolare.cpp 
+		../MODEL/pentagonoregolare.cpp \
+		colorslider.cpp 
 OBJECTS       = main.o \
 		rgb.o \
 		colore.o \
@@ -71,7 +72,8 @@ OBJECTS       = main.o \
 		pentagono.o \
 		quadrato.o \
 		rettangolo.o \
-		pentagonoregolare.o
+		pentagonoregolare.o \
+		colorslider.o
 DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt5.5.1/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../Qt5.5.1/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -216,7 +218,8 @@ DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../MODEL/pentagono.h \
 		../MODEL/quadrato.h \
 		../MODEL/rettangolo.h \
-		../MODEL/pentagonoregolare.h ../MODEL/main.cpp \
+		../MODEL/pentagonoregolare.h \
+		colorslider.h ../MODEL/main.cpp \
 		../MODEL/rgb.cpp \
 		../MODEL/colore.cpp \
 		../MODEL/punto.cpp \
@@ -227,7 +230,8 @@ DIST          = ../../Qt5.5.1/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../MODEL/pentagono.cpp \
 		../MODEL/quadrato.cpp \
 		../MODEL/rettangolo.cpp \
-		../MODEL/pentagonoregolare.cpp
+		../MODEL/pentagonoregolare.cpp \
+		colorslider.cpp
 QMAKE_TARGET  = Kalk
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = Kalk
@@ -549,8 +553,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../MODEL/rgb.h ../MODEL/colore.h ../MODEL/punto.h ../MODEL/angolo.h ../MODEL/poligono.h ../MODEL/triangolo.h ../MODEL/quadrilatero.h ../MODEL/pentagono.h ../MODEL/quadrato.h ../MODEL/rettangolo.h ../MODEL/pentagonoregolare.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MODEL/main.cpp ../MODEL/rgb.cpp ../MODEL/colore.cpp ../MODEL/punto.cpp ../MODEL/angolo.cpp ../MODEL/poligono.cpp ../MODEL/triangolo.cpp ../MODEL/quadrilatero.cpp ../MODEL/pentagono.cpp ../MODEL/quadrato.cpp ../MODEL/rettangolo.cpp ../MODEL/pentagonoregolare.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MODEL/rgb.h ../MODEL/colore.h ../MODEL/punto.h ../MODEL/angolo.h ../MODEL/poligono.h ../MODEL/triangolo.h ../MODEL/quadrilatero.h ../MODEL/pentagono.h ../MODEL/quadrato.h ../MODEL/rettangolo.h ../MODEL/pentagonoregolare.h colorslider.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MODEL/main.cpp ../MODEL/rgb.cpp ../MODEL/colore.cpp ../MODEL/punto.cpp ../MODEL/angolo.cpp ../MODEL/poligono.cpp ../MODEL/triangolo.cpp ../MODEL/quadrilatero.cpp ../MODEL/pentagono.cpp ../MODEL/quadrato.cpp ../MODEL/rettangolo.cpp ../MODEL/pentagonoregolare.cpp colorslider.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -710,7 +714,8 @@ poligono.o: ../MODEL/poligono.cpp ../MODEL/punto.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qstringmatcher.h \
 		../../Qt5.5.1/5.5/gcc_64/include/QtCore/qpoint.h \
 		../MODEL/colore.h \
-		../MODEL/rgb.h
+		../MODEL/rgb.h \
+		../MODEL/pentagono.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o poligono.o ../MODEL/poligono.cpp
 
 triangolo.o: ../MODEL/triangolo.cpp ../MODEL/triangolo.h \
@@ -763,7 +768,9 @@ triangolo.o: ../MODEL/triangolo.cpp ../MODEL/triangolo.h \
 		../MODEL/punto.h \
 		../MODEL/angolo.h \
 		../MODEL/colore.h \
-		../MODEL/rgb.h
+		../MODEL/rgb.h \
+		../MODEL/quadrilatero.h \
+		../MODEL/pentagono.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o triangolo.o ../MODEL/triangolo.cpp
 
 quadrilatero.o: ../MODEL/quadrilatero.cpp ../MODEL/quadrilatero.h \
@@ -1035,6 +1042,9 @@ pentagonoregolare.o: ../MODEL/pentagonoregolare.cpp ../MODEL/pentagonoregolare.h
 		../MODEL/colore.h \
 		../MODEL/rgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pentagonoregolare.o ../MODEL/pentagonoregolare.cpp
+
+colorslider.o: colorslider.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o colorslider.o colorslider.cpp
 
 ####### Install
 

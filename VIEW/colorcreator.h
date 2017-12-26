@@ -7,6 +7,7 @@
 #include <QLCDNumber>
 #include<QLabel>
 #include <QString>
+#include <QLineEdit>
 
 class ColorCreator : public QWidget
 {
@@ -20,19 +21,21 @@ private:
     QLCDNumber* greenLCD;
     QLCDNumber* blueLCD;
 
-    QLabel* hexValue;
-    QString hex;
+
+    QLineEdit* hexValue;
 
 public:
     ColorCreator(QWidget *parent=0);
 
 
-/*signals:
+signals:
 
-    void valueChanged2(QString);
+    void changeHex(QString);        //va allo slot valuchanged(QString) di qlineedit
 
 public slots:
-    QString setHexValue(int);*/
+    void getR(int);
+    void getB(int);
+    void getG(int);
 
 
 };

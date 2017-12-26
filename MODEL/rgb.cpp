@@ -6,7 +6,9 @@ RGB::RGB(unsigned int red, unsigned int green, unsigned int blu):r(red), g(green
 std::string RGB::decToHex(unsigned int value){
     std::stringstream stream;
     stream << std::hex << value;
-    return stream.str();
+    std::string hex=stream.str();
+    if(hex=="0") hex="00";
+    return hex;
 }
 
 RGB* RGB::clone() const{

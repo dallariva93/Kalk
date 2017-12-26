@@ -24,11 +24,12 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 
     //CREO DEI LABEL PER  IDENTIFICARE RED GREEN E BLUE
 
-    QLabel* redLabel = new QLabel(tr("R:"));
-    QLabel* greenLabel = new QLabel(tr("G:"));
-    QLabel* blueLabel = new QLabel(tr("B:"));
-
-    hexValue=new QLabel("stringdimmmerda");
+    QLabel* redLabel = new QLabel(tr("Rosso:"));
+    QLabel* greenLabel = new QLabel(tr("Verde:"));
+    QLabel* blueLabel = new QLabel(tr("Blue:"));
+    QLabel* hexString = new QLabel(tr("Colore:"));
+    hexValue=new QLineEdit("#000000 ");
+    hexValue->setReadOnly(true);
 
     //MODIFICO GRAFICAMENTE GLI SLIDER E GLI LCD NUMBER: APPLICO DEI FOGLI DI STILE, MODIFICO IL NUMERO E TOLGO IL RIQUADRO
 
@@ -47,33 +48,49 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     connect(red, SIGNAL(valueChanged(int)), redLCD, SLOT(display(int)));
     connect(green, SIGNAL(valueChanged(int)), greenLCD, SLOT(display(int)));
     connect(blue, SIGNAL(valueChanged(int)), blueLCD, SLOT(display(int)));
-  /*  connect(red,SIGNAL(valueChanged(int)), this, SLOT(setHexValue(int)));
-    connect(green,SIGNAL(valueChanged(int)), this, SLOT(setHexValue()));
-    connect(blue,SIGNAL(valueChanged(int)), this, SLOT(setHexValue(int)));
-    connect(this,SIGNAL(valueChanged()), hexValue, SLOT(setText(QString)));*/
-
+    connect(red,SIGNAL(valueChanged(int)), this, SLOT(getR(int)));
+    connect(green,SIGNAL(valueChanged(int)), this, SLOT(getG(int)));
+    connect(blue,SIGNAL(valueChanged(int)), this, SLOT(getB(int)));
+    connect(this,SIGNAL(changeHex(QString)),hexValue, SLOT(setText(QString)));
     //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
 
     QGridLayout* layout=new QGridLayout;
-    layout->addWidget(red,0,0);
-    layout->addWidget(redLabel,0,1);
+    layout->addWidget(red,0,1);
+    layout->addWidget(redLabel,0,0);
     layout->addWidget(redLCD,0,2);
-    layout->addWidget(green,1,0);
-    layout->addWidget(greenLabel,1,1);
+    layout->addWidget(green,1,1);
+    layout->addWidget(greenLabel,1,0);
     layout->addWidget(greenLCD,1,2);
-    layout->addWidget(blue,2,0);
-    layout->addWidget(blueLabel,2,1);
+    layout->addWidget(blue,2,1);
+    layout->addWidget(blueLabel,2,0);
     layout->addWidget(blueLCD,2,2);
-    layout->addWidget(hexValue);
+    layout->addWidget(hexString,3,0);
+    layout->addWidget(hexValue,3,1);
     setLayout(layout);
 
 }
-/*
-void valueChanged(QString a){
-    emit a;
+
+
+void ColorCreator::getR(int r)
+{
+    QString hex;
+        hex=((hexValue->text()).replace(1,2,QString::fromStdString(RGB::decToHex(r))));
+    emit changeHex(hex);
 }
 
-QString ColorCreator::setHexValue(int){
-    hex.fromStdString("#" + RGB::decToHex(red->value()) + RGB::decToHex(green->value()) + RGB::decToHex(blue->value()));
-    emit valueChanged(hex);
-}*/
+void ColorCreator::getG(int g)
+{
+    QString hex;
+        hex=((hexValue->text()).replace(3,2,QString::fromStdString(RGB::decToHex(g))));
+    emit changeHex(hex);
+}
+
+void ColorCreator::getB(int b)
+{
+    QString hex(hexValue->text());
+        hex=((hex).replace(5,2,QString::fromStdString(RGB::decToHex(b))));
+    emit changeHex(hex);
+}
+
+
+

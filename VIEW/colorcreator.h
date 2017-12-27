@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QSlider>
 #include <QLCDNumber>
-#include<QLabel>
+#include <QLabel>
 #include <QString>
 #include <QLineEdit>
 
@@ -29,8 +29,8 @@ public:
 
 
 signals:
-
-    void changeHex(QString);        //va allo slot valuchanged(QString) di qlineedit
+    void changeHexValue(QString);
+    void changeColor(QString);
 
 public slots:
     void getR(int);

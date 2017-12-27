@@ -3,6 +3,8 @@
 #include<QString>
 
 
+//CLASSE CONTENITORE DEI FOGLI DI STILE
+
 class Stylesheet
 {
 public:

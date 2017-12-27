@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ColorCreator_t {
-    QByteArrayData data[6];
-    char stringdata0[39];
+    QByteArrayData data[7];
+    char stringdata0[56];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,15 +30,16 @@ struct qt_meta_stringdata_ColorCreator_t {
 static const qt_meta_stringdata_ColorCreator_t qt_meta_stringdata_ColorCreator = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "ColorCreator"
-QT_MOC_LITERAL(1, 13, 9), // "changeHex"
-QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 4), // "getR"
-QT_MOC_LITERAL(4, 29, 4), // "getB"
-QT_MOC_LITERAL(5, 34, 4) // "getG"
+QT_MOC_LITERAL(1, 13, 14), // "changeHexValue"
+QT_MOC_LITERAL(2, 28, 0), // ""
+QT_MOC_LITERAL(3, 29, 11), // "changeColor"
+QT_MOC_LITERAL(4, 41, 4), // "getR"
+QT_MOC_LITERAL(5, 46, 4), // "getB"
+QT_MOC_LITERAL(6, 51, 4) // "getG"
 
     },
-    "ColorCreator\0changeHex\0\0getR\0getB\0"
-    "getG"
+    "ColorCreator\0changeHexValue\0\0changeColor\0"
+    "getR\0getB\0getG"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,22 +49,24 @@ static const uint qt_meta_data_ColorCreator[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x06 /* Public */,
+       1,    1,   39,    2, 0x06 /* Public */,
+       3,    1,   42,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,   37,    2, 0x0a /* Public */,
-       4,    1,   40,    2, 0x0a /* Public */,
-       5,    1,   43,    2, 0x0a /* Public */,
+       4,    1,   45,    2, 0x0a /* Public */,
+       5,    1,   48,    2, 0x0a /* Public */,
+       6,    1,   51,    2, 0x0a /* Public */,
 
  // signals: parameters
+    QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
 
  // slots: parameters
@@ -80,10 +83,11 @@ void ColorCreator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         ColorCreator *_t = static_cast<ColorCreator *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->changeHex((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->getR((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->getB((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->getG((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->changeHexValue((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->changeColor((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->getR((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->getB((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->getG((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -91,8 +95,14 @@ void ColorCreator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (ColorCreator::*_t)(QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ColorCreator::changeHex)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ColorCreator::changeHexValue)) {
                 *result = 0;
+            }
+        }
+        {
+            typedef void (ColorCreator::*_t)(QString );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ColorCreator::changeColor)) {
+                *result = 1;
             }
         }
     }
@@ -123,21 +133,28 @@ int ColorCreator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
 
 // SIGNAL 0
-void ColorCreator::changeHex(QString _t1)
+void ColorCreator::changeHexValue(QString _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void ColorCreator::changeColor(QString _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_END_MOC_NAMESPACE

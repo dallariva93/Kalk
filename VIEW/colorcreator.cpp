@@ -1,12 +1,18 @@
 #include "colorcreator.h"
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QImage>
+#include <QRgb>
 #include <../VIEW/stylesheet.h>
 #include <../MODEL/rgb.h>
 
 
 ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 {
+    QLabel* l=new QLabel("");
+    l->setStyleSheet("QLabel { background-color : #000000;}");
+
+
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
 
     red=new QSlider(Qt::Horizontal);
@@ -22,7 +28,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     greenLCD=new QLCDNumber(3);
     blueLCD=new QLCDNumber(3);
 
-    //CREO DEI LABEL PER  IDENTIFICARE RED GREEN E BLUE
+    //CREO DEI LABEL PER IDENTIFICARE RED GREEN BLUE E L'ESADECIMALE
 
     QLabel* redLabel = new QLabel(tr("Rosso:"));
     QLabel* greenLabel = new QLabel(tr("Verde:"));
@@ -51,7 +57,9 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     connect(red,SIGNAL(valueChanged(int)), this, SLOT(getR(int)));
     connect(green,SIGNAL(valueChanged(int)), this, SLOT(getG(int)));
     connect(blue,SIGNAL(valueChanged(int)), this, SLOT(getB(int)));
-    connect(this,SIGNAL(changeHex(QString)),hexValue, SLOT(setText(QString)));
+    connect(this,SIGNAL(changeHexValue(QString)),hexValue, SLOT(setText(QString)));
+    connect(this,SIGNAL(changeColor(QString)),l,SLOT(setStyleSheet(QString)));
+//    connect(this,SIGNAL(changeHexValue(QString)),blueLabel, SLOT()
     //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
 
     QGridLayout* layout=new QGridLayout;
@@ -66,6 +74,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     layout->addWidget(blueLCD,2,2);
     layout->addWidget(hexString,3,0);
     layout->addWidget(hexValue,3,1);
+    layout->addWidget(l,3,2);
     setLayout(layout);
 
 }
@@ -75,21 +84,33 @@ void ColorCreator::getR(int r)
 {
     QString hex;
         hex=((hexValue->text()).replace(1,2,QString::fromStdString(RGB::decToHex(r))));
-    emit changeHex(hex);
+    emit changeHexValue(hex);
+    QString a="QLabel { background-color :" ;
+    a+=hex;
+    a+=";}";
+    emit changeColor(a);
 }
 
 void ColorCreator::getG(int g)
 {
     QString hex;
         hex=((hexValue->text()).replace(3,2,QString::fromStdString(RGB::decToHex(g))));
-    emit changeHex(hex);
+    emit changeHexValue(hex);
+        QString a="QLabel { background-color :" ;
+        a+=hex;
+        a+=";}";
+        emit changeColor(a);
 }
 
 void ColorCreator::getB(int b)
 {
     QString hex(hexValue->text());
         hex=((hex).replace(5,2,QString::fromStdString(RGB::decToHex(b))));
-    emit changeHex(hex);
+    emit changeHexValue(hex);
+        QString a="QLabel { background-color :" ;
+        a+=hex;
+        a+=";}";
+        emit changeColor(a);
 }
 
 

@@ -21,7 +21,6 @@ private:
     QLCDNumber* greenLCD;
     QLCDNumber* blueLCD;
 
-
     QLineEdit* hexValue;
 
 public:

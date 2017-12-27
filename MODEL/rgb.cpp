@@ -7,7 +7,7 @@ std::string RGB::decToHex(unsigned int value){
     std::stringstream stream;
     stream << std::hex << value;
     std::string hex=stream.str();
-    if(hex=="0") hex="00";
+    if(value<16 /*|| hex=="a" || hex=="b" || hex=="c" || hex=="d" || hex=="e" || hex=="f"*/) hex="0"+hex;
     return hex;
 }
 

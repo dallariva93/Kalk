@@ -43,8 +43,11 @@ int main(int argc, char* argv[]){
     return colorbox.exec();
     */
     Colore* colore=new RGB(0,0,0);
+    Colore* color2e=new RGB(150,150,150);
     Triangolo t(100,70, Angolo(80), colore);
-    Quadrato q(100);
+    Quadrato q(100,color2e );
+
+    std::cout<<(t+q).getColore()->getHex();
 
     QApplication colorbox(argc,argv);
     DrawArea col(&(t+q));

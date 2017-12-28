@@ -40,10 +40,13 @@ int main(int argc, char* argv[]){
     ColorCreator col;
     col.show();
     return colorbox.exec();
+    *//*
+    Colore* colore=new RGB(0,0,0);
+    Triangolo t(100,70, Angolo(80), colore);
+    Quadrato q(100);
 
-    Triangolo t(100,70, Angolo(80));
     QApplication colorbox(argc,argv);
-    DrawArea col(&t);
+    DrawArea col(&(t+q));
     col.show();
     return colorbox.exec();
 */

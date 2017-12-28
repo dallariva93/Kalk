@@ -16,7 +16,12 @@ double Poligono::getPerimetro() const{
 }
 
 Colore* Poligono::getColore() const{
+
     return color;
+}
+
+void Poligono::setColore(Colore* c){
+    color=c->clone();
 }
 
 QVector<Angolo> Poligono::getAngoli()const{
@@ -28,10 +33,6 @@ QVector<Angolo> Poligono::getAngoli()const{
     }
     angoli.push_back(Punto::angoloTraTrePunti(punti[punti.size()-2], punti.last(), punti.first()));
     return angoli;
-}
-
-void Poligono::setColore(Colore* c){
-    color=c->clone();
 }
 
 void Poligono::setPunti(const QVector<Punto> coord){

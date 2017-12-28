@@ -14,7 +14,7 @@ public:
     virtual void estendi(double);
     Quadrilatero &cambiaBase(int)const;
     Quadrilatero& specchia()const;
-    static Poligono& unisci(const Quadrilatero&, const Poligono&);
+    Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
 };
 

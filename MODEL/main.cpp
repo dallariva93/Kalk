@@ -23,9 +23,8 @@ int main(int argc, char* argv[]){
 
     Poligono& f = t +p;
     for(unsigned int i=0; i<f.getCoordinate().size();++i)
-      std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
-*/
-    /*
+        std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
+        //--(0 , 0)--(0.000561578 , -6.6666)--(10 , 0)--(14.9429 , 1.30734)
 
     Quadrato q(10);
     Triangolo t(10,18.794,Angolo(120));
@@ -33,20 +32,20 @@ int main(int argc, char* argv[]){
     Poligono& f=q+t;
 
     for(unsigned int i=0; i<f.getCoordinate().size();++i)
-      std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
-
+        std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
+        //--(0 , 0)--(-9.397 , -16.2761)--(10 , 0)--(10 , 10)--(-3.82857e-15 , 10)
 */
-/*
+    /*
     QApplication colorbox(argc,argv);
     ColorCreator col;
     col.show();
     return colorbox.exec();
-    */
 
     Triangolo t(100,70, Angolo(80));
     QApplication colorbox(argc,argv);
     DrawArea col(&t);
     col.show();
     return colorbox.exec();
+*/
 }
 

@@ -20,6 +20,7 @@ public:
     virtual void estendi(double) =0;       //meglio farla pura? da pensarci
     virtual Poligono& cambiaBase(int) const =0;
     virtual Colore* getColore() const;
+    void setColore(Colore*);    //void setColore(const Colore *); da errore non  capisco perchè!!
     QVector<Angolo> getAngoli() const;
     void setPunti(const QVector<Punto>);
     QVector<Punto> getCoordinate() const;

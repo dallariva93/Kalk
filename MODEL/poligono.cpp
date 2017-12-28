@@ -30,6 +30,10 @@ QVector<Angolo> Poligono::getAngoli()const{
     return angoli;
 }
 
+void Poligono::setColore(Colore* c){
+    color=c->clone();
+}
+
 void Poligono::setPunti(const QVector<Punto> coord){
     coordinate=coord;
 }

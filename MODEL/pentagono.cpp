@@ -53,6 +53,7 @@ Pentagono &Pentagono::specchia() const
 }
 
 Poligono& Pentagono::unisci(const Pentagono& pe, const Poligono& pol){
+    Colore& col = *(pe.getColore()) + *(pol.getColore());
     QVector<Punto> coord;
     if((pe.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
         coord.push_back(Punto::origine);
@@ -65,16 +66,19 @@ Poligono& Pentagono::unisci(const Pentagono& pe, const Poligono& pol){
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());
         t.setPunti(coord);
+        t.setColore(& col);
         return t;
     }
     else if(coord.size() == 4){
         Quadrilatero& q = *(new Quadrilatero());
         q.setPunti(coord);
+        q.setColore(& col);
         return q;
     }
     else if(coord.size() == 5){
         Pentagono& p = *(new Pentagono());
         p.setPunti(coord);
+        p.setColore(& col);
         return p;
     }
     else{   //coord.size()>5

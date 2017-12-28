@@ -81,6 +81,7 @@ Triangolo &Triangolo::specchia() const{
 }
 
 Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& pol){
+    Colore& col = *(t.getColore()) + *(pol.getColore());
     QVector<Punto> coord;
     if((t.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )//PROBLEMA: Anche se la somma è 180 esegue l'if !!
         coord.push_back(Punto::origine);
@@ -92,16 +93,19 @@ Poligono& Triangolo::unisci(const Triangolo& t, const Poligono& pol){
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());
         t.setPunti(coord);
+        t.setColore(& col);
         return t;
     }
     else if(coord.size() == 4){
         Quadrilatero& q = *(new Quadrilatero());
         q.setPunti(coord);
+        q.setColore(& col);
         return q;
     }
     else if(coord.size() == 5){
         Pentagono& p = *(new Pentagono());
         p.setPunti(coord);
+        p.setColore(& col);
         return p;
     }
     else{   //coord.size()>5

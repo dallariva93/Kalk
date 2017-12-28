@@ -48,6 +48,7 @@ Quadrilatero &Quadrilatero::specchia() const{
 }
 
 Poligono& Quadrilatero::unisci(const Quadrilatero& q, const Poligono& pol){
+    Colore& col = *(q.getColore()) + *(pol.getColore());
     QVector<Punto> coord;
     if((q.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
         coord.push_back(Punto::origine);
@@ -60,16 +61,19 @@ Poligono& Quadrilatero::unisci(const Quadrilatero& q, const Poligono& pol){
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());
         t.setPunti(coord);
+        t.setColore(& col);
         return t;
     }
     else if(coord.size() == 4){
         Quadrilatero& q = *(new Quadrilatero());
         q.setPunti(coord);
+        q.setColore(& col);
         return q;
     }
     else if(coord.size() == 5){
         Pentagono& p = *(new Pentagono());
         p.setPunti(coord);
+        p.setColore(& col);
         return p;
     }
     else{   //coord.size()>5

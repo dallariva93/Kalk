@@ -12,6 +12,8 @@
 
 #include<QApplication>
 #include"../VIEW/colorcreator.h"
+#include"../VIEW/drawarea.h"
+
 
 
 int main(int argc, char* argv[]){
@@ -34,9 +36,16 @@ int main(int argc, char* argv[]){
       std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
 
 */
-
+/*
     QApplication colorbox(argc,argv);
     ColorCreator col;
+    col.show();
+    return colorbox.exec();
+    */
+
+    Triangolo t(100,70, Angolo(80));
+    QApplication colorbox(argc,argv);
+    DrawArea col(&t);
     col.show();
     return colorbox.exec();
 }

@@ -12,8 +12,6 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
 
-    //QString hex="#000000";
-
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
 
     red=new QSlider(Qt::Horizontal);

@@ -4,6 +4,7 @@
 #include "punto.h"
 #include "colore.h"
 #include "rgb.h"
+#include <QPolygon>
 
 class Poligono{
 private:
@@ -31,6 +32,8 @@ public:
     virtual Poligono& specchia()const =0;
     virtual Poligono& operator+(const Poligono&) const=0;
     int indexLato(double)const;
+
+    QPolygon toQPolygon();
 };
 
 #endif // POLIGONO_H

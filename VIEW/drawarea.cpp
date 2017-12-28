@@ -20,16 +20,24 @@ void DrawArea::sposta(Poligono* pol,double x, double y)
 
 
 
-DrawArea::DrawArea(Poligono * pol):poligono(pol){}  //non ho bisogno di copie profonde
+DrawArea::DrawArea(Poligono * pol):poligono(pol){
+    QSize size(250,250);        //dimensione dell'area da disegno, se il poligono è più grande? PROBLEMA!
+    setMaximumSize(size);
+    setMinimumSize(size);
+
+}  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.setPen(Qt::SolidLine);
+    painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
+    painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
 
     Poligono& poligonoDisegnato=poligono->specchia();
-    sposta(&poligonoDisegnato,150,300);
+    //sposta(&poligonoDisegnato,10,10);
+    //QPoint nuovaOrigine((poligono->getLati()[0]-250)/2);
 
+    painter.translate((QPoint(-((poligono->getLati()[0]-250)/2),100)));
     painter.drawPolygon(poligonoDisegnato.toQPolygon());
 
 }

@@ -1,6 +1,7 @@
 #ifndef ANGOLO_H
 #define ANGOLO_H
-
+#include <cmath>
+#define PI 3.14159265
 
 class Angolo{
 private:
@@ -14,8 +15,11 @@ public:
     bool operator <(const Angolo)const;
     bool operator ==(const Angolo)const;
     bool operator !=(const Angolo)const;
+    bool angPiatto(const Angolo)const;
     Angolo operator+(const Angolo&)const;
     Angolo& operator=(const Angolo&);
+    double coseno()const;
+    double seno()const;
 };
 
 #endif // ANGOLO_H

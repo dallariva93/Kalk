@@ -33,7 +33,7 @@ void Quadrilatero::estendi(double fattore){
 }
 
 Quadrilatero& Quadrilatero::cambiaBase(int n)const{
-    QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
+    QVector<double> lati = ordinaLati(getLati(),getLati()[n]);
     return *(new Quadrilatero(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3],getColore()));
 //eliminare garbage
 }
@@ -50,11 +50,11 @@ Quadrilatero &Quadrilatero::specchia() const{
 Poligono& Quadrilatero::unisci( const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
     QVector<Punto> coord;
-    if((getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
+    if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) )
         coord.push_back(Punto::origine);
     for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
-    if((getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+    if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
     coord.push_back( getCoordinate()[2]);
     coord.push_back( getCoordinate()[3]);
@@ -77,8 +77,7 @@ Poligono& Quadrilatero::unisci( const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        //poligono con più di 5 lati;
-        return *(new Triangolo()); //tanto per compilare qua capire che fare in questo caso
+        throw("poligonoConPiùDi5Lati");
     }
 }
 
@@ -89,5 +88,7 @@ Poligono& Quadrilatero::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
     p1 = p1.specchia();
-    return q.unisci(p1);
+    Poligono& poligono = q.unisci(p1); //garbage
+    poligono.ruota(p1.getAngoli()[0]);
+    return poligono;
 }

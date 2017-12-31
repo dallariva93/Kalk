@@ -13,7 +13,7 @@
 #include<QApplication>
 #include"../VIEW/colorcreator.h"
 #include"../VIEW/drawarea.h"
-
+#include"../VIEW/trianglecreator.h"
 
 
 int main(int argc, char* argv[]){
@@ -34,12 +34,13 @@ int main(int argc, char* argv[]){
     for(unsigned int i=0; i<f.getCoordinate().size();++i)
         std::cout<<"--("<<f.getCoordinate()[i].getX()<<" , "<<f.getCoordinate()[i].getY()<<")"<<std::endl;
 */
-    /*
+/*
     QApplication colorbox(argc,argv);
     ColorCreator col;
     col.show();
     return colorbox.exec();
-    *//*
+*/
+/*
     Colore* colore=new RGB(0,0,0);
     Triangolo t(100,70, Angolo(80), colore);
     Quadrato q(100);
@@ -49,6 +50,11 @@ int main(int argc, char* argv[]){
     col.show();
     return colorbox.exec();
 */
+    QApplication createtriangle(argc,argv);
+    TriangleCreator t;
+    t.show();
+    return createtriangle.exec();
+
 
 }
 

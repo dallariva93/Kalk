@@ -4,6 +4,7 @@
 #include "quadrilatero.h"
 #include "pentagono.h"
 
+
 /*  fare i controlli
 - somma angoli 180
 - lato maggiore < somma degli altri due
@@ -25,7 +26,7 @@ Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* co
     QVector<Punto> punti;
     punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));
-    double latoAC = ( latoAB * sin(b.getAngolo()*PI/180) ) / sin(c.getAngolo()*PI/180);
+    double latoAC = ( latoAB * b.seno() ) / c.seno();
     punti.push_back(sen_cos(latoAC, a));
     setPunti(punti);
 }
@@ -41,19 +42,7 @@ Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col) :
 }
 
 double Triangolo::getAltezza() const{
-    QVector<Punto> vertice = getCoordinate();
-    Punto alto;
-    int i=0;
-    bool top=false;
-    while(!top && i<3){
-        Punto p = vertice[i];
-        if(p.getY()!=0){         //in questo modo controllo che prendo sempre il punto più alto che non sta nell' ascissa
-            alto=p;
-            top=true;
-        }
-        i++;
-    }
-    return Punto::distanceTo( alto , Punto( alto.getX() , 0 ) );
+    return Punto::distanceTo( getCoordinate()[2] , Punto( getCoordinate()[2].getX() , 0 ) );
 }
 
 double Triangolo::getArea() const{
@@ -84,11 +73,11 @@ Triangolo &Triangolo::specchia() const{
 Poligono& Triangolo::unisci(const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
     QVector<Punto> coord;
-    if((getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )//PROBLEMA: Anche se la somma è 180 esegue l'if !!
-        coord.push_back(Punto::origine);
+    if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) )
+        coord.push_back(Punto::origine);    //angolo != da 180
     for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
-    if((getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+    if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
     coord.push_back( getCoordinate()[2]);
     if(coord.size() == 3){
@@ -110,8 +99,7 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        //poligono con più di 5 lati;
-        return *(new Triangolo()); //tanto per compilare qua capire cge fare in questo caso
+        throw("poligonoConPiùDi5Lati"); //sarà una eccezione
     }
 }
 
@@ -122,7 +110,9 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
     p1 = p1.specchia();
-    return t1.unisci(p1);
+    Poligono& poligono = t1.unisci(p1); //garbage
+    poligono.ruota(p1.getAngoli()[0]);
+    return poligono;
 }
 
 

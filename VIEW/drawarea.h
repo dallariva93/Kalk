@@ -15,6 +15,7 @@ private:
     Poligono* poligono;
 
 public:
+    void setPoligono(Poligono*pol);
     DrawArea(Poligono*);
     static void sposta(Poligono* pol,double x, double y);
 
@@ -22,8 +23,8 @@ public:
 protected:
     void paintEvent(QPaintEvent *event=0);
 signals:
-
 public slots:
+
 };
 
 #endif // DRAWAREA_H

@@ -20,6 +20,11 @@ void DrawArea::sposta(Poligono* pol,double x, double y)
 
 
 
+void DrawArea::setPoligono(Poligono *pol)
+{
+    poligono=pol;
+}
+
 DrawArea::DrawArea(Poligono * pol):poligono(pol){
     QSize size(250,250);        //dimensione dell'area da disegno, se il poligono è più grande? PROBLEMA!
     setMaximumSize(size);

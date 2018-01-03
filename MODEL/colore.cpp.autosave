@@ -2,7 +2,7 @@
 #include<sstream>
 #include<iomanip>
 
-Colore::~Colore(){};
+Colore::~Colore(){}
 
 unsigned int Colore::HexToDec(std::string Hex){
     unsigned int dec;

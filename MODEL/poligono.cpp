@@ -16,7 +16,6 @@ double Poligono::getPerimetro() const{
 }
 
 Colore* Poligono::getColore() const{
-
     return color;
 }
 
@@ -53,16 +52,21 @@ QVector<double> Poligono::getLati() const{
 }
 
 void Poligono::ruota(Angolo angolo){
+    double min=-0.01, max=0.01;
     QVector<Punto> vertici=getCoordinate();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it){
-        double x = (it->getX()*cos(angolo.getAngolo())) + (it->getY()*sin(angolo.getAngolo()));
-        double y = ((it->getX())*sin(angolo.getAngolo())) - (it->getY()*cos(angolo.getAngolo()));
+        double x = (it->getX()*angolo.coseno()) + (it->getY()*angolo.seno());
+        if(min<x && x<max)  x=0;    //per pb. macchina
+        double y = ((it->getX())*angolo.seno()) - (it->getY()*angolo.coseno());
+        if(min<y && y<max)  y=0;    //per pb. macchina
     }
     double cosAngoloCorretto;
-    angolo.getAngolo()==90 ? cosAngoloCorretto=0 : cosAngoloCorretto=cos(angolo.getAngolo()*PI/180);
+    angolo.getAngolo()==90 ? cosAngoloCorretto=0 : cosAngoloCorretto=angolo.coseno();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it){
-        double x = (it->getX()*cosAngoloCorretto) - (it->getY()*sin(angolo.getAngolo()*PI/180));
-        double y = ((it->getX())*sin(angolo.getAngolo()*PI/180)) + (it->getY()*cosAngoloCorretto);
+        double x = (it->getX()*cosAngoloCorretto) - (it->getY()*angolo.seno());
+        if(min<x && x<max)  x=0;    //per pb. macchina
+        double y = ((it->getX())*angolo.seno()) + (it->getY()*cosAngoloCorretto);
+        if(min<y && y<max)  y=0;    //per pb. macchina
         *(it)=Punto(x,y);
     }
     setPunti(vertici);
@@ -71,7 +75,8 @@ void Poligono::ruota(Angolo angolo){
 QVector<double> Poligono::ordinaLati(QVector<double> lati, double lato){
     QVector<double> supporto;
     int index=lati.indexOf(lato);       //restituisce -1 se lato non è presente all'interno del vector
-    if(index==-1){std::cout<<"non è presente un lato in comune"; /*eccezione*/}
+    //    if(index==-1){std::cout<<"non è presente un lato in comune"; /*eccezione verrà verificata all'inserimento dati.*/}
+    if(index==0) return lati;   //poggia già sulla base giusta
     supporto=lati.mid(index);
     supporto+=lati.mid(0,index);
     return supporto;
@@ -80,13 +85,13 @@ QVector<double> Poligono::ordinaLati(QVector<double> lati, double lato){
 Punto Poligono::sen_cos(double lato, Angolo a) {
     double x=0, y=0;
     if(a.getAngolo() != 90){
-        x = lato * cos( a.getAngolo() * PI/180);
-        y = lato * sin( a.getAngolo() * PI/180);
+        x = lato * a.coseno();
+        y = lato * a.seno();
     } else {
         x = 0;
         y = lato;
     }
-    return Punto( x,y );
+   return Punto( x,y );
 }
 
 double Poligono::latoComune(const Poligono& p) const{
@@ -101,16 +106,6 @@ double Poligono::latoComune(const Poligono& p) const{
         }
     }
     return lato;
-/*
-    QVector<double> latiPrimo=getLati();
-    QVector<double> latiSecondo=p.getLati();
-    int index=0;
-    for(int i=0; i<numeroLati && index==-1; ++i){
-      index=latiPrimo.indexOf(latiSecondo[i]);
-      std::cout<<index;
-    }
-    return latiPrimo[index];
-*/
 }
 
 int Poligono::indexLato(double lato) const{
@@ -122,8 +117,7 @@ int Poligono::indexLato(double lato) const{
 QPolygon Poligono::toQPolygon(){
     QVector<QPoint> Qpunti;
 
-    for(int i=0; i<getLati().size(); ++i)
-    {
+    for(int i=0; i<getLati().size(); ++i){
         QPoint punto(getCoordinate()[i].getX(), getCoordinate()[i].getY());
         Qpunti.push_back(punto);
     }

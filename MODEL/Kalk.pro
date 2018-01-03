@@ -26,7 +26,9 @@ SOURCES += main.cpp \
     rettangolo.cpp \
     pentagonoregolare.cpp \
     ../VIEW/stylesheet.cpp \
-    ../VIEW/drawarea.cpp
+    ../VIEW/drawarea.cpp \
+    ../VIEW/trianglecreator.cpp \
+    ../VIEW/colorarea.cpp
 
 
 HEADERS  += \
@@ -43,7 +45,9 @@ HEADERS  += \
     rettangolo.h \
     pentagonoregolare.h \
     ../VIEW/stylesheet.h \
-    ../VIEW/drawarea.h
+    ../VIEW/drawarea.h \
+    ../VIEW/trianglecreator.h \
+    ../VIEW/colorarea.h
 
 
 #FORMS    += matricebase.ui

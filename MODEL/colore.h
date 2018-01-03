@@ -1,12 +1,14 @@
 #ifndef COLORE_H
 #define COLORE_H
 #include<iostream>
+#include<QColor>
 
 
 class Colore{
 protected:
     static unsigned int HexToDec(std::string Hex);
 public:
+    QColor toQcolor();
     virtual Colore* clone() const =0;
     virtual std::string getHex() const =0;
     virtual ~Colore()=0;

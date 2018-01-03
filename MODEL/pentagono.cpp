@@ -55,11 +55,11 @@ Pentagono &Pentagono::specchia() const
 Poligono& Pentagono::unisci(const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
     QVector<Punto> coord;
-    if((getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
+    if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) )
         coord.push_back(Punto::origine);
     for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
-    if((getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+    if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
     for(unsigned int i=2; i<getCoordinate().size(); ++i)
         coord.push_back( getCoordinate()[i]);
@@ -82,8 +82,7 @@ Poligono& Pentagono::unisci(const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        //poligono con più di 5 lati;
-        return *(new Triangolo()); //tanto per compilare qua capire cge fare in questo caso
+        throw("poligonoConPiùDi5Lati");
     }
 }
 
@@ -94,7 +93,10 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p = pol.cambiaBase(index);
     p = p.specchia();
-    return q.unisci(p);
+    Poligono& poligono = q.unisci(p); //garbage
+    poligono.ruota(p.getAngoli()[0]);
+    return poligono;
+
 }
 
 

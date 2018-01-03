@@ -37,7 +37,7 @@ void DrawArea::paintEvent(QPaintEvent *event)
     //sposta(&poligonoDisegnato,10,10);
     //QPoint nuovaOrigine((poligono->getLati()[0]-250)/2);
 
-    painter.translate((QPoint(-((poligono->getLati()[0]-250)/2),100)));
+    painter.translate((QPoint(-((poligono->getLati()[0]-250)/2),166)));
     painter.drawPolygon(poligonoDisegnato.toQPolygon());
 
 }

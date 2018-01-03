@@ -14,7 +14,7 @@ public:
     virtual void estendi(double);
     Pentagono &cambiaBase(int)const;
     Pentagono& specchia()const;
-    static Poligono& unisci(const Pentagono&, const Poligono&);
+    Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
 };
 

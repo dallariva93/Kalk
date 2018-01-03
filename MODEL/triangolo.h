@@ -16,7 +16,7 @@ public:
     void estendi(double);
     Triangolo& cambiaBase(int) const;
     Triangolo& specchia()const;
-    static Poligono& unisci(const Triangolo&, const Poligono&);
+    Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
 };
 

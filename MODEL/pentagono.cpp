@@ -38,7 +38,7 @@ void Pentagono::estendi(double fattore){
 
 Pentagono &Pentagono::cambiaBase(int n) const{
     QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
-    return *(new Pentagono(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]));
+    return *(new Pentagono(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4],getColore()));
 //eliminare garbage
 }
 
@@ -52,17 +52,17 @@ Pentagono &Pentagono::specchia() const
     return specchiato;
 }
 
-Poligono& Pentagono::unisci(const Pentagono& pe, const Poligono& pol){
-    Colore& col = *(pe.getColore()) + *(pol.getColore());
+Poligono& Pentagono::unisci(const Poligono& pol)const{
+    Colore& col = *(getColore()) + *(pol.getColore());
     QVector<Punto> coord;
-    if((pe.getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
+    if((getAngoli()[0] + pol.getAngoli()[0] ) != Angolo(180) )
         coord.push_back(Punto::origine);
     for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
-    if((pe.getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
-        coord.push_back( pe.getCoordinate()[1]);
-    for(unsigned int i=2; i<pe.getCoordinate().size(); ++i)
-        coord.push_back( pe.getCoordinate()[i]);
+    if((getAngoli()[1] + pol.getAngoli()[1]) != Angolo(180))
+        coord.push_back( getCoordinate()[1]);
+    for(unsigned int i=2; i<getCoordinate().size(); ++i)
+        coord.push_back( getCoordinate()[i]);
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());
         t.setPunti(coord);
@@ -94,7 +94,7 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p = pol.cambiaBase(index);
     p = p.specchia();
-    return unisci(q, p);
+    return q.unisci(p);
 }
 
 

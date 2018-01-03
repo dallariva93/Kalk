@@ -1,8 +1,8 @@
 #include "drawarea.h"
 #include "QBoxLayout"
-#include "pentagonoregolare.h"
-#include<triangolo.h>
-#include <rettangolo.h>
+#include "MODEL/pentagonoregolare.h"
+#include "MODEL/triangolo.h"
+#include "MODEL/rettangolo.h"
 
 
 

@@ -1,7 +1,7 @@
 #include "colorarea.h"
 #include <QPainter>
-#include <quadrato.h>
-#include <../VIEW/colorcreator.h>
+#include <MODEL/quadrato.h>
+#include <VIEW/colorcreator.h>
 
 
 ColorArea::ColorArea(Colore * col):colore(col)

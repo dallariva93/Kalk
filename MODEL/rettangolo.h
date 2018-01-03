@@ -1,6 +1,6 @@
 #ifndef RETTANGOLO_H
 #define RETTANGOLO_H
-#include<quadrilatero.h>
+#include<MODEL/quadrilatero.h>
 
 class Rettangolo : public Quadrilatero{
 

@@ -3,8 +3,8 @@
 #include <QLabel>
 #include <QImage>
 #include <QRgb>
-#include <../VIEW/stylesheet.h>
-#include <../MODEL/rgb.h>
+#include <VIEW/stylesheet.h>
+#include <MODEL/rgb.h>
 
 
 ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)

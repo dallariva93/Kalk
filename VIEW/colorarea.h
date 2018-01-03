@@ -2,7 +2,7 @@
 #define COLORAREA_H
 
 #include <QWidget>
-#include <colore.h>
+#include <MODEL/colore.h>
 
 
 class ColorArea : public QWidget

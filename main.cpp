@@ -18,10 +18,17 @@
 
 
 int main(int argc, char* argv[]){
-    Poligono* q=new Quadrato(100);
-    Poligono* p=new PentagonoRegolare(100);
-    Colore* col = new RGB(136,244,189);
 
+    Poligono* p=new Triangolo(300,150,300);
+    Colore* col = new RGB(136,244,189);
+    Poligono* q=new Triangolo(300,300,150);
+    Poligono* pent= new PentagonoRegolare(1000);
+    QApplication app(argc, argv);
+    Poligono* ris=&(*p+*q);
+    //std::cout<<ris->getCoordinate()[3].getX();//()<<"z";
+    DrawArea d(pent);
+    d.show();
+    return app.exec();
 
 
 

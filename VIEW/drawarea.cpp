@@ -38,11 +38,49 @@ void DrawArea::paintEvent(QPaintEvent *event)
     painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
     painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
 
-    Poligono& poligonoDisegnato=poligono->specchia();
     //sposta(&poligonoDisegnato,10,10);
     //QPoint nuovaOrigine((poligono->getLati()[0]-250)/2);
 
-    painter.translate((QPoint(-((poligono->getLati()[0]-250)/2),166)));
+    double xTo0=0;
+    double yTo0=0;
+    double neg=0;
+    for(int i=0; i<poligono->getCoordinate().size(); ++i)
+    {
+
+        if(xTo0<poligono->getCoordinate()[i].getX())
+            xTo0=poligono->getCoordinate()[i].getX();
+
+        if(yTo0<poligono->getCoordinate()[i].getY())
+            yTo0=poligono->getCoordinate()[i].getY();
+        if(poligono->getCoordinate()[i].getX()<0 && neg>poligono->getCoordinate()[i].getX())
+            neg=poligono->getCoordinate()[i].getX();
+    }
+    xTo0-=neg;
+    std::cout<<xTo0<<"-"<<yTo0<<"|";
+
+    Poligono& poligonoDisegnato=poligono->specchia();
+    double scaledxTo0=0;
+    double scaledyTo0=0;
+
+    if(xTo0>=250 || yTo0>=250)
+    {
+        double scala;
+        xTo0>yTo0 ? scala=(250/xTo0)-0.1 : scala=(250/yTo0)-0.1;
+       painter.scale(scala,scala);
+       scaledxTo0=xTo0*(scala);
+       scaledyTo0=yTo0*(scala);
+       painter.setViewport(((250-scaledxTo0)/2),(250-scaledyTo0)/2,250,250);
+    }
+    else
+    {
+         painter.setViewport((250-xTo0)/2,(250-yTo0)/2,250,250);
+
+    }
+painter.translate(0,yTo0);
+    std::cout<<scaledxTo0<<"-"<<scaledyTo0;
+
+
+
     painter.drawPolygon(poligonoDisegnato.toQPolygon());
 
 }

@@ -17,7 +17,7 @@ public:
     Poligono(unsigned int, std::string, Colore*, QVector<Punto> punti=QVector<Punto>());
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
-    virtual void estendi(double) =0;       //meglio farla pura? da pensarci
+    virtual void estendi(double) =0;
     virtual Poligono& cambiaBase(int) const =0;
     virtual Colore* getColore() const;
     void setColore(Colore*);    //void setColore(const Colore *); da errore non  capisco perchè!!

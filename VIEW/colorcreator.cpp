@@ -11,6 +11,8 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 {
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
+    setMinimumHeight(150);
+    setMaximumHeight(150);
 
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
 
@@ -29,10 +31,10 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 
     //CREO DEI LABEL PER IDENTIFICARE RED GREEN BLUE E L'ESADECIMALE
 
-    QLabel* redLabel = new QLabel(tr("Rosso:"));
-    QLabel* greenLabel = new QLabel(tr("Verde:"));
-    QLabel* blueLabel = new QLabel(tr("Blue:"));
-    QLabel* hexString = new QLabel(tr("Colore:"));
+    redLabel = new QLabel(tr("Rosso:"));
+    greenLabel = new QLabel(tr("Verde:"));
+    blueLabel = new QLabel(tr("Blue:"));
+    hexString = new QLabel(tr("Colore:"));
     hexValue=new QLineEdit("#000000");
     hexValue->setReadOnly(true);
 
@@ -61,7 +63,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 
     //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
 
-    QGridLayout* layout=new QGridLayout;
+    layout=new QGridLayout;
     layout->addWidget(red,0,1);
     layout->addWidget(redLabel,0,0);
     layout->addWidget(redLCD,0,2);
@@ -112,5 +114,17 @@ void ColorCreator::getB(int b)
     emit changeColor(a);
 }
 
-
-
+ColorCreator::~ColorCreator(){
+    delete red;
+    delete green;
+    delete blue;
+    delete redLCD;
+    delete greenLCD;
+    delete blueLCD;
+    delete hexValue;
+    delete redLabel;
+    delete greenLabel;
+    delete blueLabel;
+    delete hexString;
+    delete layout;
+}

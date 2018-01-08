@@ -4,7 +4,7 @@
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     setWindowTitle("Triangle!");      //titolo finestra
 
-    QSize size(400,150);
+    QSize size(500,150);
     setMaximumSize(size);
     setMinimumSize(size);
 
@@ -32,15 +32,21 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     latoC= new QLabel(tr("Lato C:"));
     angoloA = new QLabel(tr("Angolo:"));
     angoloB = new QLabel(tr("Angolo:"));
+    colore = new QLabel(tr("Colore:"));
 
     angoloB->setVisible(false);
     latoC->setVisible(false);
 
     saveButton = new QPushButton(tr("Crea"), this);
+    colori= new QComboBox;
+    colori->addItem(QString("colori"));
+    //ciclo che riempe colori con tutti i colori creati
+
 
     connect(radio1, SIGNAL(clicked(bool)), this, SLOT(dueLatiUnAngolo(bool)));
     connect(radio2, SIGNAL(clicked(bool)), this, SLOT(dueAngoliUnLato(bool)));
     connect(radio3, SIGNAL(clicked(bool)), this, SLOT(treLati(bool)));
+    //connect per il pulsante crea
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -58,6 +64,9 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     formLayout->addWidget(angolo1);
     formLayout->addWidget(angoloB);
     formLayout->addWidget(angolo2);
+    formLayout->addWidget(colore);
+    formLayout->addWidget(colori);
+
 
     mainLayout = new QVBoxLayout;
     mainLayout->addLayout(choiceLayout);
@@ -132,6 +141,8 @@ void TriangleCreator::dueLatiUnAngolo(bool)
     formLayout->addWidget(lato2);
     formLayout->addWidget(angoloA);
     formLayout->addWidget(angolo1);
+    formLayout->addWidget(colore);
+    formLayout->addWidget(colori);
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
@@ -165,6 +176,8 @@ void TriangleCreator::dueAngoliUnLato(bool a)
     formLayout->addWidget(angolo1);
     formLayout->addWidget(angoloB);
     formLayout->addWidget(angolo2);
+    formLayout->addWidget(colore);
+    formLayout->addWidget(colori);
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
 }
@@ -197,6 +210,8 @@ void TriangleCreator::treLati(bool)
     formLayout->addWidget(lato2);
     formLayout->addWidget(latoC);
     formLayout->addWidget(lato3);
+    formLayout->addWidget(colore);
+    formLayout->addWidget(colori);
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
 

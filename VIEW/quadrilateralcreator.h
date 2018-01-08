@@ -1,5 +1,5 @@
-#ifndef TRIANGLECREATOR_H
-#define TRIANGLECREATOR_H
+#ifndef QUADRILATERALCREATOR_H
+#define QUADRILATERALCREATOR_H
 
 #include <QMainWindow>
 #include <QWidget>
@@ -11,9 +11,9 @@
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QRadioButton>
-#include <QListWidgetItem>
 
-class TriangleCreator : public QWidget{
+class QuadrilateralCreator : public QWidget
+{
     Q_OBJECT
 
 private:
@@ -39,19 +39,12 @@ private:
     QVBoxLayout *choiceLayout;
     QHBoxLayout *formLayout;
 
-    QComboBox *colori;
-
 public:
-    TriangleCreator(QWidget *parent=0);
     void refreshFormWidget();
 
+signals:
 
 public slots:
-    void dueAngoliUnLato(bool);
-    void treLati(bool);
-    void dueLatiUnAngolo(bool);
-
-
 };
 
-#endif // TRIANGLECREATOR_H
+#endif // QUADRILATERALCREATOR_H

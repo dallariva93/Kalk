@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     VIEW/drawarea.cpp \
     VIEW/trianglecreator.cpp \
     VIEW/colorarea.cpp \
-    VIEW/quadrilateralcreator.cpp
+    VIEW/quadrilateralcreator.cpp \
+    VIEW/pentagoncreator.cpp
 
 
 HEADERS  += \
@@ -49,4 +50,5 @@ HEADERS  += \
     VIEW/drawarea.h \
     VIEW/trianglecreator.h \
     VIEW/colorarea.h \
-    VIEW/quadrilateralcreator.h
+    VIEW/quadrilateralcreator.h \
+    VIEW/pentagoncreator.h

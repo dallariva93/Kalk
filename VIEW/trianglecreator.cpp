@@ -3,7 +3,7 @@
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(500,150);
+    QSize size(500,200);
     setMaximumSize(size);
     setMinimumSize(size);
 

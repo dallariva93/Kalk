@@ -1,6 +1,7 @@
-#ifndef QUADRILATERALCREATOR_H
-#define QUADRILATERALCREATOR_H
+#ifndef PENTAGONCREATOR_H
+#define PENTAGONCREATOR_H
 
+#include <QWidget>
 #include <QMainWindow>
 #include <QWidget>
 #include <QLabel>
@@ -10,31 +11,34 @@
 #include <QGroupBox>
 #include <QRadioButton>
 
-class QuadrilateralCreator : public QWidget
+class PentagonCreator : public QWidget
 {
     Q_OBJECT
 private:
     QRadioButton *radio1;
     QRadioButton *radio2;
-    QRadioButton *radio3;
 
     QLineEdit *lato1;
     QLineEdit *lato2;
     QLineEdit *lato3;
     QLineEdit *lato4;
+    QLineEdit *lato5;
     QLineEdit *angolo1;
     QLineEdit *angolo2;
     QLineEdit *angolo3;
     QLineEdit *angolo4;
+    QLineEdit *angolo5;
 
     QLabel *latoA;
     QLabel *latoB;
     QLabel *latoC;
     QLabel *latoD;
+    QLabel *latoE;
     QLabel *angoloA;
     QLabel *angoloB;
     QLabel *angoloC;
     QLabel *angoloD;
+    QLabel *angoloE;
 
     QLabel *colore;
 
@@ -44,18 +48,17 @@ private:
     QHBoxLayout *colorLayout;
     QGridLayout *formLayout;
     QComboBox *colori;
-
-
 public:
-    QuadrilateralCreator(QWidget *parent=0);
+    PentagonCreator(QWidget *parent = 0);
     void refreshFormWidget();
+
 
 signals:
 
+
 public slots:
-    void formQuadrato(bool);
-    void formRettangolo(bool);
-    void formQuadrilatero(bool);
+    void formIrregolare(bool);
+    void formRegolare(bool);
 };
 
-#endif // QUADRILATERALCREATOR_H
+#endif // PENTAGONCREATOR_H

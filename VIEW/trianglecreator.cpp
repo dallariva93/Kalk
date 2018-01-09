@@ -3,9 +3,8 @@
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(500,200);
+    QSize size(450,200);
     setMaximumSize(size);
-    setMinimumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);

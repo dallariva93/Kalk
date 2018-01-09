@@ -17,19 +17,17 @@
 #include"VIEW/colorarea.h"
 #include"VIEW/quadrilateralcreator.h"
 #include"VIEW/pentagoncreator.h"
+#include"VIEW/polygoncreator.h"
 
 
 int main(int argc, char* argv[]){
 
-    Poligono* p=new Triangolo(300,150,300);
-    Colore* col = new RGB(136,244,189);
-    Poligono* q=new Triangolo(300,300,150);
-    Poligono* pent= new PentagonoRegolare(1000, col);
+
     QApplication app(argc,argv);
     //TriangleCreator* t=new TriangleCreator();
-    PentagonCreator* t= new PentagonCreator;
+    PolygonCreator* t= new PolygonCreator;
     //std::cout<<ris->getCoordinate()[3].getX();//()<<"z";
-    ColorCreator* c=new ColorCreator();
+    //ColorCreator* c=new ColorCreator();
     //c->show();
     t->show();
 

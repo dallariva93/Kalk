@@ -3,9 +3,8 @@
 
 QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(500,200);
+    QSize size(500,250);
     setMaximumSize(size);
-    setMinimumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco un quadrato dato un lato"),this);
     radio2 = new QRadioButton(tr("Costruisco un rettangolo dati lato minore e maggiore"),this);

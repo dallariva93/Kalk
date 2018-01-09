@@ -15,6 +15,7 @@
 #include"VIEW/drawarea.h"
 #include"VIEW/trianglecreator.h"
 #include"VIEW/colorarea.h"
+#include"VIEW/quadrilateralcreator.h"
 
 
 int main(int argc, char* argv[]){
@@ -24,7 +25,8 @@ int main(int argc, char* argv[]){
     Poligono* q=new Triangolo(300,300,150);
     Poligono* pent= new PentagonoRegolare(1000, col);
     QApplication app(argc,argv);
-    TriangleCreator* t=new TriangleCreator();
+    //TriangleCreator* t=new TriangleCreator();
+    QuadrilateralCreator* t= new QuadrilateralCreator;
     //std::cout<<ris->getCoordinate()[3].getX();//()<<"z";
     ColorCreator* c=new ColorCreator();
     //c->show();

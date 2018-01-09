@@ -2,7 +2,6 @@
 #include <iostream>
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
-    setWindowTitle("Triangle!");      //titolo finestra
 
     QSize size(500,150);
     setMaximumSize(size);
@@ -20,8 +19,6 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     lato3 = new QLineEdit(this);
     angolo1 = new QLineEdit(this);
     angolo2 = new QLineEdit(this);
-
-    lato1->setMinimumWidth(1);
 
     lato3->setVisible(false);
     angolo2->setVisible(false);

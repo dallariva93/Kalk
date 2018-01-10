@@ -1,5 +1,7 @@
 #include "quadrato.h"
 
+Quadrato::Quadrato() : Quadrilatero() {};
+
 Quadrato::Quadrato(double lato, Colore* col) :
     Quadrilatero(lato,lato,lato,lato,Angolo(90), Angolo(90), Angolo(90), Angolo(90), col){}
 
@@ -14,6 +16,10 @@ double Quadrato::getPerimetro()const{
 void Quadrato::estendi(double fattore){
     Quadrato temp(getLati().first()*fattore);
     setPunti(temp.getCoordinate());
+}
+
+Quadrato& Quadrato::zoom(double fattore) const{
+    return *(new Quadrato(getLati()[0]*fattore));
 }
 
 void Quadrato::cambiaBase(double lato){

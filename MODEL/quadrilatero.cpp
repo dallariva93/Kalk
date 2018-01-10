@@ -32,6 +32,11 @@ void Quadrilatero::estendi(double fattore){
     setPunti(temp.getCoordinate());
 }
 
+Quadrilatero& Quadrilatero::zoom(double fattore) const{
+    return *(new Quadrilatero(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore,
+            getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]));
+}
+
 Quadrilatero& Quadrilatero::cambiaBase(int n)const{
     QVector<double> lati = ordinaLati(getLati(),getLati()[n]);
     return *(new Quadrilatero(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3],getColore()));
@@ -50,14 +55,18 @@ Quadrilatero &Quadrilatero::specchia() const{
 Poligono& Quadrilatero::unisci( const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
     QVector<Punto> coord;
-    if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) )
+    bool piatto=false;
+    if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) ){
         coord.push_back(Punto::origine);
+        piatto = true;
+    }
     for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
     if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
     coord.push_back( getCoordinate()[2]);
-    coord.push_back( getCoordinate()[3]);
+    if(piatto)      coord.push_back( getCoordinate()[3]);
+    else            coord.push_front( getCoordinate()[3]);
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());
         t.setPunti(coord);

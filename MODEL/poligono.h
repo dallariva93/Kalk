@@ -18,6 +18,7 @@ public:
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
     virtual void estendi(double) =0;
+    virtual Poligono& zoom(double) const=0;
     virtual Poligono& cambiaBase(int) const =0;
     virtual Colore* getColore() const;
     void setColore(Colore*);    //void setColore(const Colore *); da errore non  capisco perchè!!
@@ -34,7 +35,7 @@ public:
     virtual Poligono& operator+(const Poligono&) const=0;
     int indexLato(double)const;
 
-    QPolygon toQPolygon();
+    QPolygonF toQPolygon();
 };
 
 #endif // POLIGONO_H

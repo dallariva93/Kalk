@@ -114,12 +114,13 @@ int Poligono::indexLato(double lato) const{
     return index;
 }
 
-QPolygon Poligono::toQPolygon(){
-    QVector<QPoint> Qpunti;
-
+QPolygonF Poligono::toQPolygon(){
+    QVector<QPointF> Qpunti;
     for(int i=0; i<getLati().size(); ++i){
-        QPoint punto(getCoordinate()[i].getX(), getCoordinate()[i].getY());
+        QPointF punto;
+        punto.setX(getCoordinate()[i].getX());
+        punto.setY(getCoordinate()[i].getY());
         Qpunti.push_back(punto);
     }
-    return QPolygon(Qpunti);
+    return QPolygonF(Qpunti);
 }

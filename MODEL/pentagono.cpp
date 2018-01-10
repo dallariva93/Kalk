@@ -10,10 +10,10 @@ Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE,
     QVector<Punto> punti;
     punti.push_back(Punto::origine);    //coordinata A
     punti.push_back(Punto(latoAB,0));   //coordinata B
-    Triangolo t1(latoAB, latoBC, b);
-    double latoAC = t1.getLati()[1];
-    Angolo alfa = t1.getAngoli()[2];
-    punti.push_back( sen_cos(latoAC,alfa) );    //coordinata C
+
+    Angolo b2 = 180-b.getAngolo();
+    Triangolo t1(latoAB, latoBC, b2);
+    punti.push_back(Punto(  (punti[1].getX()+(latoBC*b2.coseno()))  ,   (latoBC*b2.seno())));
     Triangolo t2(latoAE, latoDE, e);
     double latoAD = t2.getLati()[1];
     Angolo beta = t2.getAngoli()[1];
@@ -34,6 +34,13 @@ void Pentagono::estendi(double fattore){
     Pentagono  p(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
             getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
     setPunti(p.getCoordinate());
+}
+
+Pentagono& Pentagono::zoom(double fattore) const{
+/*    std::cout<<"|"<<getLati()[0]*fattore<<"|"<<getLati()[1]*fattore<<"|"<<getLati()[2]*fattore<<"|"<<getLati()[3]*fattore<<"|"<<getLati()[4]*fattore<<std::endl;
+    std::cout<<"-"<<getAngoli()[0].getAngolo()<<"-"<<getAngoli()[1].getAngolo()<<"-"<<getAngoli()[2].getAngolo()<<"-"<<getAngoli()[3].getAngolo()<<"-"<<getAngoli()[4].getAngolo()<<std::endl;
+*/    return *(new Pentagono(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
+            getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]));
 }
 
 Pentagono &Pentagono::cambiaBase(int n) const{

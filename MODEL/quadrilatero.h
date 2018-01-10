@@ -12,6 +12,7 @@ public:
     double getArea() const;
     void ruota();
     virtual void estendi(double);
+    Quadrilatero& zoom(double) const;
     Quadrilatero &cambiaBase(int)const;
     Quadrilatero& specchia()const;
     Poligono& unisci(const Poligono&) const;

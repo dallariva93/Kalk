@@ -14,6 +14,7 @@ public:
     double getAltezza() const;
     double getArea() const;
     void estendi(double);
+    Triangolo& zoom(double) const;
     Triangolo& cambiaBase(int) const;
     Triangolo& specchia()const;
     Poligono& unisci(const Poligono&) const;

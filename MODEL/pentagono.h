@@ -12,6 +12,7 @@ public:
               const Angolo&, const Angolo&, Colore* col=new RGB() );
     double getArea() const;
     virtual void estendi(double);
+    Pentagono& zoom(double) const;
     Pentagono &cambiaBase(int)const;
     Pentagono& specchia()const;
     Poligono& unisci(const Poligono&) const;

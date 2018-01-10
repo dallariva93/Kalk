@@ -6,10 +6,12 @@
 class Quadrato : public Quadrilatero{
 
 public:
+    Quadrato();
     Quadrato(double lato, Colore *col=new RGB());
     double getArea()const;
     double getPerimetro()const;
     void estendi(double);
+    Quadrato& zoom(double)const;
     void cambiaBase(double);
     Quadrato& specchia()const;
 

@@ -19,17 +19,20 @@
 
 int main(int argc, char* argv[]){
 
-    Poligono* p=new Triangolo(300,150,300);
     Colore* col = new RGB(136,244,189);
-    Poligono* q=new Triangolo(300,300,150);
-    Poligono* pent= new PentagonoRegolare(1000, col);
-    QApplication app(argc,argv);
-    TriangleCreator* t=new TriangleCreator();
-    //std::cout<<ris->getCoordinate()[3].getX();//()<<"z";
-    ColorCreator* c=new ColorCreator();
-    //c->show();
-    t->show();
+    Poligono* o = new Triangolo(15,20,10, col);
+    Poligono* k = new Triangolo(10,10,Angolo(90),col);
+    Poligono* f = new Triangolo(10,50,50,col);
+    Poligono* q=new Triangolo(300,200,300,col);
+    Poligono* pent= new PentagonoRegolare(100, col);
+    Poligono* t= new Triangolo(10,10,10,col);
+    Poligono* qu = new Quadrilatero(10,60,10,60,Angolo(90),Angolo(90),Angolo(90),Angolo(90));
+    Poligono* a = new Quadrilatero(10,15,30,20,Angolo(80),Angolo(120), Angolo(60), Angolo(100));
+    Poligono* ris=&(*t+*a);
 
+    QApplication app(argc,argv);
+    DrawArea d(ris);
+    d.show();
     return app.exec();
 
 }

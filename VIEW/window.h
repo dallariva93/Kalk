@@ -9,8 +9,7 @@
 #include "colorcreator.h"
 #include "operandselector.h"
 
-class Window : public QWidget
-{
+class Window : public QWidget{
     Q_OBJECT
 public:
     PolygonCreator *creatorP;

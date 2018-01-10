@@ -11,8 +11,7 @@
 #include <QGridLayout>
 #include <QPushButton>
 
-class ColorCreator : public QWidget
-{
+class ColorCreator : public QWidget{
     Q_OBJECT
 private:
     QSlider* red;

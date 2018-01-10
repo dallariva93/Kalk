@@ -10,8 +10,7 @@
 #include <QGroupBox>
 #include <QRadioButton>
 
-class QuadrilateralCreator : public QWidget
-{
+class QuadrilateralCreator : public QWidget{
     Q_OBJECT
 private:
     QRadioButton *radio1;

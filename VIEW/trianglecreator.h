@@ -48,12 +48,10 @@ public:
     TriangleCreator(QWidget *parent=0);
     void refreshFormWidget();
 
-
 public slots:
     void dueAngoliUnLato(bool);
     void treLati(bool);
     void dueLatiUnAngolo(bool);
-
 
 };
 

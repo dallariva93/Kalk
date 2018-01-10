@@ -9,7 +9,6 @@ ColorArea::ColorArea(Colore * col):colore(col)
     QSize size(250,250);        //dimensione dell'area da disegno, se il poligono è più grande? PROBLEMA!
     setMaximumSize(size);
     setMinimumSize(size);
-
 }
 
 void ColorArea::setColore(Colore* col)

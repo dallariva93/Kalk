@@ -2,13 +2,14 @@
 #define DRAWAREA_H
 
 #include <QWidget>
+#include <QFrame>
 #include <QPainter>
 #include <MODEL/poligono.h>
 
 //DRAWAREA È L'AREA DI DISEGNO PER OGNI POLIGONO, CI SARÀ SOLO UN OGGETTO VISIBILE CONTEMPORANEMANENTE,
 //PER DISEGNARE UN OGGETTO SI COSTRUISCE LA DRAWAREA DI QUELL'OGGETTO USANDO IL COSTRUTTORE
 
-class DrawArea : public QWidget
+class DrawArea : public QFrame
 {
     Q_OBJECT
 private:

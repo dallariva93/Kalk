@@ -34,7 +34,9 @@ SOURCES += main.cpp \
     VIEW/polygoncreator.cpp \
     VIEW/dataarea.cpp \
     VIEW/window.cpp \
-    VIEW/operandselector.cpp
+    VIEW/operandselector.cpp \
+    VIEW/boxbutton.cpp \
+    CONTROLLER/controlbuttons.cpp
 
 
 HEADERS  += \
@@ -59,4 +61,6 @@ HEADERS  += \
     VIEW/polygoncreator.h \
     VIEW/dataarea.h \
     VIEW/window.h \
-    VIEW/operandselector.h
+    VIEW/operandselector.h \
+    VIEW/boxbutton.h \
+    CONTROLLER/controlbuttons.h

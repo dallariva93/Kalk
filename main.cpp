@@ -21,6 +21,7 @@
 #include"VIEW/dataarea.h"
 #include"VIEW/window.h"
 #include"VIEW/operandselector.h"
+#include"VIEW/boxbutton.h"
 
 int main(int argc, char* argv[]){
 
@@ -36,12 +37,13 @@ int main(int argc, char* argv[]){
     Poligono* ris=&(*t+*a);
 /*
     QApplication app(argc,argv);
-    Window* t= new Window;
-    t->show();
+    Window* y= new Window;
+    y->show();
 */
     QApplication app(argc,argv);
-    DrawArea d(ris);
-    d.show();
+    BoxButtons* d=new BoxButtons;
+    d->show();
+
     return app.exec();
 
 }

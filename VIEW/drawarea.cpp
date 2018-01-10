@@ -24,6 +24,7 @@ DrawArea::DrawArea(Poligono * pol):poligono(pol){
 }  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event){
+if(poligono){
     double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
 
     QPainter painter(this);
@@ -53,4 +54,4 @@ void DrawArea::paintEvent(QPaintEvent *event){
     spostaB = (250-(altezza*scala))/2;
     painter.translate(spostaA,spostaB+(altezza*scala));
     painter.drawPolygon(p);
-}
+}}

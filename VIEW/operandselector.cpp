@@ -8,7 +8,7 @@ OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent)
 
     selector = new QComboBox;
     operando = new QLabel;
-    operando->setText("Operatore: ");
+    operando->setText("Operando: ");
     selector->insertItem(0,"operando1");
 
     mainLayout = new QHBoxLayout;

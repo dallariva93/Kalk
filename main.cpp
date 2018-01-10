@@ -34,14 +34,10 @@ int main(int argc, char* argv[]){
     Poligono* qu = new Quadrilatero(10,60,10,60,Angolo(90),Angolo(90),Angolo(90),Angolo(90));
     Poligono* a = new Quadrilatero(10,15,30,20,Angolo(80),Angolo(120), Angolo(60), Angolo(100));
     Poligono* ris=&(*t+*a);
-/*
+
     QApplication app(argc,argv);
-    Window* t= new Window;
-    t->show();
-*/
-    QApplication app(argc,argv);
-    DrawArea d(ris);
-    d.show();
+    Window* y= new Window;
+    y->show();
     return app.exec();
 
 }

@@ -24,33 +24,35 @@ DrawArea::DrawArea(Poligono * pol):poligono(pol){
 }  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event){
-    double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
+    if(poligono){
+        double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
 
-    QPainter painter(this);
-    painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
-    painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
+        QPainter painter(this);
+        painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
+        painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
 
-    for(int i=0; i<poligono->getCoordinate().size(); ++i){
-        if(larghezza<poligono->getCoordinate()[i].getX())
-            larghezza=poligono->getCoordinate()[i].getX();
-        if(altezza<poligono->getCoordinate()[i].getY())
-            altezza=poligono->getCoordinate()[i].getY();
-        if(poligono->getCoordinate()[i].getX()<0 && valNeg>poligono->getCoordinate()[i].getX())
-            valNeg=poligono->getCoordinate()[i].getX();
+        for(int i=0; i<poligono->getCoordinate().size(); ++i){
+            if(larghezza<poligono->getCoordinate()[i].getX())
+                larghezza=poligono->getCoordinate()[i].getX();
+            if(altezza<poligono->getCoordinate()[i].getY())
+                altezza=poligono->getCoordinate()[i].getY();
+            if(poligono->getCoordinate()[i].getX()<0 && valNeg>poligono->getCoordinate()[i].getX())
+                valNeg=poligono->getCoordinate()[i].getX();
+        }
+        larghezza-=valNeg;    //std::cout<<larghezza<<"-"<<altezza<<"|"<<std::endl;
+
+        larghezza>altezza ? scala=(200/larghezza) : scala=(150/altezza);
+
+        QPolygonF p = (poligono->zoom(scala).specchia()).toQPolygon();
+        for(unsigned int i=0; i<poligono->zoom(scala).getLati().size(); ++i){   //calcolo il punto minimo di X
+            if(poligono->zoom(scala).getCoordinate()[i].getX() < puntoMinX)
+                puntoMinX = poligono->zoom(scala).getCoordinate()[i].getX();
+            //std::cout<<poligono->zoom(scala).getCoordinate()[i].getX()<<" , "<<poligono->zoom(scala).getCoordinate()[i].getY()<<std::endl;
+            //std::cout<<"## "<<poligono->zoom(scala).getLati()[i]<<std::endl;
+        }
+        spostaA = (((400-(larghezza*scala))/2)-(puntoMinX));
+        spostaB = (250-(altezza*scala))/2;
+        painter.translate(spostaA,spostaB+(altezza*scala));
+        painter.drawPolygon(p);
     }
-    larghezza-=valNeg;    //std::cout<<larghezza<<"-"<<altezza<<"|"<<std::endl;
-
-    larghezza>altezza ? scala=(200/larghezza) : scala=(150/altezza);
-
-    QPolygonF p = (poligono->zoom(scala).specchia()).toQPolygon();
-    for(unsigned int i=0; i<poligono->zoom(scala).getLati().size(); ++i){   //calcolo il punto minimo di X
-        if(poligono->zoom(scala).getCoordinate()[i].getX() < puntoMinX)
-            puntoMinX = poligono->zoom(scala).getCoordinate()[i].getX();
-        //std::cout<<poligono->zoom(scala).getCoordinate()[i].getX()<<" , "<<poligono->zoom(scala).getCoordinate()[i].getY()<<std::endl;
-        //std::cout<<"## "<<poligono->zoom(scala).getLati()[i]<<std::endl;
-    }
-    spostaA = (((400-(larghezza*scala))/2)-(puntoMinX));
-    spostaB = (250-(altezza*scala))/2;
-    painter.translate(spostaA,spostaB+(altezza*scala));
-    painter.drawPolygon(p);
 }

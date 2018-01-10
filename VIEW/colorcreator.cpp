@@ -11,8 +11,9 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 {
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
-    setMinimumHeight(150);
-    setMaximumHeight(150);
+    QSize size(250,170);
+    setMaximumSize(size);
+    setMinimumSize(size);
 
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
 
@@ -38,6 +39,9 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     hexValue=new QLineEdit("#000000");
     hexValue->setReadOnly(true);
 
+    saveButton = new QPushButton;
+    saveButton->setText("Crea");
+
     //MODIFICO GRAFICAMENTE GLI SLIDER E GLI LCD NUMBER: APPLICO DEI FOGLI DI STILE, MODIFICO IL NUMERO E TOLGO IL RIQUADRO
 
     red->setStyleSheet(Stylesheet::sliderStyle());
@@ -62,7 +66,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     connect(this,SIGNAL(changeColor(QString)),color,SLOT(setStyleSheet(QString)));
 
     //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
-
+    mainLayout = new QVBoxLayout;
     layout=new QGridLayout;
     layout->addWidget(red,0,1);
     layout->addWidget(redLabel,0,0);
@@ -76,8 +80,9 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     layout->addWidget(hexString,3,0);
     layout->addWidget(hexValue,3,1);
     layout->addWidget(color,3,2);
-    setLayout(layout);
-
+    mainLayout->addLayout(layout);
+    mainLayout->addWidget(saveButton);
+    setLayout(mainLayout);
 }
 
 

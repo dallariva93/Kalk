@@ -2,11 +2,9 @@
 #include <iostream>
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
-    setWindowTitle("Triangle!");      //titolo finestra
 
-    QSize size(500,150);
+    QSize size(450,200);
     setMaximumSize(size);
-    setMinimumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);
@@ -20,8 +18,6 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     lato3 = new QLineEdit(this);
     angolo1 = new QLineEdit(this);
     angolo2 = new QLineEdit(this);
-
-    lato1->setMinimumWidth(1);
 
     lato3->setVisible(false);
     angolo2->setVisible(false);

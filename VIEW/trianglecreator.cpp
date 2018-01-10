@@ -3,7 +3,7 @@
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(450,200);
+    QSize size(450,350);
     setMaximumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);

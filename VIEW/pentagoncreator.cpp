@@ -3,7 +3,7 @@
 
 PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
 {
-    QSize size(450,300);
+    QSize size(450,350);
     setMaximumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);

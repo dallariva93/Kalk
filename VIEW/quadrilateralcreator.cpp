@@ -3,7 +3,7 @@
 
 QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(500,250);
+    QSize size(500,350);
     setMaximumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco un quadrato dato un lato"),this);

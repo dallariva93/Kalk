@@ -23,16 +23,7 @@ DrawArea::DrawArea(Poligono * pol):poligono(pol){
     setMaximumSize(size);
     setMinimumSize(size);
     setStyleSheet("border: 1px solid grey; background-color: white;");
-<<<<<<< HEAD
 
-=======
-    QPalette pal = palette();
-
-    // set black background
-    pal.setColor(QPalette::Background, Qt::white);
-    setAutoFillBackground(true);
-    setPalette(pal);
->>>>>>> 87164a1fab47a9550d046f6f6eded65220392b47
 }  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event){

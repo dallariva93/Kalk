@@ -8,6 +8,7 @@
 #include "polygoncreator.h"
 #include "colorcreator.h"
 #include "operandselector.h"
+#include "boxbutton.h"
 
 class Window : public QWidget{
     Q_OBJECT
@@ -18,11 +19,14 @@ public:
     DataArea *areaD;
     OperandSelector *operandoUno;
     OperandSelector *operandoDue;
+    BoxButtons *pulsanti;
+
 
     QHBoxLayout *areaLayout;
     QHBoxLayout *creatorLayout;
     QHBoxLayout *operandLayout;
     QVBoxLayout *mainLayout;
+    QVBoxLayout *colorCButtonsLayout;
 
 public:
     Window(QWidget *parent = 0);

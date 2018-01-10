@@ -2,7 +2,7 @@
 
 PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent)
 {
-    QSize size(400,250), buttonSize(100,25);
+    QSize size(400,350), buttonSize(100,25);
     setMaximumSize(size);
     setMinimumSize(size);
 

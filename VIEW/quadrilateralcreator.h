@@ -26,6 +26,7 @@ private:
     QLineEdit *angolo2;
     QLineEdit *angolo3;
     QLineEdit *angolo4;
+    QLineEdit *nome;
 
     QLabel *latoA;
     QLabel *latoB;
@@ -35,6 +36,7 @@ private:
     QLabel *angoloB;
     QLabel *angoloC;
     QLabel *angoloD;
+    QLabel *labelNome;
 
     QLabel *colore;
 

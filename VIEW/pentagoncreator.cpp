@@ -3,7 +3,7 @@
 
 PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
 {
-    QSize size(450,200);
+    QSize size(450,300);
     setMaximumSize(size);
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
@@ -20,6 +20,7 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     angolo3 = new QLineEdit(this);
     angolo4 = new QLineEdit(this);
     angolo5 = new QLineEdit(this);
+    nome = new QLineEdit(this);
 
     lato2->setVisible(false);
     lato3->setVisible(false);
@@ -44,6 +45,7 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     angoloD = new QLabel(tr("Angolo:"));
     angoloE = new QLabel(tr("Angolo:"));
     colore = new QLabel(tr("Colore:"));
+    labelNome = new QLabel(tr("Nome:"));
 
     latoB->setVisible(false);
     latoC->setVisible(false);
@@ -71,6 +73,8 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(colore,0,2);
     formLayout->addWidget(colori,0,3);
+    formLayout->addWidget(labelNome,0,4);
+    formLayout->addWidget(nome,0,5);
 
 
     mainLayout = new QVBoxLayout;
@@ -103,6 +107,8 @@ void PentagonCreator::refreshFormWidget()
     formLayout->removeWidget(angoloD);
     formLayout->removeWidget(angoloE);
     formLayout->removeWidget(colore);
+    formLayout->removeWidget(nome);
+    formLayout->removeWidget(labelNome);
 
     delete lato1;
     delete lato2;
@@ -125,6 +131,8 @@ void PentagonCreator::refreshFormWidget()
     delete angoloD;
     delete angoloE;
     delete colore;
+    delete labelNome;
+    delete nome;
 
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
@@ -136,6 +144,7 @@ void PentagonCreator::refreshFormWidget()
     angolo3 = new QLineEdit(this);
     angolo4 = new QLineEdit(this);
     angolo5 = new QLineEdit(this);
+    nome = new QLineEdit(this);
     latoA = new QLabel(tr("Lato A:"));
     latoB = new QLabel(tr("Lato B:"));
     latoC= new QLabel(tr("Lato C:"));
@@ -147,6 +156,7 @@ void PentagonCreator::refreshFormWidget()
     angoloD = new QLabel(tr("Angolo:"));
     angoloE = new QLabel(tr("Angolo:"));
     colore = new QLabel(tr("Colore:"));
+    labelNome = new QLabel(tr("Nome:"));
 
 
 }
@@ -189,22 +199,24 @@ void PentagonCreator::formIrregolare(bool)
     formLayout->addWidget(lato2,0,3);
     formLayout->addWidget(latoC,0,4);
     formLayout->addWidget(lato3,0,5);
-    formLayout->addWidget(latoD,0,6);
-    formLayout->addWidget(lato4,0,7);
-    formLayout->addWidget(latoE,1,0);
-    formLayout->addWidget(lato5,1,1);
-    formLayout->addWidget(angoloA,1,2);
-    formLayout->addWidget(angolo1,1,3);
-    formLayout->addWidget(angoloB,1,4);
-    formLayout->addWidget(angolo2,1,5);
-    formLayout->addWidget(angoloC,1,6);
-    formLayout->addWidget(angolo3,1,7);
-    formLayout->addWidget(angoloD,2,0);
-    formLayout->addWidget(angolo4,2,1);
-    formLayout->addWidget(angoloE,2,2);
-    formLayout->addWidget(angolo5,2,3);
-    formLayout->addWidget(colore,2,4);
-    formLayout->addWidget(colori,2,5);
+    formLayout->addWidget(latoD,1,0);
+    formLayout->addWidget(lato4,1,1);
+    formLayout->addWidget(latoE,1,2);
+    formLayout->addWidget(lato5,1,3);
+    formLayout->addWidget(angoloA,1,4);
+    formLayout->addWidget(angolo1,1,5);
+    formLayout->addWidget(angoloB,2,0);
+    formLayout->addWidget(angolo2,2,1);
+    formLayout->addWidget(angoloC,2,2);
+    formLayout->addWidget(angolo3,2,3);
+    formLayout->addWidget(angoloD,2,4);
+    formLayout->addWidget(angolo4,2,5);
+    formLayout->addWidget(angoloE,3,0);
+    formLayout->addWidget(angolo5,3,1);
+    formLayout->addWidget(colore,3,2);
+    formLayout->addWidget(colori,3,3);
+    formLayout->addWidget(labelNome,3,4);
+    formLayout->addWidget(nome,3,5);
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
@@ -246,6 +258,8 @@ void PentagonCreator::formRegolare(bool)
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(colore,0,2);
     formLayout->addWidget(colori,0,3);
+    formLayout->addWidget(labelNome,0,4);
+    formLayout->addWidget(nome,0,5);
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);

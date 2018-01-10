@@ -19,6 +19,7 @@ QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
     angolo2 = new QLineEdit(this);
     angolo3 = new QLineEdit(this);
     angolo4 = new QLineEdit(this);
+    nome = new QLineEdit(this);
 
     lato2->setVisible(false);
     lato3->setVisible(false);
@@ -37,6 +38,7 @@ QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
     angoloC = new QLabel(tr("Angolo:"));
     angoloD = new QLabel(tr("Angolo:"));
     colore = new QLabel(tr("Colore:"));
+    labelNome = new QLabel(tr("Nome:"));
 
     latoB->setVisible(false);
     latoC->setVisible(false);
@@ -64,6 +66,8 @@ QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(colore,0,2);
     formLayout->addWidget(colori,0,3);
+    formLayout->addWidget(labelNome,0,4);
+    formLayout->addWidget(nome,0,5);
 
 
     mainLayout = new QVBoxLayout;
@@ -87,6 +91,8 @@ void QuadrilateralCreator::refreshFormWidget()
     formLayout->removeWidget(angoloA);
     formLayout->removeWidget(angoloB);
     formLayout->removeWidget(colore);
+    formLayout->removeWidget(labelNome);
+    formLayout->removeWidget(nome);
 
     delete lato1;
     delete lato2;
@@ -105,6 +111,8 @@ void QuadrilateralCreator::refreshFormWidget()
     delete angoloC;
     delete angoloD;
     delete colore;
+    delete nome;
+    delete labelNome;
 
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
@@ -123,6 +131,8 @@ void QuadrilateralCreator::refreshFormWidget()
     angoloC = new QLabel(tr("Angolo:"));
     angoloD = new QLabel(tr("Angolo:"));
     colore = new QLabel(tr("Colore:"));
+    nome = new QLineEdit(this);
+    labelNome = new QLabel(tr("Nome:"));
 
 }
 
@@ -157,6 +167,8 @@ void QuadrilateralCreator::formQuadrato(bool)
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(colore,0,2);
     formLayout->addWidget(colori,0,3);
+    formLayout->addWidget(labelNome,0,4);
+    formLayout->addWidget(nome,0,5);
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
@@ -195,8 +207,10 @@ void QuadrilateralCreator::formRettangolo(bool)
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(latoB,0,2);
     formLayout->addWidget(lato2,0,3);
-    formLayout->addWidget(colore,0,4);
-    formLayout->addWidget(colori,0,5);
+    formLayout->addWidget(colore,1,0);
+    formLayout->addWidget(colori,1,1);
+    formLayout->addWidget(labelNome,1,2);
+    formLayout->addWidget(nome,1,3);
 
 
     mainLayout->addLayout(formLayout);
@@ -236,22 +250,24 @@ void QuadrilateralCreator::formQuadrilatero(bool)
     formLayout->addWidget(lato2,0,3);
     formLayout->addWidget(latoC,0,4);
     formLayout->addWidget(lato3,0,5);
-    formLayout->addWidget(latoD,0,6);
-    formLayout->addWidget(lato4,0,7);
-    formLayout->addWidget(angoloA,1,0);
-    formLayout->addWidget(angolo1,1,1);
-    formLayout->addWidget(angoloB,1,2);
-    formLayout->addWidget(angolo2,1,3);
-    formLayout->addWidget(angoloC,1,4);
-    formLayout->addWidget(angolo3,1,5);
-    formLayout->addWidget(angoloD,1,6);
-    formLayout->addWidget(angolo4,1,7);
+    formLayout->addWidget(latoD,1,0);
+    formLayout->addWidget(lato4,1,1);
+    formLayout->addWidget(angoloA,1,2);
+    formLayout->addWidget(angolo1,1,3);
+    formLayout->addWidget(angoloB,1,4);
+    formLayout->addWidget(angolo2,1,5);
+    formLayout->addWidget(angoloC,2,0);
+    formLayout->addWidget(angolo3,2,1);
+    formLayout->addWidget(angoloD,2,2);
+    formLayout->addWidget(angolo4,2,3);
+    formLayout->addWidget(labelNome,2,4);
+    formLayout->addWidget(nome,2,5);
 
     colorLayout = new QHBoxLayout;
     colorLayout->addWidget(colore);
     colorLayout->addWidget(colori);
 
-    mainLayout->addLayout(colorLayout);
     mainLayout->addLayout(formLayout);
+    mainLayout->addLayout(colorLayout);
     mainLayout->addWidget(saveButton);
 }

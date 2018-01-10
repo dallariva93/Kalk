@@ -31,7 +31,10 @@ SOURCES += main.cpp \
     VIEW/colorarea.cpp \
     VIEW/quadrilateralcreator.cpp \
     VIEW/pentagoncreator.cpp \
-    VIEW/polygoncreator.cpp
+    VIEW/polygoncreator.cpp \
+    VIEW/dataarea.cpp \
+    VIEW/window.cpp \
+    VIEW/operandselector.cpp
 
 
 HEADERS  += \
@@ -53,4 +56,7 @@ HEADERS  += \
     VIEW/colorarea.h \
     VIEW/quadrilateralcreator.h \
     VIEW/pentagoncreator.h \
-    VIEW/polygoncreator.h
+    VIEW/polygoncreator.h \
+    VIEW/dataarea.h \
+    VIEW/window.h \
+    VIEW/operandselector.h

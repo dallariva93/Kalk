@@ -9,6 +9,7 @@
 #include <QString>
 #include <QLineEdit>
 #include <QGridLayout>
+#include <QPushButton>
 
 class ColorCreator : public QWidget
 {
@@ -22,6 +23,8 @@ private:
     QLCDNumber* greenLCD;
     QLCDNumber* blueLCD;
 
+    QPushButton* saveButton;
+
     QLineEdit* hexValue;
     QLabel* redLabel;
     QLabel* greenLabel;
@@ -29,6 +32,7 @@ private:
     QLabel* hexString;
 
     QGridLayout* layout;
+    QVBoxLayout* mainLayout;
 
 public:
     ~ColorCreator();

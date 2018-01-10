@@ -18,18 +18,28 @@
 #include"VIEW/quadrilateralcreator.h"
 #include"VIEW/pentagoncreator.h"
 #include"VIEW/polygoncreator.h"
-
+#include"VIEW/dataarea.h"
+#include"VIEW/window.h"
+#include"VIEW/operandselector.h"
 
 int main(int argc, char* argv[]){
 
 
+    /*Colore* color=new RGB(170,80,93);
+    Poligono* pol=new Triangolo(100,100,Angolo(90),color);*/
     QApplication app(argc,argv);
     //TriangleCreator* t=new TriangleCreator();
-    PolygonCreator* t= new PolygonCreator;
+    //PolygonCreator* p= new PolygonCreator;
     //std::cout<<ris->getCoordinate()[3].getX();//()<<"z";
-    //ColorCreator* c=new ColorCreator();
+   // ColorCreator* c=new ColorCreator();
     //c->show();
+   // DataArea *t=new DataArea;
+    Window* t= new Window;
+    //t->areaP->setPoligono(pol);
+    //OperandSelector *t = new OperandSelector;
     t->show();
+   // p->show();
+    //c->show();
 
     return app.exec();
 

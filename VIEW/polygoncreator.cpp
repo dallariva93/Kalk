@@ -2,10 +2,9 @@
 
 PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent)
 {
-    QSize size(500,250), buttonSize(100,25);
+    QSize size(400,250), buttonSize(100,25);
     setMaximumSize(size);
-
-    setFont(QFont("QFont::SansSerif	",9));
+    setMinimumSize(size);
 
     triangleWidget=new TriangleCreator;
     quadrilateralWidget=new QuadrilateralCreator;
@@ -17,7 +16,6 @@ PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent)
 
     triangleButton->setText("Triangolo");
     triangleButton->setMaximumSize(buttonSize);
-    triangleButton->setGeometry(0,0,100,25);
     quadrilateralButton->setText("Quadrilatero");
     quadrilateralButton->setMaximumSize(buttonSize);
     pentagonButton->setText("Pentagono");

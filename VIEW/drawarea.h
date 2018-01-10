@@ -16,7 +16,7 @@ private:
 
 public:
     void setPoligono(Poligono*pol);
-    DrawArea(Poligono*);
+    DrawArea(Poligono* =0);
     static void sposta(Poligono* pol,double x, double y);
 
 

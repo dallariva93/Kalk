@@ -29,31 +29,9 @@ DrawArea::DrawArea(Poligono * pol):poligono(pol){
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
-
-
-
-
 }  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event){
-<<<<<<< HEAD
-if(poligono){
-    double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
-
-    QPainter painter(this);
-    painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
-    painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
-
-    for(int i=0; i<poligono->getCoordinate().size(); ++i){
-        if(larghezza<poligono->getCoordinate()[i].getX())
-            larghezza=poligono->getCoordinate()[i].getX();
-        if(altezza<poligono->getCoordinate()[i].getY())
-            altezza=poligono->getCoordinate()[i].getY();
-        if(poligono->getCoordinate()[i].getX()<0 && valNeg>poligono->getCoordinate()[i].getX())
-            valNeg=poligono->getCoordinate()[i].getX();
-    }
-    larghezza-=valNeg;    //std::cout<<larghezza<<"-"<<altezza<<"|"<<std::endl;
-=======
     if(poligono){
         double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
 
@@ -70,7 +48,6 @@ if(poligono){
                 valNeg=poligono->getCoordinate()[i].getX();
         }
         larghezza-=valNeg;    //std::cout<<larghezza<<"-"<<altezza<<"|"<<std::endl;
->>>>>>> 33d4e923c21b181c1e182bb7a8e05215ee97cc83
 
         larghezza>altezza ? scala=(200/larghezza) : scala=(150/altezza);
 
@@ -86,12 +63,4 @@ if(poligono){
         painter.translate(spostaA,spostaB+(altezza*scala));
         painter.drawPolygon(p);
     }
-<<<<<<< HEAD
-    spostaA = (((400-(larghezza*scala))/2)-(puntoMinX));
-    spostaB = (250-(altezza*scala))/2;
-    painter.translate(spostaA,spostaB+(altezza*scala));
-    painter.drawPolygon(p);
-}}
-=======
 }
->>>>>>> 33d4e923c21b181c1e182bb7a8e05215ee97cc83

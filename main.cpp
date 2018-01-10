@@ -35,7 +35,6 @@ int main(int argc, char* argv[]){
     Poligono* qu = new Quadrilatero(10,60,10,60,Angolo(90),Angolo(90),Angolo(90),Angolo(90));
     Poligono* a = new Quadrilatero(10,15,30,20,Angolo(80),Angolo(120), Angolo(60), Angolo(100));
     Poligono* ris=&(*t+*a);
-<<<<<<< HEAD
 /*
     QApplication app(argc,argv);
     Window* y= new Window;
@@ -44,13 +43,12 @@ int main(int argc, char* argv[]){
     QApplication app(argc,argv);
     BoxButtons* d=new BoxButtons;
     d->show();
-
-=======
-
+/*
     QApplication app(argc,argv);
     Window* y= new Window;
     y->show();
->>>>>>> 33d4e923c21b181c1e182bb7a8e05215ee97cc83
+*/
+
     return app.exec();
 
 }

@@ -11,6 +11,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 {
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
+
     QSize size(250,170);
     setMaximumSize(size);
     setMinimumSize(size);

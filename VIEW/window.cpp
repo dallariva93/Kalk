@@ -22,6 +22,7 @@ Window::Window(QWidget *parent) : QWidget(parent)
     operandLayout = new QHBoxLayout;
     mainLayout = new QVBoxLayout;
 
+
     areaLayout->addWidget(areaP);
     areaLayout->addWidget(areaD);
 

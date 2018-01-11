@@ -19,7 +19,7 @@ void DrawArea::setPoligono(Poligono *pol){
 }
 
 DrawArea::DrawArea(Poligono * pol):poligono(pol){
-    QSize size(400,250);        //dimensione dell'area da disegno, se il poligono è più grande? PROBLEMA!
+    QSize size(400,250);
     setMaximumSize(size);
     setMinimumSize(size);
     setStyleSheet("border: 1px solid grey; background-color: white;");

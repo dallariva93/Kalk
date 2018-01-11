@@ -9,7 +9,6 @@
 #include "MODEL/pentagonoregolare.h"
 #define PI 3.14159265
 
-
 #include<QApplication>
 #include"VIEW/colorcreator.h"
 #include"VIEW/drawarea.h"
@@ -37,18 +36,17 @@ int main(int argc, char* argv[]){
     Poligono* ris=&(*t+*a);
 /*
     QApplication app(argc,argv);
-    Window* y= new Window;
-    y->show();
+    Window* x= new Window;
+    x->show();
 */
     QApplication app(argc,argv);
     BoxButtons* d=new BoxButtons;
     d->show();
 /*
     QApplication app(argc,argv);
-    Window* y= new Window;
-    y->show();
+    DrawArea y(pent);
+    y.show();
 */
-
     return app.exec();
 
 }

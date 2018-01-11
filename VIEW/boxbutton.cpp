@@ -34,6 +34,5 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     layout->addWidget(inputRuota,2,3);
     setLayout(layout);
 
-
 }
 

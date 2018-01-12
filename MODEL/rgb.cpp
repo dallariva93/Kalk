@@ -3,11 +3,12 @@
 RGB::RGB(unsigned int red, unsigned int green, unsigned int blu):r(red), g(green), b(blu){}     //costruttore a tre parametri, di default costruisce bianco
 //rgb::rgb(std::string nome){}      costruttore di colore da nome
 
-std::string RGB::decToHex(unsigned int value){
+QString RGB::decToHex(unsigned int value){
     std::stringstream stream;
     stream << std::hex << value;
-    std::string hex=stream.str();
-    if(value<16 /*|| hex=="a" || hex=="b" || hex=="c" || hex=="d" || hex=="e" || hex=="f"*/) hex="0"+hex;
+    QString hex;
+    hex.fromStdString(stream.str());
+    if(value<16) hex="0"+hex;
     return hex;
 }
 
@@ -15,14 +16,14 @@ RGB* RGB::clone() const{
     return new RGB(*this);
 }
 
-std::string RGB::getHex()const{
-    std::string red=decToHex(r);
-    std::string green=decToHex(g);
-    std::string blue=decToHex(b);
+QString RGB::getHex()const{
+    QString red=decToHex(r);
+    QString green=decToHex(g);
+    QString blue=decToHex(b);
     if(red=="0")red="00";
     if(green=="0")green="00";
     if(blue=="0")blue="00";
-    return "#" + red + green + blue;
+    return QString("#" + red + green + blue);
 }
 
 unsigned int RGB::getR()const{
@@ -84,9 +85,9 @@ RGB &RGB::operator/(const Colore & col) const{               //gaaaarbaaageeee
 
 unsigned int *RGB::HexToRGB(const Colore& col){
     unsigned int* rgb=new unsigned int[3];
-    rgb[0]=Colore::HexToDec(col.getHex().substr(1,2));
-    rgb[1]=Colore::HexToDec(col.getHex().substr(3,2));
-    rgb[2]=Colore::HexToDec(col.getHex().substr(5,2));
+    rgb[0]=Colore::HexToDec(col.getHex().mid(1,2));
+    rgb[1]=Colore::HexToDec(col.getHex().mid(3,2));
+    rgb[2]=Colore::HexToDec(col.getHex().mid(5,2));
     return rgb;
 }
 

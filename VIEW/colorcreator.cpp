@@ -90,7 +90,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 void ColorCreator::getR(int r)
 {
     QString hex=hexValue->text();
-    hex=((hex).replace(1,2,QString::fromStdString(RGB::decToHex(r))));
+    hex=((hex).replace(1,2,RGB::decToHex(r)));
     emit changeHexValue(hex);
     QString a="QLabel { background-color :" ;
     a+=hex;
@@ -101,7 +101,7 @@ void ColorCreator::getR(int r)
 void ColorCreator::getG(int g)
 {
     QString hex=hexValue->text();
-    hex=((hex).replace(3,2,QString::fromStdString(RGB::decToHex(g))));
+    hex=((hex).replace(3,2,RGB::decToHex(g)));
     emit changeHexValue(hex);
     QString a="QLabel { background-color :" ;
     a+=hex;
@@ -112,7 +112,7 @@ void ColorCreator::getG(int g)
 void ColorCreator::getB(int b)
 {
     QString hex=hexValue->text();
-    hex=((hex).replace(5,2,QString::fromStdString(RGB::decToHex(b))));
+    hex=((hex).replace(5,2,RGB::decToHex(b)));
     emit changeHexValue(hex);
     QString a="QLabel { background-color :" ;
     a+=hex;

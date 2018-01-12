@@ -36,8 +36,8 @@ void DrawArea::paintEvent(QPaintEvent *event){
         double larghezza=0, altezza=0, valNeg=0, scala=0, spostaA=0, spostaB=0, puntoMinX=0;
 
         QPainter painter(this);
-        painter.setPen(QPen(QString::fromStdString(poligono->getColore()->getHex())));
-        painter.setBrush(QBrush(QColor(QString::fromStdString(poligono->getColore()->getHex()))));
+        painter.setPen(QPen(Qt::black));
+        painter.setBrush(QBrush(QColor(poligono->getColore()->getHex())));
 
         for(int i=0; i<poligono->getCoordinate().size(); ++i){
             if(larghezza<poligono->getCoordinate()[i].getX())

@@ -4,17 +4,16 @@
 
 Colore::~Colore(){}
 
-unsigned int Colore::HexToDec(std::string Hex){
+unsigned int Colore::HexToDec(QString Hex){
     unsigned int dec;
     std::stringstream stream;
-    stream << Hex;
+    stream << Hex.toStdString();
     stream >> std::hex >> dec;
     return dec;
 }
 
-QColor Colore::toQcolor()
-{
-    return QColor(QString::fromStdString(getHex()));
+QColor Colore::toQcolor(){
+    return QColor(getHex());
 }
 
 

@@ -6,6 +6,7 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include "MODEL/poligono.h"
+#include <QVector>
 
 class OperandSelector : public QWidget{
     Q_OBJECT
@@ -13,10 +14,12 @@ private:
     QLabel *operando;
     QComboBox *selector;
     QHBoxLayout *mainLayout;
+    QVector<Poligono*> selectorPolygon;
+    QVector<Colore*> selectorColor;
 
 public:
     OperandSelector(QWidget *parent = 0);
-    Poligono& Operando1Corrente();
+    Poligono& Operando1Corrente(QString);
 
 signals:
 

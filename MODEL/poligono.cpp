@@ -2,7 +2,7 @@
 #include "poligono.h"
 #include "pentagono.h"
 
-Poligono::Poligono(unsigned int nLati, std::string nome, Colore* col, QVector<Punto> punti) : numeroLati(nLati), nomeOggetto(nome){
+Poligono::Poligono(unsigned int nLati, QString nome, Colore* col, QVector<Punto> punti) : numeroLati(nLati), nomeOggetto(nome){
     color=col->clone();
     coordinate=punti;
 }

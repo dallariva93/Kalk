@@ -3,8 +3,7 @@
 #include <QWidget>
 #include <QTextEdit>
 
-class DataArea : public QTextEdit
-{
+class DataArea : public QTextEdit{
     Q_OBJECT
 
 private:

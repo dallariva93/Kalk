@@ -19,14 +19,14 @@ public:
     unsigned int getR()const;
     unsigned int getG()const;            //per ora non servono
     unsigned int getB()const;
-    std::string getHex()const;
+    QString getHex()const;
     virtual void inverti();
     RGB& operator+(const Colore&)const;
     RGB& operator-(const Colore&)const;
     RGB& operator*(const Colore&)const;
     RGB& operator/(const Colore&)const;
 
-    static std::string decToHex(unsigned int value);        //metodo statico di funzionalità (conversione decimale a esadecimale)
+    static QString decToHex(unsigned int value);        //metodo statico di funzionalità (conversione decimale a esadecimale)
 
 };
 

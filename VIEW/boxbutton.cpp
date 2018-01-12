@@ -35,13 +35,13 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     layout->addWidget(inputRuota,2,3);
     setLayout(layout);
 
-    connect(perimetro ,SIGNAL(clicked(bool)), this, SLOT(OutputPerimetro()));
-    connect(area ,SIGNAL(clicked(bool)), this, SLOT(OutputArea(/*operando1*/)));
-    connect(angoli ,SIGNAL(clicked(bool)), this, SLOT(OutputAngoli(/*operando1*/)));
-    connect(lati ,SIGNAL(clicked(bool)), this, SLOT(OutputLati(/*operando1*/)));
-
+    connect(perimetro ,SIGNAL(clicked()), this, SLOT(OutputPerimetro()));
+    connect(area ,SIGNAL(clicked()), this, SLOT(OutputArea(/*operando1*/)));
+    connect(angoli ,SIGNAL(clicked()), this, SLOT(OutputAngoli(/*operando1*/)));
+    connect(lati ,SIGNAL(clicked()), this, SLOT(OutputLati(/*operando1*/)));
+/*
     void OutputPerimetro(){
-
-    }
+        Poligono* p = Operando1Corrente();
+    }*/
 }
 

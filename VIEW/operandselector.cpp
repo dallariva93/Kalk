@@ -1,7 +1,6 @@
 #include "operandselector.h"
 
-OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent)
-{
+OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent){
     QSize size(325,45);
     setMaximumSize(size);
     setMinimumSize(size);
@@ -18,3 +17,7 @@ OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent)
 
 }
 
+
+Poligono& Operando1Corrente(){
+
+}

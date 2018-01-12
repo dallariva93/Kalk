@@ -54,9 +54,9 @@ public:
 signals:
 
 public slots:
-    void formQuadrato(bool);
-    void formRettangolo(bool);
-    void formQuadrilatero(bool);
+    void formQuadrato();
+    void formRettangolo();
+    void formQuadrilatero();
 };
 
 #endif // QUADRILATERALCREATOR_H

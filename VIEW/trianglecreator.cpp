@@ -3,14 +3,13 @@
 
 TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
 
-    QSize size(450,350);
-    setMaximumSize(size);
+   /* QSize size(450,350);
+    setMaximumSize(size);*/
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);
     radio3 = new QRadioButton(tr("Costruisco dato i tre lati."),this);
     radio1->setChecked(true);   //setto di default radio1
-
 
 
     lato1 = new QLineEdit(this);
@@ -40,10 +39,9 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     colori->addItem(QString("colori"));
     //ciclo che riempe colori con tutti i colori creati
 
-
-    connect(radio1, SIGNAL(clicked(bool)), this, SLOT(dueLatiUnAngolo(bool)));
-    connect(radio2, SIGNAL(clicked(bool)), this, SLOT(dueAngoliUnLato(bool)));
-    connect(radio3, SIGNAL(clicked(bool)), this, SLOT(treLati(bool)));
+    connect(radio1, SIGNAL(clicked()), this, SLOT(dueLatiUnAngolo()));
+    connect(radio2, SIGNAL(clicked()), this, SLOT(dueAngoliUnLato()));
+    connect(radio3, SIGNAL(clicked()), this, SLOT(treLati()));
     //connect per il pulsante crea
 
     choiceLayout = new QVBoxLayout;
@@ -117,7 +115,7 @@ void TriangleCreator::refreshFormWidget()
 }
 
 
-void TriangleCreator::dueLatiUnAngolo(bool)
+void TriangleCreator::dueLatiUnAngolo()
 {
     refreshFormWidget();
     delete formLayout;
@@ -159,7 +157,7 @@ void TriangleCreator::dueLatiUnAngolo(bool)
 
 }
 
-void TriangleCreator::dueAngoliUnLato(bool a)
+void TriangleCreator::dueAngoliUnLato()
 {
     refreshFormWidget();
     delete formLayout;
@@ -201,7 +199,7 @@ void TriangleCreator::dueAngoliUnLato(bool a)
     setLayout(mainLayout);
 }
 
-void TriangleCreator::treLati(bool)
+void TriangleCreator::treLati()
 {
 
     refreshFormWidget();

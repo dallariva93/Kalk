@@ -1,6 +1,6 @@
 #include "operandselector.h"
 
-OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent)
+OperandSelector::OperandSelector(QString numero, QWidget *parent) : QWidget(parent)
 {
     QSize size(325,45);
     setMaximumSize(size);
@@ -8,7 +8,7 @@ OperandSelector::OperandSelector(QWidget *parent) : QWidget(parent)
 
     selector = new QComboBox;
     operando = new QLabel;
-    operando->setText("Operando: ");
+    operando->setText("Operando "+numero+":");
     selector->insertItem(0,"operando1");
 
     mainLayout = new QHBoxLayout;

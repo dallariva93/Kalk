@@ -2,29 +2,26 @@
 
 PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent)
 {
-    QSize size(400,350), buttonSize(100,25);
+/*    QSize size(390,350), buttonSize(100,25);
     setMaximumSize(size);
-    setMinimumSize(size);
+    setMinimumSize(size);*/
+    QSize buttonSize(100,25);
 
     triangleWidget=new TriangleCreator;
     quadrilateralWidget=new QuadrilateralCreator;
     pentagonWidget=new PentagonCreator;
 
-    triangleButton=new QPushButton;
-    quadrilateralButton= new QPushButton;
-    pentagonButton= new QPushButton;
+    triangleButton=new QPushButton("Triangolo");
+    quadrilateralButton= new QPushButton("Quadrilatero");
+    pentagonButton= new QPushButton("Pentagono");
 
-    triangleButton->setText("Triangolo");
     triangleButton->setMaximumSize(buttonSize);
-    quadrilateralButton->setText("Quadrilatero");
     quadrilateralButton->setMaximumSize(buttonSize);
-    pentagonButton->setText("Pentagono");
     pentagonButton->setMaximumSize(buttonSize);
 
 
 
     buttonsLayout=new QHBoxLayout;
-    buttonsLayout->setMargin(-2);
     mainLayout=new QVBoxLayout;
 
     quadrilateralWidget->setVisible(false);

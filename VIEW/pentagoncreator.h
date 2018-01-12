@@ -59,8 +59,8 @@ signals:
 
 
 public slots:
-    void formIrregolare(bool);
-    void formRegolare(bool);
+    void formIrregolare();
+    void formRegolare();
 };
 
 #endif // PENTAGONCREATOR_H

@@ -14,7 +14,7 @@ private:
     QComboBox *selector;
     QHBoxLayout *mainLayout;
 public:
-    OperandSelector(QWidget *parent = 0);
+    OperandSelector(QString numero, QWidget *parent = 0);
 
 signals:
 

@@ -14,8 +14,8 @@ Window::Window(QWidget *parent) : QWidget(parent)
     areaD=new DataArea;
     areaP=new DrawArea;
 
-    operandoUno = new OperandSelector;
-    operandoDue = new OperandSelector;
+    operandoUno = new OperandSelector("1");
+    operandoDue = new OperandSelector("2");
 
     pulsanti = new BoxButtons;
 

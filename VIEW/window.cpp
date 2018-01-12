@@ -14,12 +14,15 @@ Window::Window(QWidget *parent) : QWidget(parent)
     areaD=new DataArea;
     areaP=new DrawArea;
 
-    operandoUno = new OperandSelector;
-    operandoDue = new OperandSelector;
+    operandoUno = new OperandSelector("1");
+    operandoDue = new OperandSelector("2");
+
+    pulsanti = new BoxButtons;
 
     areaLayout = new QHBoxLayout;
     creatorLayout = new QHBoxLayout;
     operandLayout = new QHBoxLayout;
+    colorCButtonsLayout = new QVBoxLayout;
     mainLayout = new QVBoxLayout;
 
 
@@ -30,8 +33,10 @@ Window::Window(QWidget *parent) : QWidget(parent)
     operandLayout->addWidget(operandoDue);
 
     creatorLayout->addWidget(creatorP);
-    creatorLayout->addWidget(creatorC);
 
+    colorCButtonsLayout->addWidget(creatorC);
+    colorCButtonsLayout->addWidget(pulsanti);
+    creatorLayout->addLayout(colorCButtonsLayout);
 
 
     mainLayout->addLayout(areaLayout);

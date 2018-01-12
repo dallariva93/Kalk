@@ -28,6 +28,7 @@ private:
     QLineEdit *angolo3;
     QLineEdit *angolo4;
     QLineEdit *angolo5;
+    QLineEdit *nome;
 
     QLabel *latoA;
     QLabel *latoB;
@@ -39,6 +40,7 @@ private:
     QLabel *angoloC;
     QLabel *angoloD;
     QLabel *angoloE;
+    QLabel *labelNome;
 
     QLabel *colore;
 
@@ -57,8 +59,8 @@ signals:
 
 
 public slots:
-    void formIrregolare(bool);
-    void formRegolare(bool);
+    void formIrregolare();
+    void formRegolare();
 };
 
 #endif // PENTAGONCREATOR_H

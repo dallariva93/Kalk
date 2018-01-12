@@ -16,6 +16,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     setMaximumSize(size);
     setMinimumSize(size);
 
+
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
 
     red=new QSlider(Qt::Horizontal);

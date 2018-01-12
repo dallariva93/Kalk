@@ -32,6 +32,7 @@ public:
 signals:
     void Stampa2p(double);
 public slots:
+
 };
 
 #endif // BOXBUTTON_H

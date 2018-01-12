@@ -25,6 +25,7 @@ private:
     QLineEdit *angolo2;
     QLineEdit *angolo3;
     QLineEdit *angolo4;
+    QLineEdit *nome;
 
     QLabel *latoA;
     QLabel *latoB;
@@ -34,6 +35,7 @@ private:
     QLabel *angoloB;
     QLabel *angoloC;
     QLabel *angoloD;
+    QLabel *labelNome;
 
     QLabel *colore;
 
@@ -52,9 +54,9 @@ public:
 signals:
 
 public slots:
-    void formQuadrato(bool);
-    void formRettangolo(bool);
-    void formQuadrilatero(bool);
+    void formQuadrato();
+    void formRettangolo();
+    void formQuadrilatero();
 };
 
 #endif // QUADRILATERALCREATOR_H

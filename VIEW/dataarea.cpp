@@ -7,11 +7,12 @@ DataArea::DataArea()
     QSize size(200,250);
     setMinimumSize(size);
     setMaximumSize(size);
+    setStyleSheet("border: 1px solid grey; background-color: white;");
 }
 
 void DataArea::setText(QVector<double> lati)
 {
-    QString letter("ABCDE");
+    QString letter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     for(int i=0; i<lati.size(); ++i)
     {
         std::stringstream stream;

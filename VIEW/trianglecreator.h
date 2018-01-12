@@ -26,6 +26,7 @@ private:
     QLineEdit *lato3;
     QLineEdit *angolo1;
     QLineEdit *angolo2;
+    QLineEdit *nome;
 
     QLabel *latoA;
     QLabel *latoB;
@@ -33,11 +34,13 @@ private:
     QLabel *angoloA;
     QLabel *angoloB;
     QLabel *colore;
+    QLabel *labelNome;
 
     QPushButton *saveButton;
     QVBoxLayout *mainLayout;
     QVBoxLayout *choiceLayout;
     QHBoxLayout *formLayout;
+    QHBoxLayout *coloreNomeLayout;
 
     QComboBox *colori;
 
@@ -46,9 +49,9 @@ public:
     void refreshFormWidget();
 
 public slots:
-    void dueAngoliUnLato(bool);
-    void treLati(bool);
-    void dueLatiUnAngolo(bool);
+    void dueAngoliUnLato();
+    void treLati();
+    void dueLatiUnAngolo();
 
 };
 

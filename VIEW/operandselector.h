@@ -18,7 +18,7 @@ private:
     QVector<Colore*> selectorColor;
 
 public:
-    OperandSelector(QWidget *parent = 0);
+    OperandSelector(QString numero, QWidget *parent = 0);
     Poligono& Operando1Corrente(QString);
 
 signals:

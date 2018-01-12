@@ -52,9 +52,9 @@ QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
     colori= new QComboBox;
     colori->addItem(QString("colori"));
 
-    connect(radio1, SIGNAL(clicked(bool)), this, SLOT(formQuadrato(bool)));
-    connect(radio2, SIGNAL(clicked(bool)), this, SLOT(formRettangolo(bool)));
-    connect(radio3, SIGNAL(clicked(bool)), this, SLOT(formQuadrilatero(bool)));
+    connect(radio1, SIGNAL(clicked()), this, SLOT(formQuadrato()));
+    connect(radio2, SIGNAL(clicked()), this, SLOT(formRettangolo()));
+    connect(radio3, SIGNAL(clicked()), this, SLOT(formQuadrilatero()));
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -136,7 +136,7 @@ void QuadrilateralCreator::refreshFormWidget()
 
 }
 
-void QuadrilateralCreator::formQuadrato(bool)
+void QuadrilateralCreator::formQuadrato()
 {
     refreshFormWidget();
     delete formLayout;
@@ -175,7 +175,7 @@ void QuadrilateralCreator::formQuadrato(bool)
 
 }
 
-void QuadrilateralCreator::formRettangolo(bool)
+void QuadrilateralCreator::formRettangolo()
 {
     refreshFormWidget();
     delete formLayout;
@@ -217,7 +217,7 @@ void QuadrilateralCreator::formRettangolo(bool)
     mainLayout->addWidget(saveButton);
 }
 
-void QuadrilateralCreator::formQuadrilatero(bool)
+void QuadrilateralCreator::formQuadrilatero()
 {
     refreshFormWidget();
     delete formLayout;

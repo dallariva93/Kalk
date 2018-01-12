@@ -1,7 +1,6 @@
 #include "controlbuttons.h"
 
-ControlButtons::ControlButtons()
-{
+ControlButtons::ControlButtons(){
 
 }
 

@@ -5,6 +5,7 @@
 #include <QWidget>
 #include "QGridLayout"
 #include "QLineEdit"
+#include "operandselector.h"
 
 class BoxButtons : public QWidget{
     Q_OBJECT
@@ -29,9 +30,9 @@ public:
     explicit BoxButtons(QWidget *parent = 0);
 
 signals:
-
+    void Stampa2p(double);
 public slots:
-
+    void OutputPerimetro();
 };
 
 #endif // BOXBUTTON_H

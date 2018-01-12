@@ -41,7 +41,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(lati ,SIGNAL(clicked(bool)), this, SLOT(OutputLati(/*operando1*/)));
 
     void OutputPerimetro(){
-
+        Poligono* p = Operando1Corrente();
     }
 }
 

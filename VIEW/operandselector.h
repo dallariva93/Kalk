@@ -1,11 +1,11 @@
 #ifndef OPERANDSELECTOR_H
 #define OPERANDSELECTOR_H
 
+#include "MODEL/poligono.h"
 #include <QWidget>
 #include <QLabel>
 #include <QComboBox>
 #include <QHBoxLayout>
-#include "MODEL/poligono.h"
 #include <QVector>
 
 class OperandSelector : public QWidget{

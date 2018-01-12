@@ -13,8 +13,8 @@ public:
     Container();
     void addPoligono(Poligono*);
     void addColore(Colore*);
-    Poligono* getPoligono(QString);
-    Colore* getColore(QString);
+    Poligono* getPoligono(QString) const;
+    Colore* getColore(QColor) const;
     ~Container();
 };
 

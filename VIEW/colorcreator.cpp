@@ -7,8 +7,7 @@
 #include <MODEL/rgb.h>
 
 
-ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
-{
+ColorCreator::ColorCreator(QWidget* parent):QWidget(parent){
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
 
@@ -16,9 +15,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     setMaximumSize(size);
     setMinimumSize(size);
 
-
     //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
-
     red=new QSlider(Qt::Horizontal);
     red->setRange(0,255);
     green=new QSlider(Qt::Horizontal);
@@ -27,13 +24,11 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     blue->setRange(0,255);
 
     //CREO GLI LCD NUMBER
-
     redLCD=new QLCDNumber(3);
     greenLCD=new QLCDNumber(3);
     blueLCD=new QLCDNumber(3);
 
     //CREO DEI LABEL PER IDENTIFICARE RED GREEN BLUE E L'ESADECIMALE
-
     redLabel = new QLabel(tr("Rosso:"));
     greenLabel = new QLabel(tr("Verde:"));
     blueLabel = new QLabel(tr("Blue:"));
@@ -45,7 +40,6 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     saveButton->setText("Crea");
 
     //MODIFICO GRAFICAMENTE GLI SLIDER E GLI LCD NUMBER: APPLICO DEI FOGLI DI STILE, MODIFICO IL NUMERO E TOLGO IL RIQUADRO
-
     red->setStyleSheet(Stylesheet::sliderStyle());
     green->setStyleSheet(Stylesheet::sliderStyle());
     blue->setStyleSheet(Stylesheet::sliderStyle());
@@ -57,7 +51,6 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
     blueLCD->setFrameStyle(QFrame::NoFrame);
 
     //CONNETTO SEGNALI CON SLOT APPROPRIATI
-
     connect(red, SIGNAL(valueChanged(int)), redLCD, SLOT(display(int)));
     connect(green, SIGNAL(valueChanged(int)), greenLCD, SLOT(display(int)));
     connect(blue, SIGNAL(valueChanged(int)), blueLCD, SLOT(display(int)));
@@ -88,8 +81,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent)
 }
 
 
-void ColorCreator::getR(int r)
-{
+void ColorCreator::getR(int r){
     QString hex=hexValue->text();
     hex=((hex).replace(1,2,RGB::decToHex(r)));
     emit changeHexValue(hex);
@@ -99,8 +91,7 @@ void ColorCreator::getR(int r)
     emit changeColor(a);
 }
 
-void ColorCreator::getG(int g)
-{
+void ColorCreator::getG(int g){
     QString hex=hexValue->text();
     hex=((hex).replace(3,2,RGB::decToHex(g)));
     emit changeHexValue(hex);
@@ -110,8 +101,7 @@ void ColorCreator::getG(int g)
     emit changeColor(a);
 }
 
-void ColorCreator::getB(int b)
-{
+void ColorCreator::getB(int b){
     QString hex=hexValue->text();
     hex=((hex).replace(5,2,RGB::decToHex(b)));
     emit changeHexValue(hex);

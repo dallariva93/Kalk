@@ -1,8 +1,7 @@
 #include "pentagoncreator.h"
 #include <QLineEdit>
 
-PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
-{
+PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
     QSize size(400,350);
     setMaximumSize(size);
 
@@ -33,7 +32,6 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     angolo4->setVisible(false);
     angolo5->setVisible(false);
 
-
     latoA = new QLabel(tr("Lato A:"));
     latoB = new QLabel(tr("Lato B:"));
     latoC= new QLabel(tr("Lato C:"));
@@ -61,8 +59,6 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     colori= new QComboBox;
     colori->addItem(QString("colori"));
 
-
-
     connect(radio1, SIGNAL(clicked()), this, SLOT(formRegolare()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formIrregolare()));
 
@@ -78,7 +74,6 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     formLayout->addWidget(labelNome,0,4);
     formLayout->addWidget(nome,0,5);
 
-
     mainLayout = new QVBoxLayout;
     mainLayout->addLayout(choiceLayout);
     mainLayout->addLayout(formLayout);
@@ -86,8 +81,7 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent)
     setLayout(mainLayout);
 }
 
-void PentagonCreator::refreshFormWidget()
-{
+void PentagonCreator::refreshFormWidget(){
     formLayout->removeWidget(lato1);
     formLayout->removeWidget(lato2);
     formLayout->removeWidget(lato3);
@@ -159,19 +153,15 @@ void PentagonCreator::refreshFormWidget()
     angoloE = new QLabel(tr("Angolo:"));
     colore = new QLabel(tr("Colore:"));
     labelNome = new QLabel(tr("Nome:"));
-
-
 }
 
-void PentagonCreator::formIrregolare()
-{
+void PentagonCreator::formIrregolare(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
     delete saveButton;
     saveButton=new QPushButton(tr("Crea"), this);
     formLayout=new QGridLayout;
-
 
     lato1->setVisible(true);
     latoA->setVisible(true);
@@ -222,11 +212,9 @@ void PentagonCreator::formIrregolare()
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
-
 }
 
-void PentagonCreator::formRegolare()
-{
+void PentagonCreator::formRegolare(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -266,4 +254,3 @@ void PentagonCreator::formRegolare()
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
 }
-

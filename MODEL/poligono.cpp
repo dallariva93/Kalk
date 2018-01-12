@@ -7,6 +7,10 @@ Poligono::Poligono(unsigned int nLati, QString nome, Colore* col, QVector<Punto>
     coordinate=punti;
 }
 
+QString Poligono::getNome()const{
+    return nomeOggetto;
+}
+
 double Poligono::getPerimetro() const{
     double perimetro=0;
     for(unsigned int i=0; i<numeroLati; ++i){

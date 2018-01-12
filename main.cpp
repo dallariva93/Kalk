@@ -45,6 +45,7 @@ int main(int argc, char* argv[]){
 
     QApplication app(argc,argv);
 */    DrawArea y(pent);
+    std::cout<<col->getHex().toStdString();
     y.show();
 
     return app.exec();

@@ -7,7 +7,7 @@ QString RGB::decToHex(unsigned int value){
     std::stringstream stream;
     stream << std::hex << value;
     QString hex;
-    hex.fromStdString(stream.str());
+    hex=QString::fromStdString(stream.str());
     if(value<16) hex="0"+hex;
     return hex;
 }

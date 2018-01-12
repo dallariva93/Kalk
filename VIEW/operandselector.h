@@ -14,12 +14,10 @@ private:
     QLabel *operando;
     QComboBox *selector;
     QHBoxLayout *mainLayout;
-    QVector<Poligono*> selectorPolygon;
-    QVector<Colore*> selectorColor;
 
 public:
     OperandSelector(QString numero, QWidget *parent = 0);
-    Poligono& Operando1Corrente(QString);
+    Poligono& operando1Corrente(QString);
 
 signals:
 

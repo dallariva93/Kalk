@@ -9,7 +9,7 @@ OperandSelector::OperandSelector(QString numero, QWidget *parent) : QWidget(pare
     operando = new QLabel;
     operando->setText("Operando "+numero+":");
     selector->insertItem(0,"operando1");
-
+//    selector->addItem();
     mainLayout = new QHBoxLayout;
     mainLayout->addWidget(operando);
     mainLayout->addWidget(selector);

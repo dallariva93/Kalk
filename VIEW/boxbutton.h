@@ -32,7 +32,10 @@ public:
 signals:
     void Stampa2p(double);
 public slots:
-
+    void OutputPerimetro();
+    void OutputArea();
+    void OutputLati();
+    void OutputAngoli();
 };
 
 #endif // BOXBUTTON_H

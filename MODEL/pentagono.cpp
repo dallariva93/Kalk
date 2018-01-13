@@ -2,6 +2,7 @@
 #include "triangolo.h"
 #include "quadrilatero.h"
 #include <math.h>
+const Angolo Pentagono::angoloInterno= Angolo(108);
 
 Pentagono::Pentagono() : Pentagono(10,10,10,10,10,Angolo(108),Angolo(108),Angolo(108),Angolo(108),Angolo(108)){}
 
@@ -22,6 +23,9 @@ Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE,
     punti.push_back( sen_cos(latoAE,a) );    //coordinata E
     setPunti(punti);
 }
+
+Pentagono::Pentagono(double lato, Colore* col) :
+    Pentagono(lato,lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,angoloInterno,angoloInterno,col){}
 
 double Pentagono::getArea() const {
     Triangolo t1(getLati()[0], getLati()[1], Punto::distanceTo(getCoordinate()[0], getCoordinate()[2]));

@@ -14,7 +14,7 @@ public:
     void addPoligono(Poligono*);
     void addColore(Colore*);
     Poligono* getPoligono(QString) const;
-    Colore* getColore(QColor) const;
+    Colore* getColore(QString) const;
     ~Container();
 };
 

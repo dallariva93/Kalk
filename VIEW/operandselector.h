@@ -7,6 +7,8 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QVector>
+#include "MODEL/container.h"
+#include "colorcreator.h"
 
 class OperandSelector : public QWidget{
     Q_OBJECT
@@ -14,14 +16,18 @@ private:
     QLabel *operando;
     QComboBox *selector;
     QHBoxLayout *mainLayout;
+    Container* contenitore;
 
 public:
-    OperandSelector(QString numero, QWidget *parent = 0);
+    OperandSelector(QString, Container*, QWidget *parent = 0);
     Poligono& operando1Corrente(QString);
+    void insertItem(Colore*);
+    void insertItem(Poligono*);
 
 signals:
 
 public slots:
+    void addColore(Colore*);
 
 
 };

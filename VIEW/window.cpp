@@ -14,8 +14,9 @@ Window::Window(QWidget *parent) : QWidget(parent)
     areaD=new DataArea;
     areaP=new DrawArea;
 
-    operandoUno = new OperandSelector("1");
-    operandoDue = new OperandSelector("2");
+    Container* contenitore=new Container;
+    operandoUno = new OperandSelector("1",contenitore);
+    operandoDue = new OperandSelector("2",contenitore);
 
     pulsanti = new BoxButtons;
 
@@ -24,6 +25,10 @@ Window::Window(QWidget *parent) : QWidget(parent)
     operandLayout = new QHBoxLayout;
     colorCButtonsLayout = new QVBoxLayout;
     mainLayout = new QVBoxLayout;
+
+
+    connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoUno,SLOT(addColore(Colore*)));
+    connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoDue,SLOT(addColore(Colore*)));
 
 
     areaLayout->addWidget(areaP);

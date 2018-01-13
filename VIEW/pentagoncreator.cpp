@@ -61,6 +61,7 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
 
     connect(radio1, SIGNAL(clicked()), this, SLOT(formRegolare()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formIrregolare()));
+    //connect(saveButton, SIGNAL(clicked(),this, SLOT(/*funzioneche crea un pentagono*/)));
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -253,4 +254,11 @@ void PentagonCreator::formRegolare(){
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
+}
+
+void PentagonCreator::creaPentagono()
+{
+   /* if(radio1->isChecked())
+        //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
+    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),) */
 }

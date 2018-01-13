@@ -10,6 +10,7 @@
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QRadioButton>
+#include <MODEL/pentagono.h>
 
 class PentagonCreator : public QWidget
 {
@@ -61,6 +62,7 @@ signals:
 public slots:
     void formIrregolare();
     void formRegolare();
+    void creaPentagono();
 };
 
 #endif // PENTAGONCREATOR_H

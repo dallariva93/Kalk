@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QPushButton>
+#include <MODEL/colore.h>
 
 class ColorCreator : public QWidget{
     Q_OBJECT
@@ -41,11 +42,13 @@ public:
 signals:
     void changeHexValue(QString);
     void changeColor(QString);
+    void inviaColore(Colore*);
 
 public slots:
     void getR(int);
     void getB(int);
     void getG(int);
+    void creaColore();
 };
 
 #endif // COLORCREATOR_H

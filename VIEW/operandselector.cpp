@@ -14,9 +14,7 @@ OperandSelector::OperandSelector(QString numero, QWidget *parent) : QWidget(pare
     mainLayout->addWidget(operando);
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
-
 }
-
 
 Poligono& Operando1Corrente(){
 

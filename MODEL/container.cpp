@@ -1,7 +1,9 @@
 #include "container.h"
+#include "poligono.h"
 
 Container::Container(){
-
+    polygon=QVector<Poligono*>();
+    color=QVector<Colore*>(1);
 }
 
 void Container::addPoligono(Poligono* p){
@@ -13,19 +15,17 @@ void Container::addColore(Colore* c){
 }
 
 Poligono* Container::getPoligono(QString name) const{
-    QVector<Poligono*> vett = polygon;
-    for(QVector<Poligono*>::Iterator it = vett.begin(); it!=vett.end(); ++it){
-        if((*it)->getNome() == name)
-            return *it;
+    for(QVector<Poligono*>::const_iterator cit = polygon.cbegin(); cit!=polygon.cend(); ++cit){
+        if((*cit)->getNome() == name)
+            return *cit;
     }
     return 0;
 }
 
-Colore* Container::getColore(QColor name) const{
-    QVector<Colore*> vett = color;
-    for(QVector<Colore*>::Iterator it = vett.begin(); it != vett.end(); ++it){
-        if((*it)->toQcolor() == name)
-            return *it;
+Colore* Container::getColore(QString name) const{
+    for(QVector<Colore*>::const_iterator cit = color.cbegin(); cit != color.cend(); ++cit){
+        if( (*cit)->getHex() == name)
+            return *cit;
     }
     return 0;
 }

@@ -5,11 +5,13 @@
 #include "rgb.h"
 
 class Pentagono : public Poligono{
-
+private:
+    static const Angolo angoloInterno;
 public:
     Pentagono();
     Pentagono(double, double, double, double, double, const Angolo&, const Angolo&, const Angolo&,
               const Angolo&, const Angolo&, Colore* col=new RGB() );
+    Pentagono(double, Colore* col=new RGB());
     double getArea() const;
     virtual void estendi(double);
     Pentagono& zoom(double) const;

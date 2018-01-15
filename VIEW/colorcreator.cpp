@@ -59,6 +59,7 @@ ColorCreator::ColorCreator(QWidget* parent):QWidget(parent){
     connect(blue,SIGNAL(valueChanged(int)), this, SLOT(getB(int)));
     connect(this,SIGNAL(changeHexValue(QString)),hexValue, SLOT(setText(QString)));
     connect(this,SIGNAL(changeColor(QString)),color,SLOT(setStyleSheet(QString)));
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaColore()));
 
     //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
     mainLayout = new QVBoxLayout;
@@ -99,6 +100,12 @@ void ColorCreator::getG(int g){
     a+=hex;
     a+=";}";
     emit changeColor(a);
+}
+
+void ColorCreator::creaColore()
+{
+    Colore* colore = new RGB(redLCD->value(),greenLCD->value(),blueLCD->value());
+    emit inviaColore(colore);
 }
 
 void ColorCreator::getB(int b){

@@ -1,10 +1,11 @@
 #include "trianglecreator.h"
 #include <iostream>
-
-TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
+TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(parent),colori(col){
 
    /* QSize size(450,350);
     setMaximumSize(size);*/
+
+
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);
@@ -35,9 +36,6 @@ TriangleCreator::TriangleCreator(QWidget *parent) : QWidget(parent){
     latoC->setVisible(false);
 
     saveButton = new QPushButton(tr("Crea"), this);
-    colori= new QComboBox;
-    colori->addItem(QString("colori"));
-    //ciclo che riempe colori con tutti i colori creati
 
     connect(radio1, SIGNAL(clicked()), this, SLOT(dueLatiUnAngolo()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(dueAngoliUnLato()));
@@ -118,7 +116,7 @@ void TriangleCreator::refreshFormWidget()
 void TriangleCreator::dueLatiUnAngolo()
 {
     refreshFormWidget();
-    delete formLayout;
+     formLayout;
     mainLayout->removeWidget(saveButton);
     delete saveButton;
     saveButton=new QPushButton(tr("Crea"), this);
@@ -148,7 +146,6 @@ void TriangleCreator::dueLatiUnAngolo()
     coloreNomeLayout->addWidget(colori);
     coloreNomeLayout->addWidget(labelNome);
     coloreNomeLayout->addWidget(nome);
-
 
     mainLayout->addLayout(formLayout);
     mainLayout->addLayout(coloreNomeLayout);
@@ -184,6 +181,7 @@ void TriangleCreator::dueAngoliUnLato()
     formLayout->addWidget(angolo1);
     formLayout->addWidget(angoloB);
     formLayout->addWidget(angolo2);
+
 
 
     coloreNomeLayout = new QHBoxLayout;

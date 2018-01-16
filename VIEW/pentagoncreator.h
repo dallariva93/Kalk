@@ -52,8 +52,9 @@ private:
     QGridLayout *formLayout;
     QComboBox *colori;
 public:
-    PentagonCreator(QWidget *parent = 0);
+    PentagonCreator(QComboBox *col, QWidget *parent = 0);
     void refreshFormWidget();
+
 
 
 signals:

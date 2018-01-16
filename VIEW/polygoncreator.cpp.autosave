@@ -49,9 +49,6 @@ PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent){
     connect(pentagonButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(show()));
 
-    connect(triangleButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(quadrilateralButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(pentagonButton, SIGNAL(clicked(bool)),colori,SLOT(show()));
 
 
 

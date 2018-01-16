@@ -44,9 +44,12 @@ private:
 
     QComboBox *colori;
 
+
+
 public:
-    TriangleCreator(QWidget *parent=0);
+    TriangleCreator(QComboBox *col , QWidget *parent=0);
     void refreshFormWidget();
+
 
 public slots:
     void dueAngoliUnLato();

@@ -22,6 +22,7 @@ void OperandSelector::insertItem(Colore *colore)
     pmap.fill(colore->toQcolor());
     QIcon icon(pmap);
     selector->addItem(icon,colore->getHex());
+
 }
 
 void OperandSelector::addColore(Colore *c)

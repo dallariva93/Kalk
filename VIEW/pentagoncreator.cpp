@@ -1,9 +1,11 @@
 #include "pentagoncreator.h"
 #include <QLineEdit>
 
-PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
+PentagonCreator::PentagonCreator(QComboBox* col, QWidget *parent) : colori(col), QWidget(parent){
     QSize size(400,350);
     setMaximumSize(size);
+
+
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
     radio2 = new QRadioButton(tr("Costruisco un pentagono irregolare"),this);
@@ -56,8 +58,7 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
     angoloE->setVisible(false);
 
     saveButton = new QPushButton(tr("Crea"), this);
-    colori= new QComboBox;
-    colori->addItem(QString("colori"));
+
 
     connect(radio1, SIGNAL(clicked()), this, SLOT(formRegolare()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formIrregolare()));
@@ -155,6 +156,8 @@ void PentagonCreator::refreshFormWidget(){
     colore = new QLabel(tr("Colore:"));
     labelNome = new QLabel(tr("Nome:"));
 }
+
+
 
 void PentagonCreator::formIrregolare(){
     refreshFormWidget();

@@ -29,6 +29,7 @@ Window::Window(QWidget *parent) : QWidget(parent)
 
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoUno,SLOT(addColore(Colore*)));
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoDue,SLOT(addColore(Colore*)));
+    connect(creatorC,SIGNAL(inviaColore(Colore*)),creatorP,SLOT(addColore(Colore*)));
 
 
     areaLayout->addWidget(areaP);
@@ -50,4 +51,5 @@ Window::Window(QWidget *parent) : QWidget(parent)
     setLayout(mainLayout);
 
 }
+
 

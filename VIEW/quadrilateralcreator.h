@@ -48,9 +48,9 @@ private:
 
 
 public:
-    QuadrilateralCreator(QWidget *parent=0);
+    QuadrilateralCreator(QComboBox*col, QWidget *parent=0);
     void refreshFormWidget();
-
+    ~QuadrilateralCreator();
 signals:
 
 public slots:

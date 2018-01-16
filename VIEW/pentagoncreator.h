@@ -12,8 +12,8 @@
 #include <QRadioButton>
 #include <MODEL/pentagono.h>
 
-class PentagonCreator : public QWidget
-{
+class PentagonCreator : public QWidget{
+
     Q_OBJECT
 private:
     QRadioButton *radio1;

@@ -22,15 +22,29 @@ void OperandSelector::insertItem(Colore *colore){
     selector->addItem(icon,colore->getHex());
 }
 
-void OperandSelector::addColore(Colore *c){
-    insertItem(c);
-}
-
 void OperandSelector::insertItem(Poligono* poligono){
     contenitore->addPoligono(poligono);
     selector->addItem(poligono->getNome());
 }
 
-Poligono& Operando1Corrente(){
+/*
+ * Poligono& OperandSelector::operando1Corrente() const{
+    int index = selector->currentIndex();
+    QString name =  *selector;     //index corrisponde al valore numerico in ordine al QVector di poligoni???
+    if(0 == name.indexOf('#'))  //è un colore
+        return 0;
+    else
+        return ;
+}
+*/
 
+void OperandSelector::selezionato(){
+   // int index = selector->currentIndex();
+
+
+//    for( QVector<Container*>::iterator it=contenitore->
+}
+
+void OperandSelector::addColore(Colore *c){
+    insertItem(c);
 }

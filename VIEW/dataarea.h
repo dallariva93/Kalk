@@ -12,7 +12,6 @@ public:
     DataArea();
     void setText(QVector<double>);
 
-
 };
 
 #endif // DATAAREA_H

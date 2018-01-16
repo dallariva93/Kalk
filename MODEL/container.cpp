@@ -29,3 +29,12 @@ Colore* Container::getColore(QString name) const{
     }
     return 0;
 }
+/*
+Poligono* Container::getValore(int index)const{
+    QVector<Poligono*>::const_iterator cit = polygon.cbegin();
+    for(int i=0; cit!=polygon.cend();++i, ++cit){
+        if(index == i)
+            return *cit;
+    }
+    return 0;
+}*/

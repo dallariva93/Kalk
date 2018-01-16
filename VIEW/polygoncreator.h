@@ -7,8 +7,8 @@
 #include"pentagoncreator.h"
 #include<QPushButton>
 
-class PolygonCreator : public QWidget
-{
+class PolygonCreator : public QWidget{
+
     Q_OBJECT
 private:
     TriangleCreator* triangleWidget;

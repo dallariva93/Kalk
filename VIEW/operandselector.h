@@ -14,15 +14,16 @@ class OperandSelector : public QWidget{
     Q_OBJECT
 private:
     QLabel *operando;
-    QComboBox *selector;
+    QComboBox *selector;        //contiene i nomi
     QHBoxLayout *mainLayout;
-    Container* contenitore;
+    Container* contenitore;     //contiene oggetti
 
 public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
-    Poligono& operando1Corrente(QString);
+    //Poligono& operando1Corrente() const;
     void insertItem(Colore*);
     void insertItem(Poligono*);
+    void selezionato();
 
 signals:
 

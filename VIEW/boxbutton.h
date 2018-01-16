@@ -28,16 +28,13 @@ private:
 
 public:
     explicit BoxButtons(QWidget *parent = 0);
-    double getPerimetro;
 
 signals:
-    void Stampa2p(double);
+    void trovaPerimetro();
+    //void stampa2p(double);
 
 public slots:
-    void OutputPerimetro();
-    void OutputArea();
-    void OutputLati();
-    void OutputAngoli();
+    void getPerimetro();
 };
 
 #endif // BOXBUTTON_H

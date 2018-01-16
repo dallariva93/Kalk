@@ -60,3 +60,4 @@ public slots:
 };
 
 #endif // QUADRILATERALCREATOR_H
+

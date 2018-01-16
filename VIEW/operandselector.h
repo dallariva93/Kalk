@@ -14,21 +14,23 @@ class OperandSelector : public QWidget{
     Q_OBJECT
 private:
     QLabel *operando;
-    QComboBox *selector;
+    QComboBox *selector;        //contiene i nomi
     QHBoxLayout *mainLayout;
-    Container* contenitore;
+    Container* contenitore;     //contiene oggetti
 
 public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
-    Poligono& operando1Corrente(QString);
     void insertItem(Colore*);
     void insertItem(Poligono*);
 
 signals:
+    //void inviaNome(QString);
+    void inviaPerimetro(double);
 
 public slots:
     void addColore(Colore*);
-
+    //void selectedOp();     //slot che emette un segnale passando il nome di cosa è selezionato
+    void calcolaPerimetro();
 
 };
 

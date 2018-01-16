@@ -66,8 +66,6 @@ PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent){
     mainLayout->addWidget(quadrilateralWidget);
     mainLayout->addWidget(pentagonWidget);
     setLayout(mainLayout);
-
-
 }
 
 void PolygonCreator::refreshCreators(){
@@ -96,7 +94,6 @@ void PolygonCreator::triangleSlot(bool){
 void PolygonCreator::quadrilateralSlot(bool){
     refreshCreators();
     mainLayout->addWidget((quadrilateralWidget));
-
 }
 
 void PolygonCreator::pentagonSlot(bool){

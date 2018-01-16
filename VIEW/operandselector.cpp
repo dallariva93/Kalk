@@ -32,9 +32,8 @@ void OperandSelector::addColore(Colore *c){
     insertItem(c);
 }
 /*
-void OperandSelector::selectedOp(){
+void OperandSelector::selectedOp(){     //emette un segnale col nome dell'operando corrente
     QString name = selector->currentText();
-
     std::cout<<" name="<<name.toStdString()<<std::endl;
     emit inviaNome(name);
 

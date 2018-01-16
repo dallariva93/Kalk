@@ -31,7 +31,6 @@ public:
 
 signals:
     void trovaPerimetro();
-    //void stampa2p(double);
 
 public slots:
     void getPerimetro();

@@ -36,7 +36,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     setLayout(layout);
 
     connect(perimetro ,SIGNAL(clicked()), this, SLOT(getPerimetro()) );
-    /*
+/*
     connect(area ,SIGNAL(clicked()), this, SLOT(OutputArea()) );
     connect(angoli ,SIGNAL(clicked()), this, SLOT(OutputAngoli()) );
     connect(lati ,SIGNAL(clicked()), this, SLOT(OutputLati()) );
@@ -46,7 +46,6 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
 void BoxButtons::getPerimetro(){
     emit trovaPerimetro();
 }
-
 
 
 

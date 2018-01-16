@@ -1,6 +1,7 @@
 #include "dataarea.h"
 #include <sstream>
 #include<QChar>
+#include<iostream>
 DataArea::DataArea(){
     setReadOnly(true);
     QSize size(200,250);
@@ -20,8 +21,6 @@ void DataArea::setText(QVector<double> lati){
 }
 
 void DataArea::outputPerimetro(double pp){
-    std::stringstream stream;
-    stream<<pp;
-    const char* c=stream.str().c_str();
-    append(QString("Perimetro = ")+QString(c));
+    QString s = QString::fromStdString(std::to_string(pp));
+    QTextEdit::setText("Perimetro = " + s);
 }

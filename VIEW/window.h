@@ -21,7 +21,6 @@ public:
     OperandSelector *operandoDue;
     BoxButtons *pulsanti;
 
-
     QHBoxLayout *areaLayout;
     QHBoxLayout *creatorLayout;
     QHBoxLayout *operandLayout;

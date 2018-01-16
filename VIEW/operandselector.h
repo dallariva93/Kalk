@@ -20,16 +20,17 @@ private:
 
 public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
-    //Poligono& operando1Corrente() const;
     void insertItem(Colore*);
     void insertItem(Poligono*);
-    void selezionato();
 
 signals:
+    //void inviaNome(QString);
+    void inviaPerimetro(double);
 
 public slots:
     void addColore(Colore*);
-
+    //void selectedOp();     //slot che emette un segnale passando il nome di cosa è selezionato
+    void calcolaPerimetro();
 
 };
 

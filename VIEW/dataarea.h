@@ -12,6 +12,11 @@ public:
     DataArea();
     void setText(QVector<double>);
 
+signals:
+
+public slots:
+    void outputPerimetro(double);
+
 };
 
 #endif // DATAAREA_H

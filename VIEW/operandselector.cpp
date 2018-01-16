@@ -14,6 +14,7 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     setLayout(mainLayout);
 }
 
+
 void OperandSelector::insertItem(Colore *colore){
     contenitore->addColore(colore);
     QPixmap pmap(20,15);
@@ -27,24 +28,37 @@ void OperandSelector::insertItem(Poligono* poligono){
     selector->addItem(poligono->getNome());
 }
 
-/*
- * Poligono& OperandSelector::operando1Corrente() const{
-    int index = selector->currentIndex();
-    QString name =  *selector;     //index corrisponde al valore numerico in ordine al QVector di poligoni???
-    if(0 == name.indexOf('#'))  //è un colore
-        return 0;
-    else
-        return ;
-}
-*/
-
-void OperandSelector::selezionato(){
-   // int index = selector->currentIndex();
-
-
-//    for( QVector<Container*>::iterator it=contenitore->
-}
-
 void OperandSelector::addColore(Colore *c){
     insertItem(c);
 }
+/*
+void OperandSelector::selectedOp(){
+    QString name = selector->currentText();
+
+    std::cout<<" name="<<name.toStdString()<<std::endl;
+    emit inviaNome(name);
+
+}*/
+
+void OperandSelector::calcolaPerimetro(){
+    QString name = selector->currentText();
+    if(name.compare("#"))  //allora è un colore
+        std::cout<<"lancerà una eccezione xk non posso calcolare il perimetro dato il colore"<<std::endl;
+    //std::cout<<" name="<<name.toStdString()<<std::endl;
+    double pp=123.456;
+
+/*  //  DA AGGIUNGERE QUESTA PARTE QUANDO ABBIAMO I POLIGONI NEL SELECTOR
+
+    Poligono& pol = *( contenitore->getPoligono(name) );
+    double pp = pol.getPerimetro();
+*/
+    emit inviaPerimetro(pp);
+}
+
+
+
+
+
+
+
+

@@ -44,9 +44,9 @@ int main(int argc, char* argv[]){
     d->show();
 
     QApplication app(argc,argv);
-*/    DrawArea y(pent);
+    DrawArea y(pent);
     y.show();
-
+*/
     return app.exec();
 
 }

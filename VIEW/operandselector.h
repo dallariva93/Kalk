@@ -24,16 +24,20 @@ public:
     void insertItem(Poligono*);
 
 signals:
-    //void inviaNome(QString);
     void inviaPerimetro(double);
     void inviaArea(double);
+    void inviaAngoli(QVector<Angolo>);
+    void inviaLati(QVector<double>);
+    void sommaUno(QString);
 
 public slots:
     void addColore(Colore*);
-    //void selectedOp();     //slot che emette un segnale passando il nome di cosa è selezionato
     void calcolaPerimetro();
     void calcolaArea();
-
+    void calcolaAngoli();
+    void calcolaLati();
+    void sommaOpUno();
+    void calcolaSomma(QString);
 };
 
 #endif // OPERANDSELECTOR_H

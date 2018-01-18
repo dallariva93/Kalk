@@ -49,6 +49,18 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));
 
+    connect(pulsanti,SIGNAL(trovaArea()), operandoUno, SLOT(calcolaArea()));
+    connect(operandoUno,SIGNAL(inviaArea(double)), areaD, SLOT(outputArea(double)));
+
+    connect(pulsanti,SIGNAL(trovaAngoli()), operandoUno, SLOT(calcolaAngoli()));
+    connect(operandoUno,SIGNAL(inviaAngoli(QVector<Angolo>)), areaD, SLOT(outputAngoli(QVector<Angolo>)));
+
+    connect(pulsanti,SIGNAL(trovaLati()), operandoUno, SLOT(calcolaLati()));
+    connect(operandoUno,SIGNAL(inviaLati(QVector<double>)), areaD, SLOT(outputLati(QVector<double>)));
+//somma
+    connect(pulsanti,SIGNAL(trovaSomma()), operandoUno, SLOT(sommaOpUno()));
+    connect(operandoUno, SIGNAL(sommaUno(QString)), operandoDue, SLOT(calcolaSomma(QString)));
+
 /*  area tentativi fede   */
 
 }

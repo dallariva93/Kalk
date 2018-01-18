@@ -31,9 +31,12 @@ public:
 
 signals:
     void trovaPerimetro();
+    void trovaArea();
 
 public slots:
     void getPerimetro();
+    void getArea();
+
 };
 
 #endif // BOXBUTTON_H

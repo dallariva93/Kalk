@@ -26,11 +26,13 @@ public:
 signals:
     //void inviaNome(QString);
     void inviaPerimetro(double);
+    void inviaArea(double);
 
 public slots:
     void addColore(Colore*);
     //void selectedOp();     //slot che emette un segnale passando il nome di cosa è selezionato
     void calcolaPerimetro();
+    void calcolaArea();
 
 };
 

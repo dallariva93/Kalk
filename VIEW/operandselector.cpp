@@ -54,7 +54,18 @@ void OperandSelector::calcolaPerimetro(){
     emit inviaPerimetro(pp);
 }
 
+void OperandSelector::calcolaArea(){
+    QString name = selector->currentText();
+    if(name.compare("#"))  //allora è un colore
+        std::cout<<"pop-up"<<std::endl;
+    double a=987.654;
+/*  //  DA AGGIUNGERE QUESTA PARTE QUANDO ABBIAMO I POLIGONI NEL SELECTOR
 
+    Poligono& pol = *( contenitore->getPoligono(name) );
+    double pp = pol.getArea();
+*/
+    emit inviaArea(a);
+}
 
 
 

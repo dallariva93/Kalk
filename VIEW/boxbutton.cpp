@@ -36,23 +36,32 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     setLayout(layout);
 
     connect(perimetro ,SIGNAL(clicked()), this, SLOT(getPerimetro()) );
-    /*
-    connect(area ,SIGNAL(clicked()), this, SLOT(OutputArea()) );
-    connect(angoli ,SIGNAL(clicked()), this, SLOT(OutputAngoli()) );
-    connect(lati ,SIGNAL(clicked()), this, SLOT(OutputLati()) );
-*/
+    connect(area ,SIGNAL(clicked()), this, SLOT(getArea()) );
+    connect(angoli ,SIGNAL(clicked()), this, SLOT(getAngoli()) );
+    connect(lati ,SIGNAL(clicked()), this, SLOT(getLati()) );
+
+    connect(somma, SIGNAL(clicked()), this, SLOT(getSomma()));
+
 }
 
 void BoxButtons::getPerimetro(){
     emit trovaPerimetro();
 }
 
+void BoxButtons::getArea(){
+    emit trovaArea();
+}
 
+void BoxButtons::getAngoli(){
+    emit trovaAngoli();
+}
 
+void BoxButtons::getLati(){
+    emit trovaLati();
+}
 
-
-
-
-
+void BoxButtons::getSomma(){
+    emit trovaSomma();
+}
 
 

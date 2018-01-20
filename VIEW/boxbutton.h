@@ -31,10 +31,18 @@ public:
 
 signals:
     void trovaPerimetro();
-    //void stampa2p(double);
+    void trovaArea();
+    void trovaAngoli();
+    void trovaLati();
+    void trovaSomma();
 
 public slots:
     void getPerimetro();
+    void getArea();
+    void getAngoli();
+    void getLati();
+    void getSomma();
+
 };
 
 #endif // BOXBUTTON_H

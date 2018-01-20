@@ -23,9 +23,15 @@ Poligono* Container::getPoligono(QString name) const{
 }
 
 Colore* Container::getColore(QString name) const{
-    for(QVector<Colore*>::const_iterator cit = color.cbegin(); cit != color.cend(); ++cit){
-        if( (*cit)->getHex() == name)
+    auto cit = color.cbegin();
+    for(; cit != color.cend(); ++cit){
+        std::cout<<"BBBBBBBBBBBBBBB = "<<name.toStdString()<<std::endl;
+        Colore* p = *cit;
+        std::cout<<"CCCCCCCCCCCCCCC = "<<(p->getHex()).toStdString()<<std::endl;
+        if( p->getHex() == name){                      //  da problema (*cit)->getHex() "non lo prende tipo"
+
             return *cit;
+        }
     }
     return 0;
 }

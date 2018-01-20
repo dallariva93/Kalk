@@ -261,7 +261,7 @@ void PentagonCreator::formRegolare(){
 
 void PentagonCreator::creaPentagono()
 {
-   /* if(radio1->isChecked())
-        //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
-    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),) */
+    if(radio1->isChecked())    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
+    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),colori->objectName())
+
 }

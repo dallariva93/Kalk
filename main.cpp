@@ -44,15 +44,12 @@ int main(int argc, char* argv[]){
     d->show();
 
     QApplication app(argc,argv);
-<<<<<<< HEAD
 */
+    o->operator +(*k);
 
-=======
-    DrawArea y(pent);
-    y.show();
-*/
->>>>>>> e973dba03e7238f771ec852ab3c74f886413de88
     return app.exec();
+
+
 
 }
 

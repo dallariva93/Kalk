@@ -24,4 +24,6 @@ void DataArea::outputPerimetro(double pp){
     stream<<pp;
     const char* c=stream.str().c_str();
     append(QString("Perimetro = ")+QString(c));
+
+
 }

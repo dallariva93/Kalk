@@ -29,6 +29,11 @@ void OperandSelector::insertItem(Poligono* poligono){
     selector->addItem(poligono->getNome());
 }
 
+Colore *OperandSelector::getColore(QString nome)
+{
+    return contenitore->getColore(nome);
+}
+
 void OperandSelector::addColore(Colore *c){
     insertItem(c);
 }

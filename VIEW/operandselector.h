@@ -22,6 +22,7 @@ public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
     void insertItem(Colore*);
     void insertItem(Poligono*);
+    Colore* getColore(QString);
 
 signals:
     //void inviaNome(QString);

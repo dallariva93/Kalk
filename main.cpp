@@ -45,7 +45,6 @@ int main(int argc, char* argv[]){
 
     QApplication app(argc,argv);
 */
-    o->operator +(*k);
 
     return app.exec();
 

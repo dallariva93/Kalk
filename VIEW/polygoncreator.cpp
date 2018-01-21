@@ -1,6 +1,6 @@
 #include "polygoncreator.h"
 
-PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent){
+PolygonCreator::PolygonCreator(OperandSelector *opSel, QWidget *parent) : selettore(opSel),QWidget(parent){
 /*    QSize size(390,350), buttonSize(100,25);
     setMaximumSize(size);
     setMinimumSize(size);*/
@@ -10,7 +10,7 @@ PolygonCreator::PolygonCreator(QWidget *parent) : QWidget(parent){
 
     triangleWidget=new TriangleCreator(colori);
     quadrilateralWidget=new QuadrilateralCreator(colori);
-    pentagonWidget=new PentagonCreator(colori);
+    pentagonWidget=new PentagonCreator(colori,selettore);
 
     triangleButton=new QPushButton("Triangolo");
     quadrilateralButton= new QPushButton("Quadrilatero");
@@ -82,7 +82,7 @@ void PolygonCreator::refreshCreators(){
 
     triangleWidget = new TriangleCreator(colori);
     quadrilateralWidget = new QuadrilateralCreator(colori);
-    pentagonWidget = new PentagonCreator(colori);
+    pentagonWidget = new PentagonCreator(colori, selettore);
 }
 
 

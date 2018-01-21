@@ -5,7 +5,7 @@
 #include "poligono.h"
 
 class Container{
-private:
+public:
     QVector<Poligono*> polygon;
     QVector<Colore*> color;
 

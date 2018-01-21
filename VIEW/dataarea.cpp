@@ -21,14 +21,6 @@ void DataArea::setText(QVector<double> lati){
 }*/
 
 void DataArea::outputPerimetro(double pp){
-<<<<<<< HEAD
-    std::stringstream stream;
-    stream<<pp;
-    const char* c=stream.str().c_str();
-    append(QString("Perimetro = ")+QString(c));
-
-
-=======
     QString s = QString::fromStdString(std::to_string(pp));
     QTextEdit::setText("Perimetro = " + s);
 }
@@ -56,5 +48,4 @@ void DataArea::outputLati(QVector<double> a){
         const char* c=stream.str().c_str();
         append(QString("Lato ")+letter[i]+QString(": ")+QString(c));
     }
->>>>>>> c7aa2213dddeda1d6e07d765ff1b521cd284a512
 }

@@ -3,7 +3,7 @@
 
 Container::Container(){
     polygon=QVector<Poligono*>();
-    color=QVector<Colore*>(1);
+    color=QVector<Colore*>();
 }
 
 void Container::addPoligono(Poligono* p){
@@ -11,7 +11,9 @@ void Container::addPoligono(Poligono* p){
 }
 
 void Container::addColore(Colore* c){
+    if(!color.contains(c))
     color.push_back(c);
+
 }
 
 Poligono* Container::getPoligono(QString name) const{
@@ -24,6 +26,8 @@ Poligono* Container::getPoligono(QString name) const{
 
 Colore* Container::getColore(QString name) const{
     auto cit = color.cbegin();
+    std::cout<<color.size();
+
     for(; cit != color.cend(); ++cit){
         std::cout<<"BBBBBBBBBBBBBBB = "<<name.toStdString()<<std::endl;
         Colore* p = *cit;

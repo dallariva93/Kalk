@@ -7,7 +7,6 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     setFont(QFont("QFont::SansSerif	",9));
 
-    creatorP=new PolygonCreator;
     creatorC=new ColorCreator;
 
     areaD=new DataArea;
@@ -16,6 +15,8 @@ Window::Window(QWidget *parent) : QWidget(parent){
     Container* contenitore=new Container;
     operandoUno = new OperandSelector("1",contenitore);
     operandoDue = new OperandSelector("2",contenitore);
+
+    creatorP=new PolygonCreator(operandoUno);
 
     pulsanti = new BoxButtons;
 

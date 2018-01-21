@@ -16,6 +16,7 @@ private:
     PentagonCreator* pentagonWidget;
 
     QComboBox* colori;
+    OperandSelector* selettore;
 
     QPushButton* triangleButton;
     QPushButton* quadrilateralButton;
@@ -25,7 +26,7 @@ private:
     QVBoxLayout* mainLayout;
 
 public:
-    PolygonCreator(QWidget *parent = 0);
+    PolygonCreator(OperandSelector*,QWidget *parent = 0);
     void refreshCreators();
 
 

@@ -25,6 +25,7 @@ protected:
     void paintEvent(QPaintEvent *event=0);
 signals:
 public slots:
+    void settaPoligono(Poligono*);
 
 };
 

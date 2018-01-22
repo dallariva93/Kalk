@@ -13,6 +13,9 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
+
+    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
+
     //connect(operando, SIGNAL(inviaOpUno(name)), operandoDue, SLOT(calcolaSommaDue(QString)));  //operando1 e operando2 vorrei
 }
 
@@ -124,6 +127,20 @@ void OperandSelector::calcolaSomma(QString name1){
         */
     }
 
+}
+
+void OperandSelector::addPoligono(QString poligono)
+{
+    selector->addItem(poligono);
+}
+
+void OperandSelector::textChanged(QString text)
+{
+    if(!text.contains("#")){
+        //std::cout<<text.toStdString();
+        emit inseritoPoligono(text);
+
+    }
 }
 
 

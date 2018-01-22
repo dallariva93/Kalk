@@ -30,6 +30,8 @@ signals:
     void inviaAngoli(QVector<Angolo>);
     void inviaLati(QVector<double>);
     void sommaUno(QString);
+    void insertPoligono(QString);
+    void inseritoPoligono(QString);
 
 public slots:
     void addColore(Colore*);
@@ -39,6 +41,8 @@ public slots:
     void calcolaLati();
     void sommaOpUno();
     void calcolaSomma(QString);
+    void addPoligono(QString);
+    void textChanged(QString);
 };
 
 #endif // OPERANDSELECTOR_H

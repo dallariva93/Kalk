@@ -263,8 +263,9 @@ void PentagonCreator::formRegolare(){
 void PentagonCreator::creaPentagono()
 {
     if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
-    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),selettore->getColore(colori->objectName()),nome->text());
+    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),(selettore->getColore(colori->currentText())->clone()),nome->text());
     selettore->insertItem(pentagono);
+    emit selettore->insertPoligono(pentagono->getNome());
     }
 
 }

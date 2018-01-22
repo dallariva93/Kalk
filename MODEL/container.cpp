@@ -1,5 +1,4 @@
 #include "container.h"
-#include "poligono.h"
 
 Container::Container(){
     polygon=QVector<Poligono*>();
@@ -23,15 +22,14 @@ Poligono* Container::getPoligono(QString name) const{
 }
 
 Colore* Container::getColore(QString name) const{
-    auto cit = color.cbegin();
-    for(; cit != color.cend(); ++cit){
-        std::cout<<"BBBBBBBBBBBBBBB = "<<name.toStdString()<<std::endl;
-        Colore* p = *cit;
-        std::cout<<"CCCCCCCCCCCCCCC = "<<(p->getHex()).toStdString()<<std::endl;
-        if( p->getHex() == name){                      //  da problema (*cit)->getHex() "non lo prende tipo"
-
+    for(auto cit = color.cbegin(); cit != color.cend(); ++cit){
+        std::cout<<"string op 1 = "<<name.toStdString()<<std::endl;
+        Colore *p = *cit;
+        std::cout<<"CCC = "<<(p->getHex().toStdString())<<std::endl;
+        if( p->getHex() == name){                      //  da problema (*cit)->getHex()
             return *cit;
         }
+        return *cit;
     }
     return 0;
 }

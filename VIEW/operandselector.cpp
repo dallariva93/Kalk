@@ -93,9 +93,10 @@ void OperandSelector::calcolaSomma(QString name1){
     QString name2 = selector->currentText();
     std::cout<<" name op 1 ="<<name1.toStdString()<<"    name op 2 ="<<name2.toStdString()<<std::endl;
     if(name1.compare("#")){  //allora operaore 1 è un colore
-        std::cout<<"AAAAAAAAAAAA"<<std::endl;
         Colore* col1 = contenitore->getColore(name1);   //colore operando 1
 
+
+        std::cout<<"DDDDDD "<<col1->getHex().toStdString()<<std::endl;
         /*   if(name2.compare("#")){ //somma tra colori
             std::cout<<"somma colori"<<std::endl;
             Colore* col2 = contenitore->getColore(name2);   //colore operando 2

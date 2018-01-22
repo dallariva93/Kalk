@@ -20,10 +20,11 @@ public:
     DrawArea(Poligono* =0);
     static void sposta(Poligono* pol,double x, double y);
 
-
 protected:
     void paintEvent(QPaintEvent *event=0);
+
 signals:
+
 public slots:
     void settaPoligono(Poligono*);
 

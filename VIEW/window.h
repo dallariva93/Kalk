@@ -33,6 +33,7 @@ public:
 
 signals:
     void disegnaPoligono(Poligono*);
+
 public slots:
     void acquisisciPoligono(QString);
 };

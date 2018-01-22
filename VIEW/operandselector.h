@@ -30,8 +30,16 @@ signals:
     void inviaAngoli(QVector<Angolo>);
     void inviaLati(QVector<double>);
     void sommaUno(QString);
+    void stampaSomma(QString);
+    void sottrazioneUno(QString);
+    void stampaSottrazione(QString);
+    void moltiplicazioneUno(QString);
+    void stampaMoltiplicazione(QString);
+    void divisioneUno(QString);
+    void stampaDivisione(QString);
     void insertPoligono(QString);
     void inseritoPoligono(QString);
+
 
 public slots:
     void addColore(Colore*);
@@ -41,6 +49,12 @@ public slots:
     void calcolaLati();
     void sommaOpUno();
     void calcolaSomma(QString);
+    void sottrazioneOpUno();
+    void calcolaSottrazione(QString);
+    void moltiplicazioneOpUno();
+    void calcolaMoltiplicazione(QString);
+    void divisioneOpUno();
+    void calcolaDivisione(QString);
     void addPoligono(QString);
     void textChanged(QString);
 };

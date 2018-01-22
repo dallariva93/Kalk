@@ -24,26 +24,14 @@ Poligono* Container::getPoligono(QString name) const{
 }
 
 Colore* Container::getColore(QString name) const{
-<<<<<<< HEAD
     for(auto cit = color.cbegin(); cit != color.cend(); ++cit){
-        std::cout<<"string op 1 = "<<name.toStdString()<<std::endl;
+        //std::cout<<"string op 1 = "<<name.toStdString()<<std::endl;
         Colore *p = *cit;
-        std::cout<<"CCC = "<<(p->getHex().toStdString())<<std::endl;
-        if( p->getHex() == name){                      //  da problema (*cit)->getHex()
-=======
-    auto cit = color.cbegin();
-    std::cout<<color.size();
-
-    for(; cit != color.cend(); ++cit){
-        std::cout<<"BBBBBBBBBBBBBBB = "<<name.toStdString()<<std::endl;
-        Colore* p = *cit;
-        std::cout<<"CCCCCCCCCCCCCCC = "<<(p->getHex()).toStdString()<<std::endl;
-        if( p->getHex() == name){                      //  da problema (*cit)->getHex() "non lo prende tipo"
-
->>>>>>> de34c38af9b6be89a0010f90d3a15a0330ef0ba6
+        //std::cout<<"CCC = "<<(p->getHex().toStdString())<<std::endl;
+        if( p->getHex() == name){
+            //std::cout<<"mathc="<<std::endl;
             return *cit;
         }
-        return *cit;
     }
     return 0;
 }

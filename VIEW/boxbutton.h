@@ -35,6 +35,9 @@ signals:
     void trovaAngoli();
     void trovaLati();
     void trovaSomma();
+    void trovaSottrazione();
+    void trovaMoltiplicazione();
+    void trovaDivisione();
 
 public slots:
     void getPerimetro();
@@ -42,7 +45,9 @@ public slots:
     void getAngoli();
     void getLati();
     void getSomma();
-
+    void getSottrazione();
+    void getMoltiplicazione();
+    void getDivisione();
 };
 
 #endif // BOXBUTTON_H

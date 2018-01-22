@@ -49,3 +49,19 @@ void DataArea::outputLati(QVector<double> a){
         append(QString("Lato ")+letter[i]+QString(": ")+QString(c));
     }
 }
+
+void DataArea::outputSomma(QString somma){
+    QTextEdit::setText("Somma colori = " + somma);
+}
+
+void DataArea::outputSottrazione(QString s){
+    QTextEdit::setText("Sottrazione colori = " + s);
+}
+
+void DataArea::outputMoltiplicazione(QString s){
+    QTextEdit::setText("Moltiplicazione colori = " + s);
+}
+
+void DataArea::outputDivisione(QString s){
+    QTextEdit::setText("Divisione colori = " + s);
+}

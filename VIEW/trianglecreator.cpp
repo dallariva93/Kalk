@@ -5,13 +5,10 @@ TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(par
    /* QSize size(450,350);
     setMaximumSize(size);*/
 
-
-
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);
     radio3 = new QRadioButton(tr("Costruisco dato i tre lati."),this);
     radio1->setChecked(true);   //setto di default radio1
-
 
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
@@ -22,7 +19,6 @@ TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(par
 
     lato3->setVisible(false);
     angolo2->setVisible(false);
-
 
     latoA = new QLabel(tr("Lato A:"));
     latoB = new QLabel(tr("Lato B:"));
@@ -40,7 +36,6 @@ TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(par
     connect(radio1, SIGNAL(clicked()), this, SLOT(dueLatiUnAngolo()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(dueAngoliUnLato()));
     connect(radio3, SIGNAL(clicked()), this, SLOT(treLati()));
-    //connect per il pulsante crea
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -61,18 +56,15 @@ TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(par
     coloreNomeLayout->addWidget(labelNome);
     coloreNomeLayout->addWidget(nome);
 
-
     mainLayout = new QVBoxLayout;
     mainLayout->addLayout(choiceLayout);
     mainLayout->addLayout(formLayout);
     mainLayout->addLayout(coloreNomeLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
-
 }
 
-void TriangleCreator::refreshFormWidget()
-{
+void TriangleCreator::refreshFormWidget(){
     formLayout->removeWidget(lato1);
     formLayout->removeWidget(lato2);
     formLayout->removeWidget(lato3);
@@ -83,7 +75,6 @@ void TriangleCreator::refreshFormWidget()
     formLayout->removeWidget(angolo2);
     formLayout->removeWidget(angoloA);
     formLayout->removeWidget(angoloB);
-
 
     delete lato1;
     delete lato2;
@@ -96,8 +87,6 @@ void TriangleCreator::refreshFormWidget()
     delete angoloA;
     delete angoloB;
 
-
-
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
     lato3 = new QLineEdit(this);
@@ -108,15 +97,11 @@ void TriangleCreator::refreshFormWidget()
     latoC= new QLabel(tr("Lato C:"));
     angoloA = new QLabel(tr("Angolo:"));
     angoloB = new QLabel(tr("Angolo:"));
-
-
 }
 
-
-void TriangleCreator::dueLatiUnAngolo()
-{
+void TriangleCreator::dueLatiUnAngolo(){
     refreshFormWidget();
-     formLayout;
+    formLayout;
     mainLayout->removeWidget(saveButton);
     delete saveButton;
     saveButton=new QPushButton(tr("Crea"), this);
@@ -151,11 +136,9 @@ void TriangleCreator::dueLatiUnAngolo()
     mainLayout->addLayout(coloreNomeLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
-
 }
 
-void TriangleCreator::dueAngoliUnLato()
-{
+void TriangleCreator::dueAngoliUnLato(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -182,14 +165,11 @@ void TriangleCreator::dueAngoliUnLato()
     formLayout->addWidget(angoloB);
     formLayout->addWidget(angolo2);
 
-
-
     coloreNomeLayout = new QHBoxLayout;
     coloreNomeLayout->addWidget(colore);
     coloreNomeLayout->addWidget(colori);
     coloreNomeLayout->addWidget(labelNome);
     coloreNomeLayout->addWidget(nome);
-
 
     mainLayout->addLayout(formLayout);
     mainLayout->addLayout(coloreNomeLayout);
@@ -197,9 +177,7 @@ void TriangleCreator::dueAngoliUnLato()
     setLayout(mainLayout);
 }
 
-void TriangleCreator::treLati()
-{
-
+void TriangleCreator::treLati(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -232,10 +210,8 @@ void TriangleCreator::treLati()
     coloreNomeLayout->addWidget(labelNome);
     coloreNomeLayout->addWidget(nome);
 
-
     mainLayout->addLayout(formLayout);
     mainLayout->addLayout(coloreNomeLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
-
 }

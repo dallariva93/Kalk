@@ -6,8 +6,6 @@ PentagonCreator::PentagonCreator(QComboBox* col, OperandSelector *sel, QWidget *
     QSize size(400,350);
     setMaximumSize(size);
 
-
-
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
     radio2 = new QRadioButton(tr("Costruisco un pentagono irregolare"),this);
     radio1->setChecked(true);   //setto di default radio1
@@ -158,8 +156,6 @@ void PentagonCreator::refreshFormWidget(){
     labelNome = new QLabel(tr("Nome:"));
 }
 
-
-
 void PentagonCreator::formIrregolare(){
     refreshFormWidget();
     delete formLayout;
@@ -260,12 +256,10 @@ void PentagonCreator::formRegolare(){
     mainLayout->addWidget(saveButton);
 }
 
-void PentagonCreator::creaPentagono()
-{
+void PentagonCreator::creaPentagono(){
     if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
-    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),(selettore->getColore(colori->currentText())->clone()),nome->text());
-    selettore->insertItem(pentagono);
-    emit selettore->insertPoligono(pentagono->getNome());
+        Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),(selettore->getColore(colori->currentText())->clone()),nome->text());
+        selettore->insertItem(pentagono);
+        emit selettore->insertPoligono(pentagono->getNome());
     }
-
 }

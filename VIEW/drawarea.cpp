@@ -22,8 +22,7 @@ DrawArea::DrawArea(Poligono * pol):poligono(pol){
     QSize size(400,250);
     setMaximumSize(size);
     setMinimumSize(size);
-    setStyleSheet("border: 1px solid grey; background-color: white;");
-
+    setStyleSheet("border: 1px solid grey; background-color: white;");    
 }  //non ho bisogno di copie profonde
 
 void DrawArea::paintEvent(QPaintEvent *event){
@@ -60,8 +59,7 @@ void DrawArea::paintEvent(QPaintEvent *event){
     }
 }
 
-void DrawArea::settaPoligono(Poligono *pol)
-{
+void DrawArea::settaPoligono(Poligono *pol){
     setPoligono(pol);
     repaint();
 }

@@ -20,6 +20,10 @@ public slots:
     void outputArea(double);
     void outputAngoli(QVector<Angolo>);
     void outputLati(QVector<double>);
+    void outputSomma(QString);
+    void outputSottrazione(QString);
+    void outputMoltiplicazione(QString);
+    void outputDivisione(QString);
 };
 
 #endif // DATAAREA_H

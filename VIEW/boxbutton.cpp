@@ -41,6 +41,9 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(lati ,SIGNAL(clicked()), this, SLOT(getLati()) );
 
     connect(somma, SIGNAL(clicked()), this, SLOT(getSomma()));
+    connect(sottrazione, SIGNAL(clicked()), this, SLOT(getSottrazione()));
+    connect(moltiplicazione, SIGNAL(clicked()), this, SLOT(getMoltiplicazione()));
+    connect(divisione, SIGNAL(clicked()), this, SLOT(getDivisione()));
 
 }
 
@@ -64,4 +67,14 @@ void BoxButtons::getSomma(){
     emit trovaSomma();
 }
 
+void BoxButtons::getSottrazione(){
+    emit trovaSottrazione();
+}
 
+void BoxButtons::getMoltiplicazione(){
+    emit trovaMoltiplicazione();
+}
+
+void BoxButtons::getDivisione(){
+    emit trovaDivisione();
+}

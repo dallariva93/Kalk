@@ -51,8 +51,6 @@ Window::Window(QWidget *parent) : QWidget(parent){
     mainLayout->addLayout(creatorLayout);
     setLayout(mainLayout);
 
-/*  area tentativi fede   */
-
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));
 
@@ -64,16 +62,25 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     connect(pulsanti,SIGNAL(trovaLati()), operandoUno, SLOT(calcolaLati()));
     connect(operandoUno,SIGNAL(inviaLati(QVector<double>)), areaD, SLOT(outputLati(QVector<double>)));
-//somma
+
     connect(pulsanti,SIGNAL(trovaSomma()), operandoUno, SLOT(sommaOpUno()));
     connect(operandoUno, SIGNAL(sommaUno(QString)), operandoDue, SLOT(calcolaSomma(QString)));
+    connect(operandoDue, SIGNAL(stampaSomma(QString)), areaD, SLOT(outputSomma(QString)));
 
-/*  area tentativi fede   */
+    connect(pulsanti,SIGNAL(trovaSottrazione()), operandoUno, SLOT(sottrazioneOpUno()));
+    connect(operandoUno, SIGNAL(sottrazioneUno(QString)), operandoDue, SLOT(calcolaSottrazione(QString)));
+    connect(operandoDue, SIGNAL(stampaSottrazione(QString)), areaD, SLOT(outputSottrazione(QString)));
 
+    connect(pulsanti,SIGNAL(trovaMoltiplicazione()), operandoUno, SLOT(moltiplicazioneOpUno()));
+    connect(operandoUno, SIGNAL(moltiplicazioneUno(QString)), operandoDue, SLOT(calcolaMoltiplicazione(QString)));
+    connect(operandoDue, SIGNAL(stampaMoltiplicazione(QString)), areaD, SLOT(outputMoltiplicazione(QString)));
+
+    connect(pulsanti,SIGNAL(trovaDivisione()), operandoUno, SLOT(divisioneOpUno()));
+    connect(operandoUno, SIGNAL(divisioneUno(QString)), operandoDue, SLOT(calcolaDivisione(QString)));
+    connect(operandoDue, SIGNAL(stampaDivisione(QString)), areaD, SLOT(outputDivisione(QString)));
 }
 
-void Window::acquisisciPoligono(QString text)
-{
+void Window::acquisisciPoligono(QString text){
     emit disegnaPoligono(contenitore->getPoligono(text));
 }
 

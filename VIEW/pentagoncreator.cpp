@@ -1,9 +1,12 @@
 #include "pentagoncreator.h"
 #include <QLineEdit>
 
-PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
+
+PentagonCreator::PentagonCreator(QComboBox* col, OperandSelector *sel, QWidget *parent) : colori(col),selettore(sel), QWidget(parent){
     QSize size(400,350);
     setMaximumSize(size);
+
+
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
     radio2 = new QRadioButton(tr("Costruisco un pentagono irregolare"),this);
@@ -56,12 +59,11 @@ PentagonCreator::PentagonCreator(QWidget *parent) : QWidget(parent){
     angoloE->setVisible(false);
 
     saveButton = new QPushButton(tr("Crea"), this);
-    colori= new QComboBox;
-    colori->addItem(QString("colori"));
+
 
     connect(radio1, SIGNAL(clicked()), this, SLOT(formRegolare()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formIrregolare()));
-    //connect(saveButton, SIGNAL(clicked(),this, SLOT(/*funzioneche crea un pentagono*/)));
+    connect(saveButton, SIGNAL(clicked()),this, SLOT(creaPentagono()));
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -155,6 +157,8 @@ void PentagonCreator::refreshFormWidget(){
     colore = new QLabel(tr("Colore:"));
     labelNome = new QLabel(tr("Nome:"));
 }
+
+
 
 void PentagonCreator::formIrregolare(){
     refreshFormWidget();
@@ -258,7 +262,10 @@ void PentagonCreator::formRegolare(){
 
 void PentagonCreator::creaPentagono()
 {
-   /* if(radio1->isChecked())
-        //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
-    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),) */
+    if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
+    Pentagono* pentagono = new Pentagono(lato1->text().toDouble(),(selettore->getColore(colori->currentText())->clone()),nome->text());
+    selettore->insertItem(pentagono);
+    emit selettore->insertPoligono(pentagono->getNome());
+    }
+
 }

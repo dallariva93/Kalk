@@ -11,6 +11,8 @@
 #include <QGroupBox>
 #include <QRadioButton>
 #include <MODEL/pentagono.h>
+#include <VIEW/operandselector.h>
+
 
 class PentagonCreator : public QWidget{
 
@@ -51,9 +53,12 @@ private:
     QHBoxLayout *colorLayout;
     QGridLayout *formLayout;
     QComboBox *colori;
+
+    OperandSelector* selettore;
 public:
-    PentagonCreator(QWidget *parent = 0);
+    PentagonCreator(QComboBox *col,OperandSelector* sel, QWidget *parent = 0);
     void refreshFormWidget();
+
 
 
 signals:

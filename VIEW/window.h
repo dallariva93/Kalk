@@ -21,6 +21,7 @@ public:
     OperandSelector *operandoDue;
     BoxButtons *pulsanti;
 
+    Container* contenitore;
     QHBoxLayout *areaLayout;
     QHBoxLayout *creatorLayout;
     QHBoxLayout *operandLayout;
@@ -31,8 +32,9 @@ public:
     Window(QWidget *parent = 0);
 
 signals:
-
+    void disegnaPoligono(Poligono*);
 public slots:
+    void acquisisciPoligono(QString);
 };
 
 #endif // WINDOW_H

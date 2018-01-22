@@ -7,15 +7,16 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     setFont(QFont("QFont::SansSerif	",9));
 
-    creatorP=new PolygonCreator;
     creatorC=new ColorCreator;
 
     areaD=new DataArea;
     areaP=new DrawArea;
 
-    Container* contenitore=new Container;
+    contenitore=new Container;
     operandoUno = new OperandSelector("1",contenitore);
     operandoDue = new OperandSelector("2",contenitore);
+
+    creatorP=new PolygonCreator(operandoUno);
 
     pulsanti = new BoxButtons;
 
@@ -27,6 +28,12 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoUno,SLOT(addColore(Colore*)));
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoDue,SLOT(addColore(Colore*)));
+    connect(creatorC,SIGNAL(inviaColore(Colore*)),creatorP,SLOT(addColore(Colore*)));
+
+    connect(operandoUno, SIGNAL(insertPoligono(QString)),operandoDue, SLOT(addPoligono(QString)));//aggiorno il selettore 2 quando inserisco solo nel primo
+    connect(operandoUno, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
+    connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
+
     areaLayout->addWidget(areaP);
     areaLayout->addWidget(areaD);
 
@@ -64,4 +71,10 @@ Window::Window(QWidget *parent) : QWidget(parent){
 /*  area tentativi fede   */
 
 }
+
+void Window::acquisisciPoligono(QString text)
+{
+    emit disegnaPoligono(contenitore->getPoligono(text));
+}
+
 

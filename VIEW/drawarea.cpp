@@ -59,3 +59,9 @@ void DrawArea::paintEvent(QPaintEvent *event){
         painter.drawPolygon(p);
     }
 }
+
+void DrawArea::settaPoligono(Poligono *pol)
+{
+    setPoligono(pol);
+    repaint();
+}

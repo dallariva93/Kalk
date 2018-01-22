@@ -105,6 +105,7 @@ void ColorCreator::getG(int g){
 void ColorCreator::creaColore(){
     Colore* colore = new RGB(redLCD->value(),greenLCD->value(),blueLCD->value());
     emit inviaColore(colore);
+
 }
 
 void ColorCreator::getB(int b){

@@ -13,6 +13,9 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
+
+    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
+
     //connect(operando, SIGNAL(inviaOpUno(name)), operandoDue, SLOT(calcolaSommaDue(QString)));  //operando1 e operando2 vorrei
 }
 
@@ -22,11 +25,17 @@ void OperandSelector::insertItem(Colore *colore){
     pmap.fill(colore->toQcolor());
     QIcon icon(pmap);
     selector->addItem(icon,colore->getHex());
+
 }
 
 void OperandSelector::insertItem(Poligono* poligono){
     contenitore->addPoligono(poligono);
     selector->addItem(poligono->getNome());
+}
+
+Colore *OperandSelector::getColore(QString nome)
+{
+    return contenitore->getColore(nome);
 }
 
 void OperandSelector::addColore(Colore *c){
@@ -119,6 +128,20 @@ void OperandSelector::calcolaSomma(QString name1){
         */
     }
 
+}
+
+void OperandSelector::addPoligono(QString poligono)
+{
+    selector->addItem(poligono);
+}
+
+void OperandSelector::textChanged(QString text)
+{
+    if(!text.contains("#")){
+        //std::cout<<text.toStdString();
+        emit inseritoPoligono(text);
+
+    }
 }
 
 

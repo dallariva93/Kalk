@@ -15,6 +15,9 @@ private:
     QuadrilateralCreator* quadrilateralWidget;
     PentagonCreator* pentagonWidget;
 
+    QComboBox* colori;
+    OperandSelector* selettore;
+
     QPushButton* triangleButton;
     QPushButton* quadrilateralButton;
     QPushButton* pentagonButton;
@@ -23,8 +26,9 @@ private:
     QVBoxLayout* mainLayout;
 
 public:
-    PolygonCreator(QWidget *parent = 0);
+    PolygonCreator(OperandSelector*,QWidget *parent = 0);
     void refreshCreators();
+
 
 signals:
 
@@ -32,6 +36,7 @@ public slots:
     void triangleSlot(bool);
     void quadrilateralSlot(bool);
     void pentagonSlot(bool);
+    void addColore(Colore*);
 
 };
 

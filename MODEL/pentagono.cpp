@@ -7,7 +7,7 @@ const Angolo Pentagono::angoloInterno= Angolo(108);
 Pentagono::Pentagono() : Pentagono(10,10,10,10,10,Angolo(108),Angolo(108),Angolo(108),Angolo(108),Angolo(108)){}
 
 Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE, double latoAE, const Angolo& a, const Angolo& b,
-                     const Angolo& c, const Angolo& d, const Angolo& e, Colore* col) : Poligono(5,"pentagono",col){
+                     const Angolo& c, const Angolo& d, const Angolo& e, Colore* col, QString nome) : Poligono(5,nome,col){
     QVector<Punto> punti;
     punti.push_back(Punto::origine);    //coordinata A
     punti.push_back(Punto(latoAB,0));   //coordinata B
@@ -24,8 +24,8 @@ Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE,
     setPunti(punti);
 }
 
-Pentagono::Pentagono(double lato, Colore* col) :
-    Pentagono(lato,lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,angoloInterno,angoloInterno,col){}
+Pentagono::Pentagono(double lato, Colore* col, QString nome) :
+    Pentagono(lato,lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,angoloInterno,angoloInterno,col,nome){}
 
 double Pentagono::getArea() const {
     Triangolo t1(getLati()[0], getLati()[1], Punto::distanceTo(getCoordinate()[0], getCoordinate()[2]));

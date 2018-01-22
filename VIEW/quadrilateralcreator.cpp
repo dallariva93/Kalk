@@ -1,10 +1,12 @@
 #include"VIEW/quadrilateralcreator.h"
 #include<QLineEdit>
+#include<iostream>
 
-QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
+QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, QWidget *parent) : QWidget(parent), colori(col){
 
     QSize size(500,350);
     setMaximumSize(size);
+
 
     radio1 = new QRadioButton(tr("Costruisco un quadrato dato un lato"),this);
     radio2 = new QRadioButton(tr("Costruisco un rettangolo dati lato minore e maggiore"),this);
@@ -49,8 +51,6 @@ QuadrilateralCreator::QuadrilateralCreator(QWidget *parent) : QWidget(parent){
     angoloD->setVisible(false);
 
     saveButton = new QPushButton(tr("Crea"), this);
-    colori= new QComboBox;
-    colori->addItem(QString("colori"));
 
     connect(radio1, SIGNAL(clicked()), this, SLOT(formQuadrato()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formRettangolo()));
@@ -133,6 +133,33 @@ void QuadrilateralCreator::refreshFormWidget()
     colore = new QLabel(tr("Colore:"));
     nome = new QLineEdit(this);
     labelNome = new QLabel(tr("Nome:"));
+
+}
+
+QuadrilateralCreator::~QuadrilateralCreator()
+{
+    delete  radio1;
+    delete radio2;
+    delete radio3;
+    delete  lato1;
+    delete lato2;
+    delete lato3;
+    delete lato4;
+    delete latoA;
+    delete latoB;
+    delete latoC;
+    delete latoD;
+    delete angolo1;
+    delete angolo2;
+    delete angolo3;
+    delete angolo4;
+    delete nome;
+    delete angoloA;
+    delete angoloB;
+    delete angoloC;
+    delete angoloD;
+    delete labelNome;
+    delete colore;
 
 }
 

@@ -22,6 +22,7 @@ public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
     void insertItem(Colore*);
     void insertItem(Poligono*);
+    Colore* getColore(QString);
 
 signals:
     void inviaPerimetro(double);
@@ -29,6 +30,8 @@ signals:
     void inviaAngoli(QVector<Angolo>);
     void inviaLati(QVector<double>);
     void sommaUno(QString);
+    void insertPoligono(QString);
+    void inseritoPoligono(QString);
 
 public slots:
     void addColore(Colore*);
@@ -38,6 +41,8 @@ public slots:
     void calcolaLati();
     void sommaOpUno();
     void calcolaSomma(QString);
+    void addPoligono(QString);
+    void textChanged(QString);
 };
 
 #endif // OPERANDSELECTOR_H

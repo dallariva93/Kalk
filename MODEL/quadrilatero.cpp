@@ -8,7 +8,7 @@
 */
 Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90)){}
 
-Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col) : Poligono(4, "quadrato", col){
+Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col, QString nome) : Poligono(4, nome, col){
     //if(a+b+c+d>angolo(360))break;       //mettere eccezione
     double cx, cy, dx, dy;
     Angolo b_ad = 180 - b.getAngolo();

@@ -9,6 +9,9 @@
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QRadioButton>
+#include "MODEL/quadrilatero.h"
+#include "MODEL/quadrato.h"
+#include "VIEW/operandselector.h"
 
 class QuadrilateralCreator : public QWidget{
     Q_OBJECT
@@ -46,9 +49,10 @@ private:
     QGridLayout *formLayout;
     QComboBox *colori;
 
+    OperandSelector *selettore;
 
 public:
-    QuadrilateralCreator(QComboBox*col, QWidget *parent=0);
+    QuadrilateralCreator(QComboBox*col, OperandSelector *sel, QWidget *parent=0);
     void refreshFormWidget();
     ~QuadrilateralCreator();
 signals:
@@ -57,6 +61,7 @@ public slots:
     void formQuadrato();
     void formRettangolo();
     void formQuadrilatero();
+    void creaQuadrilatero();
 };
 
 #endif // QUADRILATERALCREATOR_H

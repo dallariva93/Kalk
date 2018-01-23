@@ -12,6 +12,8 @@
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QListWidgetItem>
+#include "MODEL/triangolo.h"
+#include "VIEW/operandselector.h"
 
 class TriangleCreator : public QWidget{
     Q_OBJECT
@@ -44,10 +46,10 @@ private:
 
     QComboBox *colori;
 
-
+    OperandSelector* selettore;
 
 public:
-    TriangleCreator(QComboBox *col , QWidget *parent=0);
+    TriangleCreator(QComboBox *col ,OperandSelector *sel, QWidget *parent=0);
     void refreshFormWidget();
 
 
@@ -55,6 +57,7 @@ public slots:
     void dueAngoliUnLato();
     void treLati();
     void dueLatiUnAngolo();
+    void creaTriangolo();
 
 };
 

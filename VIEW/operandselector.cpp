@@ -41,13 +41,8 @@ void OperandSelector::calcolaPerimetro(){
     QString name = selector->currentText();
     if(name.compare("#"))  //allora è un colore
         std::cout<<"lancerà una eccezione xk non posso calcolare il perimetro dato il colore"<<std::endl;
-    double pp=123.456;
-
-/*  //  DA AGGIUNGERE QUESTA PARTE QUANDO ABBIAMO I POLIGONI NEL SELECTOR
-
     Poligono* pol = contenitore->getPoligono(name);
     double pp = pol->getPerimetro();
-*/
     emit inviaPerimetro(pp);
 }
 
@@ -55,11 +50,8 @@ void OperandSelector::calcolaArea(){
     QString name = selector->currentText();
     if(name.compare("#"))  //allora è un colore
         std::cout<<"pop-up"<<std::endl;
-    double a=987.654;
-/*  //  DA AGGIUNGERE
     Poligono* pol = contenitore->getPoligono(name);
     double a = pol->getArea();
-*/
     emit inviaArea(a);
 }
 
@@ -68,10 +60,8 @@ void OperandSelector::calcolaAngoli(){
     if(name.compare("#"))  //allora è un colore
         std::cout<<"pop-up angoli"<<std::endl;
     QVector<Angolo> a;
-/*  //  DA AGGIUNGERE
     Poligono* pol = contenitore->getPoligono(name);
     a = pol->getAngoli();
-*/
     emit inviaAngoli(a);
 }
 
@@ -80,10 +70,8 @@ void OperandSelector::calcolaLati(){
     if(name.compare("#"))  //allora è un colore
         std::cout<<"pop-up lati"<<std::endl;
     QVector<double> l;
-/*  //  DA AGGIUNGERE
     Poligono* pol =  contenitore->getPoligono(name) ;
     l = pol->getLati();
-*/
     emit inviaLati(l);
 }
 

@@ -7,7 +7,7 @@ class Quadrato : public Quadrilatero{
 
 public:
     Quadrato();
-    Quadrato(double lato, Colore *col=new RGB());
+    Quadrato(double lato, Colore *col=new RGB(), QString nome="quadrato");
     double getArea()const;
     double getPerimetro()const;
     void estendi(double);

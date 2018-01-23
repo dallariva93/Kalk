@@ -7,9 +7,9 @@ class Triangolo : public Poligono{
 
 public:
     Triangolo();
-    Triangolo(double, double, const Angolo&, Colore* col=new RGB());
-    Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB());
-    Triangolo(double, double, double, Colore* col=new RGB());
+    Triangolo(double, double, const Angolo&, Colore* col=new RGB(), QString nome="triangolo");
+    Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB(), QString nome="triangolo");
+    Triangolo(double, double, double, Colore* col=new RGB(), QString nome="triangolo");
 
     double getAltezza() const;
     double getArea() const;

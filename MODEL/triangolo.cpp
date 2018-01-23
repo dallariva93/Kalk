@@ -12,7 +12,10 @@
 */
 Triangolo::Triangolo() : Triangolo(10,10,10) {}
 
-Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col) : Poligono(3, "triangolo", col) {
+Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col, QString nome) : Poligono(3, nome, col) {
+
+    std::cout<<"cstr tr: "<<latoAB<<"  "<<latoAC<<"  "<<a.getAngolo()<<"  "<<col->getHex().toStdString()<<std::endl;
+
     QVector<Punto> punti;
     punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));
@@ -20,7 +23,7 @@ Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col)
     setPunti(punti);
 }
 
-Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* col) : Poligono(3, "triangolo", col) {
+Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* col, QString nome) : Poligono(3, nome, col) {
     Angolo c = 180 -a.getAngolo() -b.getAngolo();
     QVector<Punto> punti;
     punti.push_back(Punto::origine);
@@ -30,7 +33,7 @@ Triangolo::Triangolo(double latoAB, const Angolo& a, const Angolo& b, Colore* co
     setPunti(punti);
 }
 
-Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col) : Poligono(3, "triangolo", col) {
+Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col, QString nome) : Poligono(3, nome, col) {
     double cos_a =(( pow(latoAC,2) + pow(latoAB,2) - pow(latoBC,2)) / (2*latoAB*latoAC)) ;
     Angolo a = acos(cos_a)*180/PI;
     QVector<Punto> punti;

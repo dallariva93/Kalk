@@ -2,15 +2,14 @@
 #include<QLineEdit>
 #include<iostream>
 
-QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, QWidget *parent) : QWidget(parent), colori(col){
+QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, OperandSelector *sel, QWidget *parent) : colori(col), selettore(sel), QWidget(parent){
 
     QSize size(500,350);
     setMaximumSize(size);
 
-
-    radio1 = new QRadioButton(tr("Costruisco un quadrato dato un lato"),this);
-    radio2 = new QRadioButton(tr("Costruisco un rettangolo dati lato minore e maggiore"),this);
-    radio3 = new QRadioButton(tr("Costruisco un quadrilatero irregolare dati lati e angoli"),this);
+    radio1 = new QRadioButton(tr("Costruisco un quadrato"),this);
+    radio2 = new QRadioButton(tr("Costruisco un rettangolo"),this);
+    radio3 = new QRadioButton(tr("Costruisco un quadrilatero irregolare"),this);
     radio1->setChecked(true);   //setto di default radio1
 
     lato1 = new QLineEdit(this);
@@ -55,6 +54,7 @@ QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, QWidget *parent) : QW
     connect(radio1, SIGNAL(clicked()), this, SLOT(formQuadrato()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(formRettangolo()));
     connect(radio3, SIGNAL(clicked()), this, SLOT(formQuadrilatero()));
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaQuadrilatero()));
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -69,17 +69,14 @@ QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, QWidget *parent) : QW
     formLayout->addWidget(labelNome,0,4);
     formLayout->addWidget(nome,0,5);
 
-
     mainLayout = new QVBoxLayout;
     mainLayout->addLayout(choiceLayout);
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
-
 }
 
-void QuadrilateralCreator::refreshFormWidget()
-{
+void QuadrilateralCreator::refreshFormWidget(){
     formLayout->removeWidget(lato1);
     formLayout->removeWidget(lato2);
     formLayout->removeWidget(lato3);
@@ -136,8 +133,7 @@ void QuadrilateralCreator::refreshFormWidget()
 
 }
 
-QuadrilateralCreator::~QuadrilateralCreator()
-{
+QuadrilateralCreator::~QuadrilateralCreator(){
     delete  radio1;
     delete radio2;
     delete radio3;
@@ -160,11 +156,9 @@ QuadrilateralCreator::~QuadrilateralCreator()
     delete angoloD;
     delete labelNome;
     delete colore;
-
 }
 
-void QuadrilateralCreator::formQuadrato()
-{
+void QuadrilateralCreator::formQuadrato(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -190,6 +184,8 @@ void QuadrilateralCreator::formQuadrato()
     angolo4->setVisible(false);
     angoloD->setVisible(false);
 
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaQuadrilatero()));
+
     formLayout->addWidget(latoA,0,0);
     formLayout->addWidget(lato1,0,1);
     formLayout->addWidget(colore,0,2);
@@ -199,11 +195,9 @@ void QuadrilateralCreator::formQuadrato()
 
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
-
 }
 
-void QuadrilateralCreator::formRettangolo()
-{
+void QuadrilateralCreator::formRettangolo(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -229,6 +223,7 @@ void QuadrilateralCreator::formRettangolo()
     angolo4->setVisible(false);
     angoloD->setVisible(false);
 
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaQuadrilatero()));
 
     formLayout->addWidget(latoA,0,0);
     formLayout->addWidget(lato1,0,1);
@@ -239,13 +234,11 @@ void QuadrilateralCreator::formRettangolo()
     formLayout->addWidget(labelNome,1,2);
     formLayout->addWidget(nome,1,3);
 
-
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
 }
 
-void QuadrilateralCreator::formQuadrilatero()
-{
+void QuadrilateralCreator::formQuadrilatero(){
     refreshFormWidget();
     delete formLayout;
     mainLayout->removeWidget(saveButton);
@@ -270,6 +263,8 @@ void QuadrilateralCreator::formQuadrilatero()
     angoloC->setVisible(true);
     angolo4->setVisible(true);
     angoloD->setVisible(true);
+
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaQuadrilatero()));
 
     formLayout->addWidget(latoA,0,0);
     formLayout->addWidget(lato1,0,1);
@@ -297,4 +292,26 @@ void QuadrilateralCreator::formQuadrilatero()
     mainLayout->addLayout(formLayout);
     mainLayout->addLayout(colorLayout);
     mainLayout->addWidget(saveButton);
+}
+
+void QuadrilateralCreator::creaQuadrilatero(){
+    Quadrilatero *qu;
+    if(radio1->isChecked()){    //quadrato
+        std::cout<<lato1->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        qu = new Quadrato(lato1->text().toDouble(), selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    else if(radio2->isChecked()){   //rettangolo
+        std::cout<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(), 90, 90, 90, 90, selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    else{   //q irregolare
+        std::cout<<std::endl<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"   "<<lato3->text().toDouble()<<"   "<<lato4->text().toDouble()<<std::endl;
+        std::cout<<angolo1->text().toDouble()<<"   "<<angolo2->text().toDouble()<<"   "<<angolo3->text().toDouble()<<"   "<<angolo4->text().toDouble()<<std::endl;
+        std::cout<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl<<std::endl;
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(),
+                              angolo1->text().toDouble(), angolo2->text().toDouble(), angolo3->text().toDouble(), angolo4->text().toDouble(),
+                              selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    selettore->insertItem(qu);
+    emit selettore->insertPoligono(qu->getNome());
 }

@@ -1,6 +1,7 @@
 #include "trianglecreator.h"
 #include <iostream>
-TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(parent),colori(col){
+
+TriangleCreator::TriangleCreator(QComboBox *col, OperandSelector *sel, QWidget *parent) : colori(col), selettore(sel), QWidget(parent){
 
    /* QSize size(450,350);
     setMaximumSize(size);*/
@@ -36,6 +37,7 @@ TriangleCreator::TriangleCreator(QComboBox *col, QWidget *parent) :  QWidget(par
     connect(radio1, SIGNAL(clicked()), this, SLOT(dueLatiUnAngolo()));
     connect(radio2, SIGNAL(clicked()), this, SLOT(dueAngoliUnLato()));
     connect(radio3, SIGNAL(clicked()), this, SLOT(treLati()));
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaTriangolo()));
 
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
@@ -118,6 +120,8 @@ void TriangleCreator::dueLatiUnAngolo(){
     angolo2->setVisible(false);
     angoloB->setVisible(false);
 
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaTriangolo()));
+
     formLayout = new QHBoxLayout;
     formLayout->addWidget(latoA);
     formLayout->addWidget(lato1);
@@ -158,6 +162,8 @@ void TriangleCreator::dueAngoliUnLato(){
     angolo2->setVisible(true);
     angoloB->setVisible(true);
 
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaTriangolo()));
+
     formLayout->addWidget(latoA);
     formLayout->addWidget(lato1);
     formLayout->addWidget(angoloA);
@@ -197,6 +203,8 @@ void TriangleCreator::treLati(){
     angolo2->setVisible(false);
     angoloB->setVisible(false);
 
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(creaTriangolo()));
+
     formLayout->addWidget(latoA);
     formLayout->addWidget(lato1);
     formLayout->addWidget(latoB);
@@ -214,4 +222,22 @@ void TriangleCreator::treLati(){
     mainLayout->addLayout(coloreNomeLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
+}
+
+void TriangleCreator::creaTriangolo(){
+    Triangolo *tr;
+    if(radio1->isChecked()){    //due lati e un angolo
+        std::cout<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"     "<<angolo1->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        tr = new Triangolo(lato1->text().toDouble(), lato2->text().toDouble(), Angolo(angolo1->text().toDouble()), selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    else if(radio2->isChecked()){   //due angoli e un lato
+        std::cout<<lato1->text().toDouble()<<"    "<<angolo1->text().toDouble()<<"   "<<angolo2->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        tr = new Triangolo(lato1->text().toDouble(), Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()), selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    else{   //tre lati
+        std::cout<<lato1->text().toDouble()<<"    "<<lato2->text().toDouble()<<"   "<<lato3->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        tr = new Triangolo(lato1->text().toDouble(), lato2->text().toDouble(), lato3->text().toDouble(), selettore->getColore(colori->currentText())->clone(), nome->text());
+    }
+    selettore->insertItem(tr);
+    emit selettore->insertPoligono(tr->getNome());
 }

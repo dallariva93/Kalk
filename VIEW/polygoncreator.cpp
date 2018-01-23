@@ -8,9 +8,9 @@ PolygonCreator::PolygonCreator(OperandSelector *opSel, QWidget *parent) : selett
 
     colori=new QComboBox;
 
-    triangleWidget=new TriangleCreator(colori);
-    quadrilateralWidget=new QuadrilateralCreator(colori);
-    pentagonWidget=new PentagonCreator(colori,selettore);
+    triangleWidget=new TriangleCreator(colori, selettore);
+    quadrilateralWidget=new QuadrilateralCreator(colori, selettore);
+    pentagonWidget=new PentagonCreator(colori, selettore);
 
     triangleButton=new QPushButton("Triangolo");
     quadrilateralButton= new QPushButton("Quadrilatero");
@@ -80,8 +80,8 @@ void PolygonCreator::refreshCreators(){
     colori=temp;
 
 
-    triangleWidget = new TriangleCreator(colori);
-    quadrilateralWidget = new QuadrilateralCreator(colori);
+    triangleWidget = new TriangleCreator(colori, selettore);
+    quadrilateralWidget = new QuadrilateralCreator(colori, selettore);
     pentagonWidget = new PentagonCreator(colori, selettore);
 }
 
@@ -101,8 +101,7 @@ void PolygonCreator::pentagonSlot(bool){
     mainLayout->addWidget(pentagonWidget);
 }
 
-void PolygonCreator::addColore(Colore *colore)
-{
+void PolygonCreator::addColore(Colore *colore){
     QPixmap pmap(20,15);
     pmap.fill(colore->toQcolor());
     QIcon icon(pmap);

@@ -31,22 +31,24 @@ void DataArea::outputArea(double a){
 }
 
 void DataArea::outputAngoli(QVector<Angolo> a){
+    QTextEdit::setText("");
     QString letter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     for(int i=0; i<a.size(); ++i){
         std::stringstream stream;
         stream<<a[i].getAngolo();
         const char* c=stream.str().c_str();
-        append(QString("Angolo ")+letter[i]+QString(": ")+QString(c));
+        append(QString("Angolo ")+letter[i]+QString(" = ")+QString(c)+QString("°"));
     }
 }
 
 void DataArea::outputLati(QVector<double> a){
+    QTextEdit::setText("");
     QString letter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     for(int i=0; i<a.size(); ++i){
         std::stringstream stream;
         stream<<a[i];
         const char* c=stream.str().c_str();
-        append(QString("Lato ")+letter[i]+QString(": ")+QString(c));
+        append(QString("Lato ")+letter[i]+QString(" = ")+QString(c));
     }
 }
 

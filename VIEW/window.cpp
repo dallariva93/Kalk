@@ -66,7 +66,10 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(pulsanti,SIGNAL(trovaSomma()), operandoUno, SLOT(sommaOpUno()));
     connect(operandoUno, SIGNAL(sommaUno(QString)), operandoDue, SLOT(calcolaSomma(QString)));
     connect(operandoDue, SIGNAL(stampaSomma(QString)), areaD, SLOT(outputSomma(QString)));
-
+/*  //somma poligoni
+        connect(operandoDue, SIGNAL(stampaSommaPoligono(Poligono*)),this, SLOT(hoPoligono(Poligono*)));
+    connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
+*/
     connect(pulsanti,SIGNAL(trovaSottrazione()), operandoUno, SLOT(sottrazioneOpUno()));
     connect(operandoUno, SIGNAL(sottrazioneUno(QString)), operandoDue, SLOT(calcolaSottrazione(QString)));
     connect(operandoDue, SIGNAL(stampaSottrazione(QString)), areaD, SLOT(outputSottrazione(QString)));
@@ -84,4 +87,6 @@ void Window::acquisisciPoligono(QString text){
     emit disegnaPoligono(contenitore->getPoligono(text));
 }
 
-
+void Window::hoPoligono(Poligono* p){
+    emit disegnaPoligono(p);
+}

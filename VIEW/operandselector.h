@@ -40,6 +40,7 @@ signals:
     void insertPoligono(QString);
     void inseritoPoligono(QString);
 
+    void stampaSommaPoligono(Poligono*);
 
 public slots:
     void addColore(Colore*);

@@ -36,6 +36,7 @@ signals:
 
 public slots:
     void acquisisciPoligono(QString);
+    void hoPoligono(Poligono*);
 };
 
 #endif // WINDOW_H

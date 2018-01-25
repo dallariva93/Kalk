@@ -1,4 +1,7 @@
 #include "operandselector.h"
+#include "MODEL/triangolo.h"
+#include "MODEL/quadrilatero.h"
+#include "MODEL/pentagono.h"
 
 OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent) : QWidget(parent), contenitore(con){
     QSize size(325,45);
@@ -100,6 +103,22 @@ void OperandSelector::calcolaSomma(QString name1){
         }
         else{
             std::cout<<"somma poligoni"<<std::endl;
+            Poligono* pol1 = contenitore->getPoligono(name1);
+            Poligono* pol2 = contenitore->getPoligono(name2);
+            Poligono& ris = *pol1 + *pol2;
+/*
+            if(ris.getLati().size()==3){
+                Triangolo* t= new Triangolo(*(dynamic_cast<Triangolo*>(&ris)));
+                emit stampaSommaPoligono(t);
+            }
+            else if(ris.getLati().size()==4){
+                Quadrilatero* q = new Quadrilatero(*(dynamic_cast<Quadrilatero*>(&ris)));
+                emit stampaSommaPoligono(q);
+            }else{
+                Pentagono * p= new Pentagono(*(dynamic_cast<Pentagono*>(&ris)));
+                emit stampaSommaPoligono(p);
+            }*/
+            //contenitore->addPoligono(&ris);
         }
     }
 }

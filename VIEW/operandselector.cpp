@@ -16,6 +16,8 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
+    msgBox = new QMessageBox;
+
     connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
 }
 
@@ -77,7 +79,7 @@ void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operan
 
 void OperandSelector::calcolaSomma(QString name1){
     QString name2 = selector->currentText();
-    if(name1.compare("#")){                                         //allora operatore 1 è un colore
+    if(name1.contains("#")){                                         //allora operatore 1 è un colore
         Colore& col1 = *(contenitore->getColore(name1));
         if(name2.compare("#")){
             Colore& col2 = *(contenitore->getColore(name2));        //colore operando 2
@@ -97,7 +99,7 @@ void OperandSelector::calcolaSomma(QString name1){
     else{                                                           //operatore 1 è un poligono
         Poligono& pol1 = *( contenitore->getPoligono(name1));
 
-        if(name2.compare("#")){                                     //colore operando 2
+        if(name2.contains("#")){                                     //colore operando 2
             std::cout<<"col+pol"<<std::endl;
             Colore & c = *(contenitore->getColore(name2));
             pol1.changeColor(c);
@@ -135,15 +137,10 @@ void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'
 void OperandSelector::calcolaSottrazione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name2.compare("#")){
-        Colore& col2 = *(contenitore->getColore(name2));
-        Colore& sottraggo = col1 - col2;
-        emit aggColore(&sottraggo);
-        emit(stampaSottrazione(sottraggo.getHex()));
-    }
-    else{
-        std::cout<<"lancerà una eccezione non posso sottrarre colore e poligono"<<std::endl;
-    }
+    Colore& col2 = *(contenitore->getColore(name2));
+    Colore& sottraggo = col1 - col2;
+    emit aggColore(&sottraggo);
+    emit(stampaSottrazione(sottraggo.getHex()));
 }
 
 void OperandSelector::moltiplicazioneOpUno(){
@@ -154,15 +151,10 @@ void OperandSelector::moltiplicazioneOpUno(){
 void OperandSelector::calcolaMoltiplicazione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name2.compare("#")){
-        Colore& col2 = *(contenitore->getColore(name2));
-        Colore& molt = col1 * col2;
-        emit aggColore(&molt);
-        emit(stampaMoltiplicazione(molt.getHex()));
-    }
-    else{
-        std::cout<<"lancerà una eccezione non posso moltiplicare colore e poligono"<<std::endl;
-    }
+    Colore& col2 = *(contenitore->getColore(name2));
+    Colore& molt = col1 * col2;
+    emit aggColore(&molt);
+    emit(stampaMoltiplicazione(molt.getHex()));
 }
 
 void OperandSelector::divisioneOpUno(){
@@ -173,15 +165,10 @@ void OperandSelector::divisioneOpUno(){
 void OperandSelector::calcolaDivisione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name2.compare("#")){
-        Colore& col2 = *(contenitore->getColore(name2));
-        Colore& div = col1 / col2;
-        emit aggColore(&div);
-        emit(stampaDivisione(div.getHex()));
-    }
-    else{
-        std::cout<<"lancerà una eccezione non posso dividere colore e poligono"<<std::endl;
-    }
+    Colore& col2 = *(contenitore->getColore(name2));
+    Colore& div = col1 / col2;
+    emit aggColore(&div);
+    emit(stampaDivisione(div.getHex()));
 }
 
 void OperandSelector::addPoligono(QString poligono){
@@ -189,11 +176,16 @@ void OperandSelector::addPoligono(QString poligono){
 }
 
 void OperandSelector::textChanged(QString text){
-    if(text.contains("#"))
-        emit disabilita();
-    else{
-        emit inseritoPoligono(text);
-        emit riabilita();
-    }
+   emit changeButton(text);
 }
 
+void OperandSelector::activeButton(QString text){
+    QString op = selector->currentText();
+    if(op.contains("#") && text.contains("#"))
+        emit abilitaBottCol();
+    else{
+        if(! text.contains("#"))
+            emit inseritoPoligono(text);
+        emit abilitaBottPol();
+    }
+}

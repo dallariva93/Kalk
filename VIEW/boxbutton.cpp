@@ -79,7 +79,7 @@ void BoxButtons::getDivisione(){
     emit trovaDivisione();
 }
 
-void BoxButtons::disabilitaBottoni(){
+void BoxButtons::bottoniColori(){
     perimetro->setEnabled(false);
     area->setEnabled(false);
     lati->setEnabled(false);
@@ -92,7 +92,7 @@ void BoxButtons::disabilitaBottoni(){
     ruota->setEnabled(false);
 }
 
-void BoxButtons::riabilitaBottoni(){
+void BoxButtons::bottoniPolig(){
     perimetro->setEnabled(true);
     area->setEnabled(true);
     lati->setEnabled(true);

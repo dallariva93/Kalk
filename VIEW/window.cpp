@@ -32,6 +32,8 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     connect(operandoUno, SIGNAL(insertPoligono(QString)),operandoDue, SLOT(addPoligono(QString)));//aggiorno il selettore 2 quando inserisco solo nel primo
     connect(operandoUno, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
+    connect(operandoDue, SIGNAL(insertPoligono(QString)),operandoUno, SLOT(addPoligono(QString)));
+    connect(operandoDue, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
     connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
 
     areaLayout->addWidget(areaP);
@@ -51,8 +53,13 @@ Window::Window(QWidget *parent) : QWidget(parent){
     mainLayout->addLayout(creatorLayout);
     setLayout(mainLayout);
 
-    connect(operandoUno, SIGNAL(disabilita()), pulsanti, SLOT(disabilitaBottoni()));
-    connect(operandoUno, SIGNAL(riabilita()), pulsanti, SLOT(riabilitaBottoni()));
+    connect(operandoUno, SIGNAL(changeButton(QString)), operandoDue, SLOT(activeButton(QString)));
+    connect(operandoUno, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
+    connect(operandoUno, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
+
+    connect(operandoDue, SIGNAL(changeButton(QString)), operandoUno, SLOT(activeButton(QString)));
+    connect(operandoDue, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
+    connect(operandoDue, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
 
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));
@@ -85,7 +92,6 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), creatorP, SLOT(addColore(Colore*)));
-
 }
 
 void Window::acquisisciPoligono(QString text){

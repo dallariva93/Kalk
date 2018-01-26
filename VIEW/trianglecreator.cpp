@@ -227,15 +227,15 @@ void TriangleCreator::treLati(){
 void TriangleCreator::creaTriangolo(){
     Triangolo *tr;
     if(radio1->isChecked()){    //due lati e un angolo
-        std::cout<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"     "<<angolo1->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        //std::cout<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"     "<<angolo1->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
         tr = new Triangolo(lato1->text().toDouble(), lato2->text().toDouble(), Angolo(angolo1->text().toDouble()), selettore->getColore(colori->currentText())->clone(), nome->text());
     }
     else if(radio2->isChecked()){   //due angoli e un lato
-        std::cout<<lato1->text().toDouble()<<"    "<<angolo1->text().toDouble()<<"   "<<angolo2->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        //std::cout<<lato1->text().toDouble()<<"    "<<angolo1->text().toDouble()<<"   "<<angolo2->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
         tr = new Triangolo(lato1->text().toDouble(), Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()), selettore->getColore(colori->currentText())->clone(), nome->text());
     }
     else{   //tre lati
-        std::cout<<lato1->text().toDouble()<<"    "<<lato2->text().toDouble()<<"   "<<lato3->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
+        //std::cout<<lato1->text().toDouble()<<"    "<<lato2->text().toDouble()<<"   "<<lato3->text().toDouble()<<"  "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
         tr = new Triangolo(lato1->text().toDouble(), lato2->text().toDouble(), lato3->text().toDouble(), selettore->getColore(colori->currentText())->clone(), nome->text());
     }
     selettore->insertItem(tr);

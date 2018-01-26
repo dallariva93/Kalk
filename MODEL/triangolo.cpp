@@ -13,9 +13,6 @@
 Triangolo::Triangolo() : Triangolo(10,10,10) {}
 
 Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col, QString nome) : Poligono(3, nome, col) {
-
-    std::cout<<"cstr tr: "<<latoAB<<"  "<<latoAC<<"  "<<a.getAngolo()<<"  "<<col->getHex().toStdString()<<std::endl;
-
     QVector<Punto> punti;
     punti.push_back(Punto::origine);
     punti.push_back(Punto(latoAB,0));

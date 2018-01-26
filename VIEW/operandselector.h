@@ -7,8 +7,10 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QVector>
+#include <QMessageBox>
 #include "MODEL/container.h"
 #include "colorcreator.h"
+#include "boxbutton.h"
 
 class OperandSelector : public QWidget{
     Q_OBJECT
@@ -17,6 +19,8 @@ private:
     QComboBox *selector;        //contiene i nomi
     QHBoxLayout *mainLayout;
     Container* contenitore;     //contiene oggetti
+
+    QMessageBox* msgBox;
 
 public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
@@ -39,9 +43,11 @@ signals:
     void stampaDivisione(QString);
     void insertPoligono(QString);
     void inseritoPoligono(QString);
-    void riabilita();
-    void disabilita();
+    void abilitaBottPol();
+    void abilitaBottCol();
 
+
+    void changeButton(QString);
     void aggColore(Colore*);
     void stampaSommaPoligono(Poligono*);
 
@@ -60,8 +66,10 @@ public slots:
     void divisioneOpUno();
     void calcolaDivisione(QString);
     void addPoligono(QString);
+
     void textChanged(QString);
 
+    void activeButton(QString);
 };
 
 #endif // OPERANDSELECTOR_H

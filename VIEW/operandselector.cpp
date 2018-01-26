@@ -42,8 +42,6 @@ void OperandSelector::addColore(Colore *c){
 
 void OperandSelector::calcolaPerimetro(){
     QString name = selector->currentText();
-    if(name.compare("#"))  //allora è un colore
-        std::cout<<"lancerà una eccezione xk non posso calcolare il perimetro dato il colore"<<std::endl;
     Poligono* pol = contenitore->getPoligono(name);
     double pp = pol->getPerimetro();
     emit inviaPerimetro(pp);
@@ -51,8 +49,6 @@ void OperandSelector::calcolaPerimetro(){
 
 void OperandSelector::calcolaArea(){
     QString name = selector->currentText();
-    if(name.compare("#"))  //allora è un colore
-        std::cout<<"pop-up"<<std::endl;
     Poligono* pol = contenitore->getPoligono(name);
     double a = pol->getArea();
     emit inviaArea(a);
@@ -60,8 +56,6 @@ void OperandSelector::calcolaArea(){
 
 void OperandSelector::calcolaAngoli(){
     QString name = selector->currentText();
-    if(name.compare("#"))  //allora è un colore
-        std::cout<<"pop-up angoli"<<std::endl;
     QVector<Angolo> a;
     Poligono* pol = contenitore->getPoligono(name);
     a = pol->getAngoli();
@@ -70,8 +64,6 @@ void OperandSelector::calcolaAngoli(){
 
 void OperandSelector::calcolaLati(){
     QString name = selector->currentText();
-    if(name.compare("#"))  //allora è un colore
-        std::cout<<"pop-up lati"<<std::endl;
     QVector<double> l;
     Poligono* pol =  contenitore->getPoligono(name) ;
     l = pol->getLati();
@@ -90,12 +82,14 @@ void OperandSelector::calcolaSomma(QString name1){
         if(name2.compare("#")){
             Colore& col2 = *(contenitore->getColore(name2));        //colore operando 2
             Colore& somma = col1 + col2;
+            emit aggColore(&somma);
             emit(stampaSomma(somma.getHex()));
         }
         else{                                                       //op 2 poligono
-            Poligono* polColorato = contenitore->getPoligono(name2);
-            polColorato->changeColor(col1);
-
+            std::cout<<"col+pol"<<std::endl;
+            Poligono* pol2= contenitore->getPoligono(name2);
+            pol2->changeColor(col1);
+            insertItem(pol2);
 
             //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
@@ -104,9 +98,10 @@ void OperandSelector::calcolaSomma(QString name1){
         Poligono& pol1 = *( contenitore->getPoligono(name1));
 
         if(name2.compare("#")){                                     //colore operando 2
+            std::cout<<"col+pol"<<std::endl;
             Colore & c = *(contenitore->getColore(name2));
             pol1.changeColor(c);
-
+            insertItem(&pol1);
             //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
         else{
@@ -140,13 +135,14 @@ void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'
 void OperandSelector::calcolaSottrazione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name1.compare("#") && name2.compare("#")){
+    if(name2.compare("#")){
         Colore& col2 = *(contenitore->getColore(name2));
         Colore& sottraggo = col1 - col2;
+        emit aggColore(&sottraggo);
         emit(stampaSottrazione(sottraggo.getHex()));
     }
     else{
-        std::cout<<"lancerà una eccezione non posso sottrarre poligoni"<<std::endl;
+        std::cout<<"lancerà una eccezione non posso sottrarre colore e poligono"<<std::endl;
     }
 }
 
@@ -158,13 +154,14 @@ void OperandSelector::moltiplicazioneOpUno(){
 void OperandSelector::calcolaMoltiplicazione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name1.compare("#") && name2.compare("#")){
+    if(name2.compare("#")){
         Colore& col2 = *(contenitore->getColore(name2));
         Colore& molt = col1 * col2;
+        emit aggColore(&molt);
         emit(stampaMoltiplicazione(molt.getHex()));
     }
     else{
-        std::cout<<"lancerà una eccezione non posso moltiplicare poligoni"<<std::endl;
+        std::cout<<"lancerà una eccezione non posso moltiplicare colore e poligono"<<std::endl;
     }
 }
 
@@ -176,13 +173,14 @@ void OperandSelector::divisioneOpUno(){
 void OperandSelector::calcolaDivisione(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
-    if(name1.compare("#") && name2.compare("#")){
+    if(name2.compare("#")){
         Colore& col2 = *(contenitore->getColore(name2));
         Colore& div = col1 / col2;
+        emit aggColore(&div);
         emit(stampaDivisione(div.getHex()));
     }
     else{
-        std::cout<<"lancerà una eccezione non posso dividere poligoni"<<std::endl;
+        std::cout<<"lancerà una eccezione non posso dividere colore e poligono"<<std::endl;
     }
 }
 
@@ -191,12 +189,11 @@ void OperandSelector::addPoligono(QString poligono){
 }
 
 void OperandSelector::textChanged(QString text){
-    if(!text.contains("#")){
+    if(text.contains("#"))
+        emit disabilita();
+    else{
         emit inseritoPoligono(text);
         emit riabilita();
     }
-    else
-        emit disabilita();
 }
-
 

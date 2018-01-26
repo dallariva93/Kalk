@@ -42,6 +42,7 @@ signals:
     void riabilita();
     void disabilita();
 
+    void aggColore(Colore*);
     void stampaSommaPoligono(Poligono*);
 
 public slots:
@@ -60,6 +61,7 @@ public slots:
     void calcolaDivisione(QString);
     void addPoligono(QString);
     void textChanged(QString);
+
 };
 
 #endif // OPERANDSELECTOR_H

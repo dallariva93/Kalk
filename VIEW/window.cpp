@@ -69,10 +69,7 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(pulsanti,SIGNAL(trovaSomma()), operandoUno, SLOT(sommaOpUno()));
     connect(operandoUno, SIGNAL(sommaUno(QString)), operandoDue, SLOT(calcolaSomma(QString)));
     connect(operandoDue, SIGNAL(stampaSomma(QString)), areaD, SLOT(outputSomma(QString)));
-/*  //somma poligoni
-        connect(operandoDue, SIGNAL(stampaSommaPoligono(Poligono*)),this, SLOT(hoPoligono(Poligono*)));
-    connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
-*/
+
     connect(pulsanti,SIGNAL(trovaSottrazione()), operandoUno, SLOT(sottrazioneOpUno()));
     connect(operandoUno, SIGNAL(sottrazioneUno(QString)), operandoDue, SLOT(calcolaSottrazione(QString)));
     connect(operandoDue, SIGNAL(stampaSottrazione(QString)), areaD, SLOT(outputSottrazione(QString)));
@@ -84,6 +81,11 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(pulsanti,SIGNAL(trovaDivisione()), operandoUno, SLOT(divisioneOpUno()));
     connect(operandoUno, SIGNAL(divisioneUno(QString)), operandoDue, SLOT(calcolaDivisione(QString)));
     connect(operandoDue, SIGNAL(stampaDivisione(QString)), areaD, SLOT(outputDivisione(QString)));
+
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), creatorP, SLOT(addColore(Colore*)));
+
 }
 
 void Window::acquisisciPoligono(QString text){

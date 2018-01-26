@@ -84,6 +84,12 @@ void BoxButtons::disabilitaBottoni(){
     area->setEnabled(false);
     lati->setEnabled(false);
     angoli->setEnabled(false);
+    somma->setEnabled(true);
+    sottrazione->setEnabled(true);
+    divisione->setEnabled(true);
+    moltiplicazione->setEnabled(true);
+    scala->setEnabled(false);
+    ruota->setEnabled(false);
 }
 
 void BoxButtons::riabilitaBottoni(){
@@ -91,4 +97,10 @@ void BoxButtons::riabilitaBottoni(){
     area->setEnabled(true);
     lati->setEnabled(true);
     angoli->setEnabled(true);
+    somma->setEnabled(true);
+    sottrazione->setEnabled(false);
+    divisione->setEnabled(false);
+    moltiplicazione->setEnabled(false);
+    scala->setEnabled(true);
+    ruota->setEnabled(true);
 }

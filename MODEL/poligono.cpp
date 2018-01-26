@@ -11,6 +11,10 @@ QString Poligono::getNome()const{
     return nomeOggetto;
 }
 
+void Poligono::setNome(QString s){
+    nomeOggetto=s;
+}
+
 double Poligono::getPerimetro() const{
     double perimetro=0;
     for(unsigned int i=0; i<numeroLati; ++i){

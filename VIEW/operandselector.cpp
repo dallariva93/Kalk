@@ -16,8 +16,6 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
-    msgBox = new QMessageBox;
-
     connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
 }
 
@@ -88,10 +86,12 @@ void OperandSelector::calcolaSomma(QString name1){
             emit(stampaSomma(somma.getHex()));
         }
         else{                                                       //op 2 poligono
-            std::cout<<"col+pol"<<std::endl;
             Poligono* pol2= contenitore->getPoligono(name2);
             pol2->changeColor(col1);
-            insertItem(pol2);
+            QString name = QString(name1+"+"+pol2->getNome());
+            pol2->setNome(name);
+//            insertItem(pol2);
+//            emit insertPoligono(name);
 
             //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
@@ -100,10 +100,13 @@ void OperandSelector::calcolaSomma(QString name1){
         Poligono& pol1 = *( contenitore->getPoligono(name1));
 
         if(name2.contains("#")){                                     //colore operando 2
-            std::cout<<"col+pol"<<std::endl;
             Colore & c = *(contenitore->getColore(name2));
             pol1.changeColor(c);
-            insertItem(&pol1);
+            QString nome = QString(pol1.getNome()+"+"+(c.getHex()));
+            pol1.setNome(nome);
+
+            //insertItem(&pol1);
+            //emit insertPoligono(nome);
             //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
         else{

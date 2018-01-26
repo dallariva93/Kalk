@@ -20,8 +20,6 @@ private:
     QHBoxLayout *mainLayout;
     Container* contenitore;     //contiene oggetti
 
-    QMessageBox* msgBox;
-
 public:
     OperandSelector(QString, Container*, QWidget *parent = 0);
     void insertItem(Colore*);
@@ -45,10 +43,10 @@ signals:
     void inseritoPoligono(QString);
     void abilitaBottPol();
     void abilitaBottCol();
-
-
     void changeButton(QString);
     void aggColore(Colore*);
+
+    void polDaInserire(QString);
     void stampaSommaPoligono(Poligono*);
 
 public slots:

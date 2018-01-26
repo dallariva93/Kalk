@@ -39,6 +39,8 @@ signals:
     void stampaDivisione(QString);
     void insertPoligono(QString);
     void inseritoPoligono(QString);
+    void riabilita();
+    void disabilita();
 
     void stampaSommaPoligono(Poligono*);
 

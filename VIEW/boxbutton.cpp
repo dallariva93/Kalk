@@ -78,3 +78,17 @@ void BoxButtons::getMoltiplicazione(){
 void BoxButtons::getDivisione(){
     emit trovaDivisione();
 }
+
+void BoxButtons::disabilitaBottoni(){
+    perimetro->setEnabled(false);
+    area->setEnabled(false);
+    lati->setEnabled(false);
+    angoli->setEnabled(false);
+}
+
+void BoxButtons::riabilitaBottoni(){
+    perimetro->setEnabled(true);
+    area->setEnabled(true);
+    lati->setEnabled(true);
+    angoli->setEnabled(true);
+}

@@ -18,9 +18,6 @@ TriangleCreator::TriangleCreator(QComboBox *col, OperandSelector *sel, QWidget *
     angolo2 = new QLineEdit(this);
     nome = new QLineEdit(this);
 
-    lato3->setVisible(false);
-    angolo2->setVisible(false);
-
     latoA = new QLabel(tr("Lato A:"));
     latoB = new QLabel(tr("Lato B:"));
     latoC= new QLabel(tr("Lato C:"));
@@ -29,6 +26,8 @@ TriangleCreator::TriangleCreator(QComboBox *col, OperandSelector *sel, QWidget *
     colore = new QLabel(tr("Colore:"));
     labelNome = new QLabel(tr("Nome:"));
 
+    lato3->setVisible(false);
+    angolo2->setVisible(false);
     angoloB->setVisible(false);
     latoC->setVisible(false);
 
@@ -64,6 +63,7 @@ TriangleCreator::TriangleCreator(QComboBox *col, OperandSelector *sel, QWidget *
     mainLayout->addLayout(coloreNomeLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
+
 }
 
 void TriangleCreator::refreshFormWidget(){

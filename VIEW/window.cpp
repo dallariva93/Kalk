@@ -51,6 +51,9 @@ Window::Window(QWidget *parent) : QWidget(parent){
     mainLayout->addLayout(creatorLayout);
     setLayout(mainLayout);
 
+    connect(operandoUno, SIGNAL(disabilita()), pulsanti, SLOT(disabilitaBottoni()));
+    connect(operandoUno, SIGNAL(riabilita()), pulsanti, SLOT(riabilitaBottoni()));
+
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));
 

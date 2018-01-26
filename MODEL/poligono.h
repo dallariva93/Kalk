@@ -23,6 +23,7 @@ public:
     virtual Poligono& cambiaBase(int) const =0;
     virtual Colore* getColore() const;
     void setColore(Colore*);    //void setColore(const Colore *); da errore non  capisco perchè!!
+    void changeColor(Colore &);  //vedere se unire con setColore
     QVector<Angolo> getAngoli() const;
     void setPunti(const QVector<Punto>);
     QVector<Punto> getCoordinate() const;

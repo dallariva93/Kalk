@@ -85,28 +85,37 @@ void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operan
 
 void OperandSelector::calcolaSomma(QString name1){
     QString name2 = selector->currentText();
-    if(name1.compare("#")){  //allora operaore 1 è un colore
-        Colore& col1 = *(contenitore->getColore(name1));   //colore operando 1
-        if(name2.compare("#")){ //somma tra colori
-            Colore& col2 = *(contenitore->getColore(name2));   //colore operando 2
+    if(name1.compare("#")){                                         //allora operatore 1 è un colore
+        Colore& col1 = *(contenitore->getColore(name1));
+        if(name2.compare("#")){
+            Colore& col2 = *(contenitore->getColore(name2));        //colore operando 2
             Colore& somma = col1 + col2;
             emit(stampaSomma(somma.getHex()));
         }
-        else{
-            std::cout<<"somma colore e poligono"<<std::endl;
+        else{                                                       //op 2 poligono
+            Poligono* polColorato = contenitore->getPoligono(name2);
+            polColorato->changeColor(col1);
+
+
+            //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
     }
-    else{   //operatore 2 è un poligono
-        Poligono& pol1 = *( contenitore->getPoligono(name1));   //colore operando 1
-        if(name2.compare("#")){ //somma tra colori
-            std::cout<<"somma poligono e colore"<<std::endl;
+    else{                                                           //operatore 1 è un poligono
+        Poligono& pol1 = *( contenitore->getPoligono(name1));
+
+        if(name2.compare("#")){                                     //colore operando 2
+            Colore & c = *(contenitore->getColore(name2));
+            pol1.changeColor(c);
+
+            //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
         }
         else{
             std::cout<<"somma poligoni"<<std::endl;
+            /*
             Poligono* pol1 = contenitore->getPoligono(name1);
             Poligono* pol2 = contenitore->getPoligono(name2);
             Poligono& ris = *pol1 + *pol2;
-/*
+
             if(ris.getLati().size()==3){
                 Triangolo* t= new Triangolo(*(dynamic_cast<Triangolo*>(&ris)));
                 emit stampaSommaPoligono(t);
@@ -183,9 +192,11 @@ void OperandSelector::addPoligono(QString poligono){
 
 void OperandSelector::textChanged(QString text){
     if(!text.contains("#")){
-        //std::cout<<text.toStdString();
         emit inseritoPoligono(text);
+        emit riabilita();
     }
+    else
+        emit disabilita();
 }
 
 

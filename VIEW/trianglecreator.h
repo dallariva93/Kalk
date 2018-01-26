@@ -49,7 +49,7 @@ private:
     OperandSelector* selettore;
 
 public:
-    TriangleCreator(QComboBox *col ,OperandSelector *sel, QWidget *parent=0);
+    TriangleCreator(QComboBox *col , OperandSelector *sel, QWidget *parent=0);
     void refreshFormWidget();
 
 

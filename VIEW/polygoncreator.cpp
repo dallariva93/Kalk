@@ -25,37 +25,20 @@ PolygonCreator::PolygonCreator(OperandSelector *opSel, QWidget *parent) : selett
 
     quadrilateralWidget->setVisible(false);
     pentagonWidget->setVisible(false);
-/*
-    connect(triangleButton, SIGNAL(clicked(bool)),this, SLOT(triangleSlot(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)), this, SLOT(quadrilateralSlot(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)), this, SLOT(pentagonSlot(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setVisible(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setHidden(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setHidden(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setVisible(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setHidden(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setHidden(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setVisible(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setHidden(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setHidden(bool)));
-*/
+
     connect(triangleButton, SIGNAL(clicked()), triangleWidget, SLOT(show()));
     connect(triangleButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
-    connect(triangleButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(close()));
+    connect(triangleButton, SIGNAL(clicked()),pentagonWidget,SLOT(close()));
     connect(quadrilateralButton, SIGNAL(clicked()), triangleWidget, SLOT(close()));
     connect(quadrilateralButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(show()));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(close()));
+    connect(quadrilateralButton, SIGNAL(clicked()),pentagonWidget,SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked()), triangleWidget, SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
-    connect(pentagonButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(show()));
+    connect(pentagonButton, SIGNAL(clicked()),pentagonWidget,SLOT(show()));
 
     connect(triangleButton, SIGNAL(clicked()), colori, SLOT(show()));
     connect(quadrilateralButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(pentagonButton, SIGNAL(clicked(bool)),colori,SLOT(show()));
-
-
-
-
+    connect(pentagonButton, SIGNAL(clicked()),colori,SLOT(show()));
 
     buttonsLayout->addWidget(triangleButton);
     buttonsLayout->addWidget(quadrilateralButton);
@@ -79,24 +62,23 @@ void PolygonCreator::refreshCreators(){
     delete pentagonWidget;
     colori=temp;
 
-
     triangleWidget = new TriangleCreator(colori, selettore);
     quadrilateralWidget = new QuadrilateralCreator(colori, selettore);
     pentagonWidget = new PentagonCreator(colori, selettore);
 }
 
 
-void PolygonCreator::triangleSlot(bool){
+void PolygonCreator::triangleSlot(){
     refreshCreators();
     mainLayout->addWidget(triangleWidget);
 }
 
-void PolygonCreator::quadrilateralSlot(bool){
+void PolygonCreator::quadrilateralSlot(){
     refreshCreators();
     mainLayout->addWidget((quadrilateralWidget));
 }
 
-void PolygonCreator::pentagonSlot(bool){
+void PolygonCreator::pentagonSlot(){
     refreshCreators();
     mainLayout->addWidget(pentagonWidget);
 }

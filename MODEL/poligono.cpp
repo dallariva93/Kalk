@@ -24,7 +24,12 @@ Colore* Poligono::getColore() const{
 }
 
 void Poligono::setColore(Colore* c){
-    color=c->clone();
+    color = c->clone();
+}
+
+void Poligono::changeColor(Colore& col){
+    Colore& c = col + *color;
+    setColore( &c );
 }
 
 QVector<Angolo> Poligono::getAngoli()const{

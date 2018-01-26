@@ -26,16 +26,16 @@ private:
     QVBoxLayout* mainLayout;
 
 public:
-    PolygonCreator(OperandSelector*,QWidget *parent = 0);
+    PolygonCreator(OperandSelector*, QWidget *parent = 0);  //ho aggiunto colore
     void refreshCreators();
 
 
 signals:
 
 public slots:
-    void triangleSlot(bool);
-    void quadrilateralSlot(bool);
-    void pentagonSlot(bool);
+    void triangleSlot();
+    void quadrilateralSlot();
+    void pentagonSlot();
     void addColore(Colore*);
 
 };

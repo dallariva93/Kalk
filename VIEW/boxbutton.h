@@ -48,6 +48,9 @@ public slots:
     void getSottrazione();
     void getMoltiplicazione();
     void getDivisione();
+
+    void disabilitaBottoni();
+    void riabilitaBottoni();
 };
 
 #endif // BOXBUTTON_H

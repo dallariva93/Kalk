@@ -16,7 +16,8 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
-    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
+//    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
+    connect(selector, SIGNAL(activated(QString)), this, SLOT(textChanged(QString)));
 }
 
 void OperandSelector::insertItem(Colore *colore){

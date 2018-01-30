@@ -97,7 +97,6 @@ void OperandSelector::calcolaSomma(QString name1){
             pol2->setNome(name);
             contenitore->addPoligono(pol2);
             selector->addItem(pol2->getNome());     //ho inserito solo il nome
-            std::cout<<" col + pol "<<std::endl;
             emit insertPoligono(pol2->getNome());
             emit inseritoPoligono(pol2->getNome());
         }
@@ -113,7 +112,6 @@ void OperandSelector::calcolaSomma(QString name1){
             pol1.setNome(nome);
             contenitore->addPoligono(&pol1);
             selector->addItem(pol1.getNome());
-            std::cout<<"pol + col"<<std::endl;
             emit insertPoligono(pol1.getNome());
             emit inseritoPoligono(pol1.getNome());  //per farlo vedere subito appena schiaccia +
         }

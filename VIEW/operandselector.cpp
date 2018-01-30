@@ -81,15 +81,15 @@ void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operan
 
 void OperandSelector::calcolaSomma(QString name1){
     QString name2 = selector->currentText();
-    if(name1.contains("#")){                                         //allora operatore 1 è un colore
+    if(name1.contains("#")){
         Colore& col1 = *(contenitore->getColore(name1));
         if(name2.contains("#")){
-            Colore& col2 = *(contenitore->getColore(name2));        //colore operando 2
+            Colore& col2 = *(contenitore->getColore(name2));
             Colore& somma = col1 + col2;
             emit aggColore(&somma);
             emit(stampaSomma(somma.getHex()));
         }
-        else{                                                       //op 2 poligono
+        else{
             Poligono* pol2= (contenitore->getPoligono(name2))->clone();
             Colore & sommaC = col1 + *(pol2->getColore());
             pol2->changeColor(sommaC);
@@ -101,14 +101,13 @@ void OperandSelector::calcolaSomma(QString name1){
             emit inseritoPoligono(pol2->getNome());
         }
     }
-    else{                                                           //operatore 1 è un poligono
+    else{
         Poligono& pol1 = *( (contenitore->getPoligono(name1))->clone());
-
-        if(name2.contains("#")){                                     //colore operando 2
+        if(name2.contains("#")){
             Colore & c = *(contenitore->getColore(name2));
             Colore & sommaC = c + *(pol1.getColore());
             pol1.changeColor(sommaC);
-            QString nome = QString(pol1.getNome()+"+"+name2.remove("#"));    //NON POSSO METTERE IL NOME DEL COLORE O ME LO PRENDE COME UN COLORE
+            QString nome = QString(pol1.getNome()+"+"+name2.remove("#"));
             pol1.setNome(nome);
             contenitore->addPoligono(&pol1);
             selector->addItem(pol1.getNome());
@@ -116,24 +115,15 @@ void OperandSelector::calcolaSomma(QString name1){
             emit inseritoPoligono(pol1.getNome());  //per farlo vedere subito appena schiaccia +
         }
         else{
-            std::cout<<"somma poligoni"<<std::endl;
-            /*
-            Poligono* pol1 = contenitore->getPoligono(name1);
-            Poligono* pol2 = contenitore->getPoligono(name2);
-            Poligono& ris = *pol1 + *pol2;
-
-            if(ris.getLati().size()==3){
-                Triangolo* t= new Triangolo(*(dynamic_cast<Triangolo*>(&ris)));
-                emit stampaSommaPoligono(t);
-            }
-            else if(ris.getLati().size()==4){
-                Quadrilatero* q = new Quadrilatero(*(dynamic_cast<Quadrilatero*>(&ris)));
-                emit stampaSommaPoligono(q);
-            }else{
-                Pentagono * p= new Pentagono(*(dynamic_cast<Pentagono*>(&ris)));
-                emit stampaSommaPoligono(p);
-            }*/
-            //contenitore->addPoligono(&ris);
+            Poligono* pol1 = (contenitore->getPoligono(name1))->clone();
+            Poligono* pol2 = (contenitore->getPoligono(name2))->clone();
+            Poligono& pTot = *pol1 + *pol2;
+            QString nome = QString(pol1->getNome()+"+"+pol2->getNome());
+            pTot.setNome(nome);
+            contenitore->addPoligono(&pTot);
+            selector->addItem(pTot.getNome());
+            emit insertPoligono(pTot.getNome());
+            emit inseritoPoligono(pTot.getNome());
         }
     }
 }
@@ -200,14 +190,15 @@ void OperandSelector::activeButtonUno(QString opUno){
 
 void OperandSelector::activeButtonDue(QString opDue){
     QString opUno = selector->currentText();
-    if(opUno.contains("#")){
-        if(opDue.contains("#"))
+    if(opDue.contains("#")){
+        if(opUno.contains("#"))
             emit abilitaBottCol();
-        else
+        else{
             emit abSoloSomma();
+        }
     }
     else{
-        emit inseritoPoligono(opUno);
+        emit inseritoPoligono(opDue);
         emit abilitaBottPol();
     }
 }

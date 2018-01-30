@@ -43,11 +43,14 @@ signals:
     void inseritoPoligono(QString);
     void abilitaBottPol();
     void abilitaBottCol();
+    void abSoloSomma();
     void changeButton(QString);
     void aggColore(Colore*);
 
     void polDaInserire(QString);
     void stampaSommaPoligono(Poligono*);
+
+    void insertPolCol(QString);
 
 public slots:
     void addColore(Colore*);
@@ -64,10 +67,11 @@ public slots:
     void divisioneOpUno();
     void calcolaDivisione(QString);
     void addPoligono(QString);
+    void activeButtonUno(QString);
+    void activeButtonDue(QString);
 
     void textChanged(QString);
 
-    void activeButton(QString);
 };
 
 #endif // OPERANDSELECTOR_H

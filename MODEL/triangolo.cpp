@@ -40,6 +40,10 @@ Triangolo::Triangolo(double latoAB, double latoBC, double latoAC, Colore* col, Q
     setPunti(punti);
 }
 
+Triangolo* Triangolo::clone() const{
+    return new Triangolo(*this);
+}
+
 double Triangolo::getAltezza() const{
     return Punto::distanceTo( getCoordinate()[2] , Punto( getCoordinate()[2].getX() , 0 ) );
 }

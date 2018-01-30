@@ -9,6 +9,7 @@ class Quadrilatero : public Poligono{
 public:
     Quadrilatero();
     Quadrilatero(double, double, double, double, const Angolo&, const Angolo&, const Angolo&, const Angolo&, Colore* col=new RGB(), QString nome="quadrilatero"); //quadrato
+    Quadrilatero* clone() const;
     double getArea() const;
     void ruota();
     virtual void estendi(double);

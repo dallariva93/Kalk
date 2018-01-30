@@ -10,7 +10,7 @@ public:
     Triangolo(double, double, const Angolo&, Colore* col=new RGB(), QString nome="triangolo");
     Triangolo(double, const Angolo&, const Angolo&, Colore* col=new RGB(), QString nome="triangolo");
     Triangolo(double, double, double, Colore* col=new RGB(), QString nome="triangolo");
-
+    Triangolo* clone() const;
     double getAltezza() const;
     double getArea() const;
     void estendi(double);

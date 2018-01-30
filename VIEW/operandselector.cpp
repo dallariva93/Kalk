@@ -32,6 +32,10 @@ void OperandSelector::insertItem(Poligono* poligono){
     selector->addItem(poligono->getNome());
 }
 
+void OperandSelector::addPoligono(QString p){
+    selector->addItem(p);
+}
+
 Colore *OperandSelector::getColore(QString nome){
     return contenitore->getColore(nome);
 }
@@ -79,35 +83,39 @@ void OperandSelector::calcolaSomma(QString name1){
     QString name2 = selector->currentText();
     if(name1.contains("#")){                                         //allora operatore 1 è un colore
         Colore& col1 = *(contenitore->getColore(name1));
-        if(name2.compare("#")){
+        if(name2.contains("#")){
             Colore& col2 = *(contenitore->getColore(name2));        //colore operando 2
             Colore& somma = col1 + col2;
             emit aggColore(&somma);
             emit(stampaSomma(somma.getHex()));
         }
         else{                                                       //op 2 poligono
-            Poligono* pol2= contenitore->getPoligono(name2);
-            pol2->changeColor(col1);
-            QString name = QString(name1+"+"+pol2->getNome());
+            Poligono* pol2= (contenitore->getPoligono(name2))->clone();
+            Colore & sommaC = col1 + *(pol2->getColore());
+            pol2->changeColor(sommaC);
+            QString name = QString(name1.remove("#")+"+"+pol2->getNome());
             pol2->setNome(name);
-//            insertItem(pol2);
-//            emit insertPoligono(name);
-
-            //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
+            contenitore->addPoligono(pol2);
+            selector->addItem(pol2->getNome());     //ho inserito solo il nome
+            std::cout<<" col + pol "<<std::endl;
+            emit insertPoligono(pol2->getNome());
+            emit inseritoPoligono(pol2->getNome());
         }
     }
     else{                                                           //operatore 1 è un poligono
-        Poligono& pol1 = *( contenitore->getPoligono(name1));
+        Poligono& pol1 = *( (contenitore->getPoligono(name1))->clone());
 
         if(name2.contains("#")){                                     //colore operando 2
             Colore & c = *(contenitore->getColore(name2));
-            pol1.changeColor(c);
-            QString nome = QString(pol1.getNome()+"+"+(c.getHex()));
+            Colore & sommaC = c + *(pol1.getColore());
+            pol1.changeColor(sommaC);
+            QString nome = QString(pol1.getNome()+"+"+name2.remove("#"));    //NON POSSO METTERE IL NOME DEL COLORE O ME LO PRENDE COME UN COLORE
             pol1.setNome(nome);
-
-            //insertItem(&pol1);
-            //emit insertPoligono(nome);
-            //  DEVO RIUSCIRE A SALVARLO NEL SELECTOR
+            contenitore->addPoligono(&pol1);
+            selector->addItem(pol1.getNome());
+            std::cout<<"pol + col"<<std::endl;
+            emit insertPoligono(pol1.getNome());
+            emit inseritoPoligono(pol1.getNome());  //per farlo vedere subito appena schiaccia +
         }
         else{
             std::cout<<"somma poligoni"<<std::endl;
@@ -174,21 +182,34 @@ void OperandSelector::calcolaDivisione(QString name1){
     emit(stampaDivisione(div.getHex()));
 }
 
-void OperandSelector::addPoligono(QString poligono){
-    selector->addItem(poligono);
-}
-
 void OperandSelector::textChanged(QString text){
    emit changeButton(text);
 }
 
-void OperandSelector::activeButton(QString text){
-    QString op = selector->currentText();
-    if(op.contains("#") && text.contains("#"))
-        emit abilitaBottCol();
+void OperandSelector::activeButtonUno(QString opUno){
+    QString opDue = selector->currentText();
+    if(opUno.contains("#")){
+        if(opDue.contains("#"))
+            emit abilitaBottCol();
+        else
+            emit abSoloSomma();
+    }
     else{
-        if(! text.contains("#"))
-            emit inseritoPoligono(text);
+        emit inseritoPoligono(opUno);
+        emit abilitaBottPol();
+    }
+}
+
+void OperandSelector::activeButtonDue(QString opDue){
+    QString opUno = selector->currentText();
+    if(opUno.contains("#")){
+        if(opDue.contains("#"))
+            emit abilitaBottCol();
+        else
+            emit abSoloSomma();
+    }
+    else{
+        emit inseritoPoligono(opUno);
         emit abilitaBottPol();
     }
 }

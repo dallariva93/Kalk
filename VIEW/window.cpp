@@ -53,13 +53,15 @@ Window::Window(QWidget *parent) : QWidget(parent){
     mainLayout->addLayout(creatorLayout);
     setLayout(mainLayout);
 
-    connect(operandoUno, SIGNAL(changeButton(QString)), operandoDue, SLOT(activeButton(QString)));
+    connect(operandoUno, SIGNAL(changeButton(QString)), operandoDue, SLOT(activeButtonUno(QString)));
     connect(operandoUno, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
     connect(operandoUno, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
+    connect(operandoUno, SIGNAL(abSoloSomma()), pulsanti, SLOT(bottSoloSomma()));
 
-    connect(operandoDue, SIGNAL(changeButton(QString)), operandoUno, SLOT(activeButton(QString)));
+    connect(operandoDue, SIGNAL(changeButton(QString)), operandoUno, SLOT(activeButtonDue(QString)));
     connect(operandoDue, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
     connect(operandoDue, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
+    connect(operandoDue, SIGNAL(abSoloSomma()), pulsanti, SLOT(bottSoloSomma()));
 
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));

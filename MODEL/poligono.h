@@ -15,6 +15,7 @@ private:
 
 public:
     Poligono(unsigned int, QString, Colore*, QVector<Punto> punti=QVector<Punto>());
+    virtual Poligono* clone() const=0;
     QString getNome()const;
     void setNome(QString);
     virtual double getArea() const =0;

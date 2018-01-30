@@ -21,6 +21,10 @@ Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double l
     setPunti(punti);
 }
 
+Quadrilatero* Quadrilatero::clone() const{
+    return new Quadrilatero(*this);
+}
+
 double Quadrilatero::getArea() const{
     Triangolo t1(getLati()[0], getLati()[1],Punto::distanceTo(getCoordinate()[0],getCoordinate()[2]));
     Triangolo t2(Punto::distanceTo(getCoordinate()[0],getCoordinate()[2]), getLati()[2], getLati()[3]);

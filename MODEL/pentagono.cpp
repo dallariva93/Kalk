@@ -27,6 +27,10 @@ Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE,
 Pentagono::Pentagono(double lato, Colore* col, QString nome) :
     Pentagono(lato,lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,angoloInterno,angoloInterno,col,nome){}
 
+Pentagono* Pentagono::clone() const{
+    return new Pentagono(*this);
+}
+
 double Pentagono::getArea() const {
     Triangolo t1(getLati()[0], getLati()[1], Punto::distanceTo(getCoordinate()[0], getCoordinate()[2]));
     Triangolo t2(getLati()[2], Punto::distanceTo(getCoordinate()[0], getCoordinate()[2]), Punto::distanceTo(getCoordinate()[0], getCoordinate()[3]));

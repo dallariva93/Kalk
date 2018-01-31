@@ -4,7 +4,6 @@
 #include "MODEL/triangolo.h"
 #include "MODEL/rettangolo.h"
 
-
 void DrawArea::sposta(Poligono* pol,double x, double y){
     QVector<Punto> puntiNuovi;
     for(int i=0; i<pol->getLati().size(); ++i){

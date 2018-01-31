@@ -51,6 +51,7 @@ public slots:
 
     void bottoniColori();
     void bottoniPolig();
+    void bottSoloSomma();
 };
 
 #endif // BOXBUTTON_H

@@ -104,3 +104,16 @@ void BoxButtons::bottoniPolig(){
     scala->setEnabled(true);
     ruota->setEnabled(true);
 }
+
+void BoxButtons::bottSoloSomma(){
+    perimetro->setEnabled(false);
+    area->setEnabled(false);
+    lati->setEnabled(false);
+    angoli->setEnabled(false);
+    somma->setEnabled(true);
+    sottrazione->setEnabled(false);
+    divisione->setEnabled(false);
+    moltiplicazione->setEnabled(false);
+    scala->setEnabled(false);
+    ruota->setEnabled(false);
+}

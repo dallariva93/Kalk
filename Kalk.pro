@@ -66,3 +66,7 @@ HEADERS  += \
     VIEW/boxbutton.h \
     CONTROLLER/controlbuttons.h \
     MODEL/container.h
+
+DISTFILES += \
+    JAVA/Kalk.java \
+    JAVA/Poligono.java

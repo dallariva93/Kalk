@@ -5,9 +5,10 @@
 #include <QRgb>
 #include <VIEW/stylesheet.h>
 #include <MODEL/rgb.h>
+#include "exception.h"
 
 
-ColorCreator::ColorCreator(QWidget* parent):QWidget(parent){
+ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):selector(sel),QWidget(parent){
     QLabel* color=new QLabel("");
     color->setStyleSheet("QLabel { background-color : #000000;}");
 
@@ -102,11 +103,22 @@ void ColorCreator::getG(int g){
     emit changeColor(a);
 }
 
-void ColorCreator::creaColore(){
+Colore* ColorCreator::buildColore(){
     Colore* colore = new RGB(redLCD->value(),greenLCD->value(),blueLCD->value());
+   if(selector->isPresent(colore->getHex()))
+   {
+       delete colore;
+       throw AlreadyPresent("Colore già presente");
+   }
+    return colore;
+}
+
+void ColorCreator::creaColore()try{
+    Colore* colore = buildColore();
     emit inviaColore(colore);
 
 }
+catch (MyException){}
 
 void ColorCreator::getB(int b){
     QString hex=hexValue->text();

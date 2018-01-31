@@ -11,7 +11,7 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <MODEL/colore.h>
-
+#include "operandselector.h"
 class ColorCreator : public QWidget{
     Q_OBJECT
 private:
@@ -25,6 +25,9 @@ private:
 
     QPushButton* saveButton;
 
+    OperandSelector* selector;
+
+
     QLineEdit* hexValue;
     QLabel* redLabel;
     QLabel* greenLabel;
@@ -36,13 +39,15 @@ private:
 
 public:
     ~ColorCreator();
-    ColorCreator(QWidget *parent=0);
+    ColorCreator(OperandSelector* sel, QWidget *parent=0);
+    Colore* buildColore();
 
 
 signals:
     void changeHexValue(QString);
     void changeColor(QString);
     void inviaColore(Colore*);
+
 
 public slots:
     void getR(int);

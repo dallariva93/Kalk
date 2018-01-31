@@ -56,8 +56,12 @@ private:
 
     OperandSelector* selettore;
 public:
-    PentagonCreator(QComboBox *col,OperandSelector* sel, QWidget *parent = 0);
+    PentagonCreator(OperandSelector* sel, QWidget *parent = 0);
     void refreshFormWidget();
+    Pentagono* buildPentagono();
+    bool checkValidity();
+    void inserisciColore(QIcon icona, QString nome);
+
 
 
 

@@ -37,7 +37,8 @@ SOURCES += main.cpp \
     VIEW/operandselector.cpp \
     VIEW/boxbutton.cpp \
     CONTROLLER/controlbuttons.cpp \
-    MODEL/container.cpp
+    MODEL/container.cpp \
+    VIEW/exception.cpp
 
 
 HEADERS  += \
@@ -65,4 +66,5 @@ HEADERS  += \
     VIEW/operandselector.h \
     VIEW/boxbutton.h \
     CONTROLLER/controlbuttons.h \
-    MODEL/container.h
+    MODEL/container.h \
+    VIEW/exception.h

@@ -45,12 +45,15 @@ private:
     QHBoxLayout *coloreNomeLayout;
 
     QComboBox *colori;
+    QComboBox *realcol;
 
     OperandSelector* selettore;
 
 public:
-    TriangleCreator(QComboBox *col ,OperandSelector *sel, QWidget *parent=0);
+    TriangleCreator(OperandSelector *sel, QWidget *parent=0);
     void refreshFormWidget();
+    Triangolo* buildTriangolo();
+    void inserisciColore(QIcon, QString);
 
 
 public slots:

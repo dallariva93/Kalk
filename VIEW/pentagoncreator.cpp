@@ -1,10 +1,13 @@
 #include "pentagoncreator.h"
 #include <QLineEdit>
+#include "exception.h"
 
 
-PentagonCreator::PentagonCreator(QComboBox* col, OperandSelector *sel, QWidget *parent) : colori(col), selettore(sel), QWidget(parent){
+PentagonCreator::PentagonCreator(OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
     QSize size(400,350);
     setMaximumSize(size);
+
+    colori=new QComboBox;
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
     radio2 = new QRadioButton(tr("Costruisco un pentagono irregolare"),this);
@@ -155,6 +158,54 @@ void PentagonCreator::refreshFormWidget(){
     labelNome = new QLabel(tr("Nome:"));
 }
 
+Pentagono *PentagonCreator::buildPentagono()
+{
+    Colore*c;
+    colori->count()==0 ? c=new RGB() : c=selettore->getColore(colori->currentText())->clone();
+    Pentagono* pent;
+
+    if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
+        if(!lato1->text().toDouble() || nome->text().isEmpty())
+            throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \n Inoltre i Form non possono essere vuoti.");
+        if(nome->text().startsWith("#"))
+            throw SyntaxError("Il nome non può iniziare con il carattere #");
+        if(selettore->isPresent(nome->text()))
+            throw AlreadyPresent("Nome già presente!");
+        pent = new Pentagono(lato1->text().toDouble(),c,nome->text());
+    }
+    else{
+        if(!checkValidity())
+            throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \n Inoltre i Form non possono essere vuoti.");
+        if(nome->text().startsWith("#"))
+            throw SyntaxError("Il nome non può iniziare con il carattere #");
+        if(selettore->isPresent(nome->text()))
+            throw AlreadyPresent("Nome già presente!");
+        pent = new Pentagono(lato1->text().toDouble(), lato2->text().toDouble(), lato3->text().toDouble(), lato4->text().toDouble(), lato5->text().toDouble(),
+                             Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()), Angolo(angolo3->text().toDouble()), Angolo(angolo4->text().toDouble()),
+                             Angolo(angolo5->text().toDouble()), c, nome->text());
+    }
+    if(!pent->checkConvexity()){
+        delete pent;
+        throw WrongPolygon("Pentagono Concavo");
+    }
+    return pent;
+}
+
+bool PentagonCreator::checkValidity()
+{
+    if(!lato1->text().toDouble() || !lato2->text().toDouble() || !lato3->text().toDouble() || !lato4->text().toDouble()
+        || !lato5->text().toDouble() || !angolo1->text().toDouble() || !angolo2->text().toDouble() || !angolo3->text().toDouble()
+            || !angolo4->text().toDouble() || !angolo5->text().toDouble() || nome->text().isEmpty() )
+        return false;
+    return true;
+
+}
+
+void PentagonCreator::inserisciColore(QIcon icona, QString nome)
+{
+    colori->addItem(icona, nome);
+}
+
 void PentagonCreator::formIrregolare(){
     refreshFormWidget();
     delete formLayout;
@@ -259,16 +310,11 @@ void PentagonCreator::formRegolare(){
     mainLayout->addWidget(saveButton);
 }
 
-void PentagonCreator::creaPentagono(){
-    Pentagono *pent;
-    if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
-        pent = new Pentagono(lato1->text().toDouble(),(selettore->getColore(colori->currentText())->clone()),nome->text());
-    }
-    else{
-        pent = new Pentagono(lato1->text().toDouble(), lato2->text().toDouble(), lato3->text().toDouble(), lato4->text().toDouble(), lato5->text().toDouble(),
-                             Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()), Angolo(angolo3->text().toDouble()), Angolo(angolo4->text().toDouble()),
-                             Angolo(angolo5->text().toDouble()), selettore->getColore(colori->currentText())->clone(), nome->text());
-    }
+void PentagonCreator::creaPentagono()try{
+    Pentagono *pent = buildPentagono();
     selettore->insertItem(pent);
     emit selettore->insertPoligono(pent->getNome());
 }
+catch(EmptyField){}
+catch(SyntaxError){}
+catch(MyException){}

@@ -1,4 +1,5 @@
 #include "window.h"
+#include "exception.h"
 
 Window::Window(QWidget *parent) : QWidget(parent){
     QSize size(650,650);
@@ -7,7 +8,7 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     setFont(QFont("QFont::SansSerif	",9));
 
-    creatorC=new ColorCreator;
+
 
     areaD=new DataArea;
     areaP=new DrawArea;
@@ -16,7 +17,10 @@ Window::Window(QWidget *parent) : QWidget(parent){
     operandoUno = new OperandSelector("1",contenitore);
     operandoDue = new OperandSelector("2",contenitore);
 
-    creatorP=new PolygonCreator(operandoUno);
+    creatorC=new ColorCreator(operandoUno);
+
+    colori=new QComboBox;
+    creatorP=new PolygonCreator(operandoUno,colori);
 
     pulsanti = new BoxButtons;
 
@@ -30,9 +34,16 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoDue,SLOT(addColore(Colore*)));
     connect(creatorC,SIGNAL(inviaColore(Colore*)),creatorP,SLOT(addColore(Colore*)));
 
+
+
     connect(operandoUno, SIGNAL(insertPoligono(QString)),operandoDue, SLOT(addPoligono(QString)));//aggiorno il selettore 2 quando inserisco solo nel primo
+
     connect(operandoUno, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
+    connect(operandoDue, SIGNAL(insertPoligono(QString)),operandoUno, SLOT(addPoligono(QString)));
+    connect(operandoDue, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
     connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
+
+
 
     areaLayout->addWidget(areaP);
     areaLayout->addWidget(areaD);
@@ -50,6 +61,14 @@ Window::Window(QWidget *parent) : QWidget(parent){
     mainLayout->addLayout(operandLayout);
     mainLayout->addLayout(creatorLayout);
     setLayout(mainLayout);
+
+    connect(operandoUno, SIGNAL(changeButton(QString)), operandoDue, SLOT(activeButton(QString)));
+    connect(operandoUno, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
+    connect(operandoUno, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
+
+    connect(operandoDue, SIGNAL(changeButton(QString)), operandoUno, SLOT(activeButton(QString)));
+    connect(operandoDue, SIGNAL(abilitaBottCol()), pulsanti, SLOT(bottoniColori()));
+    connect(operandoDue, SIGNAL(abilitaBottPol()), pulsanti, SLOT(bottoniPolig()));
 
     connect(pulsanti,SIGNAL(trovaPerimetro()), operandoUno, SLOT(calcolaPerimetro()));
     connect(operandoUno,SIGNAL(inviaPerimetro(double)), areaD, SLOT(outputPerimetro(double)));
@@ -78,10 +97,16 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(pulsanti,SIGNAL(trovaDivisione()), operandoUno, SLOT(divisioneOpUno()));
     connect(operandoUno, SIGNAL(divisioneUno(QString)), operandoDue, SLOT(calcolaDivisione(QString)));
     connect(operandoDue, SIGNAL(stampaDivisione(QString)), areaD, SLOT(outputDivisione(QString)));
+
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));
+    connect(operandoDue, SIGNAL(aggColore(Colore*)), creatorP, SLOT(addColore(Colore*)));
 }
 
 void Window::acquisisciPoligono(QString text){
     emit disegnaPoligono(contenitore->getPoligono(text));
 }
 
-
+void Window::hoPoligono(Poligono* p){
+    emit disegnaPoligono(p);
+}

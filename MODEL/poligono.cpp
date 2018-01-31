@@ -11,6 +11,10 @@ QString Poligono::getNome()const{
     return nomeOggetto;
 }
 
+void Poligono::setNome(QString s){
+    nomeOggetto=s;
+}
+
 double Poligono::getPerimetro() const{
     double perimetro=0;
     for(unsigned int i=0; i<numeroLati; ++i){
@@ -24,7 +28,12 @@ Colore* Poligono::getColore() const{
 }
 
 void Poligono::setColore(Colore* c){
-    color=c->clone();
+    color = c->clone();
+}
+
+void Poligono::changeColor(Colore& col){
+    Colore& c = col + *color;
+    setColore( &c );
 }
 
 QVector<Angolo> Poligono::getAngoli()const{
@@ -118,6 +127,34 @@ int Poligono::indexLato(double lato) const{
     return index;
 }
 
+bool Poligono::checkConvexity()
+{
+    QVector<Punto> polygon = getCoordinate();
+    if (polygon.size() < 3) return false;
+
+    Punto p;
+    Punto v;
+    Punto u;
+    int res = 0;
+    for (int i = 0; i < polygon.size(); i++)
+    {
+      p = polygon[i];
+      Punto tmp = polygon[(i+1) % polygon.size()];
+      v = Punto((tmp.getX()-p.getX()),(tmp.getY()-p.getY()));
+      u = polygon[(i+2) % polygon.size()];
+
+      if (i == 0) // in first loop direction is unknown, so save it in res
+        res = (u.getX() * v.getY()) - (u.getY() * v.getX()) + (v.getX() * p.getY()) - (v.getY() * p.getX());
+      else
+      {
+        int newres = u.getX() * v.getY() - u.getY() * v.getX() + v.getX() * p.getY() - v.getY() * p.getX();
+        if ( (newres > 0 && res < 0) || (newres < 0 && res > 0) )
+          return false;
+      }
+    }
+    return true;
+}
+
 QPolygonF Poligono::toQPolygon(){
     QVector<QPointF> Qpunti;
     for(int i=0; i<getLati().size(); ++i){
@@ -128,3 +165,5 @@ QPolygonF Poligono::toQPolygon(){
     }
     return QPolygonF(Qpunti);
 }
+
+

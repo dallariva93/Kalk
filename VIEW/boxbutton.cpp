@@ -78,3 +78,29 @@ void BoxButtons::getMoltiplicazione(){
 void BoxButtons::getDivisione(){
     emit trovaDivisione();
 }
+
+void BoxButtons::bottoniColori(){
+    perimetro->setEnabled(false);
+    area->setEnabled(false);
+    lati->setEnabled(false);
+    angoli->setEnabled(false);
+    somma->setEnabled(true);
+    sottrazione->setEnabled(true);
+    divisione->setEnabled(true);
+    moltiplicazione->setEnabled(true);
+    scala->setEnabled(false);
+    ruota->setEnabled(false);
+}
+
+void BoxButtons::bottoniPolig(){
+    perimetro->setEnabled(true);
+    area->setEnabled(true);
+    lati->setEnabled(true);
+    angoli->setEnabled(true);
+    somma->setEnabled(true);
+    sottrazione->setEnabled(false);
+    divisione->setEnabled(false);
+    moltiplicazione->setEnabled(false);
+    scala->setEnabled(true);
+    ruota->setEnabled(true);
+}

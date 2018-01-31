@@ -1,11 +1,15 @@
 #include"VIEW/quadrilateralcreator.h"
 #include<QLineEdit>
 #include<iostream>
+#include"exception.h"
 
-QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, OperandSelector *sel, QWidget *parent) : colori(col), selettore(sel), QWidget(parent){
+QuadrilateralCreator::QuadrilateralCreator( OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
 
     QSize size(500,350);
     setMaximumSize(size);
+
+
+    colori=new QComboBox;
 
     radio1 = new QRadioButton(tr("Costruisco un quadrato"),this);
     radio2 = new QRadioButton(tr("Costruisco un rettangolo"),this);
@@ -74,6 +78,11 @@ QuadrilateralCreator::QuadrilateralCreator(QComboBox *col, OperandSelector *sel,
     mainLayout->addLayout(formLayout);
     mainLayout->addWidget(saveButton);
     setLayout(mainLayout);
+}
+
+void QuadrilateralCreator::inserisciColore(QIcon icona, QString nome)
+{
+    colori->addItem(icona, nome);
 }
 
 void QuadrilateralCreator::refreshFormWidget(){
@@ -156,6 +165,57 @@ QuadrilateralCreator::~QuadrilateralCreator(){
     delete angoloD;
     delete labelNome;
     delete colore;
+}
+
+Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
+{
+    Colore*c;
+    colori->count()==0 ? c=new RGB() : c=selettore->getColore(colori->currentText())->clone();
+    Quadrilatero *qu;
+    if(radio1->isChecked()){    //quadrato
+        if(!lato1->text().toDouble() || nome->text().isEmpty())
+            throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
+        if(nome->text().startsWith("#"))
+            throw SyntaxError("Il nome non può iniziare con il carattere #");
+        if(selettore->isPresent(nome->text()))
+            throw AlreadyPresent("Nome già presente!");
+        qu = new Quadrato(lato1->text().toDouble(), c, nome->text());
+    }
+    else if(radio2->isChecked()){   //rettangolo
+        if(!lato1->text().toDouble() || nome->text().isEmpty())
+            throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
+        if(nome->text().startsWith("#"))
+            throw SyntaxError("Il nome non può iniziare con il carattere #");
+        if(selettore->isPresent(nome->text()))
+            throw AlreadyPresent("Nome già presente!");
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(), 90, 90, 90, 90, c, nome->text());
+    }
+    else{   //q irregolare
+        if(!checkValidity())
+            throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
+        if(nome->text().startsWith("#"))
+            throw SyntaxError("Il nome non può iniziare con il carattere #");
+        if(selettore->isPresent(nome->text()))
+            throw AlreadyPresent("Nome già presente!");
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(),
+                              angolo1->text().toDouble(), angolo2->text().toDouble(), angolo3->text().toDouble(), angolo4->text().toDouble(),
+                              c, nome->text());
+    }
+    if(!qu->checkConvexity()){
+        delete qu;
+        throw WrongPolygon("Pentagono Concavo");
+    }
+    return qu;
+}
+
+bool QuadrilateralCreator::checkValidity()
+{
+    if(!lato1->text().toDouble() || !lato2->text().toDouble() || !lato3->text().toDouble() || !lato4->text().toDouble()
+         || !angolo1->text().toDouble() || !angolo2->text().toDouble() || !angolo3->text().toDouble()
+            || !angolo4->text().toDouble() || nome->text().isEmpty() )
+        return false;
+    return true;
+
 }
 
 void QuadrilateralCreator::formQuadrato(){
@@ -294,24 +354,10 @@ void QuadrilateralCreator::formQuadrilatero(){
     mainLayout->addWidget(saveButton);
 }
 
-void QuadrilateralCreator::creaQuadrilatero(){
-    Quadrilatero *qu;
-    if(radio1->isChecked()){    //quadrato
-        std::cout<<lato1->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
-        qu = new Quadrato(lato1->text().toDouble(), selettore->getColore(colori->currentText())->clone(), nome->text());
-    }
-    else if(radio2->isChecked()){   //rettangolo
-        std::cout<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"   "<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl;
-        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(), 90, 90, 90, 90, selettore->getColore(colori->currentText())->clone(), nome->text());
-    }
-    else{   //q irregolare
-        std::cout<<std::endl<<lato1->text().toDouble()<<"   "<<lato2->text().toDouble()<<"   "<<lato3->text().toDouble()<<"   "<<lato4->text().toDouble()<<std::endl;
-        std::cout<<angolo1->text().toDouble()<<"   "<<angolo2->text().toDouble()<<"   "<<angolo3->text().toDouble()<<"   "<<angolo4->text().toDouble()<<std::endl;
-        std::cout<<selettore->getColore(colori->currentText())->getHex().toStdString()<<std::endl<<std::endl;
-        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(),
-                              angolo1->text().toDouble(), angolo2->text().toDouble(), angolo3->text().toDouble(), angolo4->text().toDouble(),
-                              selettore->getColore(colori->currentText())->clone(), nome->text());
-    }
+void QuadrilateralCreator::creaQuadrilatero()try{
+    Quadrilatero *qu=buildQuadrilatero();
+
     selettore->insertItem(qu);
     emit selettore->insertPoligono(qu->getNome());
 }
+catch(MyException){}

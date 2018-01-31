@@ -1,16 +1,15 @@
 #include "polygoncreator.h"
-
-PolygonCreator::PolygonCreator(OperandSelector *opSel, QWidget *parent) : selettore(opSel),QWidget(parent){
+#include <QComboBox>
+PolygonCreator::PolygonCreator(OperandSelector *opSel, QComboBox* col,  QWidget *parent) : selettore(opSel),QWidget(parent){
 /*    QSize size(390,350), buttonSize(100,25);
     setMaximumSize(size);
     setMinimumSize(size);*/
     QSize buttonSize(100,25);
 
-    colori=new QComboBox;
 
-    triangleWidget=new TriangleCreator(colori, selettore);
-    quadrilateralWidget=new QuadrilateralCreator(colori, selettore);
-    pentagonWidget=new PentagonCreator(colori, selettore);
+    triangleWidget=new TriangleCreator(selettore);
+    quadrilateralWidget=new QuadrilateralCreator( selettore);
+    pentagonWidget=new PentagonCreator( selettore);
 
     triangleButton=new QPushButton("Triangolo");
     quadrilateralButton= new QPushButton("Quadrilatero");
@@ -25,37 +24,20 @@ PolygonCreator::PolygonCreator(OperandSelector *opSel, QWidget *parent) : selett
 
     quadrilateralWidget->setVisible(false);
     pentagonWidget->setVisible(false);
-/*
-    connect(triangleButton, SIGNAL(clicked(bool)),this, SLOT(triangleSlot(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)), this, SLOT(quadrilateralSlot(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)), this, SLOT(pentagonSlot(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setVisible(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setHidden(bool)));
-    connect(triangleButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setHidden(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setVisible(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setHidden(bool)));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setHidden(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),pentagonWidget, SLOT(setVisible(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),triangleWidget, SLOT(setHidden(bool)));
-    connect(pentagonButton, SIGNAL(clicked(bool)),quadrilateralWidget, SLOT(setHidden(bool)));
-*/
+
     connect(triangleButton, SIGNAL(clicked()), triangleWidget, SLOT(show()));
     connect(triangleButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
-    connect(triangleButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(close()));
+    connect(triangleButton, SIGNAL(clicked()),pentagonWidget,SLOT(close()));
     connect(quadrilateralButton, SIGNAL(clicked()), triangleWidget, SLOT(close()));
     connect(quadrilateralButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(show()));
-    connect(quadrilateralButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(close()));
+    connect(quadrilateralButton, SIGNAL(clicked()),pentagonWidget,SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked()), triangleWidget, SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
-    connect(pentagonButton, SIGNAL(clicked(bool)),pentagonWidget,SLOT(show()));
+    connect(pentagonButton, SIGNAL(clicked()),pentagonWidget,SLOT(show()));
 
-    connect(triangleButton, SIGNAL(clicked()), colori, SLOT(show()));
+   /* connect(triangleButton, SIGNAL(clicked()), colori, SLOT(show()));
     connect(quadrilateralButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(pentagonButton, SIGNAL(clicked(bool)),colori,SLOT(show()));
-
-
-
-
+    connect(pentagonButton, SIGNAL(clicked()),colori,SLOT(show()));*/
 
     buttonsLayout->addWidget(triangleButton);
     buttonsLayout->addWidget(quadrilateralButton);
@@ -73,30 +55,27 @@ void PolygonCreator::refreshCreators(){
     mainLayout->removeWidget(quadrilateralWidget);
     mainLayout->removeWidget(pentagonWidget);
 
-    QComboBox* temp=colori;
     delete triangleWidget;
     delete quadrilateralWidget;
     delete pentagonWidget;
-    colori=temp;
 
-
-    triangleWidget = new TriangleCreator(colori, selettore);
-    quadrilateralWidget = new QuadrilateralCreator(colori, selettore);
-    pentagonWidget = new PentagonCreator(colori, selettore);
+    triangleWidget = new TriangleCreator(selettore);
+    quadrilateralWidget = new QuadrilateralCreator( selettore);
+    pentagonWidget = new PentagonCreator(selettore);
 }
 
 
-void PolygonCreator::triangleSlot(bool){
+void PolygonCreator::triangleSlot(){
     refreshCreators();
     mainLayout->addWidget(triangleWidget);
 }
 
-void PolygonCreator::quadrilateralSlot(bool){
+void PolygonCreator::quadrilateralSlot(){
     refreshCreators();
     mainLayout->addWidget((quadrilateralWidget));
 }
 
-void PolygonCreator::pentagonSlot(bool){
+void PolygonCreator::pentagonSlot(){
     refreshCreators();
     mainLayout->addWidget(pentagonWidget);
 }
@@ -105,6 +84,9 @@ void PolygonCreator::addColore(Colore *colore){
     QPixmap pmap(20,15);
     pmap.fill(colore->toQcolor());
     QIcon icon(pmap);
-    colori->addItem(icon,colore->getHex());
+    triangleWidget->inserisciColore(icon,colore->getHex());
+    quadrilateralWidget->inserisciColore(icon,colore->getHex());
+    pentagonWidget->inserisciColore(icon,colore->getHex());
+    /*qui mando segnali per tutti i qcombobox*/
 }
 

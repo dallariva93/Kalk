@@ -20,7 +20,7 @@ public:
     OperandSelector *operandoUno;
     OperandSelector *operandoDue;
     BoxButtons *pulsanti;
-
+    QComboBox* colori;
     Container* contenitore;
     QHBoxLayout *areaLayout;
     QHBoxLayout *creatorLayout;
@@ -36,6 +36,7 @@ signals:
 
 public slots:
     void acquisisciPoligono(QString);
+    void hoPoligono(Poligono*);
 };
 
 #endif // WINDOW_H

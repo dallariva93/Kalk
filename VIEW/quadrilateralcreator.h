@@ -52,9 +52,12 @@ private:
     OperandSelector *selettore;
 
 public:
-    QuadrilateralCreator(QComboBox*col, OperandSelector *sel, QWidget *parent=0);
+    QuadrilateralCreator( OperandSelector *sel, QWidget *parent=0);
     void refreshFormWidget();
+    void inserisciColore(QIcon icona, QString nome);
     ~QuadrilateralCreator();
+    Quadrilatero* buildQuadrilatero();
+    bool checkValidity();
 signals:
 
 public slots:

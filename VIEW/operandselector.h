@@ -25,6 +25,10 @@ public:
     void insertItem(Poligono*);
     Colore* getColore(QString);
     bool isPresent(QString);
+    void calcolaSomma1(QString);
+    void calcolaSottrazione1(QString);
+    void calcolaMoltiplicazione1(QString);
+    void calcolaDivisione1(QString);
 
 signals:
     void inviaPerimetro(double);

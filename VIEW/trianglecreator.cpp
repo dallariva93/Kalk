@@ -157,8 +157,7 @@ Triangolo *TriangleCreator::buildTriangolo()
     return tr;
 }
 
-void TriangleCreator::inserisciColore(QIcon icona, QString nome)
-{
+void TriangleCreator::inserisciColore(QIcon icona, QString nome){
     colori->addItem(icona, nome);
 }
 

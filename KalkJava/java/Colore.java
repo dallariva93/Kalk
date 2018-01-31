@@ -1,4 +1,5 @@
 
-public class Colore extends Poligono{
+public abstract class Colore extends Poligono{
 
+	
 }

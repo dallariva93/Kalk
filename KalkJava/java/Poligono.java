@@ -1,21 +1,22 @@
+//package Poligono;
+
 import java.util.*;
 
 public abstract class Poligono {
 
 	private int numeroLati;
-	private Colore color;
 	private String nomeOggetto;
-	private Vector coordinate;
+	private Colore color = new RGB();
+	private Vector<Punto> coordinate = new Vector<Punto>();	//val di default
 	
-	public Poligono(int nLati, Colore col, String nome, Vector punti) {	//costruttore a 4 parametri
+	public Poligono(int nLati, String nome, Colore col, Vector<Punto> punti) {	//costruttore a 4 parametri
 		numeroLati = nLati;
-		color=col;			// clone
-		nomeOggetto=nome;
-		coordinate=punti;
+		nomeOggetto = nome;
+		color = col;			// clone
+		coordinate = punti;
 	}
 	public Poligono() {
-		super();
-//				this(0,?,"Unknown",?);
+		this(0,"Unknown", new RGB(),new Vector<Punto>());
 	}
 	// Poligonoclone() const=0;
 	public String getNome() {
@@ -43,8 +44,8 @@ public abstract class Poligono {
     public void setPunti(Vector c) {
     	coordinate = c;
     }
-    public Vector getCoordinate() {
-    	return new Vector(coordinate);
+    public Vector<Punto> getCoordinate() {
+    	return new Vector<Punto>(coordinate);
     }
     public Vector getLati() {
     	Vector lati = new Vector();

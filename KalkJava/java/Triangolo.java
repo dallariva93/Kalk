@@ -3,19 +3,19 @@ import java.util.*;
 public class Triangolo extends Poligono {
 
 	public Triangolo(double latoAB, double latoAC, Angolo a, Colore col, String nome){
-		super(3, col, nome, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new Vector());	//vedere il new Vector come fare
 		
-		Vector/*<Punto>*/ punti = new Vector();
+		Vector<Punto> punti = new Vector<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    punti.addElement(sen_cos(latoAC,a));
 	    setPunti(punti);	
 	}
 	public Triangolo(double latoAB, Angolo a, Angolo b, Colore col, String nome ){
-		super(3, col, nome, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new Vector());	//vedere il new Vector come fare
 		
 		Angolo c = new Angolo( 180 -a.getAngolo() -b.getAngolo());
-	    Vector/*<Punto>*/ punti = new Vector();
+	    Vector<Punto> punti = new Vector<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    double latoAC = ( latoAB * b.seno() ) / c.seno();
@@ -23,16 +23,17 @@ public class Triangolo extends Poligono {
 	    setPunti(punti);		
 	}
 	public Triangolo(double latoAB, double latoBC, double latoAC, Colore col, String nome ){
-		super(3, col, nome, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new Vector());	//vedere il new Vector come fare
 		
 		double cos_a =(( Math.pow(latoAC,2) + Math.pow(latoAB,2) - Math.pow(latoBC,2)) / (2*latoAB*latoAC)) ;
 	    Angolo a = new Angolo( Math.acos(cos_a)*180/Math.PI );
-	    Vector/*<Punto>*/ punti = new Vector();
+	    Vector<Punto> punti = new Vector<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    punti.addElement(sen_cos(latoAC,a));
 	    setPunti(punti);
-	}
+	}	
+
 	/*Triangolo(){
 		//this(10.0,10.0,10.0, new Colore(), new Vector());
 	}
@@ -128,4 +129,11 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
 
 */
 	
+	public static void main(String[] args) {
+		Triangolo t = new Triangolo(10.0,10.0,10.0,)
+	}
+
+
 }
+
+

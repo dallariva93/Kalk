@@ -2,6 +2,8 @@
 #include "MODEL/triangolo.h"
 #include "MODEL/quadrilatero.h"
 #include "MODEL/pentagono.h"
+#include <QtAlgorithms>
+#include "exception.h"
 
 OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent) : QWidget(parent), contenitore(con){
     QSize size(325,45);
@@ -16,7 +18,7 @@ OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent
     mainLayout->addWidget(selector);
     setLayout(mainLayout);
 
-//    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
+    connect(selector,SIGNAL(currentTextChanged(QString)), this, SLOT(textChanged(QString)));
     connect(selector, SIGNAL(activated(QString)), this, SLOT(textChanged(QString)));
 }
 
@@ -41,8 +43,7 @@ Colore *OperandSelector::getColore(QString nome){
     return contenitore->getColore(nome);
 }
 
-bool OperandSelector::isPresent(QString nome)
-{
+bool OperandSelector::isPresent(QString nome){
     return selector->findText(nome)!=-1;
 }
 
@@ -85,21 +86,26 @@ void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operan
     emit sommaUno(name);
 }
 
-void OperandSelector::calcolaSomma(QString name1){
+
+void OperandSelector::calcolaSomma1(QString name1){
     QString name2 = selector->currentText();
     if(name1.contains("#")){
         Colore& col1 = *(contenitore->getColore(name1));
         if(name2.contains("#")){
             Colore& col2 = *(contenitore->getColore(name2));
             Colore& somma = col1 + col2;
+            if(isPresent(somma.getHex()))
+                throw AlreadyPresent("Il colore esiste già!");
             emit aggColore(&somma);
             emit(stampaSomma(somma.getHex()));
         }
         else{
             Poligono* pol2= (contenitore->getPoligono(name2))->clone();
             Colore & sommaC = col1 + *(pol2->getColore());
-            pol2->changeColor(sommaC);
             QString name = QString(name1.remove("#")+"+"+pol2->getNome());
+            if(isPresent(name))
+                throw AlreadyPresent("Il poligono esiste già!");
+            pol2->changeColor(sommaC);
             pol2->setNome(name);
             contenitore->addPoligono(pol2);
             selector->addItem(pol2->getNome());     //ho inserito solo il nome
@@ -112,8 +118,10 @@ void OperandSelector::calcolaSomma(QString name1){
         if(name2.contains("#")){
             Colore & c = *(contenitore->getColore(name2));
             Colore & sommaC = c + *(pol1.getColore());
-            pol1.changeColor(sommaC);
             QString nome = QString(pol1.getNome()+"+"+name2.remove("#"));
+            if(isPresent(nome))
+                throw AlreadyPresent("Il poligono esiste già!");
+            pol1.changeColor(sommaC);
             pol1.setNome(nome);
             contenitore->addPoligono(&pol1);
             selector->addItem(pol1.getNome());
@@ -125,6 +133,8 @@ void OperandSelector::calcolaSomma(QString name1){
             Poligono* pol2 = (contenitore->getPoligono(name2))->clone();
             Poligono& pTot = *pol1 + *pol2;
             QString nome = QString(pol1->getNome()+"+"+pol2->getNome());
+            if(isPresent(nome))
+                throw AlreadyPresent("Il poligono esiste già!");
             pTot.setNome(nome);
             contenitore->addPoligono(&pTot);
             selector->addItem(pTot.getNome());
@@ -139,11 +149,13 @@ void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'
     emit sottrazioneUno(name);
 }
 
-void OperandSelector::calcolaSottrazione(QString name1){
+void OperandSelector::calcolaSottrazione1(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
     Colore& col2 = *(contenitore->getColore(name2));
     Colore& sottraggo = col1 - col2;
+    if(isPresent(sottraggo.getHex()))
+        throw AlreadyPresent("Il colore esiste già!");
     emit aggColore(&sottraggo);
     emit(stampaSottrazione(sottraggo.getHex()));
 }
@@ -153,11 +165,13 @@ void OperandSelector::moltiplicazioneOpUno(){
     emit moltiplicazioneUno(name);
 }
 
-void OperandSelector::calcolaMoltiplicazione(QString name1){
+void OperandSelector::calcolaMoltiplicazione1(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
     Colore& col2 = *(contenitore->getColore(name2));
     Colore& molt = col1 * col2;
+    if(isPresent(molt.getHex()))
+        throw AlreadyPresent("Il colore esiste già!");
     emit aggColore(&molt);
     emit(stampaMoltiplicazione(molt.getHex()));
 }
@@ -167,11 +181,13 @@ void OperandSelector::divisioneOpUno(){
     emit divisioneUno(name);
 }
 
-void OperandSelector::calcolaDivisione(QString name1){
+void OperandSelector::calcolaDivisione1(QString name1){
     QString name2 = selector->currentText();
     Colore& col1 = *(contenitore->getColore(name1));
     Colore& col2 = *(contenitore->getColore(name2));
     Colore& div = col1 / col2;
+    if(isPresent(div.getHex()))
+        throw AlreadyPresent("Il colore esiste già!");
     emit aggColore(&div);
     emit(stampaDivisione(div.getHex()));
 }
@@ -208,3 +224,22 @@ void OperandSelector::activeButtonDue(QString opDue){
         emit abilitaBottPol();
     }
 }
+void OperandSelector::calcolaSomma(QString name1)try{
+    calcolaSomma1(name1);
+}
+catch(MyException){}
+
+void OperandSelector::calcolaSottrazione(QString name1)try{
+    calcolaSottrazione1(name1);
+}
+catch(MyException){}
+
+void OperandSelector::calcolaMoltiplicazione(QString name1)try{
+    calcolaMoltiplicazione1(name1);
+}
+catch(MyException){}
+
+void OperandSelector::calcolaDivisione(QString name1)try{
+    calcolaDivisione1(name1);
+}
+catch(MyException){}

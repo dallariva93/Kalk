@@ -193,7 +193,7 @@ Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
             throw SyntaxError("Il nome non può iniziare con il carattere #");
         if(selettore->isPresent(nome->text()))
             throw AlreadyPresent("Nome già presente!");
-        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(), 90, 90, 90, 90, c, nome->text());
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato2->text().toDouble(), 90, 90, c, nome->text());
     }
     else{   //q irregolare
         if(!checkValidity())
@@ -202,9 +202,8 @@ Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
             throw SyntaxError("Il nome non può iniziare con il carattere #");
         if(selettore->isPresent(nome->text()))
             throw AlreadyPresent("Nome già presente!");
-        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato1->text().toDouble(), lato2->text().toDouble(),
-                              angolo1->text().toDouble(), angolo2->text().toDouble(), angolo3->text().toDouble(), angolo4->text().toDouble(),
-                              c, nome->text());
+        qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato2->text().toDouble(),
+                              angolo1->text().toDouble(), angolo2->text().toDouble(), c, nome->text());
     }
     if(!qu->checkConvexity()){
         delete qu;

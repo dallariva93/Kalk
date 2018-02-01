@@ -1,7 +1,7 @@
 #include "rettangolo.h"
 
 Rettangolo::Rettangolo(double latoAB, double latoBC, Colore* col):
-    Quadrilatero(latoAB, latoBC, latoAB, latoBC, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, Angolo::angoloRetto, col){}
+    Quadrilatero(latoAB, latoBC, latoBC, Angolo::angoloRetto, Angolo::angoloRetto, col){}
 
 double Rettangolo::getArea()const{
     return Punto::distanceTo(Punto::origine,getCoordinate()[1]) *
@@ -13,13 +13,11 @@ double Rettangolo::getPerimetro()const{
                 Punto::distanceTo(getCoordinate()[1],getCoordinate()[2]));
 }
 
-
 void Rettangolo::cambiaBase(double lato){
     Quadrilatero::cambiaBase(lato);
 }
 
-Rettangolo &Rettangolo::specchia() const
-{
+Rettangolo &Rettangolo::specchia() const{
     QVector<Punto> vertici=getCoordinate();
     for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
         it->invertiY();

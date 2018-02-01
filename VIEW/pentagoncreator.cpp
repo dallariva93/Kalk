@@ -220,9 +220,8 @@ Pentagono *PentagonCreator::buildPentagono()
             throw SyntaxError("Il nome non può iniziare con il carattere #");
         if(selettore->isPresent(nome->text()))
             throw AlreadyPresent("Nome già presente!");
-        pent = new Pentagono(lato1->text().toDouble(), lato2->text().toDouble(), lato3->text().toDouble(), lato4->text().toDouble(), lato5->text().toDouble(),
-                             Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()), Angolo(angolo3->text().toDouble()), Angolo(angolo4->text().toDouble()),
-                             Angolo(angolo5->text().toDouble()), c, nome->text());
+        pent = new Pentagono(lato1->text().toDouble(), lato2->text().toDouble(), lato4->text().toDouble(), lato5->text().toDouble(),
+               Angolo(angolo1->text().toDouble()), Angolo(angolo2->text().toDouble()),Angolo(angolo5->text().toDouble()), c, nome->text());
     }
     if(!pent->checkConvexity()){
         delete pent;

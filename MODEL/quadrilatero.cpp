@@ -3,9 +3,9 @@
 #include "angolo.h"
 #include "pentagono.h"
 
-Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90)){}
+Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,Angolo(90),Angolo(90)){}
 
-Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col, QString nome) : Poligono(4, nome, col){
+Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoAD, const Angolo& a, const Angolo& b, Colore* col, QString nome) : Poligono(4, nome, col){
 
     Angolo b_ad = 180 - b.getAngolo();
     QVector<Punto> punti;
@@ -28,18 +28,18 @@ double Quadrilatero::getArea() const{
 }
 
 void Quadrilatero::estendi(double fattore){
-    Quadrilatero temp(getLati()[0]*fattore,getLati()[1]*fattore,getLati()[2]*fattore,getLati()[3]*fattore,getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]);
+    Quadrilatero temp(getLati()[0]*fattore,getLati()[1]*fattore,getLati()[3]*fattore,getAngoli()[0], getAngoli()[1]);
     setPunti(temp.getCoordinate());
 }
 
 Quadrilatero& Quadrilatero::zoom(double fattore) const{
-    return *(new Quadrilatero(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore,
-            getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3]));
+    return *(new Quadrilatero(getLati()[0]*fattore, getLati()[1]*fattore,getLati()[3]*fattore,
+            getAngoli()[0], getAngoli()[1]));
 }
 
 Quadrilatero& Quadrilatero::cambiaBase(int n)const{
     QVector<double> lati = ordinaLati(getLati(),getLati()[n]);
-    return *(new Quadrilatero(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3],getColore()));
+    return *(new Quadrilatero(lati[0], lati[1], lati[3],getAngoli()[0], getAngoli()[1],getColore()));
 }
 
 Quadrilatero &Quadrilatero::specchia() const{

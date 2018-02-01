@@ -3,7 +3,7 @@
 Quadrato::Quadrato() : Quadrilatero() {}
 
 Quadrato::Quadrato(double lato, Colore* col, QString nome) :
-    Quadrilatero(lato,lato,lato,lato,Angolo(90), Angolo(90), Angolo(90), Angolo(90), col, nome){}
+    Quadrilatero(lato,lato,lato,Angolo(90), Angolo(90), col, nome){}
 
 double Quadrato::getArea()const{
     return pow(Punto::distanceTo(Punto::origine,getCoordinate()[1]),2);

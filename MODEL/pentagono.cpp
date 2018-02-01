@@ -4,14 +4,13 @@
 #include <math.h>
 const Angolo Pentagono::angoloInterno= Angolo(108);
 
-Pentagono::Pentagono() : Pentagono(10,10,10,10,10,Angolo(108),Angolo(108),Angolo(108),Angolo(108),Angolo(108)){}
+Pentagono::Pentagono() : Pentagono(10,10,10,10,Angolo(108),Angolo(108),Angolo(108)){}
 
-Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE, double latoAE, const Angolo& a, const Angolo& b,
-                     const Angolo& c, const Angolo& d, const Angolo& e, Colore* col, QString nome) : Poligono(5,nome,col){
+Pentagono::Pentagono(double latoAB, double latoBC, double latoDE, double latoAE, const Angolo& a, const Angolo& b,
+                      const Angolo& e, Colore* col, QString nome) : Poligono(5,nome,col){
     QVector<Punto> punti;
     punti.push_back(Punto::origine);    //coordinata A
     punti.push_back(Punto(latoAB,0));   //coordinata B
-
     Angolo b2 = 180-b.getAngolo();
     Triangolo t1(latoAB, latoBC, b2);
     punti.push_back(Punto(  (punti[1].getX()+(latoBC*b2.coseno()))  ,   (latoBC*b2.seno())));
@@ -25,7 +24,7 @@ Pentagono::Pentagono(double latoAB, double latoBC, double latoCD, double latoDE,
 }
 
 Pentagono::Pentagono(double lato, Colore* col, QString nome) :
-    Pentagono(lato,lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,angoloInterno,angoloInterno,col,nome){}
+    Pentagono(lato,lato,lato,lato,angoloInterno,angoloInterno,angoloInterno,col,nome){}
 
 Pentagono* Pentagono::clone() const{
     return new Pentagono(*this);
@@ -39,21 +38,21 @@ double Pentagono::getArea() const {
 }
 
 void Pentagono::estendi(double fattore){
-    Pentagono  p(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
-            getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]);
+    Pentagono  p(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
+            getAngoli()[0], getAngoli()[1], getAngoli()[4]);
     setPunti(p.getCoordinate());
 }
 
 Pentagono& Pentagono::zoom(double fattore) const{
 /*    std::cout<<"|"<<getLati()[0]*fattore<<"|"<<getLati()[1]*fattore<<"|"<<getLati()[2]*fattore<<"|"<<getLati()[3]*fattore<<"|"<<getLati()[4]*fattore<<std::endl;
     std::cout<<"-"<<getAngoli()[0].getAngolo()<<"-"<<getAngoli()[1].getAngolo()<<"-"<<getAngoli()[2].getAngolo()<<"-"<<getAngoli()[3].getAngolo()<<"-"<<getAngoli()[4].getAngolo()<<std::endl;
-*/    return *(new Pentagono(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
-            getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4]));
+*/    return *(new Pentagono(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[3]*fattore, getLati()[4]*fattore,
+            getAngoli()[0], getAngoli()[1], getAngoli()[4]));
 }
 
 Pentagono &Pentagono::cambiaBase(int n) const{
     QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
-    return *(new Pentagono(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4],getColore()));
+    return *(new Pentagono(lati[0], lati[1], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2],getColore()));
 }
 
 Pentagono &Pentagono::specchia() const

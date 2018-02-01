@@ -34,16 +34,12 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(creatorC,SIGNAL(inviaColore(Colore*)),operandoDue,SLOT(addColore(Colore*)));
     connect(creatorC,SIGNAL(inviaColore(Colore*)),creatorP,SLOT(addColore(Colore*)));
 
-
-
     connect(operandoUno, SIGNAL(insertPoligono(QString)),operandoDue, SLOT(addPoligono(QString)));//aggiorno il selettore 2 quando inserisco solo nel primo
 
     connect(operandoUno, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
     connect(operandoDue, SIGNAL(insertPoligono(QString)),operandoUno, SLOT(addPoligono(QString)));
     connect(operandoDue, SIGNAL(inseritoPoligono(QString)),this, SLOT(acquisisciPoligono(QString)));
     connect(this,SIGNAL(disegnaPoligono(Poligono*)),areaP, SLOT(settaPoligono(Poligono*)));
-
-
 
     areaLayout->addWidget(areaP);
     areaLayout->addWidget(areaD);
@@ -100,9 +96,12 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(operandoUno, SIGNAL(divisioneUno(QString)), operandoDue, SLOT(calcolaDivisione(QString)));
     connect(operandoDue, SIGNAL(stampaDivisione(QString)), areaD, SLOT(outputDivisione(QString)));
 
+    connect(pulsanti, SIGNAL(trovaScala(QString)), operandoUno, SLOT(scalaOpUno(QString)));
+
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), creatorP, SLOT(addColore(Colore*)));
+
 }
 
 void Window::acquisisciPoligono(QString text){

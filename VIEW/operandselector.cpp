@@ -89,9 +89,9 @@ void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operan
 
 void OperandSelector::calcolaSomma1(QString name1){
     QString name2 = selector->currentText();
-    if(name1.contains("#")){
+    if(name1.startsWith("#")){
         Colore& col1 = *(contenitore->getColore(name1));
-        if(name2.contains("#")){
+        if(name2.startsWith("#")){
             Colore& col2 = *(contenitore->getColore(name2));
             Colore& somma = col1 + col2;
             if(isPresent(somma.getHex()))
@@ -115,7 +115,7 @@ void OperandSelector::calcolaSomma1(QString name1){
     }
     else{
         Poligono& pol1 = *( (contenitore->getPoligono(name1))->clone());
-        if(name2.contains("#")){
+        if(name2.startsWith("#")){
             Colore & c = *(contenitore->getColore(name2));
             Colore & sommaC = c + *(pol1.getColore());
             QString nome = QString(pol1.getNome()+"+"+name2.remove("#"));
@@ -135,6 +135,8 @@ void OperandSelector::calcolaSomma1(QString name1){
             QString nome = QString(pol1->getNome()+"+"+pol2->getNome());
             if(isPresent(nome))
                 throw AlreadyPresent("Il poligono esiste già!");
+            if(pTot.getNome() == "nonValido")
+                throw WrongPolygon("Il poligono ha più di cinque lati!");
             pTot.setNome(nome);
             contenitore->addPoligono(&pTot);
             selector->addItem(pTot.getNome());
@@ -143,6 +145,11 @@ void OperandSelector::calcolaSomma1(QString name1){
         }
     }
 }
+void OperandSelector::calcolaSomma(QString name1)try{
+    calcolaSomma1(name1);
+}
+catch(MyException){}
+catch(WrongPolygon){}
 
 void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'operando corrente
     QString name = selector->currentText();
@@ -159,6 +166,10 @@ void OperandSelector::calcolaSottrazione1(QString name1){
     emit aggColore(&sottraggo);
     emit(stampaSottrazione(sottraggo.getHex()));
 }
+void OperandSelector::calcolaSottrazione(QString name1)try{
+    calcolaSottrazione1(name1);
+}
+catch(MyException){}
 
 void OperandSelector::moltiplicazioneOpUno(){
     QString name = selector->currentText();
@@ -175,6 +186,10 @@ void OperandSelector::calcolaMoltiplicazione1(QString name1){
     emit aggColore(&molt);
     emit(stampaMoltiplicazione(molt.getHex()));
 }
+void OperandSelector::calcolaMoltiplicazione(QString name1)try{
+    calcolaMoltiplicazione1(name1);
+}
+catch(MyException){}
 
 void OperandSelector::divisioneOpUno(){
     QString name = selector->currentText();
@@ -191,6 +206,10 @@ void OperandSelector::calcolaDivisione1(QString name1){
     emit aggColore(&div);
     emit(stampaDivisione(div.getHex()));
 }
+void OperandSelector::calcolaDivisione(QString name1)try{
+    calcolaDivisione1(name1);
+}
+catch(MyException){}
 
 void OperandSelector::textChanged(QString text){
    emit changeButton(text);
@@ -198,8 +217,8 @@ void OperandSelector::textChanged(QString text){
 
 void OperandSelector::activeButtonUno(QString opUno){
     QString opDue = selector->currentText();
-    if(opUno.contains("#")){
-        if(opDue.contains("#"))
+    if(opUno.startsWith("#")){
+        if(opDue.startsWith("#"))
             emit abilitaBottCol();
         else
             emit abSoloSomma();
@@ -212,8 +231,8 @@ void OperandSelector::activeButtonUno(QString opUno){
 
 void OperandSelector::activeButtonDue(QString opDue){
     QString opUno = selector->currentText();
-    if(opDue.contains("#")){
-        if(opUno.contains("#"))
+    if(opDue.startsWith("#")){
+        if(opUno.startsWith("#"))
             emit abilitaBottCol();
         else{
             emit abSoloSomma();
@@ -224,22 +243,22 @@ void OperandSelector::activeButtonDue(QString opDue){
         emit abilitaBottPol();
     }
 }
-void OperandSelector::calcolaSomma(QString name1)try{
-    calcolaSomma1(name1);
-}
-catch(MyException){}
 
-void OperandSelector::calcolaSottrazione(QString name1)try{
-    calcolaSottrazione1(name1);
+void OperandSelector::scalaOpUno(QString in){
+    QString sc = in;
+    QString opUno = selector->currentText();
+    Poligono* pol = contenitore->getPoligono(opUno);
+    double val;
+    if(in.startsWith("-")){
+        in.remove("-");
+        val = 1/(in.toDouble());
+    }
+    else val = in.toDouble();
+    Poligono& pScal = pol->zoom(val);
+    pScal.setNome(opUno+"_inScala("+sc+")");
+    pScal.setColore(pol->getColore());
+    contenitore->addPoligono(&pScal);
+    selector->addItem(pScal.getNome());
+    emit insertPoligono(pScal.getNome());
+    //emit inseritoPoligono(pScal.getNome());  //per farlo vedere subito appena schiaccia +
 }
-catch(MyException){}
-
-void OperandSelector::calcolaMoltiplicazione(QString name1)try{
-    calcolaMoltiplicazione1(name1);
-}
-catch(MyException){}
-
-void OperandSelector::calcolaDivisione(QString name1)try{
-    calcolaDivisione1(name1);
-}
-catch(MyException){}

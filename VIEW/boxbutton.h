@@ -28,6 +28,7 @@ private:
 
 public:
     explicit BoxButtons(QWidget *parent = 0);
+    void doScala1();
 
 signals:
     void trovaPerimetro();
@@ -38,6 +39,7 @@ signals:
     void trovaSottrazione();
     void trovaMoltiplicazione();
     void trovaDivisione();
+    void trovaScala(QString);
 
 public slots:
     void getPerimetro();
@@ -48,6 +50,7 @@ public slots:
     void getSottrazione();
     void getMoltiplicazione();
     void getDivisione();
+    void doScala();
 
     void bottoniColori();
     void bottoniPolig();

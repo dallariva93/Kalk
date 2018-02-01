@@ -1,4 +1,5 @@
 #include "boxbutton.h"
+#include"exception.h"
 
 BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
 
@@ -45,6 +46,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(moltiplicazione, SIGNAL(clicked()), this, SLOT(getMoltiplicazione()));
     connect(divisione, SIGNAL(clicked()), this, SLOT(getDivisione()));
 
+    connect(scala, SIGNAL(clicked()), this, SLOT(doScala()));
 }
 
 void BoxButtons::getPerimetro(){
@@ -78,6 +80,18 @@ void BoxButtons::getMoltiplicazione(){
 void BoxButtons::getDivisione(){
     emit trovaDivisione();
 }
+
+void BoxButtons::doScala1(){
+    QString in = inputScala->displayText();
+    if(in.isEmpty())    throw EmptyField("Manca l'input di quanto scalare!");
+    if(!in.toDouble())  throw SyntaxError("Input errato! \nVengono accettati solo numeri.");
+    emit trovaScala(in);
+}
+void BoxButtons::doScala()try{
+    doScala1();
+}
+catch(EmptyField){}
+catch(SyntaxError){}
 
 void BoxButtons::bottoniColori(){
     perimetro->setEnabled(false);

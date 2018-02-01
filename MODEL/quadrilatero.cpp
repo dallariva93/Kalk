@@ -90,7 +90,8 @@ Poligono& Quadrilatero::unisci( const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        throw("poligonoConPiùDi5Lati");
+        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
+        return ecc;
     }
 }
 

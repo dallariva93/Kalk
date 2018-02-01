@@ -30,6 +30,7 @@ public:
     void calcolaMoltiplicazione1(QString);
     void calcolaDivisione1(QString);
 
+
 signals:
     void inviaPerimetro(double);
     void inviaArea(double);
@@ -73,6 +74,7 @@ public slots:
     void addPoligono(QString);
     void activeButtonUno(QString);
     void activeButtonDue(QString);
+    void scalaOpUno(QString);
 
     void textChanged(QString);
 

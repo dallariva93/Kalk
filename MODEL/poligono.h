@@ -32,6 +32,7 @@ public:
     QVector<Punto> getCoordinate() const;
     QVector<double> getLati() const;
     void ruota(Angolo angolo);
+    virtual void gira()=0;
     static QVector<double> ordinaLati(QVector<double> lati, double lato);     //dato un lato mette gli altri in successione mantenendo
                                                                               //l'ordine es: input lati= 3 5 7 4 lato=7, output=7 4 3 5
     static Punto sen_cos(double, Angolo);

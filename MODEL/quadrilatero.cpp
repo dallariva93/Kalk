@@ -3,12 +3,10 @@
 #include "angolo.h"
 #include "pentagono.h"
 
-/*  CONTROLLI DA FARE:
- * -    somma degli angoli = 360
-*/
 Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90)){}
 
 Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col, QString nome) : Poligono(4, nome, col){
+
     Angolo b_ad = 180 - b.getAngolo();
     QVector<Punto> punti;
     punti.push_back(Punto(0,0));
@@ -87,7 +85,8 @@ Poligono& Quadrilatero::unisci( const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        throw("poligonoConPiùDi5Lati");
+        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
+        return ecc;
     }
 }
 
@@ -102,4 +101,15 @@ Poligono& Quadrilatero::operator+(const Poligono& pol) const{
     poligono.ruota(p1.getAngoli()[0]);
     delete &p1;
     return poligono;
+}
+
+void Quadrilatero::gira(){
+    Angolo b_ad = 180 - getAngoli()[2].getAngolo();
+    QVector<Punto> punti;
+    punti.push_back(Punto(0,0));
+    punti.push_back(Punto(getLati()[1],0));
+    punti.push_back(Punto(  getLati()[1]+sen_cos(getLati()[2], b_ad).getX() ,
+                            sen_cos(getLati()[2],b_ad).getY() ));
+    punti.push_back(sen_cos(getLati()[0],getAngoli()[1]));
+    setPunti(punti);
 }

@@ -1,7 +1,6 @@
 #ifndef COLORCREATOR_H
 #define COLORCREATOR_H
 
-#include <QMainWindow>
 #include <QWidget>
 #include <QSlider>
 #include <QLCDNumber>
@@ -12,6 +11,7 @@
 #include <QPushButton>
 #include <MODEL/colore.h>
 #include "operandselector.h"
+
 class ColorCreator : public QWidget{
     Q_OBJECT
 private:

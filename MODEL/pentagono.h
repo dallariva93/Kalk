@@ -20,6 +20,7 @@ public:
     Pentagono& specchia()const;
     Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
+    void gira();
 };
 
 #endif // PENTAGONO_H

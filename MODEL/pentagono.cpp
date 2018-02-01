@@ -96,7 +96,8 @@ Poligono& Pentagono::unisci(const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        throw("poligonoConPiùDi5Lati");
+        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
+        return ecc;
     }
 }
 
@@ -115,3 +116,18 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
 }
 
 
+void Pentagono::gira(){
+    QVector<Punto> punti;
+    punti.push_back(Punto::origine);
+    punti.push_back(Punto(getLati()[1],0));
+    Angolo b2 = 180-getAngoli()[2].getAngolo();
+    Triangolo t1(getLati()[1], getLati()[2], b2);
+    punti.push_back(Punto(  (punti[1].getX()+(getLati()[2]*b2.coseno()))  ,   (getLati()[2]*b2.seno())));
+    Triangolo t2(getLati()[0], getLati()[4], getAngoli()[0]);
+    double latoAD = t2.getLati()[1];
+    Angolo beta = t2.getAngoli()[1];
+    Angolo gamma = (getAngoli()[1]).getAngolo() - beta.getAngolo();
+    punti.push_back( sen_cos(latoAD,gamma) );    //coordinata D
+    punti.push_back( sen_cos(getLati()[0],getAngoli()[1]) );    //coordinata E
+    setPunti(punti);
+}

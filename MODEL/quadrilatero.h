@@ -15,9 +15,11 @@ public:
     virtual void estendi(double);
     Quadrilatero &zoom(double) const;
     Quadrilatero &cambiaBase(int)const;
-    Quadrilatero &specchia()const;
-    Poligono &unisci(const Poligono &) const;
-    Poligono &operator+(const Poligono &) const;
+
+    Quadrilatero& specchia()const;
+    Poligono& unisci(const Poligono&) const;
+    Poligono& operator+(const Poligono&) const;
+    void gira();
 };
 
 #endif // QUADRILATERO_H

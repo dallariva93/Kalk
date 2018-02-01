@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QComboBox>
-#include <QHBoxLayout>
+#include <QHBoxLayout>*/
 #include <QVector>
 #include <QMessageBox>
 #include "MODEL/container.h"
@@ -30,6 +30,7 @@ public:
     void calcolaSottrazione1(QString);
     void calcolaMoltiplicazione1(QString);
     void calcolaDivisione1(QString);
+
 
 signals:
     void inviaPerimetro(double);
@@ -74,6 +75,8 @@ public slots:
     void addPoligono(QString);
     void activeButtonUno(QString);
     void activeButtonDue(QString);
+    void scalaOpUno(QString);
+    void ruotaOpUno();
 
     void textChanged(QString);
 

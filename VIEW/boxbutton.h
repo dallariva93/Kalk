@@ -22,13 +22,13 @@ private:
     QPushButton* ruota;
 
     QLineEdit* inputScala;
-    QLineEdit* inputRuota;
 
     QGridLayout* layout;
 
 public:
     explicit BoxButtons(QWidget *parent = 0);
     ~BoxButtons();
+    void doScala1();
 
 signals:
     void trovaPerimetro();
@@ -39,6 +39,8 @@ signals:
     void trovaSottrazione();
     void trovaMoltiplicazione();
     void trovaDivisione();
+    void trovaScala(QString);
+    void faiRuota();
 
 public slots:
     void getPerimetro();
@@ -49,6 +51,8 @@ public slots:
     void getSottrazione();
     void getMoltiplicazione();
     void getDivisione();
+    void doScala();
+    void doRuota();
 
     void bottoniColori();
     void bottoniPolig();

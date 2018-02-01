@@ -1,4 +1,5 @@
 #include "boxbutton.h"
+#include"exception.h"
 
 BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
 
@@ -17,8 +18,17 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     scala = new QPushButton("Scala", this);
     ruota = new QPushButton("Ruota", this);
     inputScala = new QLineEdit(this);
-    inputRuota = new QLineEdit(this);
 
+    perimetro->setEnabled(false);
+    area->setEnabled(false);
+    lati->setEnabled(false);
+    angoli->setEnabled(false);
+    somma->setEnabled(false);
+    sottrazione->setEnabled(false);
+    divisione->setEnabled(false);
+    moltiplicazione->setEnabled(false);
+    scala->setEnabled(false);
+    ruota->setEnabled(false);
 
     layout=new QGridLayout;
     layout->addWidget(somma,0,0);
@@ -31,8 +41,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     layout->addWidget(lati,1,3);
     layout->addWidget(scala,2,0);
     layout->addWidget(inputScala,2,1);
-    layout->addWidget(ruota,2,2);
-    layout->addWidget(inputRuota,2,3);
+    layout->addWidget(ruota,2,3);
     setLayout(layout);
 
     connect(perimetro ,SIGNAL(clicked()), this, SLOT(getPerimetro()) );
@@ -45,6 +54,8 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(moltiplicazione, SIGNAL(clicked()), this, SLOT(getMoltiplicazione()));
     connect(divisione, SIGNAL(clicked()), this, SLOT(getDivisione()));
 
+    connect(scala, SIGNAL(clicked()), this, SLOT(doScala()));
+    connect(ruota, SIGNAL(clicked()), this, SLOT(doRuota()));
 }
 
 BoxButtons::~BoxButtons()
@@ -60,7 +71,6 @@ BoxButtons::~BoxButtons()
     delete scala;
     delete ruota;
     delete inputScala;
-    delete inputRuota;
     delete layout;
 }
 
@@ -94,6 +104,22 @@ void BoxButtons::getMoltiplicazione(){
 
 void BoxButtons::getDivisione(){
     emit trovaDivisione();
+}
+
+void BoxButtons::doScala1(){
+    QString in = inputScala->displayText();
+    if(in.isEmpty())    throw EmptyField("Manca l'input di quanto scalare!");
+    if(!in.toDouble() || in.startsWith("+") || in.startsWith("-"))  throw SyntaxError("Input errato! \nVengono accettati solo numeri.");
+    emit trovaScala(in);
+}
+void BoxButtons::doScala()try{
+    doScala1();
+}
+catch(EmptyField){}
+catch(SyntaxError){}
+
+void BoxButtons::doRuota(){
+    emit faiRuota();
 }
 
 void BoxButtons::bottoniColori(){

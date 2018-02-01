@@ -4,12 +4,6 @@
 #include "quadrilatero.h"
 #include "pentagono.h"
 
-/*  fare i controlli
-- somma angoli 180
-- lato maggiore < somma degli altri due
-- coorditate una (0,0) poi (_,0) e ultima (_,_) sempre!
-- lato non negativi
-*/
 Triangolo::Triangolo() : Triangolo(10,10,10) {}
 
 Triangolo::Triangolo(double latoAB, double latoAC, const Angolo& a, Colore* col, QString nome) : Poligono(3, nome, col) {
@@ -110,7 +104,8 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        throw("poligonoConPiùDi5Lati"); //sarà una eccezione
+        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
+        return ecc;
     }
 }
 
@@ -127,13 +122,12 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     return poligono;
 }
 
-
-
-
-
-
-
-
-
+void Triangolo::gira(){
+    QVector<Punto> punti;
+    punti.push_back(Punto::origine);
+    punti.push_back(Punto(getLati()[1],0));
+    punti.push_back(sen_cos(getLati()[0],getAngoli()[1]));
+    setPunti(punti);
+}
 
 

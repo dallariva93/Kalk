@@ -156,8 +156,8 @@ void OperandSelector::calcolaSomma1(QString name1){
 void OperandSelector::calcolaSomma(QString name1)try{
     calcolaSomma1(name1);
 }
-catch(MyException){}
 catch(WrongPolygon){}
+catch(MyException){}
 
 void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'operando corrente
     QString name = selector->currentText();

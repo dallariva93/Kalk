@@ -142,11 +142,11 @@ Triangolo *TriangleCreator::buildTriangolo()
             throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
         if(nome->text().startsWith("#"))
             throw SyntaxError("Il nome non può iniziare con il carattere #");
-        QVector<double> lati;
+        std::vector<double> lati;
         lati.push_back(lato1->text().toDouble());
         lati.push_back(lato2->text().toDouble());
         lati.push_back(lato3->text().toDouble());
-        qSort(lati);
+        std::sort(lati.begin(),lati.end());
         if(lati[2]>=(lati[1]+lati[0]))
             throw WrongPolygon("Il lato maggiore deve essere maggiore della somma degli altri due");
 

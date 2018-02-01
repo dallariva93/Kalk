@@ -245,20 +245,13 @@ void OperandSelector::activeButtonDue(QString opDue){
 }
 
 void OperandSelector::scalaOpUno(QString in){
-    QString sc = in;
     QString opUno = selector->currentText();
     Poligono* pol = contenitore->getPoligono(opUno);
-    double val;
-    if(in.startsWith("-")){
-        in.remove("-");
-        val = 1/(in.toDouble());
-    }
-    else val = in.toDouble();
-    Poligono& pScal = pol->zoom(val);
-    pScal.setNome(opUno+"_inScala("+sc+")");
+    Poligono& pScal = pol->zoom(in.toDouble());
+    pScal.setNome(opUno+"_inScala("+in+")");
     pScal.setColore(pol->getColore());
     contenitore->addPoligono(&pScal);
     selector->addItem(pScal.getNome());
     emit insertPoligono(pScal.getNome());
-    //emit inseritoPoligono(pScal.getNome());  //per farlo vedere subito appena schiaccia +
 }
+

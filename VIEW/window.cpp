@@ -97,6 +97,7 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(operandoDue, SIGNAL(stampaDivisione(QString)), areaD, SLOT(outputDivisione(QString)));
 
     connect(pulsanti, SIGNAL(trovaScala(QString)), operandoUno, SLOT(scalaOpUno(QString)));
+//    connect(pulsanti, SIGNAL(trovaRuota(QString)), operandoUno, SLOT(ruotaOpUno(QString)));
 
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));

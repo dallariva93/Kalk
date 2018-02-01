@@ -47,6 +47,23 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
 
 }
 
+BoxButtons::~BoxButtons()
+{
+    delete somma;
+    delete sottrazione;
+    delete moltiplicazione;
+    delete divisione;
+    delete perimetro;
+    delete area;
+    delete angoli;
+    delete lati;
+    delete scala;
+    delete ruota;
+    delete inputScala;
+    delete inputRuota;
+    delete layout;
+}
+
 void BoxButtons::getPerimetro(){
     emit trovaPerimetro();
 }

@@ -4,7 +4,6 @@
 #include <QWidget>
 #include "drawarea.h"
 #include "dataarea.h"
-#include "colorarea.h"
 #include "polygoncreator.h"
 #include "colorcreator.h"
 #include "operandselector.h"

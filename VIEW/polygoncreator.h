@@ -28,6 +28,7 @@ private:
 public:
     PolygonCreator(OperandSelector*, QComboBox*, QWidget *parent = 0);  //ho aggiunto colore
     void refreshCreators();
+    ~PolygonCreator();
 
 
 signals:

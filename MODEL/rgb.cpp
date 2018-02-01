@@ -38,49 +38,57 @@ unsigned int RGB::getB()const{
     return b;
 }
 
-void RGB::inverti(){            //inverti funziona come r=255-r, g=255-g, b=255-b
+void RGB::inverti(){
     *this=RGB()-*this;
 }
 
-RGB& RGB::operator+(const Colore & col)const{            //gaaaarbaaageeee
+RGB& RGB::operator+(const Colore & col)const{
     unsigned int* rgb=HexToRGB(col);
-    return *(new RGB(((getR()+rgb[0])/2),
+    RGB& tmp = *(new RGB(((getR()+rgb[0])/2),
                     ((getG()+rgb[1])/2),
                     ((getB()+rgb[2])/2)));
+    delete []rgb;
+    return tmp;
 
 }
 
-RGB& RGB::operator-(const Colore & col)const{            //gaaaarbaaageeee
+RGB& RGB::operator-(const Colore & col)const{
     unsigned int* rgb=HexToRGB(col);
     unsigned int red=rgb[0];
     unsigned int green=rgb[1];
     unsigned int blue=rgb[2];
 
-    red > getR() ? red=0 : red=getR()-red;          //se red-getR() è <0 do come risultato 0
+    red > getR() ? red=0 : red=getR()-red;
     green > getG() ? green=0 : green=getG()-green;
     blue > getB() ? blue=0 : blue=getB()-blue;
 
-    return *(new RGB(red, green, blue));
+    RGB& tmp = *(new RGB(red, green, blue));
+    delete []rgb;
+    return tmp;
 }
 
-RGB &RGB::operator*(const Colore & col) const{           //gaaaarbaaageeee
+RGB &RGB::operator*(const Colore & col) const{
     unsigned int* rgb=HexToRGB(col);
-    return *(new RGB(((getR()*rgb[0])/255),
+    RGB& tmp =  *(new RGB(((getR()*rgb[0])/255),
                      ((getG()*rgb[1])/255),
                      ((getB()*rgb[2])/255)));
+    delete []rgb;
+    return tmp;
 }
 
-RGB &RGB::operator/(const Colore & col) const{               //gaaaarbaaageeee
+RGB &RGB::operator/(const Colore & col) const{
     unsigned int* rgb=HexToRGB(col);
     unsigned int red=rgb[0];
     unsigned int green=rgb[1];
     unsigned int blue=rgb[2];
 
     red==0 ? red=1 : 0;
-    green==0 ? green=1 : 0;                             //sarà la soluzione migliore? da pensarci
+    green==0 ? green=1 : 0;
     blue==0 ? blue=1 : 0;
 
-    return *(new RGB(((getR()+red)), ((getG()+green)), ((getB()+blue))));
+    RGB& tmp = *(new RGB(((getR()+red)), ((getG()+green)), ((getB()+blue))));
+    delete [] rgb;
+    return tmp;
 }
 
 unsigned int *RGB::HexToRGB(const Colore& col){

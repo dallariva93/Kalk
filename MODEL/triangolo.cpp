@@ -121,8 +121,9 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
     p1 = p1.specchia();
-    Poligono& poligono = t1.unisci(p1); //garbage
+    Poligono& poligono = t1.unisci(p1);
     poligono.ruota(p1.getAngoli()[0]);
+    delete &p1;
     return poligono;
 }
 

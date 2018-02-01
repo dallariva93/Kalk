@@ -28,6 +28,7 @@ private:
 
 public:
     explicit BoxButtons(QWidget *parent = 0);
+    ~BoxButtons();
 
 signals:
     void trovaPerimetro();

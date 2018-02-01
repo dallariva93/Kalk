@@ -15,6 +15,9 @@
 class ColorCreator : public QWidget{
     Q_OBJECT
 private:
+    OperandSelector* selector;
+
+
     QSlider* red;
     QSlider* green;
     QSlider* blue;
@@ -25,9 +28,6 @@ private:
 
     QPushButton* saveButton;
 
-    OperandSelector* selector;
-
-
     QLineEdit* hexValue;
     QLabel* redLabel;
     QLabel* greenLabel;
@@ -36,6 +36,8 @@ private:
 
     QGridLayout* layout;
     QVBoxLayout* mainLayout;
+
+    static QString sliderStyle;
 
 public:
     ~ColorCreator();
@@ -55,5 +57,6 @@ public slots:
     void getG(int);
     void creaColore();
 };
+
 
 #endif // COLORCREATOR_H

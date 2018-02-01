@@ -10,6 +10,7 @@ private:
     QMessageBox* box;
 public:
     MyException(QString text="Errore", QString titolo="Errore");
+    ~MyException();
 };
 
 

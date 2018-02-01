@@ -45,7 +45,6 @@ private:
     QHBoxLayout *coloreNomeLayout;
 
     QComboBox *colori;
-    QComboBox *realcol;
 
     OperandSelector* selettore;
 
@@ -54,7 +53,7 @@ public:
     void refreshFormWidget();
     Triangolo* buildTriangolo();
     void inserisciColore(QIcon, QString);
-
+    ~TriangleCreator();
 
 public slots:
     void dueAngoliUnLato();

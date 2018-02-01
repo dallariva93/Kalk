@@ -23,12 +23,9 @@ SOURCES += main.cpp \
     MODEL/pentagono.cpp \
     MODEL/quadrato.cpp \
     MODEL/rettangolo.cpp \
-    MODEL/pentagonoregolare.cpp \
     VIEW/colorcreator.cpp\
-    VIEW/stylesheet.cpp \
     VIEW/drawarea.cpp \
     VIEW/trianglecreator.cpp \
-    VIEW/colorarea.cpp \
     VIEW/quadrilateralcreator.cpp \
     VIEW/pentagoncreator.cpp \
     VIEW/polygoncreator.cpp \
@@ -52,12 +49,9 @@ HEADERS  += \
     MODEL/pentagono.h \
     MODEL/quadrato.h \
     MODEL/rettangolo.h \
-    MODEL/pentagonoregolare.h \
     VIEW/colorcreator.h\
-    VIEW/stylesheet.h \
     VIEW/drawarea.h \
     VIEW/trianglecreator.h \
-    VIEW/colorarea.h \
     VIEW/quadrilateralcreator.h \
     VIEW/pentagoncreator.h \
     VIEW/polygoncreator.h \

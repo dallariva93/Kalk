@@ -56,6 +56,7 @@ private:
 
     OperandSelector* selettore;
 public:
+    ~PentagonCreator();
     PentagonCreator(OperandSelector* sel, QWidget *parent = 0);
     void refreshFormWidget();
     Pentagono* buildPentagono();

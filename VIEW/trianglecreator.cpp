@@ -3,7 +3,7 @@
 #include"exception.h"
 #include<QtAlgorithms>
 
-TriangleCreator::TriangleCreator(OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
+TriangleCreator::TriangleCreator(OperandSelector *sel, QWidget *parent) : QWidget(parent),selettore(sel){
 
    /* QSize size(450,350);
     setMaximumSize(size);*/
@@ -161,9 +161,38 @@ void TriangleCreator::inserisciColore(QIcon icona, QString nome){
     colori->addItem(icona, nome);
 }
 
+TriangleCreator::~TriangleCreator()
+{
+    delete radio1;
+    delete radio2;
+
+    delete lato1;
+    delete lato2;
+    delete lato3;
+    delete angolo1;
+    delete angolo2;
+    delete nome;
+
+    delete latoA;
+    delete latoB;
+    delete latoC;
+    delete angoloA;
+    delete angoloB;
+    delete labelNome;
+
+    delete colore;
+
+    delete saveButton;
+    delete mainLayout;
+    delete choiceLayout;
+    delete formLayout;
+    delete coloreNomeLayout;
+    delete colori;
+}
+
 void TriangleCreator::dueLatiUnAngolo(){
     refreshFormWidget();
-    formLayout;
+    delete formLayout;
     mainLayout->removeWidget(saveButton);
     delete saveButton;
     saveButton=new QPushButton(tr("Crea"), this);

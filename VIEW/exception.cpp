@@ -8,6 +8,12 @@ MyException::MyException(QString text, QString titolo){
 
 }
 
+MyException::~MyException()
+{
+    if(!box->isEnabled())
+    delete box;
+}
+
 
 EmptyField::EmptyField(QString text):MyException(text){}
 

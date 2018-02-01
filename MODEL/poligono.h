@@ -9,22 +9,23 @@
 class Poligono{
 private:
     unsigned int numeroLati;
-    Colore* color;
+    Colore *color;
     QString nomeOggetto;
     QVector<Punto> coordinate;
 
 public:
-    Poligono(unsigned int, QString, Colore*, QVector<Punto> punti=QVector<Punto>());
-    virtual Poligono* clone() const=0;
+    Poligono(unsigned int, QString, Colore *, QVector<Punto> punti=QVector<Punto>());
+    virtual ~Poligono();
+    virtual Poligono *clone() const=0;
     QString getNome()const;
     void setNome(QString);
     virtual double getArea() const =0;
     virtual double getPerimetro() const;
     virtual void estendi(double) =0;
-    virtual Poligono& zoom(double) const=0;
-    virtual Poligono& cambiaBase(int) const =0;
-    virtual Colore* getColore() const;
-    void setColore(Colore*);    //void setColore(const Colore *); da errore non  capisco perchè!!
+    virtual Poligono &zoom(double) const=0;
+    virtual Poligono &cambiaBase(int) const =0;
+    virtual Colore *getColore() const;
+    void setColore(Colore *);    //void setColore(const Colore *); da errore non  capisco perchè!!
     void changeColor(Colore &);  //vedere se unire con setColore
     QVector<Angolo> getAngoli() const;
     void setPunti(const QVector<Punto>);
@@ -34,9 +35,9 @@ public:
     static QVector<double> ordinaLati(QVector<double> lati, double lato);     //dato un lato mette gli altri in successione mantenendo
                                                                               //l'ordine es: input lati= 3 5 7 4 lato=7, output=7 4 3 5
     static Punto sen_cos(double, Angolo);
-    double latoComune(const Poligono&) const;
-    virtual Poligono& specchia()const =0;
-    virtual Poligono& operator+(const Poligono&) const=0;
+    double latoComune(const Poligono &) const;
+    virtual Poligono &specchia()const =0;
+    virtual Poligono &operator+(const Poligono &) const=0;
     int indexLato(double)const;
     bool checkConvexity();
     QPolygonF toQPolygon();

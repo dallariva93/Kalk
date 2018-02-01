@@ -35,3 +35,16 @@ Colore* Container::getColore(QString name) const{
     }
     return 0;
 }
+
+Container::~Container()
+{
+    for(auto it=polygon.begin(); it!=polygon.end(); ++it ){
+        delete *it;
+    }
+    polygon.clear();
+
+    for(auto it=color.begin(); it!=color.end(); ++it ){
+        delete *it;
+    }
+    color.clear();
+}

@@ -165,6 +165,12 @@ QuadrilateralCreator::~QuadrilateralCreator(){
     delete angoloD;
     delete labelNome;
     delete colore;
+    delete saveButton;
+    delete mainLayout;
+    delete choiceLayout;
+    delete colorLayout;
+    delete formLayout;
+    delete colori;
 }
 
 Quadrilatero *QuadrilateralCreator::buildQuadrilatero()

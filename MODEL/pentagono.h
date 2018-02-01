@@ -11,7 +11,7 @@ public:
     Pentagono();
     Pentagono(double, double, double, double, double, const Angolo&, const Angolo&, const Angolo&,
               const Angolo&, const Angolo&, Colore* col=new RGB(), QString nome="Pentagono" );
-    Pentagono(double, Colore* col=new RGB(), QString nome="Pentagono");
+    Pentagono(double, Colore* col=new RGB(), QString nome="Pentagono");             //pentagono regolare
     Pentagono* clone() const;
     double getArea() const;
     virtual void estendi(double);

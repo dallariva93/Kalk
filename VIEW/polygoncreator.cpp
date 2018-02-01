@@ -1,6 +1,6 @@
 #include "polygoncreator.h"
 #include <QComboBox>
-PolygonCreator::PolygonCreator(OperandSelector *opSel, QComboBox* col,  QWidget *parent) : selettore(opSel),QWidget(parent){
+PolygonCreator::PolygonCreator(OperandSelector *opSel, QComboBox* col,  QWidget *parent) : QWidget(parent),selettore(opSel){
 /*    QSize size(390,350), buttonSize(100,25);
     setMaximumSize(size);
     setMinimumSize(size);*/
@@ -64,6 +64,20 @@ void PolygonCreator::refreshCreators(){
     pentagonWidget = new PentagonCreator(selettore);
 }
 
+PolygonCreator::~PolygonCreator()
+{
+    delete triangleWidget;
+    delete quadrilateralWidget;
+    delete pentagonWidget;
+    delete colori;
+    delete triangleButton;
+    delete quadrilateralButton;
+    delete pentagonButton;
+    delete buttonsLayout;
+    delete mainLayout;
+
+}
+
 
 void PolygonCreator::triangleSlot(){
     refreshCreators();
@@ -87,6 +101,5 @@ void PolygonCreator::addColore(Colore *colore){
     triangleWidget->inserisciColore(icon,colore->getHex());
     quadrilateralWidget->inserisciColore(icon,colore->getHex());
     pentagonWidget->inserisciColore(icon,colore->getHex());
-    /*qui mando segnali per tutti i qcombobox*/
 }
 

@@ -5,6 +5,14 @@
 #include <QtAlgorithms>
 #include "exception.h"
 
+OperandSelector::~OperandSelector()
+{
+    delete operando;
+    delete selector;
+    delete mainLayout;
+    delete contenitore;
+}
+
 OperandSelector::OperandSelector(QString numero, Container *con, QWidget *parent) : QWidget(parent), contenitore(con){
     QSize size(325,45);
     setMaximumSize(size);

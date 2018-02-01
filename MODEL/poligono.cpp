@@ -7,6 +7,11 @@ Poligono::Poligono(unsigned int nLati, QString nome, Colore* col, QVector<Punto>
     coordinate=punti;
 }
 
+Poligono::~Poligono()
+{
+    delete color;
+}
+
 QString Poligono::getNome()const{
     return nomeOggetto;
 }

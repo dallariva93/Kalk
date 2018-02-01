@@ -3,6 +3,46 @@
 #include "exception.h"
 
 
+PentagonCreator::~PentagonCreator()
+{
+    delete radio1;
+    delete radio2;
+
+    delete lato1;
+    delete lato2;
+    delete lato3;
+    delete lato4;
+    delete lato5;
+    delete angolo1;
+    delete angolo2;
+    delete angolo3;
+    delete angolo4;
+    delete angolo5;
+    delete nome;
+
+    delete latoA;
+    delete latoB;
+    delete latoC;
+    delete latoD;
+    delete latoE;
+    delete angoloA;
+    delete angoloB;
+    delete angoloC;
+    delete angoloD;
+    delete angoloE;
+    delete labelNome;
+
+    delete colore;
+
+    delete saveButton;
+    delete mainLayout;
+    delete choiceLayout;
+    delete colorLayout;
+    delete formLayout;
+    delete colori;
+
+}
+
 PentagonCreator::PentagonCreator(OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
     QSize size(400,350);
     setMaximumSize(size);

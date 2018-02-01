@@ -20,6 +20,7 @@ private:
     Container* contenitore;     //contiene oggetti
 
 public:
+    ~OperandSelector();
     OperandSelector(QString, Container*, QWidget *parent = 0);
     void insertItem(Colore*);
     void insertItem(Poligono*);

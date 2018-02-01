@@ -54,7 +54,6 @@ Pentagono& Pentagono::zoom(double fattore) const{
 Pentagono &Pentagono::cambiaBase(int n) const{
     QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
     return *(new Pentagono(lati[0], lati[1], lati[2], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3], getAngoli()[4],getColore()));
-//eliminare garbage
 }
 
 Pentagono &Pentagono::specchia() const
@@ -108,8 +107,9 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
     int index = pol.indexLato(lato);
     Poligono& p = pol.cambiaBase(index);
     p = p.specchia();
-    Poligono& poligono = q.unisci(p); //garbage
+    Poligono& poligono = q.unisci(p);
     poligono.ruota(p.getAngoli()[0]);
+    delete &p;
     return poligono;
 
 }

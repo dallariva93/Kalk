@@ -9,8 +9,6 @@
 Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,10,Angolo(90),Angolo(90),Angolo(90),Angolo(90)){}
 
 Quadrilatero::Quadrilatero(double latoAB, double latoBC, double latoCD, double latoAD, const Angolo& a, const Angolo& b, const Angolo& c, const Angolo& d, Colore* col, QString nome) : Poligono(4, nome, col){
-    //if(a+b+c+d>angolo(360))break;       //mettere eccezione
-    double cx, cy, dx, dy;
     Angolo b_ad = 180 - b.getAngolo();
     QVector<Punto> punti;
     punti.push_back(Punto(0,0));
@@ -44,7 +42,6 @@ Quadrilatero& Quadrilatero::zoom(double fattore) const{
 Quadrilatero& Quadrilatero::cambiaBase(int n)const{
     QVector<double> lati = ordinaLati(getLati(),getLati()[n]);
     return *(new Quadrilatero(lati[0], lati[1], lati[2], lati[3],getAngoli()[0], getAngoli()[1], getAngoli()[2], getAngoli()[3],getColore()));
-//eliminare garbage
 }
 
 Quadrilatero &Quadrilatero::specchia() const{
@@ -103,5 +100,6 @@ Poligono& Quadrilatero::operator+(const Poligono& pol) const{
     p1 = p1.specchia();
     Poligono& poligono = q.unisci(p1); //garbage
     poligono.ruota(p1.getAngoli()[0]);
+    delete &p1;
     return poligono;
 }

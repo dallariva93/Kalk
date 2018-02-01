@@ -111,7 +111,7 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
         return p;
     }
     else{   //coord.size()>5
-        throw("poligonoConPiùDi5Lati"); //sarà una eccezione
+        throw("poligonoConPiuDi5Lati"); //sarÃ  una eccezione
     }
 }
 
@@ -129,10 +129,10 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
 
 */
 	
-	public static void main(String[] args) {
-		Triangolo t = new Triangolo(10.0,10.0,10.0,)
+	/*public static void main(String[] args) {
+		Triangolo t = new Triangolo(10.0,10.0,10.0);
 	}
-
+*/
 
 }
 

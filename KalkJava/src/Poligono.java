@@ -66,4 +66,12 @@ public abstract class Poligono {
         }
        return new Punto( x,y );
     }
+    public static void main(String[] args){
+	    Colore colore=new RGB(5,5,5);
+	    Colore colore1=new RGB(120,120,120);
+	    System.out.println(colore.getHex());
+
+
+
+    }
 }

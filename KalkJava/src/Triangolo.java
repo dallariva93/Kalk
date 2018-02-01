@@ -3,19 +3,19 @@ import java.util.*;
 public class Triangolo extends Poligono {
 
 	public Triangolo(double latoAB, double latoAC, Angolo a, Colore col, String nome){
-		super(3, nome, col, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
-		Vector<Punto> punti = new Vector<Punto>();
+		ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    punti.addElement(sen_cos(latoAC,a));
 	    setPunti(punti);	
 	}
 	public Triangolo(double latoAB, Angolo a, Angolo b, Colore col, String nome ){
-		super(3, nome, col, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
 		Angolo c = new Angolo( 180 -a.getAngolo() -b.getAngolo());
-	    Vector<Punto> punti = new Vector<Punto>();
+	    ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    double latoAC = ( latoAB * b.seno() ) / c.seno();
@@ -23,11 +23,11 @@ public class Triangolo extends Poligono {
 	    setPunti(punti);		
 	}
 	public Triangolo(double latoAB, double latoBC, double latoAC, Colore col, String nome ){
-		super(3, nome, col, new Vector());	//vedere il new Vector come fare
+		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
 		double cos_a =(( Math.pow(latoAC,2) + Math.pow(latoAB,2) - Math.pow(latoBC,2)) / (2*latoAB*latoAC)) ;
 	    Angolo a = new Angolo( Math.acos(cos_a)*180/Math.PI );
-	    Vector<Punto> punti = new Vector<Punto>();
+	    ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
 	    punti.addElement(sen_cos(latoAC,a));
@@ -35,7 +35,7 @@ public class Triangolo extends Poligono {
 	}	
 
 	/*Triangolo(){
-		//this(10.0,10.0,10.0, new Colore(), new Vector());
+		//this(10.0,10.0,10.0, new Colore(), new ArrayList());
 	}
 	public double getAltezza() {
 	    return Punto.distanceTo( getCoordinate()[2] , Punto( getCoordinate()[2].getX() , 0 ) );
@@ -64,13 +64,13 @@ Triangolo& Triangolo::zoom(double fattore) const{
 }
 
 Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
-    QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
+    QArrayList<double> lati=ordinaLati(this->getLati(), getLati()[n]);
     return *(new Triangolo(lati[0],lati[1],lati[2],getColore()));               //eliminare garbage
 }
 
 Triangolo &Triangolo::specchia() const{
-    QVector<Punto> vertici=getCoordinate();
-    for(QVector<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
+    QArrayList<Punto> vertici=getCoordinate();
+    for(QArrayList<Punto>::iterator it=vertici.begin(); it<vertici.end(); ++it)
         it->invertiY();
     Triangolo& t =*(new Triangolo(*this));
     t.setPunti(vertici);
@@ -80,7 +80,7 @@ Triangolo &Triangolo::specchia() const{
 
 Poligono& Triangolo::unisci(const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
-    QVector<Punto> coord;
+    QArrayList<Punto> coord;
     bool piatto=false;      //per riordinare i lati quando ho degli angoli piatti
     if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) ){
         coord.push_back(Punto::origine);    //angolo != da 180

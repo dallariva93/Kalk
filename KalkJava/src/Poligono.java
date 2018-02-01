@@ -4,21 +4,25 @@ import java.util.*;
 
 public abstract class Poligono {
 
-	private int numeroLati;
+    private int numeroLati;
 	private String nomeOggetto;
 	private Colore color = new RGB();
-	private Vector<Punto> coordinate = new Vector<Punto>();	//val di default
+	private ArrayList<Punto> coordinate = new <Punto>();	//val di default
 	
-	public Poligono(int nLati, String nome, Colore col, Vector<Punto> punti) {	//costruttore a 4 parametri
-		numeroLati = nLati;
+	public Poligono(String nome, Colore col, ArrayList<Punto> punti) {	//costruttore a 3parametri
 		nomeOggetto = nome;
 		color = col;			// clone
 		coordinate = punti;
 	}
 	public Poligono() {
-		this(0,"Unknown", new RGB(),new Vector<Punto>());
+		this("Unknown", new RGB(),new ArrayList<Punto>());
 	}
-	// Poligonoclone() const=0;
+    public Poligono(Poligono p){
+	    nomeOggetto=p.nomeOggetto;
+	    color=p.color;
+	    coordinate=p.coordinate;
+    }
+
 	public String getNome() {
 		return nomeOggetto;
 	}
@@ -40,15 +44,15 @@ public abstract class Poligono {
     	//prima devo ridefinire operator +
 		//color = color + c;	
     }
-//    public Vector getAngoli() {}
-    public void setPunti(Vector c) {
+//    public ArrayList getAngoli() {}
+    public void setPunti(ArrayList c) {
     	coordinate = c;
     }
-    public Vector<Punto> getCoordinate() {
-    	return new Vector<Punto>(coordinate);
+    public ArrayList<Punto> getCoordinate() {
+    	return new ArrayList<Punto>(coordinate);
     }
-    public Vector getLati() {
-    	Vector lati = new Vector();
+    public ArrayList getLati() {
+    	ArrayList lati = new ArrayList();
         for(int i=0; i<numeroLati-1; ++i){
             //lati.push_back(Punto::distanceTo(coordinate[i], coordinate[i+1]));
         }

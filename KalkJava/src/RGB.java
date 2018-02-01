@@ -26,10 +26,6 @@ public class RGB implements Colore {
         return g;
     }
 
-    @java.lang.Override
-    public RGB clone() {
-        return new RGB();
-    }
 
     @Override
     public String getHex() {

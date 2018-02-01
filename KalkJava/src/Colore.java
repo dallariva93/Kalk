@@ -1,5 +1,4 @@
 interface Colore{
-    Colore clone();
     String getHex();
     Colore somma(Colore colore);
     Colore sottrazione(Colore colore);

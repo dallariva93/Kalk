@@ -5,15 +5,7 @@ MyException::MyException(QString text, QString titolo){
 
     box = new QMessageBox(QMessageBox::Warning,titolo,text);
     box->show();
-
 }
-
-MyException::~MyException()
-{
-    if(!box->isEnabled())
-    delete box;
-}
-
 
 EmptyField::EmptyField(QString text):MyException(text){}
 

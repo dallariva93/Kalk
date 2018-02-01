@@ -5,7 +5,7 @@ public class Pentagono extends Poligono {
         super(nome, col, punti);
     }
 
-    Pentagono(double latoAB, double latoBC, double latoCD, double latoDE, double latoAE,  Angolo a, Angolo b, Angolo c,
+    Pentagono(Double latoAB, Double latoBC, Double latoCD, Double latoDE, Double latoAE,  Angolo a, Angolo b, Angolo c,
               Angolo d, Angolo e, Colore col, String nome) {
 
         super Poligono(5, nome,col, new ArrayList<Punto>());
@@ -17,7 +17,7 @@ public class Pentagono extends Poligono {
         Triangolo t1(latoAB, latoBC, b2);
         punti.add(Punto(  (punti[1].getX()+(latoBC*b2.coseno()))  ,   (latoBC*b2.seno())));
         Triangolo t2(latoAE, latoDE, e);
-        double latoAD = t2.getLati()[1];
+        Double latoAD = t2.getLati()[1];
         Angolo beta = t2.getAngoli()[1];
         Angolo gamma = a.getAngolo() - beta.getAngolo();
         punti.push_back( sen_cos(latoAD,gamma) );    //coordinata D

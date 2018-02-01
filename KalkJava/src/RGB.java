@@ -14,15 +14,15 @@ public class RGB implements Colore {
     public RGB(){
         this(255,255,255);
     }
-    public int getR(){
+    public Integer getR(){
         return r;
     }
 
-    public int getB() {
+    public Integer getB() {
         return b;
     }
 
-    public int getG() {
+    public Integer getG() {
         return g;
     }
 

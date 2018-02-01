@@ -109,8 +109,8 @@ void BoxButtons::getDivisione(){
 
 void BoxButtons::doScala1(){
     QString in = inputScala->displayText();
-    if(in.isEmpty())    throw EmptyField("Manca l'input di quanto scalare!");
-    if(!in.toDouble() || in.startsWith("+") || in.startsWith("-"))  throw SyntaxError("Input errato! \nVengono accettati solo numeri.");
+    if(in.isEmpty())    throw EmptyField("Campo vuoto!");
+    if(!in.toDouble() || in.startsWith("+") || in.startsWith("-"))  throw SyntaxError("Input errato! \nSono accettati solo numeri.");
     emit trovaScala(in);
 }
 void BoxButtons::doScala()try{

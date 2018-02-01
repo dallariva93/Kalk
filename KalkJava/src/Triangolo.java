@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Triangolo extends Poligono {
 
-	public Triangolo(double latoAB, double latoAC, Angolo a, Colore col, String nome){
+	public Triangolo(Double latoAB, Double latoAC, Angolo a, Colore col, String nome){
 		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
 		ArrayList<Punto> punti = new ArrayList<Punto>();
@@ -11,21 +11,21 @@ public class Triangolo extends Poligono {
 	    punti.addElement(sen_cos(latoAC,a));
 	    setPunti(punti);	
 	}
-	public Triangolo(double latoAB, Angolo a, Angolo b, Colore col, String nome ){
+	public Triangolo(Double latoAB, Angolo a, Angolo b, Colore col, String nome ){
 		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
 		Angolo c = new Angolo( 180 -a.getAngolo() -b.getAngolo());
 	    ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.addElement(Punto.origine());
 	    punti.addElement(new Punto(latoAB,0));
-	    double latoAC = ( latoAB * b.seno() ) / c.seno();
+	    Double latoAC = ( latoAB * b.seno() ) / c.seno();
 	    punti.addElement(sen_cos(latoAC, a));
 	    setPunti(punti);		
 	}
-	public Triangolo(double latoAB, double latoBC, double latoAC, Colore col, String nome ){
+	public Triangolo(Double latoAB, Double latoBC, Double latoAC, Colore col, String nome ){
 		super(3, nome, col, new ArrayList());	//vedere il new ArrayList come fare
 		
-		double cos_a =(( Math.pow(latoAC,2) + Math.pow(latoAB,2) - Math.pow(latoBC,2)) / (2*latoAB*latoAC)) ;
+		Double cos_a =(( Math.pow(latoAC,2) + Math.pow(latoAB,2) - Math.pow(latoBC,2)) / (2*latoAB*latoAC)) ;
 	    Angolo a = new Angolo( Math.acos(cos_a)*180/Math.PI );
 	    ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.addElement(Punto.origine());
@@ -37,7 +37,7 @@ public class Triangolo extends Poligono {
 	/*Triangolo(){
 		//this(10.0,10.0,10.0, new Colore(), new ArrayList());
 	}
-	public double getAltezza() {
+	public Double getAltezza() {
 	    return Punto.distanceTo( getCoordinate()[2] , Punto( getCoordinate()[2].getX() , 0 ) );
 	}*/
 	/*
@@ -49,22 +49,22 @@ Triangolo* Triangolo::clone() const{
 
 
 
-double Triangolo::getArea() const{
-    double p=getPerimetro()/2;
+Double Triangolo::getArea() const{
+    Double p=getPerimetro()/2;
     return sqrt(p*(p-getLati()[0])*(p-getLati()[1])*(p-getLati()[2]));
 }
 
-void Triangolo::estendi(double fattore){
+void Triangolo::estendi(Double fattore){
     Triangolo temp(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore);
     setPunti(temp.getCoordinate());
 }
 
-Triangolo& Triangolo::zoom(double fattore) const{
+Triangolo& Triangolo::zoom(Double fattore) const{
     return *(new Triangolo(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore));
 }
 
-Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
-    QArrayList<double> lati=ordinaLati(this->getLati(), getLati()[n]);
+Triangolo &Triangolo::cambiaBase(Integer n)const {       //n != 0
+    QArrayList<Double> lati=ordinaLati(this->getLati(), getLati()[n]);
     return *(new Triangolo(lati[0],lati[1],lati[2],getColore()));               //eliminare garbage
 }
 
@@ -86,7 +86,7 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
         coord.push_back(Punto::origine);    //angolo != da 180
         piatto=true;
     }
-    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
+    for(unsigned Integer i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
     if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
@@ -116,10 +116,10 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
 }
 
 Poligono& Triangolo::operator+(const Poligono& pol) const{
-    double lato = latoComune(pol);
-    int indice = indexLato(lato);
+    Double lato = latoComune(pol);
+    Integer indice = indexLato(lato);
     Triangolo t1 = cambiaBase(indice);
-    int index = pol.indexLato(lato);
+    Integer index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
     p1 = p1.specchia();
     Poligono& poligono = t1.unisci(p1); //garbage

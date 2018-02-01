@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QComboBox>
-#include <QHBoxLayout>*/
+#include <QHBoxLayout>
 #include <QVector>
 #include <QMessageBox>
 #include "MODEL/container.h"

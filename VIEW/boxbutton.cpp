@@ -1,3 +1,4 @@
+#include <QPushButton>
 #include "boxbutton.h"
 #include"exception.h"
 

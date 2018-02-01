@@ -43,7 +43,7 @@ PentagonCreator::~PentagonCreator()
 
 }
 
-PentagonCreator::PentagonCreator(OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
+PentagonCreator::PentagonCreator(OperandSelector *sel, QWidget *parent) : QWidget(parent), selettore(sel){
     QSize size(400,350);
     setMaximumSize(size);
 

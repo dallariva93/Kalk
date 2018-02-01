@@ -71,11 +71,11 @@ Poligono& Pentagono::unisci(const Poligono& pol)const{
     QVector<Punto> coord;
     if(! ( getAngoli()[0].angPiatto(pol.getAngoli()[0]) ) )
         coord.push_back(Punto::origine);
-    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
+    for(int i=pol.getCoordinate().size()-1; i>1; --i)
         coord.push_back( pol.getCoordinate()[i]);
     if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
         coord.push_back( getCoordinate()[1]);
-    for(unsigned int i=2; i<getCoordinate().size(); ++i)
+    for(int i=2; i<getCoordinate().size(); ++i)
         coord.push_back( getCoordinate()[i]);
     if(coord.size() == 3){
         Triangolo& t = *(new Triangolo());

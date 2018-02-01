@@ -1,6 +1,6 @@
 #include "polygoncreator.h"
 #include <QComboBox>
-PolygonCreator::PolygonCreator(OperandSelector *opSel, QComboBox* col,  QWidget *parent) : QWidget(parent),selettore(opSel){
+PolygonCreator::PolygonCreator(OperandSelector *opSel,  QWidget *parent) : QWidget(parent),selettore(opSel){
 /*    QSize size(390,350), buttonSize(100,25);
     setMaximumSize(size);
     setMinimumSize(size);*/
@@ -35,9 +35,6 @@ PolygonCreator::PolygonCreator(OperandSelector *opSel, QComboBox* col,  QWidget 
     connect(pentagonButton, SIGNAL(clicked()), quadrilateralWidget, SLOT(close()));
     connect(pentagonButton, SIGNAL(clicked()),pentagonWidget,SLOT(show()));
 
-   /* connect(triangleButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(quadrilateralButton, SIGNAL(clicked()), colori, SLOT(show()));
-    connect(pentagonButton, SIGNAL(clicked()),colori,SLOT(show()));*/
 
     buttonsLayout->addWidget(triangleButton);
     buttonsLayout->addWidget(quadrilateralButton);
@@ -69,7 +66,6 @@ PolygonCreator::~PolygonCreator()
     delete triangleWidget;
     delete quadrilateralWidget;
     delete pentagonWidget;
-    delete colori;
     delete triangleButton;
     delete quadrilateralButton;
     delete pentagonButton;

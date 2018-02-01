@@ -3,7 +3,7 @@
 #include<iostream>
 #include"exception.h"
 
-QuadrilateralCreator::QuadrilateralCreator( OperandSelector *sel, QWidget *parent) : selettore(sel), QWidget(parent){
+QuadrilateralCreator::QuadrilateralCreator( OperandSelector *sel, QWidget *parent) : QWidget(parent), selettore(sel){
 
     QSize size(500,350);
     setMaximumSize(size);

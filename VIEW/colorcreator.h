@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <MODEL/colore.h>
 #include "operandselector.h"
+
 class ColorCreator : public QWidget{
     Q_OBJECT
 private:
@@ -26,7 +27,6 @@ private:
     QPushButton* saveButton;
 
     OperandSelector* selector;
-
 
     QLineEdit* hexValue;
     QLabel* redLabel;

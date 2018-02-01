@@ -8,8 +8,6 @@ Window::Window(QWidget *parent) : QWidget(parent){
 
     setFont(QFont("QFont::SansSerif	",9));
 
-
-
     areaD=new DataArea;
     areaP=new DrawArea;
 

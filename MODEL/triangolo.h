@@ -19,6 +19,7 @@ public:
     Triangolo& specchia()const;
     Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
+    void gira();
 };
 
 #endif // TRIANGOLO_H

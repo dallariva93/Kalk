@@ -255,3 +255,9 @@ void OperandSelector::scalaOpUno(QString in){
     emit insertPoligono(pScal.getNome());
 }
 
+void OperandSelector::ruotaOpUno(){
+    QString opUno = selector->currentText();
+    Poligono* pol = contenitore->getPoligono(opUno);
+    pol->gira();
+    emit inseritoPoligono(pol->getNome());
+}

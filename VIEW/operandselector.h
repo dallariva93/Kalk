@@ -75,6 +75,7 @@ public slots:
     void activeButtonUno(QString);
     void activeButtonDue(QString);
     void scalaOpUno(QString);
+    void ruotaOpUno();
 
     void textChanged(QString);
 

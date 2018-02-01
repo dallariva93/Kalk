@@ -80,8 +80,7 @@ QuadrilateralCreator::QuadrilateralCreator( OperandSelector *sel, QWidget *paren
     setLayout(mainLayout);
 }
 
-void QuadrilateralCreator::inserisciColore(QIcon icona, QString nome)
-{
+void QuadrilateralCreator::inserisciColore(QIcon icona, QString nome){
     colori->addItem(icona, nome);
 }
 
@@ -356,8 +355,8 @@ void QuadrilateralCreator::formQuadrilatero(){
 
 void QuadrilateralCreator::creaQuadrilatero()try{
     Quadrilatero *qu=buildQuadrilatero();
-
     selettore->insertItem(qu);
     emit selettore->insertPoligono(qu->getNome());
+    emit selettore->inseritoPoligono(qu->getNome());
 }
 catch(MyException){}

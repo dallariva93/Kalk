@@ -18,7 +18,6 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     scala = new QPushButton("Scala", this);
     ruota = new QPushButton("Ruota", this);
     inputScala = new QLineEdit(this);
-    inputRuota = new QLineEdit(this);
 
     perimetro->setEnabled(false);
     area->setEnabled(false);
@@ -42,8 +41,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     layout->addWidget(lati,1,3);
     layout->addWidget(scala,2,0);
     layout->addWidget(inputScala,2,1);
-    layout->addWidget(ruota,2,2);
-    layout->addWidget(inputRuota,2,3);
+    layout->addWidget(ruota,2,3);
     setLayout(layout);
 
     connect(perimetro ,SIGNAL(clicked()), this, SLOT(getPerimetro()) );
@@ -57,7 +55,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(divisione, SIGNAL(clicked()), this, SLOT(getDivisione()));
 
     connect(scala, SIGNAL(clicked()), this, SLOT(doScala()));
-//    connect(ruota, SIGNAL(clicked()), this, SLOT(doRuota()));
+    connect(ruota, SIGNAL(clicked()), this, SLOT(doRuota()));
 }
 
 void BoxButtons::getPerimetro(){
@@ -103,6 +101,10 @@ void BoxButtons::doScala()try{
 }
 catch(EmptyField){}
 catch(SyntaxError){}
+
+void BoxButtons::doRuota(){
+    emit faiRuota();
+}
 
 void BoxButtons::bottoniColori(){
     perimetro->setEnabled(false);

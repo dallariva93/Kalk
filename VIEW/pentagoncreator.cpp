@@ -314,6 +314,7 @@ void PentagonCreator::creaPentagono()try{
     Pentagono *pent = buildPentagono();
     selettore->insertItem(pent);
     emit selettore->insertPoligono(pent->getNome());
+    emit selettore->inseritoPoligono(pent->getNome());
 }
 catch(EmptyField){}
 catch(SyntaxError){}

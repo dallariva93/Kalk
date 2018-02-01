@@ -18,6 +18,7 @@ public:
     Quadrilatero& specchia()const;
     Poligono& unisci(const Poligono&) const;
     Poligono& operator+(const Poligono&) const;
+    void gira();
 };
 
 #endif // QUADRILATERO_H

@@ -148,7 +148,7 @@ Triangolo *TriangleCreator::buildTriangolo()
         lati.push_back(lato3->text().toDouble());
         qSort(lati);
         if(lati[2]>=(lati[1]+lati[0]))
-            throw WrongPolygon("L'ipotenusa deve essere minore della somma dei cateti");
+            throw WrongPolygon("Il lato maggiore deve essere maggiore della somma degli altri due");
 
         if(selettore->isPresent(nome->text()))
             throw AlreadyPresent("Nome già presente!");
@@ -288,6 +288,7 @@ void TriangleCreator::creaTriangolo()try{
     Triangolo* tr = buildTriangolo();
     selettore->insertItem(tr);
     emit selettore->insertPoligono(tr->getNome());
+    emit selettore->inseritoPoligono(tr->getNome());
 }
 catch (WrongPolygon){}
 catch (MyException){}

@@ -77,7 +77,6 @@ public class Triangolo extends Poligono {
 
 	public Poligono unisci(Poligono pol) throws Eccezione {
 		Colore col = this.getColore().somma(pol.getColore());
-	   
 	    ArrayList<Punto> coord = new ArrayList<Punto>();
 	    boolean piatto=false;      //per riordinare i lati quando ho degli angoli piatti
 	    if(! ((this.getAngoli().get(0)).angPiatto( pol.getAngoli().get(0) ) ) ){
@@ -108,15 +107,16 @@ public class Triangolo extends Poligono {
 	        p.setColore(col);
 	        return p;
 	    }
-	    else{   //coord.size()>5
-	        throw new Eccezione(); //sara una eccezione
+
+	    else{  
+	        throw new Eccezione();
 	    }
 	}
 	
 	public Poligono somma(Poligono pol) {
 	    Double lato = latoComune(pol);
 	    Integer indice = indexLato(lato);
-	    Triangolo t1 = cambiaBase(indice);		//sistemare ordinalati
+	    Triangolo t1 = cambiaBase(indice);		
 	    Integer index = pol.indexLato(lato);
 	    Poligono p1 = pol.cambiaBase(index);
 	    p1 = p1.specchia();

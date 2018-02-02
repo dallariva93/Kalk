@@ -39,16 +39,13 @@ void DrawArea::paintEvent(QPaintEvent *event){
             if(poligono->getCoordinate()[i].getX()<0 && valNeg>poligono->getCoordinate()[i].getX())
                 valNeg=poligono->getCoordinate()[i].getX();
         }
-        larghezza-=valNeg;    //std::cout<<larghezza<<"-"<<altezza<<"|"<<std::endl;
-
+        larghezza-=valNeg;
         larghezza>altezza ? scala=(200/larghezza) : scala=(150/altezza);
 
         QPolygonF p = (poligono->zoom(scala).specchia()).toQPolygon();
         for(int i=0; i<poligono->zoom(scala).getLati().size(); ++i){   //calcolo il punto minimo di X
             if(poligono->zoom(scala).getCoordinate()[i].getX() < puntoMinX)
                 puntoMinX = poligono->zoom(scala).getCoordinate()[i].getX();
-            //std::cout<<poligono->zoom(scala).getCoordinate()[i].getX()<<" , "<<poligono->zoom(scala).getCoordinate()[i].getY()<<std::endl;
-            //std::cout<<"## "<<poligono->zoom(scala).getLati()[i]<<std::endl;
         }
         spostaA = (((400-(larghezza*scala))/2)-(puntoMinX));
         spostaB = (250-(altezza*scala))/2;

@@ -86,7 +86,7 @@ public abstract class Poligono {
        return new Punto( x,y );
     }
     
-    public ArrayList<Double> ordinaLati(ArrayList<Double> lati, Integer lato){
+    public ArrayList<Double> ordinaLati(ArrayList<Double> lati, Double lato){
         ArrayList<Double> supporto = new ArrayList<Double>();
         Integer index = lati.indexOf(lato);
         if(index == 0) return lati;   //poggia gi� sulla base giusta

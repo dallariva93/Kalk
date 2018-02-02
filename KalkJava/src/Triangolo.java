@@ -6,11 +6,10 @@ public class Triangolo extends Poligono {
 		super(3, nome, col, new ArrayList<Punto>());
 		ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.add(Punto.origine());
-	    punti.add(new Punto(latoAB,0));
+	    punti.add(new Punto(latoAB,0d));
 	    punti.add(sen_cos(latoAC,a));
 	    setPunti(punti);	
 	}
-
 	public Triangolo(Double latoAB, Double latoAC, Angolo a){
 		this(latoAB,latoAC,a, new RGB(), "");
 	}
@@ -19,11 +18,15 @@ public class Triangolo extends Poligono {
 		ArrayList<Punto> punti = new ArrayList<Punto>();
 	    Angolo c = new Angolo( 180 -a.getAngolo() -b.getAngolo());
 	    punti.add(Punto.origine());
-	    punti.add(new Punto(latoAB,0));
+	    punti.add(new Punto(latoAB,0d));
 	    Double latoAC = ( latoAB * b.seno() ) / c.seno();
 	    punti.add(sen_cos(latoAC, a));
 	    setPunti(punti);		
 	}
+	public Triangolo(Double latoAB, Angolo a, Angolo b){
+		this(latoAB, a, b, new RGB(), "");
+	}
+	
 	public Triangolo(Double latoAB, Double latoBC, Double latoAC, Colore col, String nome ){
 		super(3, nome, col,  new ArrayList<Punto>());
 		Double cos_a =(( Math.pow(latoAC,2) + Math.pow(latoAB,2) - Math.pow(latoBC,2)) / (2*latoAB*latoAC)) ;
@@ -34,18 +37,12 @@ public class Triangolo extends Poligono {
 	    punti.add(sen_cos(latoAC,a));
 	    setPunti(punti);
 	}
-
 	public Triangolo(Double latoAB, Double latoBC, Double latoAC){
 		this(latoAB,latoBC,latoAC, new RGB(), "");
 	}
 
 	Triangolo(){
 		this(10.0,10.0,10.0, new RGB(),"triangolo");
-	}
-	public Triangolo clone() {
-		Triangolo t = new Triangolo();
-		t = this;
-	    return t;
 	}
 	public Double getAltezza() {
 	    return Punto.distanceTo( getCoordinate().get(2) , new Punto( getCoordinate().get(2).getX() , 0.0 ) );

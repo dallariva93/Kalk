@@ -14,7 +14,7 @@ public class Angolo {
 	}
 
 	public Angolo() {
-		this(0);
+		this(0.0);
 	}
 
 	public Double getAngolo() {

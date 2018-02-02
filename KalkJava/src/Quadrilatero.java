@@ -46,7 +46,7 @@ public class Quadrilatero extends Poligono {
 	    return q;
 	}
 	
-	public Poligono unisci( Poligono pol){
+	public Poligono unisci(Poligono pol) throws Eccezione {
 	    Colore col = this.getColore().somma(pol.getColore());
 	    ArrayList<Punto> coord = new ArrayList<Punto>();
 	    boolean piatto=false;	    
@@ -54,67 +54,62 @@ public class Quadrilatero extends Poligono {
 	        coord.add(Punto.origine());    //angolo != da 180
 	        piatto=true;
 	    }	    
-/*
-	    
-	    
-	    for(unsigned int i=pol.getCoordinate().size()-1; i>1; --i)
-	        coord.push_back( pol.getCoordinate()[i]);
-	    if(! ( getAngoli()[1].angPiatto(pol.getAngoli()[1]) ) )
-	        coord.push_back( getCoordinate()[1]);
-	    coord.push_back( getCoordinate()[2]);
-	    if(piatto)      coord.push_back( getCoordinate()[3]);
-	    else            coord.push_front( getCoordinate()[3]);
+	    for(int i = pol.getCoordinate().size()-1; i>1; --i)
+	        coord.add( pol.getCoordinate().get(i));	    
+	    if(! ( getAngoli().get(1).angPiatto(pol.getAngoli().get(1)) ) )
+	        coord.add( getCoordinate().get(1));
+	    coord.add( getCoordinate().get(2));
+	    if(piatto)      coord.add( getCoordinate().get(3));
+	    else            coord.add( 0, getCoordinate().get(3));
 	    if(coord.size() == 3){
-	        Triangolo& t = *(new Triangolo());
+	        Triangolo t = new Triangolo();
 	        t.setPunti(coord);
-	        t.setColore(& col);
+	        t.setColore(col);
 	        return t;
 	    }
 	    else if(coord.size() == 4){
-	        Quadrilatero& q = *(new Quadrilatero());
+	        Quadrilatero q = new Quadrilatero();
 	        q.setPunti(coord);
-	        q.setColore(& col);
+	        q.setColore(col);
 	        return q;
 	    }
 	    else if(coord.size() == 5){
-	        Pentagono& p = *(new Pentagono());
+	        Pentagono p = new Pentagono();
 	        p.setPunti(coord);
-	        p.setColore(& col);
+	        p.setColore(col);
 	        return p;
 	    }
 	    else{
-	        throw WrongPolygon("Il poligono ha più di cinque lati!");
+	        throw new Eccezione();
 	    }
 	}
+		
+	public Poligono somma(Poligono pol) {
+	    Double lato = latoComune(pol);
+	    Integer indice = indexLato(lato);
+	    Quadrilatero q = cambiaBase(indice);
+	    Integer index = pol.indexLato(lato);
+	    Poligono p1 = pol.cambiaBase(index);
+	    p1 = p1.specchia();
+	    /*
+	    try {Poligono poligono =  q.unisci(p1); }
+	    catch(Eccezione e) {   System.out.println ("Spiacente");}
+	    */
+	    Poligono poligono = q.unisci(p1); 
+	    poligono.ruota(p1.getAngoli().get(0));
+	    return poligono;
+	}
+
+	public void gira(){
+	    Angolo b_ad = new Angolo( 180d - getAngoli().get(2).getAngolo() );
+	    ArrayList<Punto> punti = new ArrayList<Punto>();
+	    punti.add(Punto.origine());
+	    punti.add(new Punto( getLati().get(1) , 0.0 ) );
+	    punti.add(new Punto( getLati().get(1) + sen_cos(getLati().get(2), b_ad).getX() ,
+	                            sen_cos(getLati().get(2),b_ad).getY() ));
+	    punti.add(sen_cos(getLati().get(0),getAngoli().get(1)));
+	    setPunti(punti);
+	}
 	
-	*/
-	/*
-
-
-
-
-Poligono& Quadrilatero::operator+(const Poligono& pol) const{
-    double lato = latoComune(pol);
-    int indice = indexLato(lato);
-    Quadrilatero q = cambiaBase(indice);
-    int index = pol.indexLato(lato);
-    Poligono& p1 = pol.cambiaBase(index);
-    p1 = p1.specchia();
-    Poligono& poligono = q.unisci(p1); //garbage
-    poligono.ruota(p1.getAngoli()[0]);
-    delete &p1;
-    return poligono;
 }
 
-void Quadrilatero::gira(){
-    Angolo b_ad = 180 - getAngoli()[2].getAngolo();
-    QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
-    punti.push_back(Punto(getLati()[1],0));
-    punti.push_back(Punto(  getLati()[1]+sen_cos(getLati()[2], b_ad).getX() ,
-                            sen_cos(getLati()[2],b_ad).getY() ));
-    punti.push_back(sen_cos(getLati()[0],getAngoli()[1]));
-    setPunti(punti);
-}
-	*/
-}

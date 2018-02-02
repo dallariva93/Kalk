@@ -5,7 +5,6 @@ public class Quadrato extends Quadrilatero{
         super(lato,lato,lato,Angolo.angoloRetto,Angolo.angoloRetto,col,nome);
     }
 
-
     @Override
     public Double getArea() {
         return lato*lato;

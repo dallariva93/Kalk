@@ -2,6 +2,6 @@
 public class Eccezione extends Exception {
 
 	  public Eccezione(){
-	    super("Attenzione, il poligono ha più di cinque lati!");
+	    super("Attenzione, il poligono ha piÃ¹ di cinque lati!");
 	  }
 }

@@ -75,10 +75,10 @@ public class Triangolo extends Poligono {
 	    return t;
 	}
 
-	public Poligono unisci(Poligono pol){
+	public Poligono unisci(Poligono pol) throws Eccezione {
 		Colore col = this.getColore().somma(pol.getColore());
 	   
-	    ArrayList<Punto> coord;
+	    ArrayList<Punto> coord = new ArrayList<Punto>();
 	    boolean piatto=false;      //per riordinare i lati quando ho degli angoli piatti
 	    if(! ((this.getAngoli().get(0)).angPiatto( pol.getAngoli().get(0) ) ) ){
 	        coord.add(Punto.origine());    //angolo != da 180
@@ -109,24 +109,44 @@ public class Triangolo extends Poligono {
 	        return p;
 	    }
 	    else{   //coord.size()>5
-	        throw("poligonoConPiùDi5Lati"); //sara una eccezione
+	        throw new Eccezione(); //sara una eccezione
 	    }
 	}
 	
-	Poligono somma(Poligono pol) {
+	public Poligono somma(Poligono pol) {
 	    Double lato = latoComune(pol);
 	    Integer indice = indexLato(lato);
 	    Triangolo t1 = cambiaBase(indice);		//sistemare ordinalati
 	    Integer index = pol.indexLato(lato);
 	    Poligono p1 = pol.cambiaBase(index);
 	    p1 = p1.specchia();
-	    Poligono poligono = t1.unisci(p1); //garbage
-	    poligono.ruota(p1.getAngoli().get(0));
-	    return poligono;
+		Poligono poligono = this;
+		try {
+			poligono =  t1.unisci(p1);
+		}
+		catch(Eccezione e) {
+			System.out.println ("Somma non disponibile con più di 5 lati");
+			System.exit(0);
+		}
+		poligono.ruota(p1.getAngoli().get(0));
+		return poligono;
 	}
-	
+
 	public static void main(String[] args) {
 		Triangolo t = new Triangolo(10.0,10.0,10.0,new RGB(),"triangolo");
+
+		for(int i=0; i<t.getLati().size(); ++i) {			//coordinate triangolo
+			System.out.println(t.getCoordinate().get(i).getX());
+			System.out.println(t.getCoordinate().get(i).getY());
+		}
+
+
+		Poligono p = new Quadrato(30d, new RGB(), "Quadrato");
+
+		for(int j=0; j<p.getLati().size(); ++j) {			//coordinate triangolo
+			System.out.println(p.getCoordinate().get(j).getX());
+			System.out.println(p.getCoordinate().get(j).getY());
+		}
 		//System.out.println(t.getLati().get(0));
 		//System.out.println(t.getCoordinate().get(2).getX());
 		//System.out.println(t.getPerimetro());

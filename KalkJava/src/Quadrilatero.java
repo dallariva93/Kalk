@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Quadrilatero extends Poligono {
 
 	public Quadrilatero(Double latoAB, Double latoBC, Double latoAD, Angolo a, Angolo b, Colore col, String nome) {
+		super(4,nome,col,new ArrayList<Punto>());
 		Angolo b_ad = new Angolo(180d - b.getAngolo());
 		ArrayList<Punto> punti = new ArrayList<Punto>();
 		punti.add(Punto.origine());
@@ -50,15 +51,6 @@ public class Quadrilatero extends Poligono {
 		return q;
 	}
 
-	public Poligono unisci(Poligono pol) {
-		Colore col = this.getColore().somma(pol.getColore());
-		ArrayList<Punto> coord = new ArrayList<Punto>();
-		boolean piatto = false;
-		if (!((this.getAngoli().get(0)).angPiatto(pol.getAngoli().get(0)))) {
-			coord.add(Punto.origine());    //angolo != da 180
-			piatto = true;
-		}
-	}
 
 	public Poligono unisci(Poligono pol) throws Eccezione {
 	    Colore col = this.getColore().somma(pol.getColore());
@@ -97,21 +89,24 @@ public class Quadrilatero extends Poligono {
 	        throw new Eccezione();
 	    }
 	}
-		
+
 	public Poligono somma(Poligono pol) {
-	    Double lato = latoComune(pol);
-	    Integer indice = indexLato(lato);
-	    Quadrilatero q = cambiaBase(indice);
-	    Integer index = pol.indexLato(lato);
-	    Poligono p1 = pol.cambiaBase(index);
-	    p1 = p1.specchia();
-	    /*
-	    try {Poligono poligono =  q.unisci(p1); }
-	    catch(Eccezione e) {   System.out.println ("Spiacente");}
-	    */
-	    Poligono poligono = q.unisci(p1); 
-	    poligono.ruota(p1.getAngoli().get(0));
-	    return poligono;
+		Double lato = latoComune(pol);
+		Integer indice = indexLato(lato);
+		Quadrilatero q = cambiaBase(indice);
+		Integer index = pol.indexLato(lato);
+		Poligono p1 = pol.cambiaBase(index);
+		p1 = p1.specchia();
+		Poligono poligono = this;
+		try {
+			poligono =  q.unisci(p1);
+		}
+		catch(Eccezione e) {
+			System.out.println ("Somma non disponibile con più di 5 lati");
+			System.exit(0);
+		}
+		poligono.ruota(p1.getAngoli().get(0));
+		return poligono;
 	}
 
 	public void gira(){
@@ -127,19 +122,4 @@ public class Quadrilatero extends Poligono {
 	
 }
 
-<<<<<<< HEAD
-void Quadrilatero::gira(){
-    Angolo b_ad = 180 - getAngoli()[2].getAngolo();
-    QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
-    punti.push_back(Punto(getLati()[1],0));
-    punti.push_back(Punto(  getLati()[1]+sen_cos(getLati()[2], b_ad).getX() ,
-                            sen_cos(getLati()[2],b_ad).getY() ));
-    punti.push_back(sen_cos(getLati()[0],getAngoli()[1]));
-    setPunti(punti);
-}
-	*/
 
-}
-=======
->>>>>>> 28b2b580c88da0e0df89d132128cea16c5ff9878

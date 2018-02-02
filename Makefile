@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -m64 -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -m64 -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -m64 -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I. -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 DEL_FILE      = rm -f
@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Kalk1.0.0
-DISTDIR = /home/federica/Kalk/.tmp/Kalk1.0.0
+DISTDIR = /home/giovanni/Scrivania/Kalk/.tmp/Kalk1.0.0
 LINK          = g++
 LFLAGS        = -m64 -Wl,-O1
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -448,7 +448,7 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
-	g++ -m64 -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
+	g++ -m64 -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_boxbutton.cpp moc_colorcreator.cpp moc_dataarea.cpp moc_drawarea.cpp moc_drawwindow.cpp moc_operandselector.cpp moc_pentagoncreator.cpp moc_polygoncreator.cpp moc_quadrilateralcreator.cpp moc_trianglecreator.cpp moc_window.cpp
 compiler_moc_header_clean:
@@ -464,7 +464,7 @@ moc_boxbutton.cpp: VIEW/operandselector.h \
 		VIEW/boxbutton.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/boxbutton.h -o moc_boxbutton.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/boxbutton.h -o moc_boxbutton.cpp
 
 moc_colorcreator.cpp: MODEL/colore.h \
 		VIEW/operandselector.h \
@@ -477,7 +477,7 @@ moc_colorcreator.cpp: MODEL/colore.h \
 		VIEW/colorcreator.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/colorcreator.h -o moc_colorcreator.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/colorcreator.h -o moc_colorcreator.cpp
 
 moc_dataarea.cpp: MODEL/poligono.h \
 		MODEL/punto.h \
@@ -487,7 +487,7 @@ moc_dataarea.cpp: MODEL/poligono.h \
 		VIEW/dataarea.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/dataarea.h -o moc_dataarea.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/dataarea.h -o moc_dataarea.cpp
 
 moc_drawarea.cpp: MODEL/poligono.h \
 		MODEL/punto.h \
@@ -497,12 +497,12 @@ moc_drawarea.cpp: MODEL/poligono.h \
 		VIEW/drawarea.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/drawarea.h -o moc_drawarea.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/drawarea.h -o moc_drawarea.cpp
 
 moc_drawwindow.cpp: VIEW/drawwindow.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/drawwindow.h -o moc_drawwindow.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/drawwindow.h -o moc_drawwindow.cpp
 
 moc_operandselector.cpp: MODEL/poligono.h \
 		MODEL/punto.h \
@@ -515,7 +515,7 @@ moc_operandselector.cpp: MODEL/poligono.h \
 		VIEW/operandselector.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/operandselector.h -o moc_operandselector.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/operandselector.h -o moc_operandselector.cpp
 
 moc_pentagoncreator.cpp: MODEL/pentagono.h \
 		MODEL/poligono.h \
@@ -529,7 +529,7 @@ moc_pentagoncreator.cpp: MODEL/pentagono.h \
 		VIEW/pentagoncreator.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/pentagoncreator.h -o moc_pentagoncreator.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/pentagoncreator.h -o moc_pentagoncreator.cpp
 
 moc_polygoncreator.cpp: VIEW/trianglecreator.h \
 		MODEL/triangolo.h \
@@ -549,7 +549,7 @@ moc_polygoncreator.cpp: VIEW/trianglecreator.h \
 		VIEW/polygoncreator.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/polygoncreator.h -o moc_polygoncreator.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/polygoncreator.h -o moc_polygoncreator.cpp
 
 moc_quadrilateralcreator.cpp: MODEL/quadrilatero.h \
 		MODEL/poligono.h \
@@ -564,7 +564,7 @@ moc_quadrilateralcreator.cpp: MODEL/quadrilatero.h \
 		VIEW/quadrilateralcreator.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/quadrilateralcreator.h -o moc_quadrilateralcreator.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/quadrilateralcreator.h -o moc_quadrilateralcreator.cpp
 
 moc_trianglecreator.cpp: MODEL/triangolo.h \
 		MODEL/poligono.h \
@@ -578,7 +578,7 @@ moc_trianglecreator.cpp: MODEL/triangolo.h \
 		VIEW/trianglecreator.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/trianglecreator.h -o moc_trianglecreator.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/trianglecreator.h -o moc_trianglecreator.cpp
 
 moc_window.cpp: VIEW/drawarea.h \
 		MODEL/poligono.h \
@@ -602,7 +602,7 @@ moc_window.cpp: VIEW/drawarea.h \
 		VIEW/window.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/federica/Kalk -I/home/federica/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/window.h -o moc_window.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/giovanni/Scrivania/Kalk -I/home/giovanni/Scrivania/Kalk -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include VIEW/window.h -o moc_window.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -666,7 +666,8 @@ pentagono.o: MODEL/pentagono.cpp MODEL/pentagono.h \
 		MODEL/colore.h \
 		MODEL/rgb.h \
 		MODEL/triangolo.h \
-		MODEL/quadrilatero.h
+		MODEL/quadrilatero.h \
+		VIEW/exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pentagono.o MODEL/pentagono.cpp
 
 poligono.o: MODEL/poligono.cpp MODEL/punto.h \
@@ -697,7 +698,8 @@ quadrilatero.o: MODEL/quadrilatero.cpp MODEL/quadrilatero.h \
 		MODEL/colore.h \
 		MODEL/rgb.h \
 		MODEL/triangolo.h \
-		MODEL/pentagono.h
+		MODEL/pentagono.h \
+		VIEW/exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quadrilatero.o MODEL/quadrilatero.cpp
 
 rettangolo.o: MODEL/rettangolo.cpp MODEL/rettangolo.h \
@@ -720,7 +722,8 @@ triangolo.o: MODEL/triangolo.cpp MODEL/triangolo.h \
 		MODEL/colore.h \
 		MODEL/rgb.h \
 		MODEL/quadrilatero.h \
-		MODEL/pentagono.h
+		MODEL/pentagono.h \
+		VIEW/exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o triangolo.o MODEL/triangolo.cpp
 
 boxbutton.o: VIEW/boxbutton.cpp VIEW/boxbutton.h \

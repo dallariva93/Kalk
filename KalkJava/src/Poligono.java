@@ -7,9 +7,6 @@ public abstract class Poligono {
 	private Colore color = new RGB();
 	private ArrayList<Punto> coordinate = new ArrayList<Punto>();	//val di default
 
-    public Poligono() {
-        this(0,"" ,new RGB() ,new ArrayList<Punto>() );
-    }
 
     public Poligono(Integer n, String nome, Colore col, ArrayList<Punto> punti) {
         numeroLati = n;
@@ -86,13 +83,13 @@ public abstract class Poligono {
        return new Punto( x,y );
     }
     
-    public ArrayList<Double> ordinaLati(ArrayList<Double> lati, Integer lato){
+    public ArrayList<Double> ordinaLati(ArrayList<Double> lati, Double lato){
         ArrayList<Double> supporto = new ArrayList<Double>();
         Integer index = lati.indexOf(lato);
-        if(index == 0) return lati;   //poggia gi� sulla base giusta
-        
-//        supporto = lati.(index);
-//        supporto+=lati.mid(0,index);																			//DA FAREE
+        if(index == 0) return lati;
+        supporto.addAll(supporto.indexOf(lato),lati);
+        for(int i=0; i<supporto.indexOf(lato); ++i)
+            supporto.add(lati.get(i));
         return supporto;
     }
     
@@ -123,17 +120,17 @@ public abstract class Poligono {
 		    Double x = (vertici.get(i).getX() * angolo.coseno()) + (vertici.get(i).getY() * angolo.seno());
 		    if(min<x && x<max)  x=0.0;    //per pb. macchina
 	        Double y = ((vertici.get(i).getX())*angolo.seno()) - (vertici.get(i).getY()*angolo.coseno());
-	        if(min<y && y<max)  y=0;    //per pb. macchina
+	        if(min<y && y<max)  y=0.0;    //per pb. macchina
 	    }
 	    Double cosAngoloCorretto;
-	    if(angolo.getAngolo()==90) cosAngoloCorretto=0;
+	    if(angolo.getAngolo()==90) cosAngoloCorretto=0.0;
 	    else	cosAngoloCorretto=angolo.coseno();
 	    for(int i = 0; i<vertici.size(); ++i){
 	        Double x = (vertici.get(i).getX() * cosAngoloCorretto) - (vertici.get(i).getY() * angolo.seno());
 	        if(min<x && x<max)  x=0.0;    //per pb. macchina
 	        Double y = ((vertici.get(i).getX())*angolo.seno()) + (vertici.get(i).getY()*cosAngoloCorretto);
 	        if(min<y && y<max)  y=0.0;    //per pb. macchina
-	        //  *(it)=Punto(x,y);
+            vertici.add(i,new Punto(x,y));
 	    }
 	    setPunti(vertici);
 	}

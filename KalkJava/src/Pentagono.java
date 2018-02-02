@@ -1,11 +1,11 @@
-import java.util.ArrayList
+import java.util.ArrayList;
 
 public class Pentagono extends Poligono {
     public Pentagono(String nome, Colore col, ArrayList<Punto> punti) {
         super(5, nome, col, punti);
     }
 
-    Pentagono(Double latoAB, Double latoBC, Double latoDE, Double latoAE, Angolo a, Angolo b, Angolo e, Colore col, String nome) {
+    public Pentagono(Double latoAB, Double latoBC, Double latoDE, Double latoAE, Angolo a, Angolo b, Angolo e, Colore col, String nome) {
         super(5, nome, col, new ArrayList<Punto>());
 
         ArrayList<Punto> punti = new ArrayList<>();
@@ -23,6 +23,10 @@ public class Pentagono extends Poligono {
         punti.add(sen_cos(latoAD, gamma));    //coordinata D
         punti.add(sen_cos(latoAE, a));    //coordinata E
         setPunti(punti);
+    }
+
+    public Pentagono(Pentagono pent){
+        super(5,pent.getNome(),pent.getColore(), pent.getCoordinate());
     }
 
     @Override
@@ -51,14 +55,17 @@ public class Pentagono extends Poligono {
     @Override
     public Poligono cambiaBase(Integer n) {
         ArrayList<Double> lati = ordinaLati(getLati(),getLati().get(n));
-
-
-        QVector<double> lati=ordinaLati(getLati(),getLati()[n]);
-        return *(new Pentagono(lati[0], lati[1], lati[3], lati[4], getAngoli()[0], getAngoli()[1], getAngoli()[2],getColore()));
+        return new Pentagono(lati.get(0), lati.get(1), lati.get(3), lati.get(4), getAngoli().get(0), getAngoli().get(1), getAngoli().get(2), getColore(), getNome());
     }
 
     @Override
     public Poligono specchia() {
-        return null;
+        ArrayList<Punto> vertici = getCoordinate();
+        for(Punto aux : vertici)
+            aux.invertiY();
+        Pentagono specchiato = new Pentagono(this);
+        specchiato.setPunti(vertici);
+        return specchiato;
+
     }
 }

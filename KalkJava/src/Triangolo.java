@@ -6,7 +6,7 @@ public class Triangolo extends Poligono {
 		super(3, nome, col, new ArrayList<Punto>());
 		ArrayList<Punto> punti = new ArrayList<Punto>();
 	    punti.add(Punto.origine());
-	    punti.add(new Punto(latoAB,0));
+	    punti.add(new Punto(latoAB,0d));
 	    punti.add(sen_cos(latoAC,a));
 	    setPunti(punti);	
 	}
@@ -19,7 +19,7 @@ public class Triangolo extends Poligono {
 		ArrayList<Punto> punti = new ArrayList<Punto>();
 	    Angolo c = new Angolo( 180 -a.getAngolo() -b.getAngolo());
 	    punti.add(Punto.origine());
-	    punti.add(new Punto(latoAB,0));
+	    punti.add(new Punto(latoAB,0d));
 	    Double latoAC = ( latoAB * b.seno() ) / c.seno();
 	    punti.add(sen_cos(latoAC, a));
 	    setPunti(punti);		

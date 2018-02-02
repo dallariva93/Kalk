@@ -12,7 +12,6 @@ public class Quadrato extends Quadrilatero{
         this(quad.getLati().get(0));
     }
 
-
     @Override
     public Double getArea() {
         return getLati().get(0)*getLati().get(0);

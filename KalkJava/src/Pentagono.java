@@ -24,9 +24,11 @@ public class Pentagono extends Poligono {
         punti.add(sen_cos(latoAE, a));    //coordinata E
         setPunti(punti);
     }
-
     public Pentagono(Pentagono pent){
         super(5,pent.getNome(),pent.getColore(), pent.getCoordinate());
+    }
+    public Pentagono() {
+    	this(0d, 0d, 0d, 0d, new Angolo(), new Angolo(), new Angolo(), new RGB(), "");
     }
 
     @Override

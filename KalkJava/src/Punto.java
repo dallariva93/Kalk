@@ -10,7 +10,7 @@ public class Punto {
         this.y = y;
     }
     public Punto(){
-    	this(0,0);
+    	this(0d,0d);
     }
     public Double getX() {
     	return x;

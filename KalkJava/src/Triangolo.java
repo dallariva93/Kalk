@@ -58,7 +58,7 @@ public class Triangolo extends Poligono {
 	public Triangolo zoom(Double fattore) {
 		return new Triangolo( (fattore*(this.getLati().get(0))) , (fattore*(this.getLati().get(1))) , (fattore*(this.getLati().get(2))), new RGB(), "triangolo");
 	}	
-	public Poligono cambiaBase(Integer i) {
+	public Triangolo cambiaBase(Integer i) {
 		ArrayList<Double> lati = new ArrayList<Double>();
 	    //lati = ordinaLati(this.getLati() , this.getLati().get(i));									//FARE ORDINALATI
 		return new Triangolo(lati.get(0), lati.get(1), lati.get(2), new RGB(), "Triangolo");

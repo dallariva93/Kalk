@@ -6,8 +6,12 @@ public abstract class Poligono {
 	private String nomeOggetto;
 	private Colore color = new RGB();
 	private ArrayList<Punto> coordinate = new ArrayList<Punto>();	//val di default
-	
-	public Poligono(Integer n, String nome, Colore col, ArrayList<Punto> punti) {	//costruttore a 3parametri
+
+    public Poligono() {
+        this(0,"" ,new RGB() ,new ArrayList<Punto>() );
+    }
+
+    public Poligono(Integer n, String nome, Colore col, ArrayList<Punto> punti) {
         numeroLati = n;
 		nomeOggetto = nome;
 		color = col;
@@ -46,7 +50,7 @@ public abstract class Poligono {
     public void changeColor(Colore c) {
 		color.somma(c);
     }
-    public ArrayList getAngoli() {
+    public ArrayList<Angolo> getAngoli() {
         ArrayList<Punto> punti=getCoordinate();
         ArrayList<Angolo> angoli = new ArrayList<Angolo>();
         angoli.add(Punto.angoloTraTrePunti(punti.get(punti.size()-1), punti.get(0), punti.get(1)));
@@ -85,7 +89,7 @@ public abstract class Poligono {
     public ArrayList<Double> ordinaLati(ArrayList<Double> lati, Integer lato){
         ArrayList<Double> supporto = new ArrayList<Double>();
         Integer index = lati.indexOf(lato);
-        if(index == 0) return lati;   //poggia già sulla base giusta
+        if(index == 0) return lati;   //poggia giï¿½ sulla base giusta
         
 //        supporto = lati.(index);
 //        supporto+=lati.mid(0,index);																			//DA FAREE
@@ -118,10 +122,10 @@ public abstract class Poligono {
 	    for(int i = 0; i<vertici.size(); ++i){
 		    Double x = (vertici.get(i).getX() * angolo.coseno()) + (vertici.get(i).getY() * angolo.seno());
 		    if(min<x && x<max)  x=0.0;    //per pb. macchina
-	        double y = ((vertici.get(i).getX())*angolo.seno()) - (vertici.get(i).getY()*angolo.coseno());
+	        Double y = ((vertici.get(i).getX())*angolo.seno()) - (vertici.get(i).getY()*angolo.coseno());
 	        if(min<y && y<max)  y=0;    //per pb. macchina
 	    }
-	    double cosAngoloCorretto;
+	    Double cosAngoloCorretto;
 	    if(angolo.getAngolo()==90) cosAngoloCorretto=0;
 	    else	cosAngoloCorretto=angolo.coseno();
 	    for(int i = 0; i<vertici.size(); ++i){

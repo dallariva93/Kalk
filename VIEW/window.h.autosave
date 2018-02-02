@@ -2,7 +2,6 @@
 #define WINDOW_H
 
 #include <QWidget>
-
 #include "drawarea.h"
 #include "dataarea.h"
 #include "polygoncreator.h"

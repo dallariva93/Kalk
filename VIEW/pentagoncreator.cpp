@@ -3,8 +3,7 @@
 #include "exception.h"
 
 
-PentagonCreator::~PentagonCreator()
-{
+PentagonCreator::~PentagonCreator(){
     delete radio1;
     delete radio2;
 
@@ -51,7 +50,7 @@ PentagonCreator::PentagonCreator(OperandSelector *sel, QWidget *parent) : QWidge
 
     radio1 = new QRadioButton(tr("Costruisco un pentagono regolare"),this);
     radio2 = new QRadioButton(tr("Costruisco un pentagono irregolare"),this);
-    radio1->setChecked(true);   //setto di default radio1
+    radio1->setChecked(true);
 
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
@@ -198,13 +197,12 @@ void PentagonCreator::refreshFormWidget(){
     labelNome = new QLabel(tr("Nome:"));
 }
 
-Pentagono *PentagonCreator::buildPentagono()
-{
+Pentagono *PentagonCreator::buildPentagono(){
     Colore*c;
     colori->count()==0 ? c=new RGB() : c=selettore->getColore(colori->currentText())->clone();
     Pentagono* pent;
 
-    if(radio1->isChecked()){    //il colore lo prendo dal contenitore, passando dal nome che ho qua, arrivando in selettore, matchando il nome su contenitore e ritornando il colore
+    if(radio1->isChecked()){
         if(!lato1->text().toDouble() || nome->text().isEmpty())
             throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \n Inoltre i Form non possono essere vuoti.");
         if(nome->text().startsWith("#"))
@@ -230,8 +228,7 @@ Pentagono *PentagonCreator::buildPentagono()
     return pent;
 }
 
-bool PentagonCreator::checkValidity()
-{
+bool PentagonCreator::checkValidity(){
     if(!lato1->text().toDouble() || !lato2->text().toDouble() || !lato3->text().toDouble() || !lato4->text().toDouble()
         || !lato5->text().toDouble() || !angolo1->text().toDouble() || !angolo2->text().toDouble() || !angolo3->text().toDouble()
             || !angolo4->text().toDouble() || !angolo5->text().toDouble() || nome->text().isEmpty() )
@@ -240,8 +237,7 @@ bool PentagonCreator::checkValidity()
 
 }
 
-void PentagonCreator::inserisciColore(QIcon icona, QString nome)
-{
+void PentagonCreator::inserisciColore(QIcon icona, QString nome){
     colori->addItem(icona, nome);
 }
 

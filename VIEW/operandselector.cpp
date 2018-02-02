@@ -5,8 +5,7 @@
 #include <QtAlgorithms>
 #include "exception.h"
 
-OperandSelector::~OperandSelector()
-{
+OperandSelector::~OperandSelector(){
     delete operando;
     delete selector;
     delete mainLayout;
@@ -89,7 +88,7 @@ void OperandSelector::calcolaLati(){
     emit inviaLati(l);
 }
 
-void OperandSelector::sommaOpUno(){     //emette un segnale col nome dell'operando corrente
+void OperandSelector::sommaOpUno(){
     QString name = selector->currentText();
     emit sommaUno(name);
 }
@@ -116,7 +115,7 @@ void OperandSelector::calcolaSomma1(QString name1){
             pol2->changeColor(sommaC);
             pol2->setNome(name);
             contenitore->addPoligono(pol2);
-            selector->addItem(pol2->getNome());     //ho inserito solo il nome
+            selector->addItem(pol2->getNome());
             emit insertPoligono(pol2->getNome());
             emit inseritoPoligono(pol2->getNome());
         }
@@ -134,7 +133,7 @@ void OperandSelector::calcolaSomma1(QString name1){
             contenitore->addPoligono(&pol1);
             selector->addItem(pol1.getNome());
             emit insertPoligono(pol1.getNome());
-            emit inseritoPoligono(pol1.getNome());  //per farlo vedere subito appena schiaccia +
+            emit inseritoPoligono(pol1.getNome());
         }
         else{
             Poligono* pol1 = (contenitore->getPoligono(name1))->clone();
@@ -143,8 +142,6 @@ void OperandSelector::calcolaSomma1(QString name1){
             QString nome = QString(pol1->getNome()+"+"+pol2->getNome());
             if(isPresent(nome))
                 throw AlreadyPresent("Il poligono esiste già!");
-            if(pTot.getNome() == "nonValido")
-                throw WrongPolygon("Il poligono ha più di cinque lati!");
             pTot.setNome(nome);
             contenitore->addPoligono(&pTot);
             selector->addItem(pTot.getNome());
@@ -159,7 +156,7 @@ void OperandSelector::calcolaSomma(QString name1)try{
 catch(WrongPolygon){}
 catch(MyException){}
 
-void OperandSelector::sottrazioneOpUno(){     //emette un segnale col nome dell'operando corrente
+void OperandSelector::sottrazioneOpUno(){
     QString name = selector->currentText();
     emit sottrazioneUno(name);
 }
@@ -252,16 +249,22 @@ void OperandSelector::activeButtonDue(QString opDue){
     }
 }
 
-void OperandSelector::scalaOpUno(QString in){
+void OperandSelector::scalaOpUno1(QString in){
     QString opUno = selector->currentText();
     Poligono* pol = contenitore->getPoligono(opUno);
     Poligono& pScal = pol->zoom(in.toDouble());
     pScal.setNome(opUno+"_inScala("+in+")");
+    if(isPresent(pScal.getNome()))
+        throw AlreadyPresent("Il poligono risultante è già esistente!");
     pScal.setColore(pol->getColore());
     contenitore->addPoligono(&pScal);
     selector->addItem(pScal.getNome());
     emit insertPoligono(pScal.getNome());
 }
+void OperandSelector::scalaOpUno(QString in)try{
+    scalaOpUno1(in);
+}
+catch(AlreadyPresent){}
 
 void OperandSelector::ruotaOpUno(){
     QString opUno = selector->currentText();

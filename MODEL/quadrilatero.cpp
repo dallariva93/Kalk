@@ -2,6 +2,7 @@
 #include "triangolo.h"
 #include "angolo.h"
 #include "pentagono.h"
+#include "VIEW/exception.h"
 
 Quadrilatero::Quadrilatero() : Quadrilatero(10,10,10,Angolo(90),Angolo(90)){}
 
@@ -84,9 +85,8 @@ Poligono& Quadrilatero::unisci( const Poligono& pol)const{
         p.setColore(& col);
         return p;
     }
-    else{   //coord.size()>5
-        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
-        return ecc;
+    else{
+        throw WrongPolygon("Il poligono ha più di cinque lati!");
     }
 }
 

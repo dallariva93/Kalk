@@ -25,19 +25,15 @@ Poligono* Container::getPoligono(QString name) const{
 
 Colore* Container::getColore(QString name) const{
     for(auto cit = color.cbegin(); cit != color.cend(); ++cit){
-        //std::cout<<"string op 1 = "<<name.toStdString()<<std::endl;
         Colore *p = *cit;
-        //std::cout<<"CCC = "<<(p->getHex().toStdString())<<std::endl;
         if( p->getHex() == name){
-            //std::cout<<"mathc="<<std::endl;
             return *cit;
         }
     }
     return 0;
 }
 
-Container::~Container()
-{
+Container::~Container(){
     for(auto it=polygon.begin(); it!=polygon.end(); ++it ){
         delete *it;
     }

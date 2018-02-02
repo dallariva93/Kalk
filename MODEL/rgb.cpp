@@ -1,7 +1,6 @@
 #include "rgb.h"
 
-RGB::RGB(unsigned int red, unsigned int green, unsigned int blu):r(red), g(green), b(blu){}     //costruttore a tre parametri, di default costruisce bianco
-//rgb::rgb(std::string nome){}      costruttore di colore da nome
+RGB::RGB(unsigned int red, unsigned int green, unsigned int blu):r(red), g(green), b(blu){}
 
 QString RGB::decToHex(unsigned int value){
     std::stringstream stream;

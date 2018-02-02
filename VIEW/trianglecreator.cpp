@@ -5,16 +5,12 @@
 
 TriangleCreator::TriangleCreator(OperandSelector *sel, QWidget *parent) : QWidget(parent),selettore(sel){
 
-   /* QSize size(450,350);
-    setMaximumSize(size);*/
-
     colori=new QComboBox;
-
 
     radio1 = new QRadioButton(tr("Costruisco dato due lati e angolo compreso."),this);
     radio2 = new QRadioButton(tr("Costruisco dato un lato e due angoli adiacenti."),this);
     radio3 = new QRadioButton(tr("Costruisco dato i tre lati."),this);
-    radio1->setChecked(true);   //setto di default radio1
+    radio1->setChecked(true);
 
 
     lato1 = new QLineEdit(this);
@@ -44,7 +40,6 @@ TriangleCreator::TriangleCreator(OperandSelector *sel, QWidget *parent) : QWidge
     connect(radio3, SIGNAL(clicked()), this, SLOT(treLati()));
     connect(saveButton, SIGNAL(clicked()), this, SLOT(creaTriangolo()));
 
-
     choiceLayout = new QVBoxLayout;
     choiceLayout->addWidget(radio1);
     choiceLayout->addWidget(radio2);
@@ -72,7 +67,6 @@ TriangleCreator::TriangleCreator(OperandSelector *sel, QWidget *parent) : QWidge
     setLayout(mainLayout);
 
     dueLatiUnAngolo();
-
 }
 
 void TriangleCreator::refreshFormWidget(){
@@ -110,8 +104,7 @@ void TriangleCreator::refreshFormWidget(){
     angoloB = new QLabel(tr("Angolo:"));
 }
 
-Triangolo *TriangleCreator::buildTriangolo()
-{
+Triangolo *TriangleCreator::buildTriangolo(){
     Colore*c;
     colori->count()==0 ? c=new RGB() : c=selettore->getColore(colori->currentText())->clone();
     Triangolo *tr;
@@ -161,8 +154,7 @@ void TriangleCreator::inserisciColore(QIcon icona, QString nome){
     colori->addItem(icona, nome);
 }
 
-TriangleCreator::~TriangleCreator()
-{
+TriangleCreator::~TriangleCreator(){
     delete radio1;
     delete radio2;
 

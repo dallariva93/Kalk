@@ -8,13 +8,12 @@ QuadrilateralCreator::QuadrilateralCreator( OperandSelector *sel, QWidget *paren
     QSize size(500,350);
     setMaximumSize(size);
 
-
     colori=new QComboBox;
 
     radio1 = new QRadioButton(tr("Costruisco un quadrato"),this);
     radio2 = new QRadioButton(tr("Costruisco un rettangolo"),this);
     radio3 = new QRadioButton(tr("Costruisco un quadrilatero irregolare"),this);
-    radio1->setChecked(true);   //setto di default radio1
+    radio1->setChecked(true);
 
     lato1 = new QLineEdit(this);
     lato2 = new QLineEdit(this);
@@ -138,7 +137,6 @@ void QuadrilateralCreator::refreshFormWidget(){
     colore = new QLabel(tr("Colore:"));
     nome = new QLineEdit(this);
     labelNome = new QLabel(tr("Nome:"));
-
 }
 
 QuadrilateralCreator::~QuadrilateralCreator(){
@@ -172,8 +170,7 @@ QuadrilateralCreator::~QuadrilateralCreator(){
     delete colori;
 }
 
-Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
-{
+Quadrilatero *QuadrilateralCreator::buildQuadrilatero(){
     Colore*c;
     colori->count()==0 ? c=new RGB() : c=selettore->getColore(colori->currentText())->clone();
     Quadrilatero *qu;
@@ -186,7 +183,7 @@ Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
             throw AlreadyPresent("Nome già presente!");
         qu = new Quadrato(lato1->text().toDouble(), c, nome->text());
     }
-    else if(radio2->isChecked()){   //rettangolo
+    else if(radio2->isChecked()){
         if(!lato1->text().toDouble() || nome->text().isEmpty())
             throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
         if(nome->text().startsWith("#"))
@@ -195,7 +192,7 @@ Quadrilatero *QuadrilateralCreator::buildQuadrilatero()
             throw AlreadyPresent("Nome già presente!");
         qu = new Quadrilatero(lato1->text().toDouble(), lato2->text().toDouble(), lato2->text().toDouble(), 90, 90, c, nome->text());
     }
-    else{   //q irregolare
+    else{
         if(!checkValidity())
             throw SyntaxError("I lati e gli angoli accettano solo valori numerici. \nInoltre i Form non possono essere vuoti.");
         if(nome->text().startsWith("#"))

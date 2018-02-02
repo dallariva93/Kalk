@@ -11,8 +11,7 @@ double Punto::getX()const{return x;}
 
 double Punto::getY()const{return y;}
 
-void Punto::invertiY()
-{
+void Punto::invertiY(){
     y=-y;
 }
 

@@ -59,8 +59,7 @@ BoxButtons::BoxButtons(QWidget *parent) : QWidget(parent){
     connect(ruota, SIGNAL(clicked()), this, SLOT(doRuota()));
 }
 
-BoxButtons::~BoxButtons()
-{
+BoxButtons::~BoxButtons(){
     delete somma;
     delete sottrazione;
     delete moltiplicazione;

@@ -3,6 +3,7 @@
 #include<QVector>
 #include "quadrilatero.h"
 #include "pentagono.h"
+#include "VIEW/exception.h"
 
 Triangolo::Triangolo() : Triangolo(10,10,10) {}
 
@@ -56,9 +57,9 @@ Triangolo& Triangolo::zoom(double fattore) const{
     return *(new Triangolo(getLati()[0]*fattore, getLati()[1]*fattore, getLati()[2]*fattore));
 }
 
-Triangolo &Triangolo::cambiaBase(int n)const {       //n != 0
+Triangolo &Triangolo::cambiaBase(int n)const {
     QVector<double> lati=ordinaLati(this->getLati(), getLati()[n]);
-    return *(new Triangolo(lati[0],lati[1],lati[2],getColore()));               //eliminare garbage
+    return *(new Triangolo(lati[0],lati[1],lati[2],getColore()));
 }
 
 Triangolo &Triangolo::specchia() const{
@@ -69,7 +70,6 @@ Triangolo &Triangolo::specchia() const{
     t.setPunti(vertici);
     return t;
 }
-
 
 Poligono& Triangolo::unisci(const Poligono& pol)const{
     Colore& col = *(getColore()) + *(pol.getColore());
@@ -103,9 +103,8 @@ Poligono& Triangolo::unisci(const Poligono& pol)const{
         p.setColore(& col);
         return p;
     }
-    else{   //coord.size()>5
-        Triangolo& ecc = *(new Triangolo(10,10,10,new RGB(),"nonValido"));
-        return ecc;
+    else{
+        throw WrongPolygon("Il poligono ha più di cinque lati!");
     }
 }
 
@@ -115,10 +114,12 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     Triangolo t1 = cambiaBase(indice);
     int index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
+    Poligono& tmp = p1;
     p1 = p1.specchia();
     Poligono& poligono = t1.unisci(p1);
     poligono.ruota(p1.getAngoli()[0]);
     delete &p1;
+    delete &tmp;
     return poligono;
 }
 

@@ -15,7 +15,6 @@ ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):QWidget(parent)
     setMaximumSize(size);
     setMinimumSize(size);
 
-    //CREO GLI SLIDER E NE SETTO IL VALORE MASSIMO
     red=new QSlider(Qt::Horizontal);
     red->setRange(0,255);
     green=new QSlider(Qt::Horizontal);
@@ -23,12 +22,10 @@ ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):QWidget(parent)
     blue=new QSlider(Qt::Horizontal);
     blue->setRange(0,255);
 
-    //CREO GLI LCD NUMBER
     redLCD=new QLCDNumber(3);
     greenLCD=new QLCDNumber(3);
     blueLCD=new QLCDNumber(3);
 
-    //CREO DEI LABEL PER IDENTIFICARE RED GREEN BLUE E L'ESADECIMALE
     redLabel = new QLabel(tr("Rosso:"));
     greenLabel = new QLabel(tr("Verde:"));
     blueLabel = new QLabel(tr("Blue:"));
@@ -39,7 +36,6 @@ ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):QWidget(parent)
     saveButton = new QPushButton;
     saveButton->setText("Crea");
 
-    //MODIFICO GRAFICAMENTE GLI SLIDER E GLI LCD NUMBER: APPLICO DEI FOGLI DI STILE, MODIFICO IL NUMERO E TOLGO IL RIQUADRO
     red->setStyleSheet(sliderStyle);
     green->setStyleSheet(sliderStyle);
     blue->setStyleSheet(sliderStyle);
@@ -50,7 +46,6 @@ ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):QWidget(parent)
     greenLCD->setFrameStyle(QFrame::NoFrame);
     blueLCD->setFrameStyle(QFrame::NoFrame);
 
-    //CONNETTO SEGNALI CON SLOT APPROPRIATI
     connect(red, SIGNAL(valueChanged(int)), redLCD, SLOT(display(int)));
     connect(green, SIGNAL(valueChanged(int)), greenLCD, SLOT(display(int)));
     connect(blue, SIGNAL(valueChanged(int)), blueLCD, SLOT(display(int)));
@@ -61,7 +56,6 @@ ColorCreator::ColorCreator(OperandSelector* sel,QWidget* parent):QWidget(parent)
     connect(this,SIGNAL(changeColor(QString)),color,SLOT(setStyleSheet(QString)));
     connect(saveButton, SIGNAL(clicked()), this, SLOT(creaColore()));
 
-    //CREO UN LAYOUT A GRIGLIA E AGGIUNGO I WIDGET IN UN CERTO ORDINE
     mainLayout = new QVBoxLayout;
     layout=new QGridLayout;
     layout->addWidget(red,0,1);
@@ -105,8 +99,7 @@ void ColorCreator::getG(int g){
 Colore* ColorCreator::buildColore(){
     Colore* colore = new RGB(redLCD->value(),greenLCD->value(),blueLCD->value());
 
-   if(selector->isPresent(colore->getHex()))
-   {
+   if(selector->isPresent(colore->getHex())){
        delete colore;
        throw AlreadyPresent("Colore già presente");
    }

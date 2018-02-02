@@ -2,7 +2,6 @@
 
 #include<iostream>
 
-
 Angolo::Angolo(double val):gradi(val){}
 
 const Angolo Angolo::angoloRetto=Angolo(90);

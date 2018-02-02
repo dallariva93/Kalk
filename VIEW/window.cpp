@@ -100,7 +100,6 @@ Window::Window(QWidget *parent) : QWidget(parent){
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoUno, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), operandoDue, SLOT(addColore(Colore*)));
     connect(operandoDue, SIGNAL(aggColore(Colore*)), creatorP, SLOT(addColore(Colore*)));
-
 }
 
 void Window::acquisisciPoligono(QString text){
@@ -109,4 +108,21 @@ void Window::acquisisciPoligono(QString text){
 
 void Window::hoPoligono(Poligono* p){
     emit disegnaPoligono(p);
+}
+
+Window::~Window(){
+    delete creatorP;
+    delete creatorC;
+    delete areaP;
+    delete areaD;
+    delete operandoUno;
+    delete operandoDue;
+    delete pulsanti;
+    delete colori;
+    delete contenitore;
+    delete areaLayout;
+    delete creatorLayout;
+    delete operandLayout;
+    delete mainLayout;
+    delete colorCButtonsLayout;
 }

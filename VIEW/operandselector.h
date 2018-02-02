@@ -30,6 +30,7 @@ public:
     void calcolaSottrazione1(QString);
     void calcolaMoltiplicazione1(QString);
     void calcolaDivisione1(QString);
+    void scalaOpUno1(QString);
 
 
 signals:

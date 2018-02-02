@@ -8,6 +8,9 @@ public class Angolo{
 	public Angolo(double val){
 		gradi = val;
 	}
+	public Angolo() {
+		this(0);
+	}
 	public double getAngolo() {
 	    return gradi;
 	}
@@ -43,10 +46,10 @@ public class Angolo{
 	        seno=0;
 	    return seno;
 	}
-/*
+
 	public static void main(String[] args) {
 		System.out.println(angoloRetto);
-		Angolo x = new Angolo(90);
+/*		Angolo x = new Angolo(90);
 		Angolo y = new Angolo(90);
 		Angolo z = new Angolo(20);
 		Angolo j = new Angolo(160);
@@ -65,8 +68,8 @@ public class Angolo{
 		else   System.out.println("la somma NON fa 90");
 			
 		y = z;	System.out.println(y.getAngolo());		//non occorre ridefinire l'assegnazione tra angoli
-	}
-	*/
+	*/}
+	
 	/*	PROBLEMI
 	 * - Non riesco ad usare angolo retto come un oggetto 
 	 * */

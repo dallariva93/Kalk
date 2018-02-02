@@ -10,22 +10,18 @@ public class RGB implements Colore {
         this.g=g;
         this.b=b;
     }
-
     public RGB(){
         this(255,255,255);
     }
     public int getR(){
         return r;
     }
-
     public int getB() {
         return b;
     }
-
     public int getG() {
         return g;
     }
-
 
     @Override
     public String getHex() {
@@ -39,8 +35,6 @@ public class RGB implements Colore {
             gg="0"+gg;
         if(b<14)
             bb="0"+bb;
-
-
         return "#" + rr + gg + bb;
     }
 

@@ -1,4 +1,6 @@
-interface Colore{
+
+public interface Colore {
+
     String getHex();
     Colore somma(Colore colore);
     Colore sottrazione(Colore colore);

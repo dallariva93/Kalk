@@ -38,21 +38,3 @@ public class Punto {
 		return new Punto();
 	}
 }
-/*
- * 
- * class Point{
-    public double x;
-    public double y;
-
-
-
-    public Point add(Point other){
-        this.x += other.x;
-        this.y += other.y;
-        return this;
-    }
-    public Point add(Point other) {
-        return of(x+other.x, y+other.y);
-    }
-    }
- */

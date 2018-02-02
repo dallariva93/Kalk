@@ -40,10 +40,16 @@ void OperandSelector::insertItem(Colore *colore){
 void OperandSelector::insertItem(Poligono* poligono){
     contenitore->addPoligono(poligono);
     selector->addItem(poligono->getNome());
+    aggiornaS();
 }
 
 void OperandSelector::addPoligono(QString p){
     selector->addItem(p);
+    aggiornaS();
+}
+
+void OperandSelector::aggiornaS(){
+    selector->setCurrentIndex(selector->count()-1);
 }
 
 Colore *OperandSelector::getColore(QString nome){
@@ -56,6 +62,7 @@ bool OperandSelector::isPresent(QString nome){
 
 void OperandSelector::addColore(Colore *c){
     insertItem(c);
+    aggiornaS();
 }
 
 void OperandSelector::calcolaPerimetro(){
@@ -116,6 +123,7 @@ void OperandSelector::calcolaSomma1(QString name1){
             pol2->setNome(name);
             contenitore->addPoligono(pol2);
             selector->addItem(pol2->getNome());
+            aggiornaS();
             emit insertPoligono(pol2->getNome());
             emit inseritoPoligono(pol2->getNome());
         }
@@ -132,6 +140,7 @@ void OperandSelector::calcolaSomma1(QString name1){
             pol1.setNome(nome);
             contenitore->addPoligono(&pol1);
             selector->addItem(pol1.getNome());
+            aggiornaS();
             emit insertPoligono(pol1.getNome());
             emit inseritoPoligono(pol1.getNome());
         }
@@ -145,6 +154,7 @@ void OperandSelector::calcolaSomma1(QString name1){
             pTot.setNome(nome);
             contenitore->addPoligono(&pTot);
             selector->addItem(pTot.getNome());
+            aggiornaS();
             emit insertPoligono(pTot.getNome());
             emit inseritoPoligono(pTot.getNome());
         }
@@ -259,6 +269,7 @@ void OperandSelector::scalaOpUno1(QString in){
     pScal.setColore(pol->getColore());
     contenitore->addPoligono(&pScal);
     selector->addItem(pScal.getNome());
+    aggiornaS();
     emit insertPoligono(pScal.getNome());
 }
 void OperandSelector::scalaOpUno(QString in)try{

@@ -109,7 +109,6 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
     Poligono& poligono = q.unisci(p);
     poligono.ruota(p.getAngoli()[0]);
     delete &p;
-    delete &tmp;
     return poligono;
 }
 

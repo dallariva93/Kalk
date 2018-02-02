@@ -119,7 +119,6 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     Poligono& poligono = t1.unisci(p1);
     poligono.ruota(p1.getAngoli()[0]);
     delete &p1;
-    delete &tmp;
     return poligono;
 }
 

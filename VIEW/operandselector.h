@@ -31,7 +31,7 @@ public:
     void calcolaMoltiplicazione1(QString);
     void calcolaDivisione1(QString);
     void scalaOpUno1(QString);
-
+    void aggiornaS();
 
 signals:
     void inviaPerimetro(double);

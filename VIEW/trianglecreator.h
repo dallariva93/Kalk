@@ -60,7 +60,6 @@ public slots:
     void treLati();
     void dueLatiUnAngolo();
     void creaTriangolo();
-
 };
 
 #endif // TRIANGLECREATOR_H

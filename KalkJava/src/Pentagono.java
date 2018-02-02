@@ -55,7 +55,7 @@ public class Pentagono extends Poligono {
     }
 
     @Override
-    public Poligono cambiaBase(Integer n) {
+    public Pentagono cambiaBase(Integer n) {
         ArrayList<Double> lati = ordinaLati(getLati(),getLati().get(n));
         return new Pentagono(lati.get(0), lati.get(1), lati.get(3), lati.get(4), getAngoli().get(0), getAngoli().get(1), getAngoli().get(2), getColore(), getNome());
     }
@@ -70,4 +70,68 @@ public class Pentagono extends Poligono {
         return specchiato;
 
     }
+    
+    public Poligono unisci(Poligono pol) throws Eccezione {
+    	Colore col = this.getColore().somma(pol.getColore());
+  	    ArrayList<Punto> coord = new ArrayList<Punto>();    
+	    if(! ((this.getAngoli().get(0)).angPiatto( pol.getAngoli().get(0) ) ) ){
+	        coord.add(Punto.origine());    //angolo != da 180
+	    }	    
+	    for(int i = pol.getCoordinate().size()-1; i>1; --i)
+	        coord.add( pol.getCoordinate().get(i));	    
+	    if(! ( getAngoli().get(1).angPiatto(pol.getAngoli().get(1)) ) )
+	        coord.add( getCoordinate().get(1));
+	    for(int i=2; i<pol.getCoordinate().size(); ++i)
+    		coord.add( getCoordinate().get(i));
+        if(coord.size() == 3){
+            Triangolo t = new Triangolo();
+            t.setPunti(coord);
+            t.setColore(col);
+            return t;
+        }
+        else if(coord.size() == 4){
+            Quadrilatero q = new Quadrilatero();
+            q.setPunti(coord);
+            q.setColore(col);
+            return q;
+        }
+        else if(coord.size() == 5){
+            Pentagono p = new Pentagono();
+            p.setPunti(coord);
+            p.setColore(col);
+            return p;
+        }
+        else{
+	        throw new Eccezione();
+        }
+    }
+    
+    public Poligono somma(Poligono pol) {
+        Double lato = latoComune(pol);
+        Integer indice = indexLato(lato);
+        Pentagono q = cambiaBase(indice);
+        Integer index = pol.indexLato(lato);
+        Poligono p = pol.cambiaBase(index);
+        p = p.specchia();
+        Poligono poligono = q.unisci(p);
+        poligono.ruota(p.getAngoli().get(0));
+        return poligono;
+    }
+
+    public void gira(){
+        ArrayList<Punto> punti = new ArrayList<Punto>();
+        punti.add(Punto.origine());
+        punti.add(new Punto(getLati().get(1), 0.0) );
+        Angolo b2 = new Angolo( 180d - getAngoli().get(2).getAngolo() );
+        Triangolo t1 = new Triangolo(getLati().get(1), getLati().get(2), b2);
+        punti.add(new Punto(  (punti.get(1).getX()+(getLati().get(2)*b2.coseno())), (getLati().get(2)*b2.seno())));
+        Triangolo t2 = new Triangolo(getLati().get(0), getLati().get(4), getAngoli().get(0));
+        Double latoAD = t2.getLati().get(1);
+        Angolo beta = t2.getAngoli().get(1);
+        Angolo gamma = new Angolo((getAngoli().get(1)).getAngolo() - beta.getAngolo());
+        punti.add( sen_cos(latoAD,gamma) );
+        punti.add( sen_cos(getLati().get(0),getAngoli().get(1)) );
+        setPunti(punti);
+    }
+    
 }

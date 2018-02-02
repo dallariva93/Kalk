@@ -50,16 +50,6 @@ public class Quadrilatero extends Poligono {
 		return q;
 	}
 
-	public Poligono unisci(Poligono pol) {
-		Colore col = this.getColore().somma(pol.getColore());
-		ArrayList<Punto> coord = new ArrayList<Punto>();
-		boolean piatto = false;
-		if (!((this.getAngoli().get(0)).angPiatto(pol.getAngoli().get(0)))) {
-			coord.add(Punto.origine());    //angolo != da 180
-			piatto = true;
-		}
-	}
-
 	public Poligono unisci(Poligono pol) throws Eccezione {
 	    Colore col = this.getColore().somma(pol.getColore());
 	    ArrayList<Punto> coord = new ArrayList<Punto>();
@@ -126,20 +116,3 @@ public class Quadrilatero extends Poligono {
 	}
 	
 }
-
-<<<<<<< HEAD
-void Quadrilatero::gira(){
-    Angolo b_ad = 180 - getAngoli()[2].getAngolo();
-    QVector<Punto> punti;
-    punti.push_back(Punto(0,0));
-    punti.push_back(Punto(getLati()[1],0));
-    punti.push_back(Punto(  getLati()[1]+sen_cos(getLati()[2], b_ad).getX() ,
-                            sen_cos(getLati()[2],b_ad).getY() ));
-    punti.push_back(sen_cos(getLati()[0],getAngoli()[1]));
-    setPunti(punti);
-}
-	*/
-
-}
-=======
->>>>>>> 28b2b580c88da0e0df89d132128cea16c5ff9878

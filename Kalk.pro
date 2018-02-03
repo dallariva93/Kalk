@@ -21,8 +21,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += CONTROLLER/controlbuttons.h \
-           MODEL/angolo.h \
+HEADERS += MODEL/angolo.h \
            MODEL/colore.h \
            MODEL/container.h \
            MODEL/pentagono.h \
@@ -46,7 +45,6 @@ HEADERS += CONTROLLER/controlbuttons.h \
            VIEW/trianglecreator.h \
            VIEW/window.h
 SOURCES += main.cpp \
-           CONTROLLER/controlbuttons.cpp \
            MODEL/angolo.cpp \
            MODEL/colore.cpp \
            MODEL/container.cpp \

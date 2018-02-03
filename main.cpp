@@ -25,6 +25,8 @@ int main(int argc, char* argv[]){
     QApplication app(argc,argv);
     MyException c();
     Window* x= new Window;
+    QIcon icon(":/logo.ico");
+    app.setWindowIcon(icon);
     x->show();
     return app.exec();
 }

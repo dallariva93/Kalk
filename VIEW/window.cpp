@@ -2,6 +2,7 @@
 #include "exception.h"
 
 Window::Window(QWidget *parent) : QWidget(parent){
+
     QSize size(650,650);
     setMaximumSize(size);
     setMinimumSize(size);

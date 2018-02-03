@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a030387b-7655-4cae-9bb6-637753090e8d" name="Default" comment="inserito flag c++1 in .pro aggiornato java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bin/Pentagono.class" afterPath="$PROJECT_DIR$/bin/Pentagono.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Quadrato.class" afterPath="$PROJECT_DIR$/bin/Quadrato.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Quadrilatero.class" afterPath="$PROJECT_DIR$/bin/Quadrilatero.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Triangolo.class" afterPath="$PROJECT_DIR$/bin/Triangolo.class" />
-      <change beforePath="$PROJECT_DIR$/src/Pentagono.java" afterPath="$PROJECT_DIR$/src/Pentagono.java" />
-      <change beforePath="$PROJECT_DIR$/src/Quadrilatero.java" afterPath="$PROJECT_DIR$/src/Quadrilatero.java" />
-      <change beforePath="$PROJECT_DIR$/src/Triangolo.java" afterPath="$PROJECT_DIR$/src/Triangolo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,8 +74,8 @@
       <file leaf-file-name="Quadrilatero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Quadrilatero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2214">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="2178">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="e#718#719#0" expanded="true" />
                 <element signature="e#784#785#0" expanded="true" />
@@ -132,15 +125,9 @@
       <file leaf-file-name="Triangolo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Triangolo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1926">
-              <caret line="115" column="7" lean-forward="true" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
-              <folding>
-                <element signature="e#235#242#0" expanded="true" />
-                <element signature="e#648#655#0" expanded="true" />
-                <element signature="e#1350#1357#0" expanded="true" />
-                <element signature="e#2497#2505#0" expanded="true" />
-                <element signature="e#3121#3128#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="549">
+              <caret line="115" column="7" lean-forward="false" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -236,6 +223,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,10 +240,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -559,13 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-          <folding>
-            <element signature="e#235#242#0" expanded="true" />
-            <element signature="e#648#655#0" expanded="true" />
-            <element signature="e#1350#1357#0" expanded="true" />
-            <element signature="e#2497#2505#0" expanded="true" />
-            <element signature="e#3121#3128#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -653,13 +634,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="e#235#242#0" expanded="true" />
-            <element signature="e#648#655#0" expanded="true" />
-            <element signature="e#1350#1357#0" expanded="true" />
-            <element signature="e#2497#2505#0" expanded="true" />
-            <element signature="e#3121#3128#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -734,13 +709,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2412">
           <caret line="134" column="2" lean-forward="false" selection-start-line="134" selection-start-column="2" selection-end-line="134" selection-end-column="2" />
-          <folding>
-            <element signature="e#235#242#0" expanded="true" />
-            <element signature="e#648#655#0" expanded="true" />
-            <element signature="e#1350#1357#0" expanded="true" />
-            <element signature="e#2497#2505#0" expanded="true" />
-            <element signature="e#3121#3128#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -818,13 +787,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2412">
           <caret line="134" column="2" lean-forward="false" selection-start-line="134" selection-start-column="2" selection-end-line="134" selection-end-column="2" />
-          <folding>
-            <element signature="e#235#242#0" expanded="true" />
-            <element signature="e#648#655#0" expanded="true" />
-            <element signature="e#1350#1357#0" expanded="true" />
-            <element signature="e#2497#2505#0" expanded="true" />
-            <element signature="e#3121#3128#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,8 +972,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Quadrilatero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2214">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        <state relative-caret-position="2178">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding>
             <element signature="e#718#719#0" expanded="true" />
             <element signature="e#784#785#0" expanded="true" />
@@ -1020,15 +983,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Triangolo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1926">
-          <caret line="115" column="7" lean-forward="true" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
-          <folding>
-            <element signature="e#235#242#0" expanded="true" />
-            <element signature="e#648#655#0" expanded="true" />
-            <element signature="e#1350#1357#0" expanded="true" />
-            <element signature="e#2497#2505#0" expanded="true" />
-            <element signature="e#3121#3128#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="549">
+          <caret line="115" column="7" lean-forward="false" selection-start-line="115" selection-start-column="7" selection-end-line="115" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -27,14 +27,16 @@ public abstract class Poligono {
     abstract public Poligono zoom(Double z);
     abstract public Poligono cambiaBase(Integer i);
     abstract public Poligono specchia();
-   // abstract public Poligono unisci(Poligono pol)throws Eccezione;
-   abstract public Poligono somma(Poligono pol);
+    abstract public Poligono somma(Poligono pol);
+
     public String getNome() {
 		return nomeOggetto;
 	}
-    public void setNome(String s) {
+
+	public void setNome(String s) {
         nomeOggetto = s;
     }
+
     public Double getPerimetro() {
         Double perimetro = 0d;
         for(int i=0; i<numeroLati; ++i) perimetro += getLati().get(i);
@@ -43,12 +45,15 @@ public abstract class Poligono {
     public Colore getColore() {
         return color;
     }
+
     public void setColore(Colore c) {
         color = c;
     }
+
     public void changeColor(Colore c) {
 		color.somma(c);
     }
+
     public ArrayList<Angolo> getAngoli() {
         ArrayList<Punto> punti=getCoordinate();
         ArrayList<Angolo> angoli = new ArrayList<Angolo>();
@@ -59,12 +64,15 @@ public abstract class Poligono {
         angoli.add(Punto.angoloTraTrePunti(punti.get(punti.size()-2), punti.get(punti.size()-1), punti.get(0)));
         return angoli;
     }
+
     public void setPunti(ArrayList c) {
         coordinate = c;
     }
+
     public ArrayList<Punto> getCoordinate() {
         return new ArrayList<Punto>(coordinate);
     }
+
     public ArrayList<Double> getLati() {
     	ArrayList<Double> lati = new ArrayList();
         for(int i=0; i<numeroLati-1; ++i){
@@ -136,12 +144,7 @@ public abstract class Poligono {
 	    }
 	    setPunti(vertici);
 	}
-    public static void main(String[] args){
-	    Colore colore=new RGB(5,5,5);
-	    Colore colore1=new RGB(120,120,120);
-	    System.out.println(colore.getHex());
 
-    } 
 
 }
 

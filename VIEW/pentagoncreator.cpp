@@ -351,6 +351,7 @@ void PentagonCreator::creaPentagono()try{
     emit selettore->insertPoligono(pent->getNome());
     emit selettore->inseritoPoligono(pent->getNome());
 }
-catch(EmptyField){}
-catch(SyntaxError){}
-catch(MyException){}
+catch (SyntaxError){}
+catch (WrongPolygon){}
+catch (AlreadyPresent){}
+catch (MyException){}

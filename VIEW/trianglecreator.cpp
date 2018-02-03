@@ -311,5 +311,7 @@ void TriangleCreator::creaTriangolo()try{
     emit selettore->insertPoligono(tr->getNome());
     emit selettore->inseritoPoligono(tr->getNome());
 }
+catch (SyntaxError){}
 catch (WrongPolygon){}
+catch (AlreadyPresent){}
 catch (MyException){}

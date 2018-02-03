@@ -361,4 +361,7 @@ void QuadrilateralCreator::creaQuadrilatero()try{
     emit selettore->insertPoligono(qu->getNome());
     emit selettore->inseritoPoligono(qu->getNome());
 }
-catch(MyException){}
+catch (SyntaxError){}
+catch (WrongPolygon){}
+catch (AlreadyPresent){}
+catch (MyException){}

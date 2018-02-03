@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a030387b-7655-4cae-9bb6-637753090e8d" name="Default" comment="inserito flag c++1 in .pro aggiornato java">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Use.java" />
-      <change beforePath="$PROJECT_DIR$/../Kalk.pro.user" afterPath="$PROJECT_DIR$/../Kalk.pro.user" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Pentagono.java" afterPath="$PROJECT_DIR$/src/Pentagono.java" />
-      <change beforePath="$PROJECT_DIR$/src/Poligono.java" afterPath="$PROJECT_DIR$/src/Poligono.java" />
-      <change beforePath="$PROJECT_DIR$/src/RGB.java" afterPath="$PROJECT_DIR$/src/RGB.java" />
+      <change beforePath="$PROJECT_DIR$/src/Angolo.java" afterPath="$PROJECT_DIR$/src/Angolo.java" />
       <change beforePath="$PROJECT_DIR$/src/Triangolo.java" afterPath="$PROJECT_DIR$/src/Triangolo.java" />
+      <change beforePath="$PROJECT_DIR$/src/Use.java" afterPath="$PROJECT_DIR$/src/Use.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,8 +60,8 @@
       <file leaf-file-name="Quadrilatero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Quadrilatero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2178">
-              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="99" column="32" lean-forward="false" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="32" />
               <folding>
                 <element signature="e#718#719#0" expanded="true" />
                 <element signature="e#784#785#0" expanded="true" />
@@ -106,13 +102,15 @@
       <file leaf-file-name="Angolo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Angolo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            <state relative-caret-position="182">
+              <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
               <folding>
                 <element signature="e#162#163#0" expanded="true" />
                 <element signature="e#184#185#0" expanded="true" />
                 <element signature="e#214#215#0" expanded="true" />
                 <element signature="e#232#233#0" expanded="true" />
+                <element signature="e#1347#1348#0" expanded="true" />
+                <element signature="e#1370#1371#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,8 +119,8 @@
       <file leaf-file-name="Triangolo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Triangolo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="139" column="22" lean-forward="false" selection-start-line="139" selection-start-column="19" selection-end-line="139" selection-end-column="22" />
+            <state relative-caret-position="266">
+              <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="e#2497#2505#0" expanded="true" />
               </folding>
@@ -133,8 +131,8 @@
       <file leaf-file-name="Use.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Use.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="158">
+              <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -195,6 +193,7 @@
       <find>fla</find>
       <find>flag</find>
       <find>out</find>
+      <find>somm</find>
     </findStrings>
     <replaceStrings>
       <replace>Arraylist</replace>
@@ -216,15 +215,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Colore.java" />
-        <option value="$PROJECT_DIR$/src/Angolo.java" />
         <option value="$PROJECT_DIR$/src/Quadrato.java" />
         <option value="$PROJECT_DIR$/src/Rettangolo.java" />
         <option value="$PROJECT_DIR$/src/Eccezione.java" />
-        <option value="$PROJECT_DIR$/src/Quadrilatero.java" />
         <option value="$PROJECT_DIR$/src/RGB.java" />
         <option value="$PROJECT_DIR$/src/Pentagono.java" />
-        <option value="$PROJECT_DIR$/src/Triangolo.java" />
         <option value="$PROJECT_DIR$/src/Poligono.java" />
+        <option value="$PROJECT_DIR$/src/Quadrilatero.java" />
+        <option value="$PROJECT_DIR$/src/Triangolo.java" />
+        <option value="$PROJECT_DIR$/src/Angolo.java" />
         <option value="$PROJECT_DIR$/src/Use.java" />
       </list>
     </option>
@@ -495,7 +494,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.50269437" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -583,6 +582,8 @@
             <element signature="e#184#185#0" expanded="true" />
             <element signature="e#214#215#0" expanded="true" />
             <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1370#1371#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,6 +680,8 @@
             <element signature="e#184#185#0" expanded="true" />
             <element signature="e#214#215#0" expanded="true" />
             <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1370#1371#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1009,17 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Quadrilatero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2178">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding>
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RGB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -1041,29 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Angolo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#184#185#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Triangolo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="139" column="22" lean-forward="false" selection-start-line="139" selection-start-column="19" selection-end-line="139" selection-end-column="22" />
-          <folding>
-            <element signature="e#2497#2505#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Poligono.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1076,10 +1045,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Quadrilatero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="99" column="32" lean-forward="false" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="32" />
+          <folding>
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Triangolo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <element signature="e#2497#2505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Angolo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+          <folding>
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1370#1371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Use.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="158">
+          <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
           <folding />
         </state>
       </provider>

@@ -27,14 +27,19 @@ public class Use {
         Poligono triangolo = new Triangolo(20d,20d, new Angolo(90d), colore, "t");
         Poligono quadrato = new Quadrato(20d, colore1, "q");
 
-        Poligono risultato = triangolo.somma(quadrato);
+        Poligono risultato = quadrato.somma(triangolo);     //non funziona
 
-        for (Punto p : risultato.getCoordinate())
+        /*for (Punto p : ((Pentagono)risultato).getCoordinate())
             System.out.println("x = " + p.getX() + " y = " + p.getY());
 
-        for (Punto p : quadrato.getCoordinate())
+        for (Punto p : (quadrato).getCoordinate())
             System.out.println("x = " + p.getX() + " y = " + p.getY());
+        */
 
+        System.out.println("Creato un triangolo di lati 20 e 20 e angolo 90 gradi, i suoi lati sono: "
+                + triangolo.getLati() + ",\ri suoi angoli sono : " + triangolo.getAngoli());
+        System.out.println( "Il perimetro del triangolo è: " + triangolo.getPerimetro());
+        System.out.println("L'area del triangolo è: " + triangolo.getArea());
 
     }
 }

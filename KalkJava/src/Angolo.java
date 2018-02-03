@@ -63,7 +63,8 @@ public class Angolo {
 		return seno;
 	}
 
-	public static void main(String[] args) {
-
+	@Override
+	public String toString() {
+		return gradi+"°";
 	}
 }

@@ -122,7 +122,7 @@ public class Triangolo extends Poligono {
 	    p1 = p1.specchia();
 		Poligono poligono = this;
 		try {
-			poligono =  t1.unisci(p1);
+			Poligono poligono1 =  t1.unisci(p1);
 		}
 		catch(Eccezione e) {
 			System.out.println ("Somma non disponibile con più di 5 lati");

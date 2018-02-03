@@ -72,6 +72,7 @@ public class RGB implements Colore {
     public Colore divisione(Colore colore) {
         RGB c=(RGB)colore;
 
+
         if (c.r == 0) {
             c.r = 1;
         }

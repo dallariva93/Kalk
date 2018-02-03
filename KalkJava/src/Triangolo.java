@@ -60,7 +60,7 @@ public class Triangolo extends Poligono {
 	}	
 	public Triangolo cambiaBase(Integer i) {
 		ArrayList<Double> lati = new ArrayList<Double>();
-	    //lati = ordinaLati(this.getLati() , this.getLati().get(i));									//FARE ORDINALATI
+		lati.addAll(0, ordinaLati(this.getLati() , this.getLati().get(i)));									//FARE ORDINALATI
 		return new Triangolo(lati.get(0), lati.get(1), lati.get(2), new RGB(), "Triangolo");
 	}
 

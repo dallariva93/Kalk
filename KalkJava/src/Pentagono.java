@@ -31,6 +31,9 @@ public class Pentagono extends Poligono {
     	this(0d, 0d, 0d, 0d, new Angolo(), new Angolo(), new Angolo(), new RGB(), "");
     }
 
+    public Pentagono(double lato, Colore col, String nome){
+        this(lato,lato,lato,lato, new Angolo(108d), new Angolo(108d), new Angolo(108d), col, nome);
+    }
     @Override
     public Double getArea() {
         Triangolo t1 = new Triangolo(getLati().get(0), getLati().get(1), Punto.distanceTo(getCoordinate().get(0),getCoordinate().get(2)));
@@ -113,7 +116,14 @@ public class Pentagono extends Poligono {
         Integer index = pol.indexLato(lato);
         Poligono p = pol.cambiaBase(index);
         p = p.specchia();
-        Poligono poligono = q.unisci(p);
+        Poligono poligono=this;
+        try{
+        poligono = q.unisci(p);
+        }
+		catch(Eccezione e) {
+        System.out.println ("Somma non disponibile con più di 5 lati");
+        System.exit(0);
+        }
         poligono.ruota(p.getAngoli().get(0));
         return poligono;
     }

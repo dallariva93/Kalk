@@ -27,7 +27,9 @@ public abstract class Poligono {
     abstract public Poligono zoom(Double z);
     abstract public Poligono cambiaBase(Integer i);
     abstract public Poligono specchia();
-	public String getNome() {
+   // abstract public Poligono unisci(Poligono pol)throws Eccezione;
+   abstract public Poligono somma(Poligono pol);
+    public String getNome() {
 		return nomeOggetto;
 	}
     public void setNome(String s) {
@@ -98,7 +100,7 @@ public abstract class Poligono {
         Double lato = 0.0;
         for( int i=0; i<numeroLati && !latoUguale; ++i){
             for( int j=0; j<p.numeroLati && !latoUguale; ++j){
-                if( getLati().get(i) == p.getLati().get(j) ){
+                if( getLati().get(i).equals(p.getLati().get(j)) ){
                     lato = p.getLati().get(j);
                     latoUguale = true;
                 }
@@ -130,7 +132,7 @@ public abstract class Poligono {
 	        if(min<x && x<max)  x=0.0;    //per pb. macchina
 	        Double y = ((vertici.get(i).getX())*angolo.seno()) + (vertici.get(i).getY()*cosAngoloCorretto);
 	        if(min<y && y<max)  y=0.0;    //per pb. macchina
-            vertici.add(i,new Punto(x,y));
+            vertici.set(i,new Punto(x,y));
 	    }
 	    setPunti(vertici);
 	}

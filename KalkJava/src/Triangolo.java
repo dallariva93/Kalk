@@ -75,7 +75,7 @@ public class Triangolo extends Poligono {
 	    return t;
 	}
 
-	public Poligono unisci(Poligono pol) throws Eccezione {
+	public Poligono unisci(Poligono pol){
 		Colore col = this.getColore().somma(pol.getColore());
 	    ArrayList<Punto> coord = new ArrayList<Punto>();
 	    boolean piatto=false;      //per riordinare i lati quando ho degli angoli piatti
@@ -107,10 +107,10 @@ public class Triangolo extends Poligono {
 	        p.setColore(col);
 	        return p;
 	    }
+	    else return new Triangolo();
 
-	    else{  
-	        throw new Eccezione();
-	    }
+
+
 	}
 	
 	public Poligono somma(Poligono pol) {
@@ -120,14 +120,9 @@ public class Triangolo extends Poligono {
 	    Integer index = pol.indexLato(lato);
 	    Poligono p1 = pol.cambiaBase(index);
 	    p1 = p1.specchia();
-		Poligono poligono = this;
-		try {
-			Poligono poligono1 =  t1.unisci(p1);
-		}
-		catch(Eccezione e) {
-			System.out.println ("Somma non disponibile con più di 5 lati");
-			System.exit(0);
-		}
+	    Poligono poligono =  t1.unisci(p1);
+
+
 		poligono.ruota(p1.getAngoli().get(0));
 		return poligono;
 	}

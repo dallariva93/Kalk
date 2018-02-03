@@ -29,12 +29,12 @@ public class Use {
 
         Poligono risultato = quadrato.somma(triangolo);     //non funziona
 
-        /*for (Punto p : ((Pentagono)risultato).getCoordinate())
+        for (Punto p : (risultato).getCoordinate())
             System.out.println("x = " + p.getX() + " y = " + p.getY());
 
         for (Punto p : (quadrato).getCoordinate())
             System.out.println("x = " + p.getX() + " y = " + p.getY());
-        */
+
 
         System.out.println("Creato un triangolo di lati 20 e 20 e angolo 90 gradi, i suoi lati sono: "
                 + triangolo.getLati() + ",\ri suoi angoli sono : " + triangolo.getAngoli());

@@ -114,7 +114,6 @@ Poligono& Triangolo::operator+(const Poligono& pol) const{
     Triangolo t1 = cambiaBase(indice);
     int index = pol.indexLato(lato);
     Poligono& p1 = pol.cambiaBase(index);
-    Poligono& tmp = p1;
     p1 = p1.specchia();
     Poligono& poligono = t1.unisci(p1);
     poligono.ruota(p1.getAngoli()[0]);

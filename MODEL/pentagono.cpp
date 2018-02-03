@@ -104,7 +104,6 @@ Poligono& Pentagono::operator+(const Poligono& pol) const{
     Pentagono q = cambiaBase(indice);
     int index = pol.indexLato(lato);
     Poligono& p = pol.cambiaBase(index);
-    Poligono& tmp = p;
     p = p.specchia();
     Poligono& poligono = q.unisci(p);
     poligono.ruota(p.getAngoli()[0]);

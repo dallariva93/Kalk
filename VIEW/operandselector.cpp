@@ -145,12 +145,11 @@ void OperandSelector::calcolaSomma1(QString name1){
             emit inseritoPoligono(pol1.getNome());
         }
         else{
-            Poligono* pol1 = (contenitore->getPoligono(name1))->clone();
             Poligono* pol2 = (contenitore->getPoligono(name2))->clone();
-            if(pol1->latoComune(*pol2)==0)
+            if(pol1.latoComune(*pol2)==0)
                 throw WrongPolygon("Non esiste un lato in comune!");
-            Poligono& pTot = *pol1 + *pol2;
-            QString nome = QString(pol1->getNome()+"+"+pol2->getNome());
+            Poligono& pTot = pol1 + *pol2;
+            QString nome = QString(pol1.getNome()+"+"+pol2->getNome());
             if(isPresent(nome))
                 throw AlreadyPresent("Il poligono esiste già!");
             pTot.setNome(nome);
